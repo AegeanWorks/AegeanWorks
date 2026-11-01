@@ -1,6 +1,6 @@
 {
   "source": "GitHub API /users/AegeanWorks/repos",
-  "captured_at": "2026-10-31",
+  "captured_at": "2026-11-01",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -1141,6 +1141,24 @@
       "license": "AGL-1.1",
       "pushed_at": "2026-10-30T12:14:10Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=weft",
+      "archived": false,
+      "default_branch": "master"
+    },
+    {
+      "id": 1441333204,
+      "name": "Chatduck",
+      "description": "A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "source-available"
+      ],
+      "language": "JavaScript",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-01T09:52:12Z",
+      "homepage": "",
       "archived": false,
       "default_branch": "master"
     }

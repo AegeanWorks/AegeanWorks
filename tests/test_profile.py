@@ -61,6 +61,7 @@ PUBLIC_REPOS = {
     "UI-Sandbox",
     "Voidfarer",
     "Research-Engine",
+    "Chatduck",
 }
 
 CATEGORY_LABELS = {

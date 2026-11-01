@@ -36,6 +36,11 @@
       "width": 512,
       "height": 512
     },
+    "Chatduck": {
+      "src": "media/Chatduck/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "Chronos": {
       "src": "media/Chronos/logo.webp",
       "width": 256,

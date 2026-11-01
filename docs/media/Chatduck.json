@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Chatduck",
+  "logo": {
+    "src": "media/Chatduck/logo.svg",
+    "alt": "Chatduck logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:6f4b75439c8d0a11034d68147da3b758416bb37f2f1c84834eac8cef0fc86530",
+    "commit": "94607c5e533f4b7cb6b2bde9aa448472f08db5f7",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Chatduck/94607c5e533f4b7cb6b2bde9aa448472f08db5f7/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Chatduck/social-preview.svg",
+    "alt": "Chatduck social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:ba4c5d8f4f8e2a10c926654284364a222373410e149935e9c9736cbafb273fdc",
+    "commit": "94607c5e533f4b7cb6b2bde9aa448472f08db5f7",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Chatduck/94607c5e533f4b7cb6b2bde9aa448472f08db5f7/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

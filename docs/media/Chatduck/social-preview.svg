@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="orbit" data-layout="terminal">
+  <title id="title">Chatduck social preview</title>
+  <desc id="desc">A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12070d"/><stop offset="1" stop-color="#301213"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f566a4" stop-opacity="0.28"/><stop offset="1" stop-color="#f566a4" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f566a4"/><stop offset="1" stop-color="#f5d68e"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  
+  <g opacity="0.15" stroke="#F8FAFC">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
+  </g>
+  <g transform="translate(1040 320) scale(1.8)" opacity="0.42"><ellipse cx="0" cy="0" rx="62" ry="24" fill="none" stroke="#f566a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="0" cy="0" rx="62" ry="24" transform="rotate(58)" fill="none" stroke="#f566a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="0" r="12" fill="#f566a4"/><circle cx="48" cy="-14" r="6" fill="#f5d68e"/></g>
+  <text x="78" y="206" font-family="Consolas, monospace" font-size="20" fill="#f566a4">$ open Chatduck</text><text x="78" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Chatduck</text>
+  <text x="80" y="348" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">A fast, local-first web chat UI for any</text><text x="80" y="388" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">OpenAI-compatible model server, including</text><text x="80" y="428" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">ModelDuck. It is one static page and a few</text>
+  <rect x="80" y="502" width="76" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="118.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="278" y="502" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="371.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="476" y="502" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="569.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#f566a4">github.com/AegeanWorks/Chatduck</text>
+</svg>
