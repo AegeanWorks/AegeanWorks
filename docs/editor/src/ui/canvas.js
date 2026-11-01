@@ -41,22 +41,52 @@ export function putPixels(canvas, pixels) {
   context.putImageData(image, 0, 0);
 }
 
-export function compositeDocument(doc, { background = null } = {}) {
-  const output = createCanvas(doc.width, doc.height);
-  const context = context2d(output);
+export function drawLayerStack(context, doc, { background = null, moving = null, scratch = null } = {}) {
   if (background) {
     context.fillStyle = background;
-    context.fillRect(0, 0, output.width, output.height);
+    context.fillRect(0, 0, doc.width, doc.height);
   }
+  let base = null;
+  let clipped = scratch;
   for (const layer of doc.layers) {
-    if (!layer.visible || layer.opacity <= 0 || !layer.canvas) continue;
+    if (!layer.visible || !layer.canvas) {
+      if (!layer.clipToBelow) base = null;
+      continue;
+    }
+    if (!layer.clipToBelow) base = layer.canvas;
+    let source = layer.canvas;
+    let adjusted = false;
+    if (layer.clipToBelow) {
+      if (!base) continue;
+      if (!clipped) clipped = createCanvas(doc.width, doc.height);
+      const target = context2d(clipped, true);
+      target.setTransform(1, 0, 0, 1, 0, 0);
+      target.globalAlpha = 1;
+      target.globalCompositeOperation = "source-over";
+      target.filter = "none";
+      target.clearRect(0, 0, clipped.width, clipped.height);
+      target.filter = buildCssFilter(layer.adjustments);
+      target.drawImage(layer.canvas, 0, 0);
+      target.filter = "none";
+      target.globalCompositeOperation = "destination-in";
+      target.drawImage(base, 0, 0);
+      target.globalCompositeOperation = "source-over";
+      source = clipped;
+      adjusted = true;
+    }
     context.save();
     context.globalAlpha = layer.opacity;
     context.globalCompositeOperation = blendOperation(layer.blendMode);
-    context.filter = buildCssFilter(layer.adjustments);
-    context.drawImage(layer.canvas, 0, 0);
+    if (!adjusted) context.filter = buildCssFilter(layer.adjustments);
+    if (moving && moving.layerId === layer.id) context.translate(moving.dx, moving.dy);
+    context.drawImage(source, 0, 0);
     context.restore();
   }
+}
+
+export function compositeDocument(doc, { background = null } = {}) {
+  const output = createCanvas(doc.width, doc.height);
+  drawLayerStack(context2d(output), doc, { background });
   return output;
 }
 

@@ -123,12 +123,12 @@
       "mode": "browser",
       "path": "editor/index.html",
       "source_url": "https://github.com/AegeanWorks/Palette",
-      "version": "0.11.2",
-      "commit": "90f44657c3ddddf46f42e2f8bb4d4a09f62c8e4c",
+      "version": "0.14.0",
+      "commit": "fee4919fad391b1675a9a254032d422536ce700a",
       "updated": "2026-10-31",
       "license": "AL-1.1",
       "license_path": "editor/LICENSE",
-      "digest": "sha256:cdca8546b3f2f6a8526fee9305fe2693ea8065f573014db35d5ac12d1fa62726",
+      "digest": "sha256:ad3b76430d338eac7691d6cdbc0729483f0543f0bff3117f0927666494f3a40f",
       "builds": [
         "editor/index.html"
       ],

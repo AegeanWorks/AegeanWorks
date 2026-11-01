@@ -47,6 +47,7 @@ export function createLayer({
   opacity = 1,
   blendMode = "normal",
   locked = false,
+  clipToBelow = false,
   canvas = null,
   adjustments = {},
 } = {}) {
@@ -57,6 +58,7 @@ export function createLayer({
     opacity: clamp(opacity, 0, 1),
     blendMode: normalizeBlendMode(blendMode),
     locked: Boolean(locked),
+    clipToBelow: Boolean(clipToBelow),
     canvas,
     adjustments: clampAdjustments(adjustments),
   };
@@ -86,6 +88,15 @@ export function activeLayer(doc) {
 
 export function indexOfLayer(doc, id) {
   return doc.layers.findIndex((layer) => layer.id === id);
+}
+
+export function clippingBaseIndex(doc, id) {
+  const index = indexOfLayer(doc, id);
+  if (index <= 0 || !doc.layers[index].clipToBelow) return -1;
+  for (let below = index - 1; below >= 0; below -= 1) {
+    if (!doc.layers[below].clipToBelow) return below;
+  }
+  return -1;
 }
 
 export function setActiveLayer(doc, id) {

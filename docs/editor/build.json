@@ -2,27 +2,27 @@
   "files": {
     "LICENSE": "7e3473af99b8e2f157de2689adf5ab9d0d480bf08d58af3d3f151c7700c481e5",
     "assets/favicon.svg": "9ab9f262d574ca9eac7970f5c80dfd50a7ad9e3a7b0192995adc681f6363dc96",
-    "index.html": "dc67706de67f3d669b7bd7ed2be465b67518daec558bb8a42233e46947eaedcd",
+    "index.html": "713d6f5bab118399dc6c4d5a026f60699c81ba8f6f08eefa961c5773d588f9ed",
     "src/core/bounds.js": "51e4bd6a29a00a4dec884528f9e0e31ef80e5edfddbd4682039bf271f89cf0fd",
     "src/core/color.js": "bdf14bf3dafe9218a47d749a91236a22d97a7dfb21912f2d4b9882034bf38c5d",
-    "src/core/document.js": "100507848a159c1d3b496cd9014ac50d46053d18d45e61a4bbb3b157b68dcfab",
+    "src/core/document.js": "9fa70022b8e615ccd8b82cfff4ff0226090b3d036010a498aba36e262ecb46ed",
     "src/core/export.js": "4e566044c2faa990dfbd6a88065829fc73835224a835d52a773c7c63099baef0",
     "src/core/filters.js": "e4c33b7ada37fe34b6bb8397c1f5413b680f754ac1280e9d271f57aa6c0fafcd",
     "src/core/geometry.js": "2093402d20ba2470309bb54b86d1173305a15c8b5d2215ad9ddf392f58ea90a5",
     "src/core/gradient.js": "f671b12dbd1e4433f40b4ee2d358f2e1209e511e7941f950b8f632327754d5ae",
     "src/core/histogram.js": "3c4b2337315a08f22b6093604de97607193c66aa63f3facc07b12585e562e631",
     "src/core/history.js": "7351ef707f87006fe259f84a447c85df086ad2c6a8ccb723a9e7037b552a8e01",
-    "src/core/project.js": "850a61bd57ac301b233200333d0d255f9359a0fe4fa679a7540f6f046c4f2fa8",
-    "src/styles.css": "a5e8ed9bc50b5510ec7763f91f4820e87a65e81cdced0f46b43d640690ba7ffb",
+    "src/core/project.js": "bce3191075adda85c78c327d2202a06708abdd4618ff8651b10e166e60fe7b92",
+    "src/styles.css": "6e2a3be97f1571d25adc2355a33be306f3802faa16c2188d7d49088ea8059731",
     "src/theme.css": "d4ca849c04e7e49031e62c2eebf713c90d6998bbce997b0190757655ec079643",
-    "src/ui/autosave.js": "6ea5b5ffa790d8dda0c7576026f26cbc22f82e5ed0d1bc9569ee2ea2a4ca8307",
-    "src/ui/canvas.js": "211ec7e709eec15c5fb6fc293ce03009aa8a3db1f097fb83ef2cd06baec23059",
-    "src/ui/editor.js": "58a98c744ca1813798647ae42a260772f0a1f77ce37af2152d554a5863c8b907",
+    "src/ui/autosave.js": "e99a6f936e15958ebd6e006b03414ec3e8137f4b1df0f8746d9e75bbbede0777",
+    "src/ui/canvas.js": "9f3181629897724fbd7eae7ea9b654865d4bc149c3ed6201f6b717d611010cb0",
+    "src/ui/editor.js": "fd4b148cf4b8b3cfbf471d8135c091fcea0ed92a547d2703e0bc9a5c6f46e994",
     "src/ui/main.js": "ad50ea5c00250e5497186e99b114d5ab678da60e8bf736b614309b6db2320253",
-    "src/ui/paint.js": "47edcc010c4f5abf1c9d7750532c46d16dc9cbb4772fee59dfe77ed0740449f5"
+    "src/ui/paint.js": "f87248b947e09d78ed7d934e1c130d54c848facdbb00524c1f425914606e35d1"
   },
   "name": "palette",
   "schema": 1,
-  "source_sha256": "cdca8546b3f2f6a8526fee9305fe2693ea8065f573014db35d5ac12d1fa62726",
-  "version": "0.11.2"
+  "source_sha256": "ad3b76430d338eac7691d6cdbc0729483f0543f0bff3117f0927666494f3a40f",
+  "version": "0.14.0"
 }

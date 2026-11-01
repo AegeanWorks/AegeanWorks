@@ -2,7 +2,8 @@ import { boundedDimensions, MAX_DIMENSION } from "../core/project.js";
 import { canvasToBlob } from "./canvas.js";
 
 export const AUTOSAVE_FORMAT = "palette-autosave";
-export const AUTOSAVE_VERSION = 1;
+export const AUTOSAVE_VERSION = 2;
+export const AUTOSAVE_SUPPORTED_VERSIONS = Object.freeze([1, 2]);
 const DB_NAME = "palette-autosave";
 const DB_VERSION = 1;
 const STORE_NAME = "sessions";
@@ -15,7 +16,12 @@ export function autosaveAvailable() {
 }
 
 export function validateSessionRecord(record) {
-  if (!record || typeof record !== "object" || record.format !== AUTOSAVE_FORMAT || record.version !== AUTOSAVE_VERSION) {
+  if (
+    !record ||
+    typeof record !== "object" ||
+    record.format !== AUTOSAVE_FORMAT ||
+    !AUTOSAVE_SUPPORTED_VERSIONS.includes(record.version)
+  ) {
     return null;
   }
   const width = Number(record.width);
@@ -24,6 +30,7 @@ export function validateSessionRecord(record) {
   if (width > MAX_DIMENSION || height > MAX_DIMENSION) return null;
   const bounded = boundedDimensions(width, height);
   if (bounded.width !== Math.round(width) || bounded.height !== Math.round(height)) return null;
+  const supportsClipping = Number(record.version) >= 2;
   if (!Array.isArray(record.layers) || record.layers.length === 0) return null;
   const layers = [];
   for (const layer of record.layers) {
@@ -36,6 +43,7 @@ export function validateSessionRecord(record) {
       opacity: Number.isFinite(Number(layer.opacity)) ? Math.min(1, Math.max(0, Number(layer.opacity))) : 1,
       blendMode: typeof layer.blendMode === "string" ? layer.blendMode : "normal",
       locked: layer.locked === true,
+      clipToBelow: supportsClipping && layer.clipToBelow === true,
       adjustments: layer.adjustments && typeof layer.adjustments === "object" ? layer.adjustments : {},
       image: layer.image,
     });
@@ -63,6 +71,7 @@ export async function captureSession(doc) {
       opacity: layer.opacity,
       blendMode: layer.blendMode,
       locked: layer.locked,
+      clipToBelow: Boolean(layer.clipToBelow),
       adjustments: { ...layer.adjustments },
       image: await canvasToBlob(layer.canvas, "image/png"),
     })),

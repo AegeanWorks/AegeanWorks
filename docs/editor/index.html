@@ -66,6 +66,12 @@
       <button class="tool-btn" type="button" data-tool="eraser" data-ui="tool-eraser" aria-label="Eraser tool" title="Eraser (E)" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 15 8-11 8 6-8 11H8l-4-6Z"/><path d="m9 19 4-5"/></svg>
       </button>
+      <button class="tool-btn" type="button" data-tool="clone" data-ui="tool-clone" aria-label="Clone stamp tool" title="Clone stamp (S)" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4.5l2 3V14H7v-3.5l2-3V3Z"/><path d="M5 17h14v3H5z"/><path d="M12 3v1.5"/></svg>
+      </button>
+      <button class="tool-btn" type="button" data-tool="dodge" data-ui="tool-dodge" aria-label="Dodge and burn tool" title="Dodge &amp; burn (D)" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10.5 12 8l2.5 2.5"/><path d="m7 17 3-3M17 17l-3-3"/></svg>
+      </button>
       <button class="tool-btn" type="button" data-tool="crop" data-ui="tool-crop" aria-label="Crop tool" title="Crop (C)" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v14h14"/><path d="M3 7h14v14"/></svg>
       </button>
@@ -151,6 +157,30 @@
           <input id="eraser-hardness" type="range" min="0" max="100" step="1" value="60">
           <label class="field" for="eraser-opacity">Opacity <output id="eraser-opacity-value" for="eraser-opacity">100</output>%</label>
           <input id="eraser-opacity" type="range" min="1" max="100" step="1" value="100">
+        </div>
+
+        <div class="options-group" id="options-clone" hidden>
+          <label class="field" for="clone-size">Size <output id="clone-size-value" for="clone-size">48</output> px</label>
+          <input id="clone-size" type="range" min="1" max="200" step="1" value="48">
+          <label class="field" for="clone-hardness">Hardness <output id="clone-hardness-value" for="clone-hardness">60</output>%</label>
+          <input id="clone-hardness" type="range" min="0" max="100" step="1" value="60">
+          <label class="field" for="clone-opacity">Opacity <output id="clone-opacity-value" for="clone-opacity">100</output>%</label>
+          <input id="clone-opacity" type="range" min="1" max="100" step="1" value="100">
+          <p class="panel-note">Alt-click a source point, then drag to clone from it.</p>
+        </div>
+
+        <div class="options-group" id="options-dodge" hidden>
+          <label class="field" for="dodge-mode">Mode</label>
+          <select id="dodge-mode">
+            <option value="dodge">Dodge (lighten)</option>
+            <option value="burn">Burn (darken)</option>
+          </select>
+          <label class="field" for="dodge-size">Size <output id="dodge-size-value" for="dodge-size">64</output> px</label>
+          <input id="dodge-size" type="range" min="1" max="200" step="1" value="64">
+          <label class="field" for="dodge-hardness">Hardness <output id="dodge-hardness-value" for="dodge-hardness">50</output>%</label>
+          <input id="dodge-hardness" type="range" min="0" max="100" step="1" value="50">
+          <label class="field" for="dodge-strength">Strength <output id="dodge-strength-value" for="dodge-strength">20</output>%</label>
+          <input id="dodge-strength" type="range" min="1" max="100" step="1" value="20">
         </div>
 
         <div class="options-group" id="options-shape" hidden>
@@ -262,6 +292,9 @@
             </button>
             <button class="icon-btn" id="btn-layer-lock" type="button" aria-label="Lock layer" title="Lock layer" aria-pressed="false" data-ui="layer-lock">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            </button>
+            <button class="icon-btn" id="btn-layer-clip" type="button" aria-label="Clip to layer below" title="Clip to layer below" aria-pressed="false" data-ui="layer-clip">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a4 4 0 0 0 5.7 0l2.3-2.3a4 4 0 0 0-5.7-5.7L11 6.3"/><path d="M14 11a4 4 0 0 0-5.7 0L6 13.3a4 4 0 0 0 5.7 5.7l1.3-1.3"/></svg>
             </button>
             <button class="icon-btn" id="btn-layer-up" type="button" aria-label="Move layer up" title="Move layer up" data-ui="layer-up">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>

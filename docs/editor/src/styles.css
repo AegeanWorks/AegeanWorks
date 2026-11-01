@@ -717,6 +717,28 @@ select:focus {
   stroke-linejoin: round;
 }
 
+.layer-clip {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--accent, #67e8f9);
+}
+
+.layer-clip svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.layer-item[data-clipped="true"] .layer-thumb {
+  outline: 1px dashed currentColor;
+  outline-offset: 1px;
+}
+
 .layer-item[data-locked="true"] .layer-name {
   color: var(--muted);
 }

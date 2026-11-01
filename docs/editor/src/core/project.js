@@ -3,7 +3,8 @@ import { normalizeBlendMode } from "./document.js";
 import { clampAdjustments } from "./filters.js";
 
 export const PROJECT_FORMAT = "palette-project";
-export const PROJECT_VERSION = 1;
+export const PROJECT_VERSION = 2;
+export const PROJECT_SUPPORTED_VERSIONS = Object.freeze([1, 2]);
 export const MAX_DIMENSION = 8192;
 export const MAX_PIXELS = 24_000_000;
 
@@ -53,6 +54,7 @@ export function serializeProject(doc, images) {
       opacity: layer.opacity,
       blendMode: normalizeBlendMode(layer.blendMode),
       locked: Boolean(layer.locked),
+      clipToBelow: Boolean(layer.clipToBelow),
       adjustments: clampAdjustments(layer.adjustments),
       image: images[layer.id] ?? "",
     })),
@@ -72,12 +74,15 @@ export function parseProject(source) {
     throw new Error("This is not a Palette project file.");
   }
   if (data.version !== PROJECT_VERSION) {
-    throw new Error(`Unsupported Palette project version: ${String(data.version)}.`);
+    if (!PROJECT_SUPPORTED_VERSIONS.includes(data.version)) {
+      throw new Error(`Unsupported Palette project version: ${String(data.version)}.`);
+    }
   }
   if (!Array.isArray(data.layers) || data.layers.length === 0) {
     throw new Error("The project has no layers.");
   }
   const seen = new Set();
+  const supportsClipping = Number(data.version) >= 2;
   const layers = data.layers.map((layer, index) => {
     if (!layer || typeof layer !== "object") throw new Error(`Layer ${index + 1} is malformed.`);
     const id = typeof layer.id === "string" && layer.id.trim() ? layer.id.trim() : `layer-${index + 1}`;
@@ -93,6 +98,7 @@ export function parseProject(source) {
       opacity: clamp(layer.opacity ?? 1, 0, 1),
       blendMode: normalizeBlendMode(layer.blendMode),
       locked: layer.locked === true,
+      clipToBelow: supportsClipping && layer.clipToBelow === true,
       adjustments: clampAdjustments(layer.adjustments),
       image: layer.image,
     };

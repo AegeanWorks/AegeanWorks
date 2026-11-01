@@ -4,6 +4,7 @@ import {
   activeLayer,
   addLayer,
   blendOperation,
+  clippingBaseIndex,
   createDocument,
   createLayer,
   duplicateLayerRecord,
@@ -66,6 +67,7 @@ import {
   context2d,
   createCanvas,
   downloadBlob,
+  drawLayerStack,
   fillCanvas,
   getPixels,
   imageToCanvas,
@@ -102,12 +104,16 @@ import {
   scaleCanvas,
   shiftedCanvas,
   strokeBrush,
+  strokeClone,
+  strokeTone,
 } from "./paint.js";
 
 const TOOL_META = Object.freeze({
   move: { label: "Move", cursor: "move", hint: "Drag the active layer. Arrow keys nudge it." },
   brush: { label: "Brush", cursor: "crosshair", hint: "Paint on the active layer." },
   eraser: { label: "Eraser", cursor: "crosshair", hint: "Erase pixels from the active layer." },
+  clone: { label: "Clone stamp", cursor: "crosshair", hint: "Alt-click a source, then drag to clone from it." },
+  dodge: { label: "Dodge & burn", cursor: "crosshair", hint: "Drag to lighten or darken existing pixels." },
   crop: { label: "Crop", cursor: "crosshair", hint: "Drag a region, then confirm." },
   marquee: { label: "Marquee", cursor: "crosshair", hint: "Drag to select a region. Ctrl+A selects all; Ctrl+D deselects." },
   text: { label: "Text", cursor: "text", hint: "Click the canvas, type a line, then press Add." },
@@ -136,17 +142,19 @@ const IDS = [
   "btn-undo", "btn-redo", "btn-help", "file-image", "file-layer", "file-project", "stage-wrap", "doc-frame",
   "stage", "overlay", "text-editor", "text-input", "text-commit", "text-cancel", "drop-hint",
   "stage-note", "btn-zoom-out", "btn-fit", "btn-zoom-in", "color-row", "color-input", "color-hex",
-  "tool-hint", "options-brush", "options-eraser", "options-shape", "options-text", "options-gradient",
+  "tool-hint",   "options-brush", "options-eraser", "options-clone", "options-dodge", "options-shape", "options-text", "options-gradient",
   "options-marquee", "options-crop", "options-move", "marquee-shape", "crop-aspect", "btn-select-all", "btn-deselect",
   "btn-crop-selection", "btn-invert-selection", "btn-copy", "btn-cut", "btn-paste",
   "btn-layer-via-copy", "btn-layer-via-cut", "brush-size", "brush-size-value", "brush-hardness",
   "brush-hardness-value", "brush-opacity", "brush-opacity-value", "eraser-size", "eraser-size-value",
   "eraser-hardness", "eraser-hardness-value", "eraser-opacity", "eraser-opacity-value", "shape-fill",
+  "clone-size", "clone-size-value", "clone-hardness", "clone-hardness-value", "clone-opacity", "clone-opacity-value",
+  "dodge-mode", "dodge-size", "dodge-size-value", "dodge-hardness", "dodge-hardness-value", "dodge-strength", "dodge-strength-value",
   "shape-outline", "shape-outline-color", "shape-outline-hex", "shape-width", "shape-width-value",
   "text-font", "text-size", "text-size-value", "text-weight", "gradient-type", "gradient-end",
   "gradient-end-hex", "gradient-fade", "gradient-opacity", "gradient-opacity-value", "crop-apply",
   "crop-cancel", "btn-layer-add", "btn-layer-image", "btn-layer-duplicate", "btn-layer-merge",
-  "btn-layer-lock", "btn-layer-up", "btn-layer-down", "btn-layer-delete", "layer-opacity",
+  "btn-layer-lock", "btn-layer-clip", "btn-layer-up", "btn-layer-down", "btn-layer-delete", "layer-opacity",
   "layer-opacity-value", "layer-blend", "layer-list",
   "btn-resize", "btn-canvas-size", "btn-transform", "btn-flip-h", "btn-flip-v", "btn-rotate",
   "btn-flatten",
@@ -320,6 +328,7 @@ export class PaletteEditor {
     this.cropRect = null;
     this.selection = null;
     this.clipboard = null;
+    this.cloneSource = null;
     this.textDraft = null;
     this.autosaveArmed = false;
     this.autosaveHasContent = false;
@@ -328,6 +337,7 @@ export class PaletteEditor {
     this.autosaveTimer = null;
     this.documentDirty = false;
     this.histogramTimer = null;
+    this.clipScratch = null;
     this.pendingRestore = null;
     this.restoreResolved = false;
     this.adjustStart = null;
@@ -340,6 +350,8 @@ export class PaletteEditor {
       color: "#22d3ee",
       brush: { size: 32, hardness: 0.7, opacity: 1 },
       eraser: { size: 40, hardness: 0.6, opacity: 1 },
+      clone: { size: 48, hardness: 0.6, opacity: 1 },
+      dodge: { mode: "dodge", size: 64, hardness: 0.5, strength: 0.2 },
       shape: { fill: true, outline: true, width: 4, outlineColor: "#e9eefb" },
       gradient: { type: "linear", to: "#a78bfa", fade: true, opacity: 1 },
       marquee: { kind: "rect" },
@@ -373,6 +385,7 @@ export class PaletteEditor {
     this.cancelText();
     this.cropRect = null;
     this.selection = null;
+    this.cloneSource = null;
     this.adjustStart = null;
     this.opacityStart = null;
     this.autoFit = true;
@@ -397,6 +410,7 @@ export class PaletteEditor {
     this.action = null;
     this.cropRect = null;
     if (dimensionsChanged) this.selection = null;
+    if (dimensionsChanged) this.cloneSource = null;
     this.adjustStart = null;
     this.opacityStart = null;
     this.cancelText();
@@ -517,6 +531,9 @@ export class PaletteEditor {
     if (this.root.activeElement !== this.el.layerBlend) this.el.layerBlend.value = layer.blendMode;
     this.el.btnLayerLock.setAttribute("aria-pressed", layer.locked ? "true" : "false");
     this.el.btnLayerLock.title = layer.locked ? "Unlock layer" : "Lock layer";
+    this.el.btnLayerClip.setAttribute("aria-pressed", layer.clipToBelow ? "true" : "false");
+    this.el.btnLayerClip.title = layer.clipToBelow ? "Release clipping mask" : "Clip to layer below";
+    this.el.btnLayerClip.disabled = indexOfLayer(this.doc, layer.id) <= 0;
     for (const key of ADJUSTMENTS) {
       const input = this.el[`adj${key[0].toUpperCase()}${key.slice(1)}`];
       const output = this.el[`adj${key[0].toUpperCase()}${key.slice(1)}Value`];
@@ -532,6 +549,8 @@ export class PaletteEditor {
     const groups = {
       brush: this.el.optionsBrush,
       eraser: this.el.optionsEraser,
+      clone: this.el.optionsClone,
+      dodge: this.el.optionsDodge,
       shape: this.el.optionsShape,
       text: this.el.optionsText,
       gradient: this.el.optionsGradient,
@@ -552,7 +571,7 @@ export class PaletteEditor {
   }
 
   syncOptionControls() {
-    const { brush, eraser, shape, gradient, text } = this.options;
+    const { brush, eraser, clone, dodge, shape, gradient, text } = this.options;
     this.el.brushSize.value = String(brush.size);
     this.el.brushSizeValue.textContent = String(brush.size);
     this.el.brushHardness.value = String(Math.round(brush.hardness * 100));
@@ -565,6 +584,18 @@ export class PaletteEditor {
     this.el.eraserHardnessValue.textContent = String(Math.round(eraser.hardness * 100));
     this.el.eraserOpacity.value = String(Math.round(eraser.opacity * 100));
     this.el.eraserOpacityValue.textContent = String(Math.round(eraser.opacity * 100));
+    this.el.cloneSize.value = String(clone.size);
+    this.el.cloneSizeValue.textContent = String(clone.size);
+    this.el.cloneHardness.value = String(Math.round(clone.hardness * 100));
+    this.el.cloneHardnessValue.textContent = String(Math.round(clone.hardness * 100));
+    this.el.cloneOpacity.value = String(Math.round(clone.opacity * 100));
+    this.el.cloneOpacityValue.textContent = String(Math.round(clone.opacity * 100));
+    this.el.dodgeMode.value = dodge.mode;
+    this.el.dodgeSize.value = String(dodge.size);    this.el.dodgeSizeValue.textContent = String(dodge.size);
+    this.el.dodgeHardness.value = String(Math.round(dodge.hardness * 100));
+    this.el.dodgeHardnessValue.textContent = String(Math.round(dodge.hardness * 100));
+    this.el.dodgeStrength.value = String(Math.round(dodge.strength * 100));
+    this.el.dodgeStrengthValue.textContent = String(Math.round(dodge.strength * 100));
     this.el.shapeFill.checked = shape.fill;
     this.el.shapeOutline.checked = shape.outline;
     this.el.shapeWidth.value = String(shape.width);
@@ -597,6 +628,7 @@ export class PaletteEditor {
       item.className = "layer-item";
       item.dataset.active = layer.id === this.doc.activeLayerId ? "true" : "false";
       item.dataset.locked = layer.locked ? "true" : "false";
+      item.dataset.clipped = layer.clipToBelow ? "true" : "false";
 
       const visibility = this.root.createElement("button");
       visibility.type = "button";
@@ -636,8 +668,15 @@ export class PaletteEditor {
         lock.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
       }
 
+      const clip = this.root.createElement("span");
+      clip.className = "layer-clip";
+      clip.title = layer.clipToBelow ? "Clipped to layer below" : "";
+      if (layer.clipToBelow) {
+        clip.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a4 4 0 0 0 5.7 0l2.3-2.3a4 4 0 0 0-5.7-5.7L11 6.3"/><path d="M14 11a4 4 0 0 0-5.7 0L6 13.3a4 4 0 0 0 5.7 5.7l1.3-1.3"/></svg>';
+      }
+
       item.addEventListener("click", () => this.selectLayer(layer.id));
-      item.append(visibility, thumb, name, lock);
+      item.append(visibility, thumb, name, clip, lock);
       list.append(item);
     }
   }
@@ -760,16 +799,12 @@ export class PaletteEditor {
     context.rect(0, 0, this.doc.width, this.doc.height);
     context.clip();
     const moving = this.action?.type === "move" ? this.action : null;
-    for (const layer of this.doc.layers) {
-      if (!layer.visible || layer.opacity <= 0 || !layer.canvas) continue;
-      context.save();
-      context.globalAlpha = layer.opacity;
-      context.globalCompositeOperation = blendOperation(layer.blendMode);
-      context.filter = buildCssFilter(layer.adjustments);
-      if (moving && moving.layerId === layer.id) context.translate(moving.dx, moving.dy);
-      context.drawImage(layer.canvas, 0, 0);
-      context.restore();
+    if (this.doc.layers.some((layer) => layer.clipToBelow)) {
+      if (!this.clipScratch || this.clipScratch.width !== this.doc.width || this.clipScratch.height !== this.doc.height) {
+        this.clipScratch = createCanvas(this.doc.width, this.doc.height);
+      }
     }
+    drawLayerStack(context, this.doc, { moving, scratch: this.clipScratch });
     context.restore();
 
     this.renderOverlay();
@@ -921,8 +956,18 @@ export class PaletteEditor {
       context.restore();
     }
 
-    if (this.pointer && (this.tool === "brush" || this.tool === "eraser")) {
-      const size = this.tool === "brush" ? this.options.brush.size : this.options.eraser.size;
+    if (
+      this.pointer &&
+      (this.tool === "brush" || this.tool === "eraser" || this.tool === "clone" || this.tool === "dodge")
+    ) {
+      const size =
+        this.tool === "brush"
+          ? this.options.brush.size
+          : this.tool === "eraser"
+            ? this.options.eraser.size
+            : this.tool === "clone"
+              ? this.options.clone.size
+              : this.options.dodge.size;
       const radius = Math.max(1, (size * this.view.scale) / 2);
       context.save();
       context.beginPath();
@@ -934,6 +979,27 @@ export class PaletteEditor {
       context.arc(this.pointer.x, this.pointer.y, radius, 0, Math.PI * 2);
       context.lineWidth = 1;
       context.strokeStyle = "rgba(233, 238, 251, 0.9)";
+      context.stroke();
+      context.restore();
+    }
+
+    if (this.tool === "clone" && this.cloneSource) {
+      const source = docToScreen(this.cloneSource, this.view);
+      context.save();
+      context.strokeStyle = "rgba(103, 232, 249, 0.95)";
+      context.lineWidth = 1.5;
+      context.beginPath();
+      context.arc(source.x, source.y, 7, 0, Math.PI * 2);
+      context.stroke();
+      context.beginPath();
+      context.moveTo(source.x - 11, source.y);
+      context.lineTo(source.x - 3, source.y);
+      context.moveTo(source.x + 3, source.y);
+      context.lineTo(source.x + 11, source.y);
+      context.moveTo(source.x, source.y - 11);
+      context.lineTo(source.x, source.y - 3);
+      context.moveTo(source.x, source.y + 3);
+      context.lineTo(source.x, source.y + 11);
       context.stroke();
       context.restore();
     }
@@ -1025,6 +1091,24 @@ export class PaletteEditor {
     }
     const layer = this.requireActiveLayer();
     if (!layer) return;
+    if (this.tool === "clone") {
+      if (event.altKey) {
+        this.cloneSource = point;
+        this.announce(`Clone source set at ${Math.round(point.x)}, ${Math.round(point.y)}.`);
+        this.scheduleOverlay();
+        return;
+      }
+      if (!this.cloneSource) {
+        this.announce("Alt-click the canvas to set a clone source first.", { error: true });
+        return;
+      }
+      this.beginClone(point, event.pointerId);
+      return;
+    }
+    if (this.tool === "dodge") {
+      this.beginTone(point, event.pointerId);
+      return;
+    }
     if (this.tool === "move") {
       this.beginMove(point, event.pointerId);
       return;
@@ -1126,6 +1210,68 @@ export class PaletteEditor {
     this.scheduleRender();
   }
 
+  beginClone(point, pointerId) {
+    const layer = this.requireActiveLayer();
+    if (!layer) return;
+    const options = this.options.clone;
+    const before = this.doc;
+    const source = cloneCanvas(layer.canvas);
+    const working = cloneCanvas(layer.canvas);
+    this.doc = updateLayer(this.doc, layer.id, { canvas: working });
+    const stamp = brushStamp({
+      size: options.size,
+      hardness: options.hardness,
+      opacity: options.opacity,
+      color: "#ffffff",
+    });
+    const offset = { x: this.cloneSource.x - point.x, y: this.cloneSource.y - point.y };
+    strokeClone(working, point, point, stamp, source, offset, this.selection);
+    this.action = {
+      type: "clone",
+      pointerId,
+      layerId: layer.id,
+      before,
+      canvas: working,
+      source,
+      offset,
+      last: point,
+      stamp,
+      selection: this.selection,
+    };
+    this.el.stage.setPointerCapture(pointerId);
+    this.scheduleRender();
+  }
+
+  beginTone(point, pointerId) {
+    const layer = this.requireActiveLayer();
+    if (!layer) return;
+    const options = this.options.dodge;
+    const before = this.doc;
+    const working = cloneCanvas(layer.canvas);
+    this.doc = updateLayer(this.doc, layer.id, { canvas: working });
+    const burn = options.mode === "burn";
+    const stamp = brushStamp({
+      size: options.size,
+      hardness: options.hardness,
+      opacity: options.strength,
+      color: burn ? "#000000" : "#ffffff",
+    });
+    strokeTone(working, point, point, stamp, this.selection);
+    this.action = {
+      type: "tone",
+      pointerId,
+      layerId: layer.id,
+      before,
+      canvas: working,
+      last: point,
+      stamp,
+      burn,
+      selection: this.selection,
+    };
+    this.el.stage.setPointerCapture(pointerId);
+    this.scheduleRender();
+  }
+
   onPointerMove(event) {
     if (!this.doc) return;
     const screen = this.eventPoint(event);
@@ -1134,7 +1280,9 @@ export class PaletteEditor {
     this.updateCursorStatus(point);
     const action = this.action;
     if (!action) {
-      if (this.tool === "brush" || this.tool === "eraser") this.scheduleOverlay();
+      if (this.tool === "brush" || this.tool === "eraser" || this.tool === "clone" || this.tool === "dodge") {
+        this.scheduleOverlay();
+      }
       return;
     }
     if (action.type === "pan") {
@@ -1168,6 +1316,26 @@ export class PaletteEditor {
     }
     if (action.type === "brush") {
       strokeBrush(action.canvas, action.last, point, action.stamp, action.erase, action.selection);
+      action.last = point;
+      this.scheduleRender();
+      return;
+    }
+    if (action.type === "clone") {
+      strokeClone(
+        action.canvas,
+        action.last,
+        point,
+        action.stamp,
+        action.source,
+        action.offset,
+        action.selection,
+      );
+      action.last = point;
+      this.scheduleRender();
+      return;
+    }
+    if (action.type === "tone") {
+      strokeTone(action.canvas, action.last, point, action.stamp, action.selection);
       action.last = point;
       this.scheduleRender();
       return;
@@ -1270,6 +1438,16 @@ export class PaletteEditor {
       this.commit(action.before, action.erase ? "Erase" : "Brush stroke");
       return;
     }
+    if (action.type === "clone") {
+      this.action = null;
+      this.commit(action.before, "Clone stamp");
+      return;
+    }
+    if (action.type === "tone") {
+      this.action = null;
+      this.commit(action.before, action.burn ? "Burn" : "Dodge");
+      return;
+    }
     if (action.type === "crop") {
       const rect = roundRect(clampRect(normalizeRect(action.start, action.end), this.doc.width, this.doc.height));
       this.action = null;
@@ -1334,7 +1512,7 @@ export class PaletteEditor {
   onPointerCancel() {
     const action = this.action;
     if (!action) return;
-    if (action.type === "brush" || action.type === "move" || action.type === "move-selection") {
+    if (action.type === "brush" || action.type === "clone" || action.type === "tone" || action.type === "move" || action.type === "move-selection") {
       this.doc = action.before;
     }
     this.action = null;
@@ -1393,7 +1571,7 @@ export class PaletteEditor {
   cancelAction() {
     const action = this.action;
     if (!action) return;
-    if (action.type === "brush" || action.type === "move" || action.type === "move-selection") {
+    if (action.type === "brush" || action.type === "clone" || action.type === "tone" || action.type === "move" || action.type === "move-selection") {
       this.doc = action.before;
     }
     if (action.type === "crop") this.cropRect = null;
@@ -1792,19 +1970,51 @@ export class PaletteEditor {
       this.announce("Unlock both layers before merging.", { error: true });
       return;
     }
+    if (!upper.clipToBelow && lower.clipToBelow) {
+      this.announce("Unclip the lower layer or clip the upper layer before merging across a clipping group.", {
+        error: true,
+      });
+      return;
+    }
     const before = this.doc;
+    const base = upper.clipToBelow && lower.clipToBelow ? clippingBaseIndex(this.doc, lower.id) : -1;
+    const clipSource = upper.clipToBelow ? (lower.clipToBelow ? this.doc.layers[base]?.canvas : lower.canvas) : null;
+    if (upper.clipToBelow && !clipSource) {
+      this.announce("The clipping base is missing, so these layers cannot be merged.", { error: true });
+      return;
+    }
     const canvas = createCanvas(this.doc.width, this.doc.height);
     const context = context2d(canvas);
-    for (const layer of [lower, upper]) {
-      if (!layer.canvas) continue;
+    const paint = (target, layer, operation) => {
+      if (!layer.canvas) return;
+      target.save();
+      target.globalAlpha = layer.opacity;
+      target.globalCompositeOperation = operation;
+      target.filter = buildCssFilter(layer.adjustments);
+      target.drawImage(layer.canvas, 0, 0);
+      target.restore();
+    };
+    paint(context, lower, "source-over");
+    if (upper.clipToBelow) {
+      const clipped = createCanvas(this.doc.width, this.doc.height);
+      paint(context2d(clipped), upper, "source-over");
+      const mask = context2d(clipped);
+      mask.globalCompositeOperation = "destination-in";
+      mask.drawImage(clipSource, 0, 0);
+      mask.globalCompositeOperation = "source-over";
       context.save();
-      context.globalAlpha = layer.opacity;
-      context.globalCompositeOperation = layer === lower ? "source-over" : blendOperation(upper.blendMode);
-      context.filter = buildCssFilter(layer.adjustments);
-      context.drawImage(layer.canvas, 0, 0);
+      context.globalCompositeOperation = blendOperation(upper.blendMode);
+      context.drawImage(clipped, 0, 0);
       context.restore();
+    } else {
+      paint(context, upper, blendOperation(upper.blendMode));
     }
-    const merged = createLayer({ name: lower.name, canvas, blendMode: lower.blendMode });
+    const merged = createLayer({
+      name: lower.name,
+      canvas,
+      blendMode: lower.blendMode,
+      clipToBelow: lower.clipToBelow,
+    });
     const layers = this.doc.layers.slice();
     layers.splice(index - 1, 2, merged);
     this.doc = { ...this.doc, layers, activeLayerId: merged.id };
@@ -1829,6 +2039,25 @@ export class PaletteEditor {
     const before = this.doc;
     this.doc = updateLayer(this.doc, layer.id, { locked: !layer.locked });
     this.commit(before, layer.locked ? "Unlock layer" : "Lock layer");
+  }
+
+  toggleClippingMask() {
+    if (!this.doc) return;
+    this.finishText();
+    const layer = activeLayer(this.doc);
+    if (!layer) return;
+    if (indexOfLayer(this.doc, layer.id) <= 0) {
+      this.announce("Pick a layer above the base before clipping.", { error: true });
+      return;
+    }
+    const before = this.doc;
+    this.doc = updateLayer(this.doc, layer.id, { clipToBelow: !layer.clipToBelow });
+    this.commit(before, layer.clipToBelow ? "Release clipping mask" : "Clip to layer below");
+    this.announce(
+      layer.clipToBelow
+        ? `${layer.name} is no longer clipped.`
+        : `${layer.name} is clipped to the layer below.`,
+    );
   }
 
   previewAdjustment(key, value) {
@@ -2388,6 +2617,7 @@ export class PaletteEditor {
               opacity: entry.opacity,
               blendMode: entry.blendMode,
               locked: entry.locked,
+              clipToBelow: entry.clipToBelow,
               adjustments: entry.adjustments,
               canvas,
             }),
@@ -2441,7 +2671,14 @@ export class PaletteEditor {
   }
 
   adjustBrushSize(delta) {
-    const target = this.tool === "eraser" ? this.options.eraser : this.options.brush;
+    const target =
+      this.tool === "eraser"
+        ? this.options.eraser
+        : this.tool === "clone"
+          ? this.options.clone
+          : this.tool === "dodge"
+            ? this.options.dodge
+            : this.options.brush;
     target.size = clamp(target.size + delta, 1, 200);
     this.syncOptionControls();
     this.scheduleRender();
@@ -2550,6 +2787,9 @@ export class PaletteEditor {
         event.preventDefault();
         if (event.shiftKey) this.layerViaCut();
         else this.layerViaCopy();
+      } else if (key === "g" && event.altKey) {
+        event.preventDefault();
+        this.toggleClippingMask();
       }
       return;
     }
@@ -2562,6 +2802,8 @@ export class PaletteEditor {
       v: "move",
       b: "brush",
       e: "eraser",
+      s: "clone",
+      d: "dodge",
       c: "crop",
       m: "marquee",
       t: "text",
@@ -2686,6 +2928,7 @@ export class PaletteEditor {
     this.el.btnLayerDuplicate.addEventListener("click", () => this.duplicateActiveLayer());
     this.el.btnLayerMerge.addEventListener("click", () => this.mergeActiveLayerDown());
     this.el.btnLayerLock.addEventListener("click", () => this.toggleLayerLock());
+    this.el.btnLayerClip.addEventListener("click", () => this.toggleClippingMask());
     this.el.btnLayerDelete.addEventListener("click", () => this.deleteActiveLayer());
     this.el.btnLayerUp.addEventListener("click", () => this.reorderActiveLayer(1));
     this.el.btnLayerDown.addEventListener("click", () => this.reorderActiveLayer(-1));
@@ -2740,6 +2983,35 @@ export class PaletteEditor {
     this.el.eraserOpacity.addEventListener("input", () => {
       this.options.eraser.opacity = Number(this.el.eraserOpacity.value) / 100;
       this.el.eraserOpacityValue.textContent = this.el.eraserOpacity.value;
+    });
+    this.el.cloneSize.addEventListener("input", () => {
+      this.options.clone.size = Number(this.el.cloneSize.value);
+      this.el.cloneSizeValue.textContent = this.el.cloneSize.value;
+      this.scheduleRender();
+    });
+    this.el.cloneHardness.addEventListener("input", () => {
+      this.options.clone.hardness = Number(this.el.cloneHardness.value) / 100;
+      this.el.cloneHardnessValue.textContent = this.el.cloneHardness.value;
+    });
+    this.el.cloneOpacity.addEventListener("input", () => {
+      this.options.clone.opacity = Number(this.el.cloneOpacity.value) / 100;
+      this.el.cloneOpacityValue.textContent = this.el.cloneOpacity.value;
+    });
+    this.el.dodgeMode.addEventListener("change", () => {
+      this.options.dodge.mode = this.el.dodgeMode.value === "burn" ? "burn" : "dodge";
+    });
+    this.el.dodgeSize.addEventListener("input", () => {
+      this.options.dodge.size = Number(this.el.dodgeSize.value);
+      this.el.dodgeSizeValue.textContent = this.el.dodgeSize.value;
+      this.scheduleRender();
+    });
+    this.el.dodgeHardness.addEventListener("input", () => {
+      this.options.dodge.hardness = Number(this.el.dodgeHardness.value) / 100;
+      this.el.dodgeHardnessValue.textContent = this.el.dodgeHardness.value;
+    });
+    this.el.dodgeStrength.addEventListener("input", () => {
+      this.options.dodge.strength = Number(this.el.dodgeStrength.value) / 100;
+      this.el.dodgeStrengthValue.textContent = this.el.dodgeStrength.value;
     });
     this.el.shapeFill.addEventListener("change", () => {
       this.options.shape.fill = this.el.shapeFill.checked;

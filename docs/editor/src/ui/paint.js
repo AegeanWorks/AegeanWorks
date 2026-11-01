@@ -144,6 +144,52 @@ export function strokeBrush(canvas, from, to, stamp, erase = false, selection = 
   context.restore();
 }
 
+export function strokeClone(canvas, from, to, stamp, source, offset, selection = null) {
+  const context = context2d(canvas);
+  const distance = Math.hypot(to.x - from.x, to.y - from.y);
+  const steps = Math.max(1, Math.ceil(distance / stamp.spacing));
+  const size = stamp.canvas.width;
+  const radius = size / 2;
+  const piece = createCanvas(size, size);
+  const pieceContext = context2d(piece, true);
+  context.save();
+  clipToSelection(context, selection);
+  context.imageSmoothingEnabled = true;
+  for (let step = 0; step <= steps; step += 1) {
+    const ratio = steps === 0 ? 0 : step / steps;
+    const x = from.x + (to.x - from.x) * ratio;
+    const y = from.y + (to.y - from.y) * ratio;
+    pieceContext.setTransform(1, 0, 0, 1, 0, 0);
+    pieceContext.globalAlpha = 1;
+    pieceContext.globalCompositeOperation = "source-over";
+    pieceContext.filter = "none";
+    pieceContext.clearRect(0, 0, size, size);
+    pieceContext.drawImage(source, x + offset.x - radius, y + offset.y - radius, size, size, 0, 0, size, size);
+    pieceContext.globalCompositeOperation = "destination-in";
+    pieceContext.drawImage(stamp.canvas, 0, 0);
+    context.drawImage(piece, x - radius, y - radius);
+  }
+  context.restore();
+}
+
+
+export function strokeTone(canvas, from, to, stamp, selection = null) {
+  const context = context2d(canvas);
+  const distance = Math.hypot(to.x - from.x, to.y - from.y);
+  const steps = Math.max(1, Math.ceil(distance / stamp.spacing));
+  context.save();
+  clipToSelection(context, selection);
+  context.globalCompositeOperation = "source-atop";
+  context.imageSmoothingEnabled = true;
+  for (let step = 0; step <= steps; step += 1) {
+    const ratio = steps === 0 ? 0 : step / steps;
+    const x = from.x + (to.x - from.x) * ratio;
+    const y = from.y + (to.y - from.y) * ratio;
+    context.drawImage(stamp.canvas, x - stamp.canvas.width / 2, y - stamp.canvas.height / 2);
+  }
+  context.restore();
+}
+
 export function drawShape(context, shape) {
   const {
     tool,
