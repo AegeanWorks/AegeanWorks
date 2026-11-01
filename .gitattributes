@@ -3,3 +3,6 @@
 # on checkout and a Windows worktree matches the manifest and the site copy.
 docs/editor/** -text
 docs/live/** -text
+# Dossier media is digest-verified for the same reason: every logo and preview
+# records a SHA-256 of its bytes, so an EOL rewrite would fail `check` on Windows.
+docs/media/** -text
