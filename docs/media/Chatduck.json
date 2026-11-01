@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "repo": "Chatduck",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Chatduck/logo.svg",
+    "alt": "Chatduck logo"
+  }
+}
