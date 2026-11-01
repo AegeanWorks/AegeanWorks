@@ -9,6 +9,9 @@ export const LIMITS = Object.freeze({
   seed: Object.freeze({ min: 1, max: 9999 }),
 });
 
+export const ROTATIONS = Object.freeze([0, 90, 180, 270]);
+export const FLIPS = Object.freeze(["none", "x", "y"]);
+
 export const DEFAULTS = Object.freeze({
   motif: "wave",
   palette: "aegean",
@@ -16,6 +19,8 @@ export const DEFAULTS = Object.freeze({
   weight: 3,
   warp: 42,
   seed: 7,
+  rotate: 0,
+  flip: "none",
   guides: false,
   motion: false,
 });
@@ -60,6 +65,8 @@ const STATE_KEYS = Object.freeze([
   "weight",
   "warp",
   "seed",
+  "rotate",
+  "flip",
   "guides",
   "motion",
 ]);
@@ -81,6 +88,8 @@ export function normalizeState(raw = {}) {
   const source = raw && typeof raw === "object" ? raw : {};
   const motif = MOTIF_IDS.includes(source.motif) ? source.motif : DEFAULTS.motif;
   const palette = PALETTE_IDS.includes(source.palette) ? source.palette : DEFAULTS.palette;
+  const rotate = ROTATIONS.includes(Number(source.rotate)) ? Number(source.rotate) : DEFAULTS.rotate;
+  const flip = FLIPS.includes(source.flip) ? source.flip : DEFAULTS.flip;
   return Object.freeze({
     motif,
     palette,
@@ -88,6 +97,8 @@ export function normalizeState(raw = {}) {
     weight: clampInteger(source.weight, LIMITS.weight.min, LIMITS.weight.max, DEFAULTS.weight),
     warp: clampInteger(source.warp, LIMITS.warp.min, LIMITS.warp.max, DEFAULTS.warp),
     seed: clampInteger(source.seed, LIMITS.seed.min, LIMITS.seed.max, DEFAULTS.seed),
+    rotate,
+    flip,
     guides: toBoolean(source.guides, DEFAULTS.guides),
     motion: toBoolean(source.motion, DEFAULTS.motion),
   });
@@ -135,6 +146,8 @@ export function applyPreset(id, current = DEFAULTS) {
     ...preset,
     guides: base.guides,
     motion: base.motion,
+    rotate: base.rotate,
+    flip: base.flip,
   });
 }
 
@@ -155,6 +168,8 @@ export function randomizeState(current = DEFAULTS, random = Math.random) {
     weight: integerBetween(LIMITS.weight.min, LIMITS.weight.max, random),
     warp: integerBetween(LIMITS.warp.min, LIMITS.warp.max, random),
     seed: integerBetween(LIMITS.seed.min, LIMITS.seed.max, random),
+    rotate: pick(ROTATIONS, random),
+    flip: pick(FLIPS, random),
   });
 }
 
@@ -168,10 +183,24 @@ export function describeState(state) {
   const normalized = normalizeState(state);
   const motifName = normalized.motif.charAt(0).toUpperCase() + normalized.motif.slice(1);
   const paletteName = normalized.palette.charAt(0).toUpperCase() + normalized.palette.slice(1);
-  return `${paletteName} ${motifName.toLowerCase()}, ${normalized.repeat} repeats across, seed ${normalized.seed}`;
+  const parts = [
+    `${paletteName} ${motifName.toLowerCase()}, ${normalized.repeat} repeats across, seed ${normalized.seed}`,
+  ];
+  if (normalized.rotate) parts.push(`rotated ${normalized.rotate}°`);
+  if (normalized.flip === "x") parts.push("flipped horizontally");
+  if (normalized.flip === "y") parts.push("flipped vertically");
+  return parts.join(", ");
+}
+
+export function transformSuffix(state) {
+  const normalized = normalizeState(state);
+  const parts = [];
+  if (normalized.rotate) parts.push(`r${normalized.rotate}`);
+  if (normalized.flip !== "none") parts.push(`f${normalized.flip}`);
+  return parts.length ? `-${parts.join("-")}` : "";
 }
 
 export function exportName(state) {
   const normalized = normalizeState(state);
-  return `tessera-${normalized.motif}-${normalized.palette}-${normalized.seed}.svg`;
+  return `tessera-${normalized.motif}-${normalized.palette}-${normalized.seed}${transformSuffix(normalized)}.svg`;
 }

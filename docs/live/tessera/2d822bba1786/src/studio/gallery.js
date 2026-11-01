@@ -3,7 +3,16 @@ import { DEFAULTS, normalizeState } from "./state.js";
 export const GALLERY_VERSION = 1;
 export const GALLERY_LIMIT = 12;
 
-const ENTRY_KEYS = Object.freeze(["motif", "palette", "repeat", "weight", "warp", "seed"]);
+const ENTRY_KEYS = Object.freeze([
+  "motif",
+  "palette",
+  "repeat",
+  "weight",
+  "warp",
+  "seed",
+  "rotate",
+  "flip",
+]);
 
 function titleCase(value) {
   const text = String(value);
@@ -17,7 +26,12 @@ export function stateSignature(state) {
 
 export function entryName(state) {
   const normalized = normalizeState(state);
-  return `${titleCase(normalized.palette)} ${titleCase(normalized.motif)} · seed ${normalized.seed}`;
+  const suffix = [];
+  if (normalized.rotate) suffix.push(`${normalized.rotate}°`);
+  if (normalized.flip === "x") suffix.push("X");
+  else if (normalized.flip === "y") suffix.push("Y");
+  const base = `${titleCase(normalized.palette)} ${titleCase(normalized.motif)} · seed ${normalized.seed}`;
+  return suffix.length ? `${base} · ${suffix.join(" ")}` : base;
 }
 
 function visualState(state) {

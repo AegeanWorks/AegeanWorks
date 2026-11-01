@@ -33,6 +33,8 @@ const presetList = document.getElementById("preset-list");
 const repeatInput = document.getElementById("repeat");
 const weightInput = document.getElementById("weight");
 const warpInput = document.getElementById("warp");
+const rotateInput = document.getElementById("rotate");
+const flipInput = document.getElementById("flip");
 const repeatValue = document.getElementById("repeat-value");
 const weightValue = document.getElementById("weight-value");
 const warpValue = document.getElementById("warp-value");
@@ -291,6 +293,8 @@ function syncInputs() {
   if (repeatInput) repeatInput.value = String(state.repeat);
   if (weightInput) weightInput.value = String(state.weight);
   if (warpInput) warpInput.value = String(state.warp);
+  if (rotateInput) rotateInput.value = String(state.rotate);
+  if (flipInput) flipInput.value = state.flip;
   if (repeatValue) repeatValue.textContent = String(state.repeat);
   if (weightValue) weightValue.textContent = String(state.weight);
   if (warpValue) warpValue.textContent = `${state.warp}%`;
@@ -492,6 +496,14 @@ function bindSwitch(input, key) {
   });
 }
 
+function bindSelect(input, key) {
+  if (!input) return;
+  input.addEventListener("change", () => {
+    state = normalizeState({ ...state, [key]: input.value });
+    update();
+  });
+}
+
 function bindActions() {
   const randomize = document.getElementById("randomize");
   const reseed = document.getElementById("new-seed");
@@ -519,6 +531,8 @@ function bindActions() {
   bindRange(repeatInput, "repeat");
   bindRange(weightInput, "weight");
   bindRange(warpInput, "warp");
+  bindSelect(rotateInput, "rotate");
+  bindSelect(flipInput, "flip");
   bindSwitch(motionInput, "motion");
   bindSwitch(guidesInput, "guides");
 }

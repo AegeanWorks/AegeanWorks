@@ -75,19 +75,45 @@ function guideMarkup(tileWidth, tileHeight, width, height, palette) {
   return lines.join("");
 }
 
+function patternTransform(state, motif, unitWidth, unitHeight) {
+  const parts = [];
+  if (state.flip === "x") {
+    parts.push(`translate(${formatNumber(unitWidth)} 0) scale(-1 1)`);
+  } else if (state.flip === "y") {
+    parts.push(`translate(0 ${formatNumber(unitHeight)}) scale(1 -1)`);
+  }
+  if (state.rotate === 90) {
+    parts.push(`translate(${formatNumber(motif.tile.height)} 0) rotate(90)`);
+  } else if (state.rotate === 180) {
+    parts.push(
+      `translate(${formatNumber(motif.tile.width)} ${formatNumber(motif.tile.height)}) rotate(180)`,
+    );
+  } else if (state.rotate === 270) {
+    parts.push(`translate(0 ${formatNumber(motif.tile.width)}) rotate(270)`);
+  }
+  return parts.join(" ");
+}
+
 export function renderSvg(state, options = {}) {
   const width = Number(options.width) || 1200;
   const height = Number(options.height) || 800;
   const repeat = Math.max(1, Number(options.repeat) || normalizeState(state).repeat);
   const { state: normalized, motif, palette, elements } = createPattern(state);
+  const swap = normalized.rotate === 90 || normalized.rotate === 270;
+  const unitWidth = swap ? motif.tile.height : motif.tile.width;
+  const unitHeight = swap ? motif.tile.width : motif.tile.height;
   const tileWidth = width / repeat;
-  const scale = tileWidth / motif.tile.width;
-  const tileHeight = motif.tile.height * scale;
+  const scale = tileWidth / unitWidth;
+  const tileHeight = unitHeight * scale;
   const idPrefix = options.idPrefix || "tessera";
   const patternId = `${idPrefix}-pattern`;
   const decorative = Boolean(options.decorative);
   const guides = options.guides ?? normalized.guides;
-  const patternContent = `<g transform="scale(${formatNumber(scale)})">${elementsMarkup(elements, palette)}</g>`;
+  const transform = patternTransform(normalized, motif, unitWidth, unitHeight);
+  const content = elementsMarkup(elements, palette);
+  const patternContent = transform
+    ? `<g transform="scale(${formatNumber(scale)})"><g transform="${transform}">${content}</g></g>`
+    : `<g transform="scale(${formatNumber(scale)})">${content}</g>`;
   const pattern = `<pattern id="${escapeXml(patternId)}" patternUnits="userSpaceOnUse" width="${formatNumber(tileWidth)}" height="${formatNumber(tileHeight)}">${patternContent}</pattern>`;
   const titleId = `${idPrefix}-title`;
   const descId = `${idPrefix}-desc`;

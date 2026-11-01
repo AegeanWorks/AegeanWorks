@@ -266,6 +266,100 @@ function buildMosaic({ random, weight, warp }) {
   return elements;
 }
 
+function buildLoom({ random, weight, warp }) {
+  const elements = [];
+  const lanes = 4;
+  const step = 100 / lanes;
+  const band = 8 + warp * 4;
+  const half = band / 2;
+  const lineWidth = 0.45 + weight * 0.4;
+  const fillOpacity = 0.08 + warp * 0.07;
+  const phase = random() < 0.5 ? 0 : 1;
+  for (let index = 0; index < lanes; index += 1) {
+    const center = index * step + step / 2;
+    const role = index % 2 === 0 ? "ink" : "accent";
+    const crossRole = index % 2 === 0 ? "accent" : "ink";
+
+    elements.push({
+      tag: "rect",
+      x: 0,
+      y: center - half,
+      width: 100,
+      height: band,
+      fill: role,
+      "fill-opacity": fillOpacity,
+    });
+    for (let cross = 0; cross < lanes; cross += 1) {
+      if ((index + cross + phase) % 2 !== 0) continue;
+      const x0 = cross * step;
+      elements.push({
+        tag: "path",
+        d: `M${x0} ${center - half} H${x0 + step} M${x0} ${center + half} H${x0 + step}`,
+        ...stroke(role, lineWidth, 0.76),
+      });
+    }
+
+    elements.push({
+      tag: "rect",
+      x: center - half,
+      y: 0,
+      width: band,
+      height: 100,
+      fill: crossRole,
+      "fill-opacity": fillOpacity,
+    });
+    for (let cross = 0; cross < lanes; cross += 1) {
+      if ((index + cross + phase) % 2 !== 1) continue;
+      const y0 = cross * step;
+      elements.push({
+        tag: "path",
+        d: `M${center - half} ${y0} V${y0 + step} M${center + half} ${y0} V${y0 + step}`,
+        ...stroke(crossRole, lineWidth, 0.76),
+      });
+    }
+
+    for (let cross = 0; cross < lanes; cross += 1) {
+      if ((index + cross + phase) % 2 !== 0) continue;
+      elements.push(
+        dot(cross * step + step / 2, center, 0.8 + weight * 0.18, "paper", 0.55),
+      );
+    }
+  }
+  return elements;
+}
+
+function buildDrift({ random, weight, warp }) {
+  const elements = [];
+  const rows = 5;
+  const amplitude = 3 + warp * 7;
+  const lineWidth = 0.5 + weight * 0.5;
+  const dash = 1 + weight * 0.35;
+  const gap = 4 + warp * 4;
+  for (let row = 0; row < rows; row += 1) {
+    const base = (row + 0.5) * (100 / rows);
+    const phase = random() * Math.PI * 2;
+    const direction = random() < 0.5 ? -1 : 1;
+    const points = [];
+    for (let x = 0; x <= 100; x += 4) {
+      const y = base + amplitude * direction * Math.sin((x / 100) * Math.PI * 2 + phase);
+      points.push(`${x} ${y.toFixed(2)}`);
+    }
+    elements.push({
+      tag: "path",
+      d: `M${points.join(" L")}`,
+      ...stroke(row % 2 === 0 ? "ink" : "accent", lineWidth, 0.82),
+      "stroke-dasharray": `${dash.toFixed(2)} ${gap.toFixed(2)}`,
+      "stroke-dashoffset": (row * 2.5).toFixed(2),
+    });
+  }
+  for (let index = 0; index < 4; index += 1) {
+    elements.push(
+      dot(random() * 100, random() * 100, 0.5 + weight * 0.16, "highlight", 0.5),
+    );
+  }
+  return elements;
+}
+
 function motif(id, name, note, build, tile = { width: 100, height: 100 }) {
   return Object.freeze({
     id,
@@ -289,6 +383,8 @@ export const MOTIFS = Object.freeze({
   pinwheel: motif("pinwheel", "Pinwheel", "Four folded sails around a bright core.", buildPinwheel),
   arcade: motif("arcade", "Arcade", "Concentric rings on a diamond lattice.", buildArcade),
   mosaic: motif("mosaic", "Mosaic", "A seeded tessera field with visible grout.", buildMosaic),
+  loom: motif("loom", "Loom", "A woven lattice of over-and-under bands.", buildLoom),
+  drift: motif("drift", "Drift", "Dotted currents on a sine field.", buildDrift),
 });
 
 export const MOTIF_IDS = Object.freeze(Object.keys(MOTIFS));

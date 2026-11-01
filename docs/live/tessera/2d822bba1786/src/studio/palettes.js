@@ -50,6 +50,20 @@ export const PALETTES = Object.freeze({
     highlight: "#fda4af",
     paper: "#fff1f2",
   }),
+  terra: freezePalette("terra", "Terra", "Clay, sage and sun-baked sand.", {
+    bg: "#1c1210",
+    ink: "#e07a5f",
+    accent: "#81b29a",
+    highlight: "#f2cc8f",
+    paper: "#f4f1de",
+  }),
+  iris: freezePalette("iris", "Iris", "Teal, indigo and a thread of gold.", {
+    bg: "#0a0f1e",
+    ink: "#5eead4",
+    accent: "#818cf8",
+    highlight: "#fbbf24",
+    paper: "#e0e7ff",
+  }),
 });
 
 export const PALETTE_IDS = Object.freeze(Object.keys(PALETTES));

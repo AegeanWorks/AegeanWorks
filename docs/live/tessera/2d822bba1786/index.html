@@ -98,6 +98,25 @@
         <label class="range-row" for="warp"><span>Warp</span><output id="warp-value" for="warp">42%</output></label>
         <input id="warp" type="range" min="0" max="100" step="1" value="42" data-ui="warp">
       </div>
+      <div class="transform-row">
+        <div class="select-field">
+          <label class="select-label" for="rotate">Rotate</label>
+          <select id="rotate" data-ui="rotate">
+            <option value="0">0°</option>
+            <option value="90">90°</option>
+            <option value="180">180°</option>
+            <option value="270">270°</option>
+          </select>
+        </div>
+        <div class="select-field">
+          <label class="select-label" for="flip">Flip</label>
+          <select id="flip" data-ui="flip">
+            <option value="none">None</option>
+            <option value="x">Horizontal</option>
+            <option value="y">Vertical</option>
+          </select>
+        </div>
+      </div>
     </section>
 
     <section class="control-block">
@@ -168,7 +187,7 @@
 
 <footer class="footer">
   <p>Runs entirely on this device. No uploads, no tracking, no network.</p>
-  <p class="footer-meta">Tessera <span id="version">0.3.0</span> · AL-1.1</p>
+  <p class="footer-meta">Tessera <span id="version">0.5.0</span> · AL-1.1</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite" data-cue="status" hidden></div>
