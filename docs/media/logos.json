@@ -62,14 +62,14 @@
       "height": 512
     },
     "Dupefinder": {
-      "src": "media/Dupefinder/logo.webp",
-      "width": 256,
-      "height": 256
+      "src": "media/Dupefinder/logo.svg",
+      "width": 512,
+      "height": 512
     },
     "Dustline": {
-      "src": "media/Dustline/logo.webp",
-      "width": 256,
-      "height": 256
+      "src": "media/Dustline/logo.svg",
+      "width": 512,
+      "height": 512
     },
     "Fluid-Universe": {
       "src": "media/Fluid-Universe/logo.webp",

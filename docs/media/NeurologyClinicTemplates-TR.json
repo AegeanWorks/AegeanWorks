@@ -8,9 +8,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:73a341e31e1d86ab0b29568e678c4e409d19fd8a04fad7a3225284c4ab2778b7",
-    "commit": "1c02db536dcba02100e7c623431c17f7bd2a372d",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeurologyClinicTemplates-TR/1c02db536dcba02100e7c623431c17f7bd2a372d/assets/logo.jpg"
+    "commit": "33febe348eef3655b0e184837dc2f0d2b8c3634d",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeurologyClinicTemplates-TR/33febe348eef3655b0e184837dc2f0d2b8c3634d/assets/logo.jpg"
   },
   "preview": {
     "src": "media/NeurologyClinicTemplates-TR/social-preview.webp",
@@ -18,8 +18,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:6025539e55d399b1770eae92e8d38fe02b05db2b2006a1779dbc23db3315d968",
-    "commit": "1c02db536dcba02100e7c623431c17f7bd2a372d",
-    "taken_at": "2026-10-30",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeurologyClinicTemplates-TR/1c02db536dcba02100e7c623431c17f7bd2a372d/assets/social-preview.png"
+    "commit": "33febe348eef3655b0e184837dc2f0d2b8c3634d",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeurologyClinicTemplates-TR/33febe348eef3655b0e184837dc2f0d2b8c3634d/assets/social-preview.png"
   }
 }

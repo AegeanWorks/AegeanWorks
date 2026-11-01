@@ -7,19 +7,19 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:de74f5bd2344a2bd7fb06894ea3bd95567b30f8418b8239006c384f4c80b881d",
-    "commit": "274800844a2155a2531be9a64e1de4a70cca2c41",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/274800844a2155a2531be9a64e1de4a70cca2c41/assets/logo.svg"
+    "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/6ece836f9ca6586360b3d83a07f34364af31577e/assets/logo.svg"
   },
   "preview": {
-    "src": "media/Modelduck/social-preview.svg",
+    "src": "media/Modelduck/social-preview.webp",
     "alt": "Modelduck social preview",
-    "width": 1280,
-    "height": 640,
-    "digest": "sha256:6da16f4fddd0abe4aaa01633d91c85042b61fef5dba569b1aa4e0822e509578f",
-    "commit": "274800844a2155a2531be9a64e1de4a70cca2c41",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/274800844a2155a2531be9a64e1de4a70cca2c41/assets/social-preview.svg"
+    "width": 1200,
+    "height": 600,
+    "digest": "sha256:5e448f466a3822adb39437bddf9de8f0274925931fbfc027d3d55a2a691c7734",
+    "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/6ece836f9ca6586360b3d83a07f34364af31577e/assets/social-preview.png"
   },
   "screenshots": [
     {
@@ -33,6 +33,42 @@
       "height": 900,
       "digest": "sha256:a7963978315e87e96e73204305529da6c4343c42b639b851f03f399efd1c2b8c",
       "source": "Modelduck:assets/screenshots/2026-10-31-home.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-01-01-overview.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 01 Overview",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-01",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:ecd540eb9ecc3e89521fa75c6aa9a92be5fce7cecd138cbd52a45cd5236c231a",
+      "source": "Modelduck:assets/screenshots/01-overview.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-01-02-models-installed.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 02 Models Installed",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-01",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:ab456c233a5e49737c39d80d2427d4870b33ddad6b61d3876db47f18420a157e",
+      "source": "Modelduck:assets/screenshots/02-models-installed.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-01-03-models-discover.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 03 Models Discover",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-01",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:87c4862222a6e4a4007ebbb0a58c2473fba9dce61377a966ded166d97eb3739d",
+      "source": "Modelduck:assets/screenshots/03-models-discover.png"
     }
   ]
 }

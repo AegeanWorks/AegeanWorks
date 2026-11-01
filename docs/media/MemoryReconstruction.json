@@ -53,9 +53,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:21201c307142468b8ecf7e772f118d3f2c95673a2a374ae383cd9d269dd4db7a",
-    "commit": "5603625a68bcc5106ab2595e298b70f24f51e93a",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/MemoryReconstruction/5603625a68bcc5106ab2595e298b70f24f51e93a/assets/logo.jpg"
+    "commit": "45c02e383623f0565f93fc419cdb462b68735759",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/MemoryReconstruction/45c02e383623f0565f93fc419cdb462b68735759/assets/logo.jpg"
   },
   "preview": {
     "src": "media/MemoryReconstruction/social-preview.webp",
@@ -63,8 +63,8 @@
     "width": 1200,
     "height": 300,
     "digest": "sha256:a2fc7fb0a5f3220f13eacc4e03b80af9d064e03da92ce0ddc988a0cd4ef2dd6a",
-    "commit": "5603625a68bcc5106ab2595e298b70f24f51e93a",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/MemoryReconstruction/5603625a68bcc5106ab2595e298b70f24f51e93a/assets/social-preview.png"
+    "commit": "45c02e383623f0565f93fc419cdb462b68735759",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/MemoryReconstruction/45c02e383623f0565f93fc419cdb462b68735759/assets/social-preview.png"
   }
 }

@@ -2,24 +2,24 @@
   "schema": 2,
   "repo": "Dupefinder",
   "logo": {
-    "src": "media/Dupefinder/logo.webp",
+    "src": "media/Dupefinder/logo.svg",
     "alt": "Dupefinder logo",
-    "width": 256,
-    "height": 256,
-    "digest": "sha256:76baf22f51e193d173975a3857178cef918d77e7f09e3c7da9b8cba38fc076d7",
-    "commit": "fef79320161fc374ebb37040164836bc8cbde006",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/fef79320161fc374ebb37040164836bc8cbde006/assets/logo.svg"
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:3a908b1c57cb92c5463b0868b4b55c34e304c056592a4c449002f2e07731d956",
+    "commit": "b7ad02a4c4fe87faec9f97e391b333741d67c8b1",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/b7ad02a4c4fe87faec9f97e391b333741d67c8b1/assets/logo.svg"
   },
   "preview": {
-    "src": "media/Dupefinder/social-preview.webp",
+    "src": "media/Dupefinder/social-preview.svg",
     "alt": "Dupefinder social preview",
-    "width": 1200,
-    "height": 600,
-    "digest": "sha256:27a0caec05aeacfdeb0227fc171c37624f3a61eca53c27bbae2ec9c45e28a260",
-    "commit": "fef79320161fc374ebb37040164836bc8cbde006",
-    "taken_at": "2026-10-31",
-    "generated": true
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:5f23681cb0e08c3c348c8695b99b57237e8124f77beed4366e3e404edc7cd886",
+    "commit": "b7ad02a4c4fe87faec9f97e391b333741d67c8b1",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/b7ad02a4c4fe87faec9f97e391b333741d67c8b1/assets/social-preview.svg"
   },
   "screenshots": []
 }

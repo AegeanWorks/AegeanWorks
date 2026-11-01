@@ -2,24 +2,24 @@
   "schema": 2,
   "repo": "Dustline",
   "logo": {
-    "src": "media/Dustline/logo.webp",
+    "src": "media/Dustline/logo.svg",
     "alt": "Dustline logo",
-    "width": 256,
-    "height": 256,
-    "digest": "sha256:e73ed8463058ef3a4a64dbdef552913c1506cbd4bb7a8858820f1d9148846bd8",
-    "commit": "619c58b0992d2a426f0a4e181f2b2bd1beb8bb3e",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/619c58b0992d2a426f0a4e181f2b2bd1beb8bb3e/assets/logo.svg"
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:af54b18e0263e9cd7c7a30eb7a2756a69eee84c02cdb5e9c4be3ae3c5923a73a",
+    "commit": "3818b8babf58f1bb143594d1b02df28d2e8e29e5",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/3818b8babf58f1bb143594d1b02df28d2e8e29e5/assets/logo.svg"
   },
   "preview": {
-    "src": "media/Dustline/social-preview.webp",
+    "src": "media/Dustline/social-preview.svg",
     "alt": "Dustline social preview",
-    "width": 1200,
-    "height": 600,
-    "digest": "sha256:b634cc95aa5eb5e1363993fe58a0a367ca4711cb0d4a7b8665231c11ecb8d8e5",
-    "commit": "619c58b0992d2a426f0a4e181f2b2bd1beb8bb3e",
-    "taken_at": "2026-10-31",
-    "generated": true
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:d176b6e411f7111e58b7eb8a1b3f1c2835e09ab8772a870cad8bef60972fa831",
+    "commit": "3818b8babf58f1bb143594d1b02df28d2e8e29e5",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/3818b8babf58f1bb143594d1b02df28d2e8e29e5/assets/social-preview.svg"
   },
   "screenshots": []
 }

@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:6d709b640a9e1b3e774316cf48c274e2421ba9c94ba419be6de549acf3ea5283",
-    "commit": "f2395b85110cf84594f316356628c78be36e9182",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Driftwood/f2395b85110cf84594f316356628c78be36e9182/assets/logo.svg"
+    "commit": "85f9f8a30885f85c0d18b0e862d2bfbbbd61191b",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Driftwood/85f9f8a30885f85c0d18b0e862d2bfbbbd61191b/assets/logo.svg"
   },
   "preview": {
     "src": "media/Driftwood/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:faa92745f04754e53b39f0ca3b6bf784474489693ac8d83ab1cdf1156290cc3b",
-    "commit": "f2395b85110cf84594f316356628c78be36e9182",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Driftwood/f2395b85110cf84594f316356628c78be36e9182/assets/social-preview.svg"
+    "commit": "85f9f8a30885f85c0d18b0e862d2bfbbbd61191b",
+    "taken_at": "2026-11-01",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Driftwood/85f9f8a30885f85c0d18b0e862d2bfbbbd61191b/assets/social-preview.svg"
   },
   "screenshots": []
 }
