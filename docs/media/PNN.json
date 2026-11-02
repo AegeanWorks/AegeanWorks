@@ -11,6 +11,17 @@
       "viewport": "1440x900",
       "width": 1440,
       "height": 900
+    },
+    {
+      "src": "media/PNN/2026-11-03-pnn-studio.webp",
+      "alt": "PNN discovery studio at 2026-11-03",
+      "caption": "Full turnkey report: stages, five candidates, radar, docking heatmap, PK, circuit dynamics, IND dossier.",
+      "commit": "0fcad2aec2f8b0c91e52a78c04133280c2fa0d9e",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x2400",
+      "width": 1200,
+      "height": 2000,
+      "digest": "sha256:9c4f5ffafa61d158309e4e4081c7c7228033ebbd4faf7de14ba6f34d55d09391"
     }
   ],
   "logo": {
