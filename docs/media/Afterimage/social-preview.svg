@@ -1,21 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="eye" data-layout="center">
   <title id="title">Afterimage social preview</title>
-  <desc id="desc">A visual perception gauntlet with a daily challenge — installable and offline. One tile in every grid is a shade, a size, or an angle off. Take today's seeded set, or pick a mode and set your own pressure.</desc>
+  <desc id="desc">A visual perception gauntlet with a daily challenge: one tile in every grid is a shade, a size, or an angle off. Installable, offline-capable PWA.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06060b"/><stop offset="1" stop-color="#1a1030"/></linearGradient>
     <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#a78bfa" stop-opacity="0.28"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
-    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
   </defs>
   <rect width="1280" height="640" fill="url(#bg)"/>
   <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
   
-  <g opacity="0.15" stroke="#F8FAFC">
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
     <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
   </g>
-  <g transform="translate(640 214) scale(1.55)" opacity="1.0"><path d="M-64 0Q0 -48 64 0Q0 48 -64 0Z" fill="none" stroke="#a78bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="0" r="20" fill="#f472b6" fill-opacity="0.85"/><circle cx="0" cy="0" r="7" fill="#F8FAFC"/></g>
-  <text x="640" y="356" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Afterimage</text><text x="640" y="412" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="5" fill="#a78bfa">AEGEANWORKS · WEB</text>
-  <text x="640" y="428" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">A visual perception gauntlet with a daily</text><text x="640" y="466" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">challenge — installable and offline. One tile in</text><text x="640" y="504" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">every grid is a shade, a size, or an angle off.</text>
-  <rect x="430" y="530" width="76" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="468.0" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text>
+  <g transform="translate(640 208) scale(1.4)" opacity="1.0"><path d="M-64 0Q0 -48 64 0Q0 48 -64 0Z" fill="none" stroke="#a78bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="0" r="20" fill="#f472b6" fill-opacity="0.85"/><circle cx="0" cy="0" r="7" fill="#F8FAFC"/></g>
+  <text x="640" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Afterimage</text><text x="640" y="402" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="5" fill="#a78bfa">AEGEANWORKS · GAME</text>
+  <text x="640" y="442" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">A visual perception gauntlet with a daily</text><text x="640" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">challenge.</text>
+  <rect x="416" y="530" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="454" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="504" y="530" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="590" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="690" y="530" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="776" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
   <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
-  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#a78bfa">github.com/AegeanWorks/Afterimage</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Afterimage</text>
 </svg>

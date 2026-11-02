@@ -1,21 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="pulse" data-layout="wave">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="branch" data-layout="terminal">
   <title id="title">Driftwood social preview</title>
   <desc id="desc">Offline CLI that ranks code hotspots by combining git churn history with file complexity, so maintainers know where refactoring pays off.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12070d"/><stop offset="1" stop-color="#301213"/></linearGradient>
-    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f566a4" stop-opacity="0.28"/><stop offset="1" stop-color="#f566a4" stop-opacity="0"/></radialGradient>
-    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f566a4"/><stop offset="1" stop-color="#f5d68e"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#130c07"/><stop offset="1" stop-color="#302d12"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f3b25e" stop-opacity="0.28"/><stop offset="1" stop-color="#f3b25e" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f3b25e"/><stop offset="1" stop-color="#f3b25e"/></linearGradient>
   </defs>
   <rect width="1280" height="640" fill="url(#bg)"/>
   <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
   
-  <g opacity="0.15" stroke="#F8FAFC">
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
     <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
   </g>
-  <g transform="translate(190 300) scale(2.0)" opacity="1.0"><path d="M-62 4H-36L-24 -34L-4 38L16 -24L30 4H62" fill="none" stroke="#f566a4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="-24" r="5" fill="#f5d68e"/></g>
-  <text x="390" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Driftwood</text><text x="392" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="21" letter-spacing="5" fill="#f566a4">AEGEANWORKS · LIBRARY</text>
-  <text x="392" y="344" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">Offline CLI that ranks code hotspots by combining</text><text x="392" y="386" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">git churn history with file complexity, so</text><text x="392" y="428" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">maintainers know where refactoring pays off.</text>
-  <rect x="392" y="500" width="76" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="430.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="590" y="500" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="683.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="788" y="500" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="881.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <g transform="translate(1040 320) scale(1.8)" opacity="0.42"><path d="M-42 42V-34M-42 8C-18 8 2 -6 26 -32M-42 8C-18 8 2 22 26 42" fill="none" stroke="#f3b25e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-42" cy="46" r="9" fill="#f3b25e"/><circle cx="26" cy="-34" r="9" fill="#aef490"/><circle cx="26" cy="46" r="9" fill="#aef490"/><path d="M-42 -34V-46" fill="none" stroke="#f3b25e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="78" y="206" font-family="Consolas, monospace" font-size="20" fill="#f3b25e">$ open Driftwood</text><text x="78" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Driftwood</text>
+  <text x="80" y="348" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">Rank code hotspots by git churn and file</text><text x="80" y="388" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">complexity.</text>
+  <rect x="80" y="502" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="117.5" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="167" y="502" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="254.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="353" y="502" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="440.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
   <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
-  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#f566a4">github.com/AegeanWorks/Driftwood</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Driftwood</text>
 </svg>

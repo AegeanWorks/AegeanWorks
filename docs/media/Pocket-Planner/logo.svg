@@ -1,13 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" data-motif="lens" data-layout="grid">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" data-motif="notes" data-layout="left">
   <title id="title">Pocket Planner logo</title>
-  <desc id="desc">Project-specific lens mark for Pocket Planner; AegeanWorks identity.</desc>
+  <desc id="desc">Project-specific notes mark for Pocket Planner; AegeanWorks identity.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#120907"/><stop offset="1" stop-color="#302612"/></linearGradient>
-    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f58c66"/><stop offset="1" stop-color="#ccf58e"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1307"/><stop offset="1" stop-color="#123013"/></linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <path d="M96 160H416M96 238H416M96 316H416M160 96V416M256 96V416M352 96V416" stroke="#f58c66" stroke-opacity="0.13" stroke-width="2"/>
-  <g transform="translate(256 232) scale(1.62)" opacity="1.0"><circle cx="0" cy="0" r="50" fill="none" stroke="#f58c66" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="0" r="30" fill="none" stroke="#f58c66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-62 0H62M0 -62V62" fill="none" stroke="#f58c66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="-14" r="8" fill="#ccf58e"/></g>
-  <text x="256" y="404" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" fill="url(#mark)" letter-spacing="3">PP</text>
-  <text x="256" y="458" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.55">AEGEANWORKS</text>
+  <g transform="translate(256 210) scale(1.45)" opacity="1.0"><rect x="-58" y="-34" width="52" height="64" rx="10" fill="none" stroke="#8af35e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="-4" y="-46" width="52" height="64" rx="10" fill="none" stroke="#8af35e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-30" y="2" width="52" height="64" rx="10" fill="none" stroke="#90f4e3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/><path d="M-46 -14H-18M-46 0H-18M8 -26H36M8 -12H36M-18 22H10" fill="none" stroke="#8af35e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-6 -2L-30 -14M20 18L48 2" stroke="#90f4e3" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round" opacity="0.8"/><circle cx="48" cy="-28" r="5" fill="#90f4e3"/><circle cx="-52" cy="42" r="4" fill="#8af35e"/></g>
+  <text x="256" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700" fill="#F8FAFC" letter-spacing="2">PP</text><text x="256" y="438" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="5" fill="#F8FAFC" fill-opacity="0.62">AEGEANWORKS</text>
 </svg>

@@ -1,21 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="terminal" data-layout="left">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="fingerprint" data-layout="left">
   <title id="title">Dupefinder social preview</title>
   <desc id="desc">Read-only duplicate file finder that groups byte-identical files by size and SHA-256 and reports reclaimable space.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07120d"/><stop offset="1" stop-color="#123030"/></linearGradient>
-    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#66f5bc" stop-opacity="0.28"/><stop offset="1" stop-color="#66f5bc" stop-opacity="0"/></radialGradient>
-    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#66f5bc"/><stop offset="1" stop-color="#8eaaf5"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071311"/><stop offset="1" stop-color="#122630"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#5ef3f3" stop-opacity="0.28"/><stop offset="1" stop-color="#5ef3f3" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5ef3f3"/><stop offset="1" stop-color="#5ef3f3"/></linearGradient>
   </defs>
   <rect width="1280" height="640" fill="url(#bg)"/>
   <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
   
-  <g opacity="0.15" stroke="#F8FAFC">
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
     <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
   </g>
-  <g transform="translate(190 310) scale(2.0)" opacity="1.0"><rect x="-58" y="-42" width="116" height="84" rx="14" fill="none" stroke="#66f5bc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-38 -18L-18 0L-38 18M-12 -18H28" fill="none" stroke="#8eaaf5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-44" cy="-32" r="3" fill="#8eaaf5"/><circle cx="-32" cy="-32" r="3" fill="#66f5bc"/></g>
-  <text x="390" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Dupefinder</text><text x="392" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="21" letter-spacing="5" fill="#66f5bc">AEGEANWORKS · CLI</text>
-  <text x="392" y="344" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">Read-only duplicate file finder that groups</text><text x="392" y="386" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">byte-identical files by size and SHA-256 and</text><text x="392" y="428" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">reports reclaimable space.</text>
-  <rect x="392" y="500" width="76" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="430.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="590" y="500" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="683.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="788" y="500" width="186" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="881.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <g transform="translate(190 310) scale(2.0)" opacity="1.0"><path d="M-48 -18C-48 -48 -20 -60 4 -50C30 -40 38 -8 24 16C12 36 -10 44 -28 32" fill="none" stroke="#5ef3f3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-34 -10C-34 -30 -14 -38 2 -30C20 -22 24 -2 14 12" fill="none" stroke="#5ef3f3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-20 0C-20 -12 -6 -16 4 -10" fill="none" stroke="#5ef3f3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-60 18C-58 42 -34 54 -8 48C18 42 38 20 36 -6" fill="none" stroke="#5ef3f3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="390" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Dupefinder</text><text x="392" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="21" letter-spacing="5" fill="#5ef3f3">AEGEANWORKS · CLI TOOL</text>
+  <text x="392" y="344" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">Find byte-identical files and reclaim space,</text><text x="392" y="386" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">read-only.</text>
+  <rect x="392" y="500" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="429.5" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="479" y="500" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="566.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="665" y="500" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="752.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
   <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
-  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#66f5bc">github.com/AegeanWorks/Dupefinder</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Dupefinder</text>
 </svg>

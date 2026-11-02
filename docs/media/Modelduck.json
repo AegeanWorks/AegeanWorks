@@ -69,6 +69,42 @@
       "height": 900,
       "digest": "sha256:87c4862222a6e4a4007ebbb0a58c2473fba9dce61377a966ded166d97eb3739d",
       "source": "Modelduck:assets/screenshots/03-models-discover.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-02-04-bench-tune-idle.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 04 Bench Tune Idle",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-02",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:84db039d32ad11fa087975d0ddae442f380f85fb29dbff4751fda3b9de59b1b5",
+      "source": "Modelduck:assets/screenshots/04-bench-tune-idle.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-02-04b-bench-tune-controls.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 04b Bench Tune Controls",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-02",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:b8feab6fda20e381c93b4d6ff686e8b21d7c99a0794221ed30061e68ad812886",
+      "source": "Modelduck:assets/screenshots/04b-bench-tune-controls.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-02-05-bench-tune-help.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 05 Bench Tune Help",
+      "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
+      "taken_at": "2026-11-02",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:eb981b413db06c0931108539218536183d61846ad53113f03ebe4b3901bd3072",
+      "source": "Modelduck:assets/screenshots/05-bench-tune-help.png"
     }
   ]
 }
