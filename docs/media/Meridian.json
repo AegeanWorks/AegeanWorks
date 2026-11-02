@@ -32,6 +32,28 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:8c4e775e5461bff385a81e6f0ccda1e2e5fbabb8969a1c0e8e60f7baad43eef4"
+    },
+    {
+      "src": "media/Meridian/2026-11-03-meridian-home.webp",
+      "alt": "Meridian planner at 2026-11-03",
+      "caption": "Two-zone plan: People panel, full 24-hour Istanbul and New York grid, now marker, Best slot, share controls.",
+      "commit": "981454d94acc1e3e3665acc1fe4f1f836f2bc9dd",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:a7856eb1018a082937796fa4b6c07c478a68960e8a027ad8b865f67562433e76"
+    },
+    {
+      "src": "media/Meridian/2026-11-03-meridian-mobile.webp",
+      "alt": "Meridian on a 390px phone at 2026-11-03",
+      "caption": "Same build at 390 by 844: header wraps, People panel stacks full width.",
+      "commit": "981454d94acc1e3e3665acc1fe4f1f836f2bc9dd",
+      "taken_at": "2026-11-03",
+      "viewport": "390x844",
+      "width": 390,
+      "height": 844,
+      "digest": "sha256:41035f81e04a9cbd1ed51c1737081a70718e3b4c2b2f3d26905667c41fbdd2e8"
     }
   ]
 }
