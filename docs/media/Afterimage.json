@@ -21,5 +21,28 @@
     "taken_at": "2026-11-02",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Afterimage/46c69d3cd6afda658efab8de1525679072dca886/assets/social-preview.svg"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Afterimage/2026-11-03-afterimage-menu.webp",
+      "alt": "Afterimage menu at 2026-11-03",
+      "caption": "First-run menu: daily #307 plus Focus, Blitz, Zen, Nightmare and Onslaught; DAY ONE with zero runs.",
+      "commit": "5be4c63d5e03f4908e05eb1f4f9982660533e311",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:486daaa6aeab35131a4dc305a9ad1ceadcc7d21a1fe5e05e0b564909e011fbb6"
+    },
+    {
+      "src": "media/Afterimage/2026-11-03-afterimage-daily.webp",
+      "alt": "Afterimage daily level 1 at 2026-11-03",
+      "caption": "After PLAY on Today's board: Daily 01 of 10 hue board, one red tile among gold, score 0.",
+      "commit": "5be4c63d5e03f4908e05eb1f4f9982660533e311",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:a5e1fce7c12d611328ca143ebb9232ed8308aaf0ab907fbd494777bc5f131e90"
+    }
+  ]
 }
