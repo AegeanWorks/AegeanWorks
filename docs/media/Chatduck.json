@@ -21,5 +21,28 @@
     "taken_at": "2026-11-02",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Chatduck/0508f7ef5085ff2eb3b54ab1548bd489df29c6c5/assets/social-preview.svg"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Chatduck/2026-11-03-chatduck-chat.webp",
+      "alt": "ChatDuck new chat at 2026-11-03",
+      "caption": "Fresh chat with no model server running: empty library, suggestion cards, composer; sidebar shows Offline.",
+      "commit": "f2c1c0b47c93884e396eac44c5ba1f5173c8bf42",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:9eb4d8817ed8a8b9fdb7c1a20610c3d135301c472f61241063e442432ba5c6ed"
+    },
+    {
+      "src": "media/Chatduck/2026-11-03-chatduck-settings.webp",
+      "alt": "ChatDuck settings at 2026-11-03",
+      "caption": "After opening Settings: server URL, API key, model, system preset and prompt, sampling controls, library backup and clear.",
+      "commit": "f2c1c0b47c93884e396eac44c5ba1f5173c8bf42",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:8ccacf3fc9093328daf1604b47159931d6e8c58426e8b0a14b465066bb30178c"
+    }
+  ]
 }
