@@ -44,6 +44,28 @@
       "height": 900,
       "digest": "sha256:ae5568780169d80c7110bbb87335f8413df4f555503a60ae566c8705afd076d1",
       "source": "Palette:assets/screenshots/2026-10-31-home.png"
+    },
+    {
+      "src": "media/Palette/2026-11-02-palette-home.webp",
+      "alt": "Palette welcome document at 2026-11-02",
+      "caption": "Welcome document from npm start (http://127.0.0.1:4176): three layers, blend control, adjustments, histogram and export controls.",
+      "commit": "1bda086e5302d7a28b17e4c3f05f8f391e3ef27c",
+      "taken_at": "2026-11-02",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:f2f0c98d831690e4dbf6908840c167586556d95b8371cdf60e1f450995cc69cd"
+    },
+    {
+      "src": "media/Palette/2026-11-02-palette-export.webp",
+      "alt": "Palette export dialog at 2026-11-02",
+      "caption": "Same build after clicking Export: file name, PNG format, 100 percent scale, 1280x800 output readout.",
+      "commit": "1bda086e5302d7a28b17e4c3f05f8f391e3ef27c",
+      "taken_at": "2026-11-02",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:c34eb99a6dc1d6b1134995709073b09558ee514afaeafaae1d3cd511b346adc9"
     }
   ]
 }
