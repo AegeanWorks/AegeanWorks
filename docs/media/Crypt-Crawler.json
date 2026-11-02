@@ -55,6 +55,17 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:33b814841391c08e4318f7a33b3c6f6cde5a8c05103d1043f124adc60390233f"
+    },
+    {
+      "src": "media/Crypt-Crawler/2026-11-03-crypt-index.webp",
+      "alt": "Crypt-Crawler interface at 2026-11-03",
+      "caption": "Valerius Paladin, torchlit room, minimap, bounties and chronicle after the renderer rework.",
+      "commit": "c9cfd16cc3082aba83f96850c2ba65bc1da931db",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:42ed4b91ac174334004fcf6b5d6795453aa407200fe9f57a8f476594803618f6"
     }
   ],
   "logo": {
