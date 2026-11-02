@@ -34,6 +34,28 @@
       "width": 1440,
       "height": 1250,
       "digest": "sha256:84a27bc5bc5e703c2371783f5f04ad9839b88fd538182dab25bde1eefce4d9c8"
+    },
+    {
+      "src": "media/Fold/2026-11-02-2026-11-02-board.webp",
+      "alt": "Fold fresh board at 2026-11-02",
+      "caption": "Fresh grid from python run.py (http://127.0.0.1:8766): two 2 tiles, score 0, moves 0. Best 12 carries over from this browser's prior run.",
+      "commit": "c3e67feca38e7ef82ecba7b2c7550c417f7b2f2c",
+      "taken_at": "2026-11-02",
+      "viewport": "1280x1100",
+      "width": 1200,
+      "height": 1330,
+      "digest": "sha256:2d2409f42914fc13d1a0fd1366f6b5555a7249b200be7d290d23ca2e0bf1e88f"
+    },
+    {
+      "src": "media/Fold/2026-11-02-2026-11-02-midgame.webp",
+      "alt": "Fold after three moves at 2026-11-02",
+      "caption": "Same build after ArrowLeft/ArrowUp/ArrowRight: 8, 2 and 4 tiles, score 12, moves 3, +8 points toast.",
+      "commit": "c3e67feca38e7ef82ecba7b2c7550c417f7b2f2c",
+      "taken_at": "2026-11-02",
+      "viewport": "1280x1100",
+      "width": 1200,
+      "height": 1330,
+      "digest": "sha256:87a6fd8d50e8a13bf029e3f499e1138f73549dc55a674820dcb21443bbeb0713"
     }
   ],
   "logo": {
