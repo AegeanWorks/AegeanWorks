@@ -34,6 +34,28 @@
       "width": 1440,
       "height": 900,
       "digest": "sha256:efb7dd05591661b914040f4945212453d1b4dfbd049d25ef65395ecf616c0557"
+    },
+    {
+      "src": "media/UI-Sandbox/2026-11-03-uisandbox-dev.webp",
+      "alt": "UI Sandbox dev server at 2026-11-03",
+      "caption": "One-screen surface from npm run dev: counter, search cues, panels, tokens, dark-theme toggle.",
+      "commit": "2a7663db1296cdd6688e6c368e8d95966866929f",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:01852375f29be9f0154ceddce74cf88f34314a0956ff5253a42a758c6cc1d76d"
+    },
+    {
+      "src": "media/UI-Sandbox/2026-11-03-uisandbox-prod.webp",
+      "alt": "UI Sandbox production preview at 2026-11-03",
+      "caption": "Same surface from vite preview after npm run build: pixel-identical, proving the shipped bundle.",
+      "commit": "2a7663db1296cdd6688e6c368e8d95966866929f",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:de3bd0a8238ddde7a9efcd462057250b73e824abf212a5bb0dd9f06116dead1c"
     }
   ],
   "logo": {
