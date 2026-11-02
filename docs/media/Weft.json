@@ -21,5 +21,28 @@
     "taken_at": "2026-10-31",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/cc1f5877e1d29578696aa86f40ce6629dade98a7/assets/social-preview.svg"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Weft/2026-11-03-weft-title.webp",
+      "alt": "Weft title screen at 2026-11-03",
+      "caption": "Title: wordmark, Play, Daily weave, How to play, 24-chamber promise, loom art.",
+      "commit": "06bdbb725b25afa0045c47bdb29a92ff6d35c492",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:4e2201c2cbca3ee0f9b8b3de752d92ed6378388cbdd9271e665baa956e2537fe"
+    },
+    {
+      "src": "media/Weft/2026-11-03-weft-chamber.webp",
+      "alt": "Weft first chamber at 2026-11-03",
+      "caption": "Deep-linked first chamber: Chamber 01 5x5 with three spool pairs, zero threads.",
+      "commit": "06bdbb725b25afa0045c47bdb29a92ff6d35c492",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:d9af758d8d6b0346866d205131dcd00a1415031e537601b6db2dd1502c935bfb"
+    }
+  ]
 }
