@@ -21,5 +21,28 @@
     "taken_at": "2026-11-01",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Tessera/2d822bba17866f43fd81438beffd2df540a75a68/assets/social-preview.svg"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Tessera/2026-11-03-tessera-wave.webp",
+      "alt": "Tessera Wave Aegean studio at 2026-11-03",
+      "caption": "Default studio: Wave motif in Aegean palette, motif and palette pickers, geometry sliders.",
+      "commit": "2d822bba17866f43fd81438beffd2df540a75a68",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:bcc32981fbaae26854e4c28372b98ebe1f46d9866efae4e3c638ecde2a669e3f"
+    },
+    {
+      "src": "media/Tessera/2026-11-03-tessera-pinwheel.webp",
+      "alt": "Tessera Nocturne pinwheel preset at 2026-11-03",
+      "caption": "After the Nocturne pinwheel preset: Pinwheel motif in Nocturne palette with seed, presets, export and gallery panels.",
+      "commit": "2d822bba17866f43fd81438beffd2df540a75a68",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:aa11d6fea5c631346c8f86c3e662160601e3c6df46f2050d6f4cad020bdd9bda"
+    }
+  ]
 }
