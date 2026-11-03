@@ -13,6 +13,17 @@
       "height": 685,
       "digest": "sha256:bde6361fb263fb8ac30d9df2abb963e27d572a7eb914cf352e98c490bc4b3574",
       "source": "NeuralBeat:screenshots/ui_main.png"
+    },
+    {
+      "src": "media/NeuralBeat/2026-11-03-nbeat-main.webp",
+      "alt": "NeuralBeat main window at 2026-11-03",
+      "caption": "Main window: ear frequencies, presets, advanced controls, generate and stop.",
+      "commit": "32c408ac447d5100b6a726d4ab62bdec58188af4",
+      "taken_at": "2026-11-03",
+      "viewport": "1125x655",
+      "width": 1125,
+      "height": 655,
+      "digest": "sha256:f4f4051a0b28a80b3843e8e9d5015cc052ecb8ef6ca9377feb89c3b8f5a5821c"
     }
   ],
   "logo": {
