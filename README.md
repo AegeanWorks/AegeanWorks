@@ -321,7 +321,9 @@ AegeanWorks/
 <!-- aegean:screenshots:start -->
 ## Screenshots
 
-<a href="https://github.com/AegeanWorks/AegeanWorks/commit/7c814b2"><img src="assets/screenshots/2026-10-28-home.png" alt="AegeanWorks interface at 2026-10-28"></a>
+<a href="https://github.com/AegeanWorks/AegeanWorks/commit/456af0e"><img src="assets/screenshots/2026-11-03-home.png" alt="AegeanWorks home at 2026-11-03"></a>
 
-*commit `7c814b2` · 2026-10-28*
+<a href="https://github.com/AegeanWorks/AegeanWorks/commit/456af0e"><img src="assets/screenshots/2026-11-03-live.png" alt="AegeanWorks live catalog at 2026-11-03"></a>
+
+*commit `456af0e` · 2026-11-03 · viewport 1440x900 · home plus live catalog*
 <!-- aegean:screenshots:end -->

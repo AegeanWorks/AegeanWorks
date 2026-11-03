@@ -454,3 +454,10 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Record `https://github.com/AegeanWorks/Palette` as Palette's `source_url` and assert it in the profile test. Keep the `optional` flag and do not add a Palette checkout to the nightly workflow: a refresh would advance the recorded commit and version without re-vendoring `docs/editor`, so the local build stays release-pinned until a release runs `sync_editor.py --write` and `sync_live_apps.py --write` together.
 - **Consequences**: The Live Source button resolves for visitors. The nightly refresh leaves the Palette entry untouched, and a release still has one manual synchronization step. The repository was published through `gh` because `aikit publish` requires a recorded human UI review; the tree had 4/4 gates and a passing dogfood pass, but that review remains unrecorded.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (the manifest names the real source), PRINCIPLE-016 (the published repository and site agree) and PRINCIPLE-018 (the commit and push were explicitly authorized).
+
+### ADR-060: Home plus live-catalog keepers at current HEAD
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The README showed only the 2026-10-28 home capture; the live catalog (the dossier's public face) had no proof.
+- **Decision**: Register `2026-11-03-home.png` (studio home) and `2026-11-03-live.png` (live catalog with runnable app cards) from plain `http.server` on `docs/`, viewport 1440x900, commit `456af0e`, in `.aikit/media.json` and the README `aegean:screenshots` block. Card copy staleness (Weft chamber count, Tessera version) is a content follow-up, explicitly not this change.
+- **Consequences**: README proves home and catalog together. Reproduce with the serve plus headless `--screenshot` of `/` and `/live.html`.
