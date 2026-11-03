@@ -1,7 +1,19 @@
 {
   "schema": 2,
   "repo": "Primordia",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/Primordia/2026-11-03-prim-obs.webp",
+      "alt": "Primordia observatory at 2026-11-03",
+      "caption": "Seed-7 world at tick 500: 108 population, 3 species, speciation fossils, god mode, trends.",
+      "commit": "4b22927ffba58e614a6956fa67b7a5f3d241d75c",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:1794c59c5284c0c1e014fe0424733f260230079b1f2da4dabbe74253ee4415d4"
+    }
+  ],
   "logo": {
     "src": "media/Primordia/logo.webp",
     "alt": "Primordia logo",
