@@ -984,7 +984,11 @@ export class PaletteEditor {
     }
 
     if (this.tool === "clone" && this.cloneSource) {
-      const source = docToScreen(this.cloneSource, this.view);
+      const currentSource =
+        this.action?.type === "clone" && this.action.last && this.action.offset
+          ? { x: this.action.last.x + this.action.offset.x, y: this.action.last.y + this.action.offset.y }
+          : this.cloneSource;
+      const source = docToScreen(currentSource, this.view);
       context.save();
       context.strokeStyle = "rgba(103, 232, 249, 0.95)";
       context.lineWidth = 1.5;
@@ -1623,6 +1627,7 @@ export class PaletteEditor {
 
   clearSelectedPixels() {
     if (!this.selection) return;
+    this.finishText();
     const layer = this.requireActiveLayer();
     if (!layer) return;
     const before = this.doc;
@@ -1648,6 +1653,7 @@ export class PaletteEditor {
 
   copySelection() {
     if (!this.doc) return;
+    this.finishText();
     const layer = activeLayer(this.doc);
     if (!layer) {
       this.announce("Select a layer first.", { error: true });
@@ -1661,6 +1667,7 @@ export class PaletteEditor {
 
   cutSelection() {
     if (!this.doc) return;
+    this.finishText();
     const layer = this.requireActiveLayer();
     if (!layer) return;
     const selection = this.clipboardSelection();
@@ -1678,6 +1685,7 @@ export class PaletteEditor {
       this.announce("Copy a selection or layer first.", { error: true });
       return;
     }
+    this.finishText();
     const before = this.doc;
     const patch = this.clipboard.canvas;
     let canvas;
@@ -1704,6 +1712,7 @@ export class PaletteEditor {
 
   layerViaCopy() {
     if (!this.doc) return;
+    this.finishText();
     const layer = activeLayer(this.doc);
     if (!layer) {
       this.announce("Select a layer first.", { error: true });
@@ -1723,6 +1732,7 @@ export class PaletteEditor {
 
   layerViaCut() {
     if (!this.doc) return;
+    this.finishText();
     const layer = this.requireActiveLayer();
     if (!layer) return;
     const selection = this.clipboardSelection();
@@ -2291,7 +2301,8 @@ export class PaletteEditor {
       const at = indexOfLayer(this.doc, this.doc.activeLayerId) + 1;
       this.doc = addLayer(this.doc, layer, at);
       this.commit(before, "Place image layer");
-      this.announce(`Placed ${file.name} as ${layer.name}.`);
+      const displayName = file.name || "image";
+      this.announce(`Placed ${displayName} as ${layer.name}.`);
     } catch (error) {
       this.announce(error.message || "That image could not be placed.", { error: true });
     } finally {
@@ -2865,11 +2876,22 @@ export class PaletteEditor {
   onPaste(event) {
     const items = Array.from(event.clipboardData?.items ?? []);
     const image = items.find((item) => String(item.type).startsWith("image/"));
-    if (!image) return;
-    const file = image.getAsFile();
-    if (!file) return;
-    event.preventDefault();
-    this.openImageFile(file);
+    if (image) {
+      const file = image.getAsFile();
+      if (!file) return;
+      event.preventDefault();
+      if (this.doc) {
+        this.addImageLayer(file);
+      } else {
+        this.openImageFile(file);
+      }
+      return;
+    }
+    if (isTypingTarget(event.target)) return;
+    if (this.clipboard) {
+      event.preventDefault();
+      this.pasteClipboard();
+    }
   }
 
   onDragOver(event) {

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Meridian — a time zone meeting planner</title>
+<meta name="description" content="A zero-dependency time zone meeting planner that runs entirely in your browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share a link or a calendar file.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./src/styles.css">
+<script type="module" src="./src/ui/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#grid">Skip to the timeline</a>
+
+<div class="app" id="app">
+  <header class="app-bar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <circle cx="24" cy="24" r="19.5" fill="none" stroke="#38d9c3" stroke-width="2"></circle>
+        <ellipse cx="24" cy="24" rx="8.5" ry="19.5" fill="none" stroke="#38d9c3" stroke-width="1.1" opacity="0.55"></ellipse>
+        <ellipse cx="24" cy="24" rx="19.5" ry="8.5" fill="none" stroke="#38d9c3" stroke-width="1.1" opacity="0.55"></ellipse>
+        <path d="M4.5 24h39" stroke="#38d9c3" stroke-width="1.5" opacity="0.9"></path>
+        <circle cx="24" cy="24" r="3.1" fill="#7ff0dd"></circle>
+      </svg>
+      <span class="brand-text">
+        <strong>Meridian</strong>
+        <small>time zone meeting planner</small>
+      </span>
+    </div>
+
+    <div class="toolbar" role="group" aria-label="Schedule controls">
+      <div class="date-stepper">
+        <button id="date-prev" class="btn btn-icon" type="button" aria-label="Previous day" title="Previous day">&#9664;</button>
+        <label class="field">
+          <span class="sr-only">Meeting date</span>
+          <input id="date-input" type="date" aria-label="Meeting date">
+        </label>
+        <button id="date-next" class="btn btn-icon" type="button" aria-label="Next day" title="Next day">&#9654;</button>
+        <button id="date-today" class="btn btn-ghost" type="button">Today</button>
+      </div>
+      <label class="field">
+        <span>Reference zone</span>
+        <input id="reference-zone" type="text" list="zone-list" autocomplete="off" spellcheck="false" aria-label="Reference time zone">
+      </label>
+      <div class="actions">
+        <button id="copy-link" class="btn btn-ghost" type="button">Copy link</button>
+        <button id="download-ics" class="btn btn-primary" type="button" disabled>Add to calendar</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side" aria-label="Participants">
+      <div class="side-head">
+        <h2>People</h2>
+        <button id="plan-reset" class="btn btn-ghost btn-small" type="button" title="Restore the example plan for today">Reset</button>
+      </div>
+      <p class="hint">Everyone in the meeting, with the hours that count as their work day. Type a city or an IANA zone such as <code>Europe/Istanbul</code>.</p>
+
+      <div class="add-form">
+        <label class="field">
+          <span>Name</span>
+          <input id="participant-label" type="text" maxlength="40" placeholder="Ada" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>City or zone</span>
+          <input id="participant-zone" type="text" list="zone-list" placeholder="Europe/Istanbul" autocomplete="off" spellcheck="false">
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Work from</span>
+            <select id="participant-start"></select>
+          </label>
+          <label class="field">
+            <span>Work until</span>
+            <select id="participant-end"></select>
+          </label>
+        </div>
+        <button id="participant-add" class="btn btn-primary" type="button">Add person</button>
+      </div>
+
+      <ul id="participants" class="participants"></ul>
+    </aside>
+
+    <main class="main">
+      <div class="main-head">
+        <div>
+          <h2 id="date-heading">Today</h2>
+          <p class="hint">Drag across the timeline to pick a slot, or let Meridian choose the best shared hour.</p>
+        </div>
+        <div class="slot-controls">
+          <label class="field field-inline">
+            <span>Length</span>
+            <select id="duration">
+              <option value="1" selected>1 h</option>
+              <option value="2">2 h</option>
+              <option value="3">3 h</option>
+              <option value="4">4 h</option>
+              <option value="6">6 h</option>
+              <option value="8">8 h</option>
+            </select>
+          </label>
+          <button id="best-slot" class="btn btn-ghost" type="button">Best slot</button>
+        </div>
+      </div>
+
+      <section id="grid" class="grid" aria-label="Local hours for each participant"></section>
+
+      <section id="summary" class="summary" hidden aria-live="polite">
+        <div class="summary-head">
+          <span id="summary-badge" class="badge"></span>
+          <h3 id="summary-title"></h3>
+        </div>
+        <ul id="summary-lines"></ul>
+        <button id="copy-summary" class="btn btn-ghost" type="button">Copy summary</button>
+      </section>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <span>Meridian · a static, offline tool by AegeanWorks · <a href="./LICENSE">AL-1.1</a></span>
+    <output id="status" class="status" role="status" aria-live="polite"></output>
+  </footer>
+</div>
+
+<datalist id="zone-list"></datalist>
+</body>
+</html>

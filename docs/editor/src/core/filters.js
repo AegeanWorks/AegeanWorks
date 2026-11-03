@@ -25,7 +25,8 @@ const ADJUSTMENT_RANGES = Object.freeze({
 export function clampAdjustments(input = {}) {
   const result = { ...DEFAULT_ADJUSTMENTS };
   for (const [key, [min, max]] of Object.entries(ADJUSTMENT_RANGES)) {
-    result[key] = clamp(input[key] ?? DEFAULT_ADJUSTMENTS[key], min, max);
+    const number = Number(input[key] ?? DEFAULT_ADJUSTMENTS[key]);
+    result[key] = Number.isFinite(number) ? clamp(number, min, max) : DEFAULT_ADJUSTMENTS[key];
   }
   return result;
 }

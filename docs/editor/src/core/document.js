@@ -68,6 +68,9 @@ export function createDocument({ width, height, layers, name = "Untitled", activ
   const safeWidth = Math.max(1, Math.round(Number(width) || 1));
   const safeHeight = Math.max(1, Math.round(Number(height) || 1));
   const list = Array.isArray(layers) && layers.length ? layers.slice() : [createLayer({ name: "Background" })];
+  if (list.length > 0 && list[0].clipToBelow) {
+    list[0] = createLayer({ ...list[0], clipToBelow: false });
+  }
   const active = list.some((layer) => layer.id === activeLayerId) ? activeLayerId : list[list.length - 1].id;
   return {
     name: String(name || "Untitled").slice(0, 80),
@@ -105,15 +108,19 @@ export function setActiveLayer(doc, id) {
 
 export function addLayer(doc, layer, index = doc.layers.length) {
   const at = Math.min(doc.layers.length, Math.max(0, Math.round(index)));
+  const layerRecord = at === 0 && layer.clipToBelow ? createLayer({ ...layer, clipToBelow: false }) : layer;
   const layers = doc.layers.slice();
-  layers.splice(at, 0, layer);
-  return { ...doc, layers, activeLayerId: layer.id };
+  layers.splice(at, 0, layerRecord);
+  return { ...doc, layers, activeLayerId: layerRecord.id };
 }
 
 export function removeLayer(doc, id) {
   const index = indexOfLayer(doc, id);
   if (index < 0) return doc;
   const layers = doc.layers.filter((layer) => layer.id !== id);
+  if (layers.length > 0 && layers[0].clipToBelow) {
+    layers[0] = createLayer({ ...layers[0], clipToBelow: false });
+  }
   const activeLayerId =
     doc.activeLayerId === id ? layers[Math.min(index, layers.length - 1)]?.id ?? null : doc.activeLayerId;
   return { ...doc, layers, activeLayerId };
@@ -121,10 +128,18 @@ export function removeLayer(doc, id) {
 
 export function updateLayer(doc, id, patch) {
   let changed = false;
-  const layers = doc.layers.map((layer) => {
+  const layers = doc.layers.map((layer, index) => {
     if (layer.id !== id) return layer;
     changed = true;
-    return createLayer({ ...layer, ...patch, id: layer.id, canvas: patch.canvas === undefined ? layer.canvas : patch.canvas });
+    const clipToBelow =
+      index === 0 ? false : patch.clipToBelow !== undefined ? patch.clipToBelow : layer.clipToBelow;
+    return createLayer({
+      ...layer,
+      ...patch,
+      clipToBelow,
+      id: layer.id,
+      canvas: patch.canvas === undefined ? layer.canvas : patch.canvas,
+    });
   });
   return changed ? { ...doc, layers } : doc;
 }
@@ -136,6 +151,9 @@ export function moveLayer(doc, id, delta) {
   const layers = doc.layers.slice();
   const [layer] = layers.splice(from, 1);
   layers.splice(to, 0, layer);
+  if (layers.length > 0 && layers[0].clipToBelow) {
+    layers[0] = createLayer({ ...layers[0], clipToBelow: false });
+  }
   return { ...doc, layers };
 }
 

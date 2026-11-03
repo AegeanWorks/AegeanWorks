@@ -33,7 +33,7 @@ export function validateSessionRecord(record) {
   const supportsClipping = Number(record.version) >= 2;
   if (!Array.isArray(record.layers) || record.layers.length === 0) return null;
   const layers = [];
-  for (const layer of record.layers) {
+  for (const [index, layer] of record.layers.entries()) {
     if (!layer || typeof layer !== "object" || !layer.image) return null;
     if (typeof layer.id !== "string" || !layer.id.trim()) return null;
     layers.push({
@@ -43,7 +43,7 @@ export function validateSessionRecord(record) {
       opacity: Number.isFinite(Number(layer.opacity)) ? Math.min(1, Math.max(0, Number(layer.opacity))) : 1,
       blendMode: typeof layer.blendMode === "string" ? layer.blendMode : "normal",
       locked: layer.locked === true,
-      clipToBelow: supportsClipping && layer.clipToBelow === true,
+      clipToBelow: supportsClipping && index > 0 && layer.clipToBelow === true,
       adjustments: layer.adjustments && typeof layer.adjustments === "object" ? layer.adjustments : {},
       image: layer.image,
     });

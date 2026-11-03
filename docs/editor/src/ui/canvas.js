@@ -47,13 +47,20 @@ export function drawLayerStack(context, doc, { background = null, moving = null,
     context.fillRect(0, 0, doc.width, doc.height);
   }
   let base = null;
+  let baseId = null;
   let clipped = scratch;
   for (const layer of doc.layers) {
     if (!layer.visible || !layer.canvas) {
-      if (!layer.clipToBelow) base = null;
+      if (!layer.clipToBelow) {
+        base = null;
+        baseId = null;
+      }
       continue;
     }
-    if (!layer.clipToBelow) base = layer.canvas;
+    if (!layer.clipToBelow) {
+      base = layer.canvas;
+      baseId = layer.id;
+    }
     let source = layer.canvas;
     let adjusted = false;
     if (layer.clipToBelow) {
@@ -66,10 +73,14 @@ export function drawLayerStack(context, doc, { background = null, moving = null,
       target.filter = "none";
       target.clearRect(0, 0, clipped.width, clipped.height);
       target.filter = buildCssFilter(layer.adjustments);
-      target.drawImage(layer.canvas, 0, 0);
+      const layerDx = moving && moving.layerId === layer.id ? moving.dx : 0;
+      const layerDy = moving && moving.layerId === layer.id ? moving.dy : 0;
+      target.drawImage(layer.canvas, layerDx, layerDy);
       target.filter = "none";
       target.globalCompositeOperation = "destination-in";
-      target.drawImage(base, 0, 0);
+      const baseDx = moving && moving.layerId === baseId ? moving.dx : 0;
+      const baseDy = moving && moving.layerId === baseId ? moving.dy : 0;
+      target.drawImage(base, baseDx, baseDy);
       target.globalCompositeOperation = "source-over";
       source = clipped;
       adjusted = true;
@@ -77,8 +88,10 @@ export function drawLayerStack(context, doc, { background = null, moving = null,
     context.save();
     context.globalAlpha = layer.opacity;
     context.globalCompositeOperation = blendOperation(layer.blendMode);
-    if (!adjusted) context.filter = buildCssFilter(layer.adjustments);
-    if (moving && moving.layerId === layer.id) context.translate(moving.dx, moving.dy);
+    if (!adjusted) {
+      context.filter = buildCssFilter(layer.adjustments);
+      if (moving && moving.layerId === layer.id) context.translate(moving.dx, moving.dy);
+    }
     context.drawImage(source, 0, 0);
     context.restore();
   }
