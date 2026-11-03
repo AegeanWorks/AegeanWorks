@@ -1,7 +1,19 @@
 {
   "schema": 2,
   "repo": "N1-Engine",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/N1-Engine/2026-11-03-n1-main.webp",
+      "alt": "N1-Engine workspace at 2026-11-03",
+      "caption": "Blank-database workspace: empty tables, all tabs and actions.",
+      "commit": "6f6a75ef0ec51135fa76655131e95460544845a6",
+      "taken_at": "2026-11-03",
+      "viewport": "1016x839",
+      "width": 1016,
+      "height": 839,
+      "digest": "sha256:ecff976d31428d14ca119232f77172a1fffcdb5a6911dbc084d230352d013612"
+    }
+  ],
   "logo": {
     "src": "media/N1-Engine/logo.webp",
     "alt": "N1-Engine logo",
