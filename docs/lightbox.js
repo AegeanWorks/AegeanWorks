@@ -63,7 +63,11 @@ export function createLightbox(dialog) {
     const full = item.meta || "";
     meta.replaceChildren();
     meta.hidden = !full;
-    if (!full) return;
+    if (!full) {
+      dialog.removeAttribute("aria-describedby");
+      return;
+    }
+    dialog.setAttribute("aria-describedby", meta.id || "lightbox-meta");
     if (item.commit && item.commitHref) {
       const link = document.createElement("a");
       link.href = item.commitHref;

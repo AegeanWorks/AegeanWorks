@@ -8,18 +8,18 @@
       "description": "A neon light-routing puzzle: rotate mirrors and splitters, fold beams through portals, and charge every receiver across three episodes.",
       "available": true,
       "mode": "browser",
-      "path": "live/prism-relay/b61a0e05b72d/index.html",
+      "path": "live/prism-relay/ce69fcb9a14e/index.html",
       "source_url": "https://github.com/AegeanWorks/Prism-Relay",
       "version": "0.3.0",
-      "commit": "b61a0e05b72df002cc4cd175b42437ae09d34080",
+      "commit": "ce69fcb9a14e8bb988ee3aa3e207dd53d496d86a",
       "updated": "2026-11-03",
       "license": "AGL-1.1",
       "license_path": "live/prism-relay/LICENSE",
-      "digest": "sha256:3dd307ccd69ab54593694e75f0852cf053902654eecfb1d39e9e75f1e854364c",
+      "digest": "sha256:c66e2b9b5e21fd841e2efc1ba05fdffe7d1911feacb4ef29c4a7c9b90f2aead6",
       "builds": [
+        "live/prism-relay/ce69fcb9a14e/index.html",
         "live/prism-relay/b61a0e05b72d/index.html",
-        "live/prism-relay/5d7fcbe3e7fc/index.html",
-        "live/prism-relay/e711443bde4f/index.html"
+        "live/prism-relay/5d7fcbe3e7fc/index.html"
       ],
       "logo": "media/Prism-Relay/logo.webp",
       "dossier": "project.html?repo=Prism-Relay"

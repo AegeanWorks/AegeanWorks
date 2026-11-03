@@ -2850,3 +2850,10 @@ pre:focus-visible {
     inset: 72px 0 0 0;
   }
 }
+
+.script-failed .editor-page {
+  position: static;
+  height: auto;
+  min-height: calc(100vh - 72px);
+  min-height: calc(100dvh - 72px);
+}

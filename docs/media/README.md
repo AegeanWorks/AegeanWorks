@@ -3,7 +3,7 @@
 Logos, social previews and screenshots for the portfolio and a project dossier
 at `project.html?repo=<Name>`. Each project has one manifest,
 `media/<Name>.json`, plus the files it points at, and `media/logos.json` is the
-small index the portfolio reads to put logos on the cards without fetching 35
+small index the portfolio reads to put logos on the cards without fetching 48
 manifests. Nothing is generated at build time.
 
 ## Where the images come from

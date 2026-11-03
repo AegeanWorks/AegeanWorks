@@ -42,6 +42,20 @@ function setMeta(selector, value) {
   if (element) element.setAttribute("content", value);
 }
 
+function isSocialHomepage(value) {
+  try {
+    const host = new URL(value).hostname.toLowerCase();
+    return (
+      host === "twitter.com" ||
+      host === "www.twitter.com" ||
+      host === "x.com" ||
+      host === "www.x.com"
+    );
+  } catch (error) {
+    return false;
+  }
+}
+
 function fail(message, githubUrl) {
   if (detailEl) detailEl.hidden = true;
   if (errorEl) errorEl.hidden = false;
@@ -400,7 +414,7 @@ function render(repo) {
   if (repoLink) repoLink.href = repo.html_url;
   const homepage = document.getElementById("project-homepage");
   if (homepage) {
-    if (repo.homepage) {
+    if (repo.homepage && !isSocialHomepage(repo.homepage)) {
       homepage.href = repo.homepage;
       homepage.hidden = false;
     } else {
