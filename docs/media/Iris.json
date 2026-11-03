@@ -21,5 +21,28 @@
     "taken_at": "2026-10-31",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Iris/279fa6c27b350fc65d656dfe13f26aa948d8cc39/assets/social-preview.png"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Iris/2026-11-03-iris-title.webp",
+      "alt": "Iris title at 2026-11-03",
+      "caption": "Title: additive discs, Play, 12 chambers.",
+      "commit": "279fa6c27b350fc65d656dfe13f26aa948d8cc39",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:8ec4d3ec7361a8bd4ee73d9608f220cbb6347e297af430074b1b57369b3c7bf1"
+    },
+    {
+      "src": "media/Iris/2026-11-03-iris-chamber.webp",
+      "alt": "Iris chamber 1 at 2026-11-03",
+      "caption": "Chamber 01 First Light after Play: red beam, mirror, receiver, par 1.",
+      "commit": "279fa6c27b350fc65d656dfe13f26aa948d8cc39",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:c0437f7f957a6bc2afe6960e22797bb8f5428cd3bf36c289dc105608f46c1114"
+    }
+  ]
 }
