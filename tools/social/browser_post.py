@@ -160,6 +160,7 @@ class PlaywrightPage:
                 "Why: playwright is not installed.\nFix: install it to drive a real browser; prepare() needs nothing."
             ) from error
         self._page = page
+        self._attached = 0
 
     def goto(self, url: str) -> None:
         self._page.goto(url, wait_until="domcontentloaded", timeout=30000)
@@ -199,6 +200,7 @@ class PlaywrightPage:
                 f"Why: attached media never appeared in the composer: {error}.\n"
                 "Fix: retry; if it persists, post text-only through a new approved draft."
             ) from error
+        self._attached = len(paths)
         return [Path(path).name for path in paths]
 
     def confirm_posted(self, timeout_ms: int = 30000) -> bool:
@@ -210,4 +212,11 @@ class PlaywrightPage:
             return False
 
     def click_post(self) -> None:
-        self._first(self.POST_IDS).click()
+        self._page.keyboard.press("Escape")
+        self._page.wait_for_timeout(1500)
+        if self._attached and self._page.get_by_test_id("tweetPhoto").count() == 0:
+            raise BrowserError(
+                "Why: the media preview vanished after dismissing the overlay.\n"
+                "Fix: re-attach the visual; if it persists, post by hand via prepare()."
+            )
+        self._first(self.POST_IDS).click(timeout=30000)
