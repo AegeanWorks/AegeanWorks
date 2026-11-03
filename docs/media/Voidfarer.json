@@ -44,6 +44,28 @@
       "width": 1440,
       "height": 900,
       "digest": "sha256:3c7e4f92661408427e6db795a6f8393d450c7ef353413fba760b35e9e53da453"
+    },
+    {
+      "src": "media/Voidfarer/2026-11-03-void-menu.webp",
+      "alt": "Voidfarer save menu at 2026-11-03",
+      "caption": "Save-slot menu: slots, Vanguard corvette panel, quantum link.",
+      "commit": "95cf80ca5246db38c49e839a63658ff0af9a5a49",
+      "taken_at": "2026-11-03",
+      "viewport": "1920x1080",
+      "width": 1200,
+      "height": 675,
+      "digest": "sha256:e5fa5ba6c840f53175b847de7e2911ae567134d334b3613f3c0559dadea04e90"
+    },
+    {
+      "src": "media/Voidfarer/2026-11-03-void-cockpit.webp",
+      "alt": "Voidfarer cockpit at 2026-11-03",
+      "caption": "Full tactical cockpit: character, Sol orbits, reactor, radar, flight log, onboarding.",
+      "commit": "95cf80ca5246db38c49e839a63658ff0af9a5a49",
+      "taken_at": "2026-11-03",
+      "viewport": "1920x1080",
+      "width": 1200,
+      "height": 675,
+      "digest": "sha256:cdb80ec4b3138b876bcd8a239391da09a9ffec9bb99c2fbde4f371d32c4f34a7"
     }
   ],
   "logo": {
