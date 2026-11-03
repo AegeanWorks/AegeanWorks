@@ -77,6 +77,17 @@
       "width": 1440,
       "height": 900,
       "digest": "sha256:a5d2d826155de0df07da8a54b67242496a7e517892fb762deb3c9d4ff3c58626"
+    },
+    {
+      "src": "media/Prism-Relay/2026-11-03-prism-home.webp",
+      "alt": "Prism-Relay landing at 2026-11-03",
+      "caption": "Landing: hero, prism art, episode entry, zero-star progress.",
+      "commit": "5d7fcbe3e7fcb9763aaa753b3759a71981ec2ce6",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:ab6736902437316474b3d4ffd80e822bbe760be77901cc5ef973d3f7016fb151"
     }
   ],
   "logo": {
