@@ -9,8 +9,8 @@
 - **Total Python Modules**: `25`
 - **Total Classes**: `31`
 - **Total Top-Level Functions**: `138`
-- **Total Class Methods**: `153`
-- **Total Source Lines**: `5386`
+- **Total Class Methods**: `155`
+- **Total Source Lines**: `5407`
 
 ---
 
@@ -152,12 +152,14 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `322` lines (`14154` bytes)
+**Size**: `339` lines (`14933` bytes)
 
 **Classes:**
 - `class DisclosureTests`
   - Method `.test_copy_pinned()`
-  - Method `.test_marker_applied_and_detected()`
+  - Method `.test_no_boilerplate_in_post_facing_copy()`
+  - Method `.test_built_draft_carries_no_boilerplate()`
+  - Method `.test_marker_empty_is_identity()`
 - `class TopicGateTests`
   - Method `.test_allowlist_matches_public_repos()`
   - Method `.test_off_topic_blocked()`
@@ -326,16 +328,16 @@
 ### [`tools/social/disclosure.py`](tools/social/disclosure.py)
 > *Disclosure copy loader + marker application (un-droppable by construction).*
 
-**Size**: `50` lines (`1302` bytes)
+**Size**: `54` lines (`1536` bytes)
 
 **Functions:**
 - `def load_disclosure()` - *Read the reviewed disclosure copy.*
 - `def bio_text()` - *Exact X bio stating AI operation.*
 - `def site_notice()` - *Exact website AI-run notice.*
-- `def post_marker()` - *Consistent per-post automation marker.*
+- `def post_marker()` - *Per-post marker. Empty by owner decision: posts carry no boilerplate;*
 - `def ai_mark()` - *Made-by-AI mark burned into generated infographics.*
-- `def apply_marker(text)` - *Append the automation marker unless already present.*
-- `def has_marker(text)` - *True when the automation marker is present.*
+- `def apply_marker(text)` - *Append the automation marker unless already present. Identity when empty.*
+- `def has_marker(text)` - *True when the automation marker is present (vacuous when empty).*
 
 ---
 

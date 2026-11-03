@@ -525,3 +525,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Keep the topic gate strict: only the 48 pinned catalogue repositories (plus future snapshot additions) are postable subjects. No profile-repo exception, no meta-post path.
 - **Consequences**: F-01 closed with no code change. Launch announcements happen through works posts only.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (gate stays strict) and PRINCIPLE-014 (no untested path).
+
+### ADR-069: Posts carry no boilerplate; bio, site and images carry disclosure
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The owner directed that posts carry no "human-approved", "automated draft" or link boilerplate, and carry photos/images instead. The per-post marker therefore had to go, while disclosure must stay real somewhere a reader actually looks.
+- **Decision**: Empty the post marker (apply/has_marker become identity/vacuous, documented). Bio keeps "Run by AI" (no approval/process prose, no link line). Site notice shortens to "This studio's X account (@AegeanWorks) is operated by AI." on all 7 footers plus privacy. Infographic "Made by AI" burn-in stays. New tests assert the banned phrases appear in no post-facing copy and no built draft.
+- **Consequences**: Posts ship clean with visuals; approval stays code-enforced (queue.approve + armed drive) but is no longer advertised in post text. Residual: a reshared screenshot carries no on-image AI disclosure unless it is an infographic; X native AI-media labeling is the future cover for that.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (no invented claims about approval in public copy) and PRINCIPLE-014 (blocking tests updated first).

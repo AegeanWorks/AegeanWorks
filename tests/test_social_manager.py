@@ -53,16 +53,33 @@ def draft_record(state, text="AIKit ships a new ledger view", repo="AIKit"):
 
 
 class DisclosureTests(unittest.TestCase):
+    BANNED = ("human-approved", "human approval", "automated draft", "automated posts are marked")
+
     def test_copy_pinned(self):
         data = disclosure.load_disclosure()
         self.assertIn("🤖", data["bio"])
-        self.assertIn("human approval", data["bio"].lower() + data["site_notice"].lower())
+        self.assertIn("operated by AI", data["site_notice"])
         self.assertIn("Made by AI", data["infographic_ai_mark"])
 
-    def test_marker_applied_and_detected(self):
-        marked = disclosure.apply_marker("hello")
-        self.assertTrue(disclosure.has_marker(marked))
-        self.assertEqual(disclosure.apply_marker(marked), marked)
+    def test_no_boilerplate_in_post_facing_copy(self):
+        data = disclosure.load_disclosure()
+        for field in ("bio", "site_notice", "post_marker"):
+            for banned in self.BANNED:
+                self.assertNotIn(banned, data[field].lower(), f"{field} contains {banned!r}")
+
+    def test_built_draft_carries_no_boilerplate(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = draft.build_post(
+                "AIKit", "AIKit ships a new ledger view", "notice", COMMIT, DATA_FILE,
+                True, None, RUN, DATE, state,
+            )
+            for banned in self.BANNED:
+                self.assertNotIn(banned, record["draft"]["text"].lower())
+
+    def test_marker_empty_is_identity(self):
+        self.assertEqual(disclosure.post_marker(), "")
+        self.assertEqual(disclosure.apply_marker("hello"), "hello")
+        self.assertTrue(disclosure.has_marker("anything"))
 
 
 class TopicGateTests(unittest.TestCase):

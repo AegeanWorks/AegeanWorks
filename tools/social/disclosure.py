@@ -28,7 +28,8 @@ def site_notice() -> str:
 
 
 def post_marker() -> str:
-    """Consistent per-post automation marker."""
+    """Per-post marker. Empty by owner decision: posts carry no boilerplate;
+    disclosure lives in the bio, the site notice and the infographic AI mark."""
     return load_disclosure()["post_marker"]
 
 
@@ -38,13 +39,16 @@ def ai_mark() -> str:
 
 
 def apply_marker(text: str) -> str:
-    """Append the automation marker unless already present."""
+    """Append the automation marker unless already present. Identity when empty."""
     marker = post_marker()
+    if not marker:
+        return text
     if marker in text:
         return text
     return text.rstrip() + "\n\n" + marker
 
 
 def has_marker(text: str) -> bool:
-    """True when the automation marker is present."""
-    return post_marker() in text
+    """True when the automation marker is present (vacuous when empty)."""
+    marker = post_marker()
+    return True if not marker else marker in text
