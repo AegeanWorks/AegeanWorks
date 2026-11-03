@@ -1,7 +1,19 @@
 {
   "schema": 2,
   "repo": "NoMoreClutter",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/NoMoreClutter/2026-11-03-nmc-main.webp",
+      "alt": "NoMoreClutter main window at 2026-11-03",
+      "caption": "Main window: directory paths, categories, control center, activity terminal.",
+      "commit": "b9cb347b6abcb9a5a92970a46c460f10002641bd",
+      "taken_at": "2026-11-03",
+      "viewport": "1356x919",
+      "width": 1200,
+      "height": 813,
+      "digest": "sha256:903d2950be396e9196f8f4560ee2e4e40163380b7f359d96d2d76c4f49d279d5"
+    }
+  ],
   "logo": {
     "src": "media/NoMoreClutter/logo.webp",
     "alt": "NoMoreClutter logo",
