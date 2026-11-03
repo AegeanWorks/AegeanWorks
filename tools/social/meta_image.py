@@ -100,20 +100,28 @@ def ai_review(image_bytes: bytes) -> str:
     buffer = io.BytesIO()
     image.save(buffer, format="PNG")
     data_url = "data:image/png;base64," + base64.b64encode(buffer.getvalue()).decode("ascii")
+    verdict = None
+    # Reasoning models spend budget thinking: one roomy call, not small retries.
     data = _post(
         "/chat/completions",
         {"model": VISION_MODEL,
          "messages": [{"role": "user", "content": [
              {"type": "text", "text": REVIEW_RUBRIC},
              {"type": "image_url", "image_url": {"url": data_url}}]}],
-         "max_tokens": 200},
+         "max_tokens": 4000},
     )
     try:
-        verdict = data["choices"][0]["message"]["content"].strip()
+        verdict = data["choices"][0]["message"]["content"]
     except (KeyError, IndexError) as error:
         raise MetaImageError(
-            "Why: review response had no text verdict.\nFix: retry; check the model name."
+            "Why: review response had no verdict.\nFix: retry; check the model name."
         ) from error
+    if not verdict:
+        raise MetaImageError(
+            "Why: the vision model returned no text.\n"
+            "Fix: retry later; heuristics still gate the visual."
+        )
+    verdict = verdict.strip()
     if verdict.upper().startswith("PASS"):
         return "pass"
     return "flagged: " + verdict[:200]

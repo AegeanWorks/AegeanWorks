@@ -10,7 +10,7 @@
 - **Total Classes**: `38`
 - **Total Top-Level Functions**: `149`
 - **Total Class Methods**: `183`
-- **Total Source Lines**: `5964`
+- **Total Source Lines**: `5972`
 
 ---
 
@@ -478,7 +478,7 @@
 ### [`tools/social/meta_image.py`](tools/social/meta_image.py)
 > *Meta Model API wiring: AI image generation + AI aesthetic review.*
 
-**Size**: `119` lines (`4700` bytes)
+**Size**: `127` lines (`5000` bytes)
 
 **Classes:**
 - `class MetaImageError` - *Raised for key, network or API failures (key never included).*
