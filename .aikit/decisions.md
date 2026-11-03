@@ -517,3 +517,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Point all studio-owned references at @AegeanWorks (contact links and sameAs use the canonical https://x.com/AegeanWorks). Leave tests/metadata/repositories.json and docs/atlas-snapshot.json untouched: their twitter.com/Aegean_E homepages are pinned GitHub API data, not studio copy; they refresh when the upstream repository homepages change.
 - **Consequences**: Disclosure, cards and links agree with the account that will actually post. The pinned snapshots still show the old handle until a snapshot refresh, which is correct behavior for a mirror.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims match the account) and PRINCIPLE-014 (pinned test updated, suite re-run).
+
+### ADR-068: No profile-repo posts; every post is AI-written about a work
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: Stage-4 finding F-01 asked whether launch/meta posts about the studio profile repo itself should have an on-topic path. The owner decided: no repo launch posts are needed; everything posted is AI-written about catalogue works.
+- **Decision**: Keep the topic gate strict: only the 48 pinned catalogue repositories (plus future snapshot additions) are postable subjects. No profile-repo exception, no meta-post path.
+- **Consequences**: F-01 closed with no code change. Launch announcements happen through works posts only.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (gate stays strict) and PRINCIPLE-014 (no untested path).
