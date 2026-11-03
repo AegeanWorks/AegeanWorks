@@ -1,0 +1,166 @@
+"""Browser publishing path: no X API, no keys, no per-post cost.
+
+The X API is pay-per-use with no free tier for new developers
+($0.015/post, $0.20 with a URL, 2026 rates), so this module replaces the
+API transport with the browser the owner already uses.
+
+Two modes, in safety order:
+- prepare(record, out_dir): always safe. Writes a publish package with the
+  exact post text, the provenance-stamped visual files, and a receipt
+  template. A human posts it by hand: zero automation risk, zero cost, and
+  publishing stays literally a human decision.
+- drive(page, package, final_click=False): fills the X composer with the
+  exact text and attaches the exact media through a page adapter. Clicks
+  Post only when ALL hold: the draft is approved, final_click=True was
+  passed explicitly, and AEGEAN_SOCIAL_BROWSER=1 is set. Default is
+  compose-only: the human reviews and clicks.
+
+Risk note (also ADR-066): driving the Post click by automation may breach
+X automation rules and can cost the account locks or captchas. Prefer
+prepare() + manual click. Full-auto is eyes-open only.
+
+The page adapter is duck-typed so tests use a FakePage and no test touches
+the network: goto(url), fill_composer(text) -> echoed text,
+attach_media(paths), click_post(). Only the PlaywrightPage adapter imports
+playwright, and only inside its constructor.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import shutil
+from pathlib import Path
+
+from . import disclosure, queue
+
+X_HOME = "https://x.com/home"
+
+
+class BrowserError(ValueError):
+    """Raised when the browser path is unsafe or the page misbehaves."""
+
+
+def _record(state_dir, draft_id: str) -> dict:
+    record = queue.require_approval(queue.get(draft_id, state_dir))
+    if not disclosure.has_marker(record["draft"]["text"]):
+        raise BrowserError("Why: disclosure marker missing; it is un-droppable.\nFix: keep the automation marker.")
+    return record
+
+
+def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
+    """Write the publish package; returns the package manifest (never posts)."""
+    record = _record(state_dir, draft_id)
+    dest = Path(out_dir)
+    dest.mkdir(parents=True, exist_ok=True)
+    text = record["draft"]["text"]
+    (dest / "post.txt").write_text(text + "\n", encoding="utf-8")
+    media: list[str] = []
+    visual = record["draft"].get("visual") or {}
+    src = visual.get("src", "")
+    if src and Path(src).is_file():
+        target = dest / Path(src).name
+        shutil.copyfile(src, target)
+        media.append(target.name)
+    manifest = {
+        "draft_id": record["id"],
+        "repo": record["draft"]["repo"],
+        "text_file": "post.txt",
+        "media": media,
+        "visual_digest": visual.get("digest", ""),
+        "approved_by": record["approver"],
+        "approved_at": record["approved_at"],
+        "checklist": [
+            "Confirm the text matches the approved draft exactly.",
+            "Confirm the attached visual carries its provenance footer and AI mark.",
+            "Press Post yourself, or re-run drive() with final_click=True and AEGEAN_SOCIAL_BROWSER=1.",
+        ],
+    }
+    (dest / "package.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return manifest
+
+
+def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dict:
+    """Compose the approved draft in the browser; clicks Post only if armed."""
+    record = _record(state_dir, draft_id)
+    text = record["draft"]["text"]
+    visual = record["draft"].get("visual") or {}
+    page.goto(X_HOME)
+    echoed = page.fill_composer(text)
+    if echoed != text:
+        raise BrowserError(
+            "Why: composer echo differs from the approved text; the page may have altered it.\n"
+            "Fix: abort, keep the approved draft byte-identical."
+        )
+    attached: list[str] = []
+    src = visual.get("src", "")
+    if src:
+        if not Path(src).is_file():
+            raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
+        attached = page.attach_media([src])
+    clicked = False
+    if final_click:
+        if os.environ.get("AEGEAN_SOCIAL_BROWSER") != "1":
+            raise BrowserError(
+                "Why: final click needs AEGEAN_SOCIAL_BROWSER=1.\n"
+                "Fix: compose-only is the default; arm the flag only to post."
+            )
+        page.click_post()
+        clicked = True
+    return {
+        "draft_id": record["id"],
+        "composed": True,
+        "media_attached": attached,
+        "clicked": clicked,
+        "receipt": {"mode": "browser", "clicked": clicked, "live": clicked},
+    }
+
+
+class PlaywrightPage:
+    """Real adapter over a Playwright page on x.com (imported lazily)."""
+
+    COMPOSER_IDS = ("tweetTextarea_0",)
+    POST_IDS = ("tweetButtonInline", "tweetButton")
+    FILE_IDS = ("fileInput",)
+
+    def __init__(self, page) -> None:
+        try:
+            import playwright  # noqa: F401, PLC0415 - optional driver dep
+        except ImportError as error:
+            raise BrowserError(
+                "Why: playwright is not installed.\nFix: install it to drive a real browser; prepare() needs nothing."
+            ) from error
+        self._page = page
+
+    def goto(self, url: str) -> None:
+        self._page.goto(url, wait_until="domcontentloaded", timeout=30000)
+
+    def _first(self, test_ids: tuple[str, ...]):
+        failures: list[str] = []
+        for test_id in test_ids:
+            locator = self._page.get_by_test_id(test_id)
+            try:
+                if locator.count() > 0:
+                    return locator.first
+            except Exception as error:  # noqa: BLE001 - selector probe; every failure is reported below
+                failures.append(f"{test_id}: {error}")
+                continue
+        raise BrowserError(
+            f"Why: x.com composer element not found (tried {', '.join(test_ids)}); the page markup moved.\n"
+            f"Page said: {'; '.join(failures)[:300]}\n"
+            "Fix: update PlaywrightPage selectors; never guess-click."
+        )
+
+    def fill_composer(self, text: str) -> str:
+        box = self._first(self.COMPOSER_IDS)
+        box.click()
+        box.fill(text)
+        return box.input_value() if hasattr(box, "input_value") else box.inner_text()
+
+    def attach_media(self, paths: list[str]) -> list[str]:
+        picker = self._first(self.FILE_IDS)
+        picker.set_input_files(paths)
+        return [Path(path).name for path in paths]
+
+    def click_post(self) -> None:
+        self._first(self.POST_IDS).click()

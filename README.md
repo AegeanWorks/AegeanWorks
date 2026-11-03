@@ -299,9 +299,12 @@ AegeanWorks/
 ├── tools/
 │   ├── build_dossier_media.py  <- Fetches, optimizes and verifies dossier media
 │   ├── sync_editor.py     <- Copies and verifies the Palette editor build
-│   └── sync_live_apps.py  <- Copies and verifies the browser app builds
+│   ├── sync_live_apps.py  <- Copies and verifies the browser app builds
+│   └── social/            <- Studio X manager: gates, media pipeline, browser publish
 └── tests/
     ├── test_profile.py      <- Content, metadata and link integrity tests
+    ├── test_social_manager.py <- Social gates: topic, evidence, media, spam, approval
+    ├── test_social_browser.py <- Browser publish: package, compose-only, armed click
     ├── test_sync_live_digest.py <- Live build digest and retention tests
     ├── test_sync_editor_digest.py <- Editor line-ending and binary digest tests
     ├── live/

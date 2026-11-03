@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `23`
-- **Total Classes**: `27`
-- **Total Top-Level Functions**: `134`
-- **Total Class Methods**: `135`
-- **Total Source Lines**: `5074`
+- **Total Python Modules**: `25`
+- **Total Classes**: `31`
+- **Total Top-Level Functions**: `138`
+- **Total Class Methods**: `153`
+- **Total Source Lines**: `5386`
 
 ---
 
@@ -120,6 +120,32 @@
 - `def read_verify()`
 - `def read_license_families()` - *The site's license ledger is the single source of truth for family codes.*
 - `def read_metadata()`
+
+---
+
+### [`tests/test_social_browser.py`](tests/test_social_browser.py)
+> *Tests for the browser publishing path (tools/social/browser_post.py).*
+
+**Size**: `146` lines (`5953` bytes)
+
+**Classes:**
+- `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
+  - Method `.__init__(echo_ok)`
+  - Method `.goto(url)`
+  - Method `.fill_composer(text)`
+  - Method `.attach_media(paths)`
+  - Method `.click_post()`
+- `class BrowserPostTests`
+  - Method `.test_prepare_writes_exact_package()`
+  - Method `.test_prepare_needs_approval()`
+  - Method `.test_drive_compose_only_by_default()`
+  - Method `.test_drive_click_needs_env_flag()`
+  - Method `.test_drive_needs_approval()`
+  - Method `.test_drive_rejects_mutated_echo()`
+  - Method `.test_drive_missing_visual_file_blocked()`
+
+**Functions:**
+- `def approved_draft(state, text)`
 
 ---
 
@@ -261,6 +287,28 @@
 > *AegeanWorks social manager: posts about the works of AegeanWorks on X.*
 
 **Size**: `10` lines (`319` bytes)
+
+---
+
+### [`tools/social/browser_post.py`](tools/social/browser_post.py)
+> *Browser publishing path: no X API, no keys, no per-post cost.*
+
+**Size**: `166` lines (`6584` bytes)
+
+**Classes:**
+- `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
+- `class PlaywrightPage` - *Real adapter over a Playwright page on x.com (imported lazily).*
+  - Method `.__init__(page)`
+  - Method `.goto(url)`
+  - Method `._first(test_ids)`
+  - Method `.fill_composer(text)`
+  - Method `.attach_media(paths)`
+  - Method `.click_post()`
+
+**Functions:**
+- `def _record(state_dir, draft_id)`
+- `def prepare(draft_id, out_dir, state_dir)` - *Write the publish package; returns the package manifest (never posts).*
+- `def drive(page, draft_id, state_dir, final_click)` - *Compose the approved draft in the browser; clicks Post only if armed.*
 
 ---
 
