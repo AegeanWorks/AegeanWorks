@@ -1,7 +1,19 @@
 {
   "schema": 2,
   "repo": "NeuroOptic",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/NeuroOptic/2026-11-03-noptic-launch.webp",
+      "alt": "NeuroOptic controller at 2026-11-03",
+      "caption": "Controller: frequency, stimulation, session, sham and display sections with START.",
+      "commit": "36f9038404166e22966ea376a9d2ae204dd7b5e5",
+      "taken_at": "2026-11-03",
+      "viewport": "516x939",
+      "width": 516,
+      "height": 939,
+      "digest": "sha256:ee3a124fbd143ab196b25ea7d06bd42ac6b0a850e255ac6943d7fbe05e91fa0e"
+    }
+  ],
   "logo": {
     "src": "media/NeuroOptic/logo.webp",
     "alt": "NeuroOptic logo",
