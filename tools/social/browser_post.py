@@ -182,8 +182,7 @@ class PlaywrightPage:
 
     def fill_composer(self, text: str) -> str:
         box = self._first(self.COMPOSER_IDS)
-        box.click()
-        box.fill(text)
+        box.fill(text)  # fill focuses itself; a pre-click only invites overlay races
         try:
             echoed = box.input_value()
         except Exception:  # noqa: BLE001 - rich-text editors expose inner_text instead
@@ -200,6 +199,7 @@ class PlaywrightPage:
                 f"Why: attached media never appeared in the composer: {error}.\n"
                 "Fix: retry; if it persists, post text-only through a new approved draft."
             ) from error
+        self._page.wait_for_timeout(8000)  # upload settle: the progress veil blocks clicks while live
         self._attached = len(paths)
         return [Path(path).name for path in paths]
 
@@ -212,11 +212,11 @@ class PlaywrightPage:
             return False
 
     def click_post(self) -> None:
-        self._page.keyboard.press("Escape")
-        self._page.wait_for_timeout(1500)
+        # No Escape press: on a filled composer it can summon the discard dialog,
+        # which is exactly the kind of mask that eats the Post click.
         if self._attached and self._page.get_by_test_id("tweetPhoto").count() == 0:
             raise BrowserError(
-                "Why: the media preview vanished after dismissing the overlay.\n"
+                "Why: the media preview is gone from the composer.\n"
                 "Fix: re-attach the visual; if it persists, post by hand via prepare()."
             )
-        self._first(self.POST_IDS).click(timeout=30000)
+        self._first(self.POST_IDS).click(timeout=60000)

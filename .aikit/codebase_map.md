@@ -340,7 +340,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `222` lines (`9439` bytes)
+**Size**: `222` lines (`9639` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
