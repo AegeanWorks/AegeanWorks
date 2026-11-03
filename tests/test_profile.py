@@ -1341,7 +1341,7 @@ class ProfileIntegrityTests(unittest.TestCase):
             'property="og:image:type" content="image/png"',
             'property="og:locale" content="en_US"',
             'name="twitter:image:alt"',
-            'name="twitter:creator" content="@Aegean_E"',
+            'name="twitter:creator" content="@AegeanWorks"',
             'property="og:image:alt"',
             'name="twitter:card"',
             'name="robots" content="index,follow,max-image-preview:large"',

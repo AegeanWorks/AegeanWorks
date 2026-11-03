@@ -191,7 +191,7 @@ AegeanWorks publishes source-available and open-source projects. AL-1.1 for soft
 - **Privacy** — [privacy.html](https://aegeanworks.github.io/AegeanWorks/privacy.html)
 - **Accessibility** — [accessibility.html](https://aegeanworks.github.io/AegeanWorks/accessibility.html)
 - **GitHub** — [@AegeanWorks](https://github.com/AegeanWorks)
-- **X** — [@Aegean_E](https://twitter.com/Aegean_E)
+- **X** — [@AegeanWorks](https://x.com/AegeanWorks)
 - **Commercial licensing** — [aegean-licensing@proton.me](mailto:aegean-licensing@proton.me)
 
 <p align="center"><sub>Built in public, one inspectable system at a time.</sub></p>
