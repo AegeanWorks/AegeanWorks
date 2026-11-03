@@ -25,6 +25,17 @@
       "height": 791,
       "digest": "sha256:80af7ae8a9b52f6f5446c9e15278a32167a332b1bf64373ab27a5066fd379ae8",
       "source": "NeuralDeck:screenshots/ui_settings.png"
+    },
+    {
+      "src": "media/NeuralDeck/2026-11-03-ndeck-gen.webp",
+      "alt": "NeuralDeck generator at 2026-11-03",
+      "caption": "Generator tab: review panel, input configuration, decks, Anki log.",
+      "commit": "de99d5356515a84ee7c5f9c30fa97d017859a584",
+      "taken_at": "2026-11-03",
+      "viewport": "1216x839",
+      "width": 1200,
+      "height": 828,
+      "digest": "sha256:81d2b719c4b1d6bab1cd1011eeb3119d317b4285b90d6273da81aa2ad67f7ae1"
     }
   ],
   "logo": {
