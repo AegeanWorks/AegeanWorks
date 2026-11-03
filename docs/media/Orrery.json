@@ -1,7 +1,30 @@
 {
   "schema": 2,
   "repo": "Orrery",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/Orrery/2026-11-03-orrery-solar.webp",
+      "alt": "Orrery solar studio at 2026-11-03",
+      "caption": "Inner Solar System: five bodies at t 0.40 days, live energy drift, bodies table.",
+      "commit": "9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:9226f65e922b4b88b53c79973fb3d45b0fd8559179787900540a127fd4cadfd5"
+    },
+    {
+      "src": "media/Orrery/2026-11-03-orrery-fig8.webp",
+      "alt": "Orrery figure-eight at 2026-11-03",
+      "caption": "Figure-Eight Choreography: three equal masses at t 0.00.",
+      "commit": "9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:690cbb545ecc94f8788c93e00d5aa7d2096213d278c2c8103331169d3d9a7e9b"
+    }
+  ],
   "logo": {
     "src": "media/Orrery/logo.webp",
     "alt": "Orrery logo",
