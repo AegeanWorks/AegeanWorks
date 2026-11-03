@@ -557,3 +557,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Add tools/social/media_review.py: dimensions floor, no-stretch assertion, edge-energy sharpness (>=2.0, calibrated 8.65 sharp vs 0.8 blurred), sane file size. drive() pixel-reviews every attachment and refuses the click on failure; prepare() ships the report for human judgment. register_reviewer(name, fn) runs extra judges after heuristics: the seam where a vision-model reviewer plugs in once the owner provides its endpoint. Builders use crop-to-fill exclusively.
 - **Consequences**: Ugly cannot ship through automation; a human may still override by hand with eyes open. AI review/creation waits on an endpoint, not a bare key.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (measured bar), PRINCIPLE-009 (pluggable reviewer) and PRINCIPLE-014 (9 blocking tests).
+
+### ADR-073: Meta Model API for AI image creation and review
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The owner provided a Meta Model API key (LLM_ format, Bearer MODEL_API_KEY, base https://api.meta.ai/v1) and asked why AI is not used for images. Two capabilities fit open gaps: muse-image-1.0 generation ($0.01/image) and vision review of visuals before tweeting.
+- **Decision**: Add tools/social/meta_image.py (stdlib urllib only): generate_image via /v1/images/generations and ai_review via chat completions vision, both env-key-only, key never logged. drive() runs AI review after heuristics when MODEL_API_KEY is set and blocks the click on a flag; without a key it records skipped and proceeds on heuristics. Generated art is decorative only: post-text claims still trace to repo evidence; every generated visual passes the same review gate plus provenance sidecar. register_reviewer stays as the offline seam.
+- **Consequences**: AI creation and AI review are wired and tested with fakes (6 new tests); the live call runs when the key reaches the agent environment. No key material in repo, logs or tests.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-011 (env-only secrets), PRINCIPLE-014 (blocking tests) and PRINCIPLE-019.

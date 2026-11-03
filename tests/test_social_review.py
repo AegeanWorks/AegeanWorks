@@ -4,15 +4,20 @@ Proves automation refuses ugly visuals: stretched tiles, tiny renders,
 blur. A pluggable reviewer seam carries future AI judges.
 """
 
+import base64
+import io
+import json
 import sys
 import tempfile
 import unittest
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
-from social import browser_post, draft, media_review, queue  # noqa: E402
+from social import browser_post, draft, media_review, meta_image, queue  # noqa: E402
 
 COMMIT = "ea26791d52722e78af0a87b25d3268e72d52836"
 RUN = "run-2026-11-03-review"
@@ -35,8 +40,9 @@ def make_png(path: Path, width: int = 1200, height: int = 630, blur: bool = Fals
 
 
 class FakePage:
-    def __init__(self) -> None:
+    def __init__(self, confirmed: bool = True) -> None:
         self.calls: list = []
+        self.confirmed = confirmed
 
     def goto(self, url: str) -> None:
         self.calls.append(("goto", url))
@@ -52,7 +58,22 @@ class FakePage:
         self.calls.append(("click",))
 
     def confirm_posted(self) -> bool:
-        return True
+        self.calls.append(("confirm",))
+        return self.confirmed
+
+
+class FakeHTTPResponse:
+    def __init__(self, payload: dict) -> None:
+        self.payload = payload
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return False
+
+    def read(self) -> bytes:
+        return json.dumps(self.payload).encode("utf-8")
 
 
 def visual_for(src: Path) -> dict:
@@ -126,6 +147,107 @@ class DriveReviewTests(unittest.TestCase):
             self.assertTrue(result["composed"])
             self.assertFalse(result["clicked"])
             self.assertEqual(result["media_attached"], ["good.png"])
+
+
+class MetaImageTests(unittest.TestCase):
+    def test_key_required(self):
+        backup = __import__("os").environ.pop("MODEL_API_KEY", None)
+        try:
+            with self.assertRaises(meta_image.MetaImageError):
+                meta_image.generate_image("a fox")
+            with self.assertRaises(meta_image.MetaImageError):
+                meta_image.ai_review(b"bytes")
+        finally:
+            if backup is not None:
+                __import__("os").environ.update({"MODEL_API_KEY": backup})
+
+    def test_unauthorized_maps_to_key_error(self):
+        __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY"})
+        original = urllib.request.urlopen
+        fp = io.BytesIO(b"{}")
+
+        def fake_401(*args, **kwargs):
+            raise urllib.error.HTTPError("http://x", 401, "bad", {}, fp)
+
+        urllib.request.urlopen = fake_401
+        try:
+            with self.assertRaises(meta_image.MetaImageError) as ctx:
+                meta_image.generate_image("a fox")
+            self.assertIn("key", str(ctx.exception).lower())
+        finally:
+            urllib.request.urlopen = original
+            __import__("os").environ.pop("MODEL_API_KEY", None)
+
+    def test_generate_decodes_payload(self):
+        __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY"})
+        original = urllib.request.urlopen
+        payload = {"data": [{"b64_json": base64.b64encode(b"PNGDATA").decode()}]}
+
+        def fake_ok(*args, **kwargs):
+            return FakeHTTPResponse(payload)
+
+        urllib.request.urlopen = fake_ok
+        try:
+            self.assertEqual(meta_image.generate_image("a fox"), b"PNGDATA")
+        finally:
+            urllib.request.urlopen = original
+            __import__("os").environ.pop("MODEL_API_KEY", None)
+
+    def test_ai_review_parses_verdict(self):
+        __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY"})
+        original = urllib.request.urlopen
+
+        def fake_ok(*args, **kwargs):
+            return FakeHTTPResponse({"choices": [{"message": {"content": "PASS"}}]})
+
+        urllib.request.urlopen = fake_ok
+        try:
+            with tempfile.TemporaryDirectory() as temp:
+                raw = make_png(Path(temp) / "v.png").read_bytes()
+                self.assertEqual(meta_image.ai_review(raw), "pass")
+        finally:
+            urllib.request.urlopen = original
+            __import__("os").environ.pop("MODEL_API_KEY", None)
+
+    def test_drive_ai_flag_blocks_click(self):
+        with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
+            good = make_png(Path(temp) / "good.png")
+            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(good), RUN, DATE, state)
+            queue.approve(record["id"], "owner", state)
+            __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY",
+                                             "AEGEAN_SOCIAL_BROWSER": "1"})
+            original = meta_image.ai_review
+            meta_image.ai_review = lambda raw: "flagged: muddy contrast"
+            try:
+                page = FakePage()
+                with self.assertRaises(browser_post.BrowserError):
+                    browser_post.drive(page, record["id"], state, final_click=True)
+                self.assertFalse(any(call[0] == "click" for call in page.calls))
+            finally:
+                meta_image.ai_review = original
+                __import__("os").environ.pop("MODEL_API_KEY", None)
+                __import__("os").environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+
+    def test_drive_ai_pass_records_verdict(self):
+        with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
+            good = make_png(Path(temp) / "good.png")
+            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(good), RUN, DATE, state)
+            queue.approve(record["id"], "owner", state)
+            __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY",
+                                             "AEGEAN_SOCIAL_BROWSER": "1"})
+            original = meta_image.ai_review
+            meta_image.ai_review = lambda raw: "pass"
+            try:
+                page = FakePage()
+                result = browser_post.drive(page, record["id"], state, final_click=True)
+                self.assertTrue(result["posted"])
+                self.assertEqual(result["ai_review"], "pass")
+            finally:
+                meta_image.ai_review = original
+                __import__("os").environ.pop("MODEL_API_KEY", None)
+                __import__("os").environ.pop("AEGEAN_SOCIAL_BROWSER", None)
 
 
 if __name__ == "__main__":

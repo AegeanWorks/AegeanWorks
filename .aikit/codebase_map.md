@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `27`
-- **Total Classes**: `35`
-- **Total Top-Level Functions**: `145`
-- **Total Class Methods**: `173`
-- **Total Source Lines**: `5699`
+- **Total Python Modules**: `28`
+- **Total Classes**: `38`
+- **Total Top-Level Functions**: `149`
+- **Total Class Methods**: `183`
+- **Total Source Lines**: `5955`
 
 ---
 
@@ -213,16 +213,21 @@
 ### [`tests/test_social_review.py`](tests/test_social_review.py)
 > *Tests for the aesthetic review gate (tools/social/media_review.py).*
 
-**Size**: `132` lines (`5193` bytes)
+**Size**: `254` lines (`10441` bytes)
 
 **Classes:**
 - `class FakePage`
-  - Method `.__init__()`
+  - Method `.__init__(confirmed)`
   - Method `.goto(url)`
   - Method `.fill_composer(text)`
   - Method `.attach_media(paths)`
   - Method `.click_post()`
   - Method `.confirm_posted()`
+- `class FakeHTTPResponse`
+  - Method `.__init__(payload)`
+  - Method `.__enter__()`
+  - Method `.__exit__(*args)`
+  - Method `.read()`
 - `class ReviewTests`
   - Method `.test_sharp_passes()`
   - Method `.test_blurry_blocked()`
@@ -234,6 +239,13 @@
 - `class DriveReviewTests`
   - Method `.test_drive_blocks_ugly_attachment()`
   - Method `.test_drive_attaches_reviewed_visual()`
+- `class MetaImageTests`
+  - Method `.test_key_required()`
+  - Method `.test_unauthorized_maps_to_key_error()`
+  - Method `.test_generate_decodes_payload()`
+  - Method `.test_ai_review_parses_verdict()`
+  - Method `.test_drive_ai_flag_blocks_click()`
+  - Method `.test_drive_ai_pass_records_verdict()`
 
 **Functions:**
 - `def make_png(path, width, height, blur)`
@@ -328,7 +340,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `198` lines (`8199` bytes)
+**Size**: `213` lines (`8976` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -460,6 +472,22 @@
 - `def assert_no_distortion(src_size, dst_size)` - *Fail when a resize stretches content (crop-to-fill instead).*
 - `def review_bytes(raw, kind)` - *Review pixels; return the report or raise ReviewError.*
 - `def review_file(path)` - *Review a visual file by path.*
+
+---
+
+### [`tools/social/meta_image.py`](tools/social/meta_image.py)
+> *Meta Model API wiring: AI image generation + AI aesthetic review.*
+
+**Size**: `119` lines (`4700` bytes)
+
+**Classes:**
+- `class MetaImageError` - *Raised for key, network or API failures (key never included).*
+
+**Functions:**
+- `def _key()`
+- `def _post(path, payload)`
+- `def generate_image(prompt, size)` - *Generate one PNG image; returns raw bytes.*
+- `def ai_review(image_bytes)` - *Vision verdict: 'pass' or 'flagged: <reason>' (raises without a key).*
 
 ---
 

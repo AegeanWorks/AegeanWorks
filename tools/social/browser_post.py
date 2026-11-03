@@ -67,6 +67,12 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
 
         try:
             reviews[target.name] = media_review.review_file(src)
+            from . import meta_image  # noqa: PLC0415 - AI verdict travels with the package
+
+            if os.environ.get("MODEL_API_KEY"):
+                reviews[target.name]["ai"] = meta_image.ai_review(Path(src).read_bytes())
+            else:
+                reviews[target.name]["ai"] = "skipped (no key)"
         except Exception as error:  # noqa: BLE001 - human path reports, automation blocks
             reviews[target.name] = {"aesthetic": f"flagged: {error}".split(chr(10))[0]}
     manifest = {
@@ -101,13 +107,21 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
             "Fix: abort, keep the approved draft byte-identical."
         )
     attached: list[str] = []
+    ai_verdict = "skipped (no key)"
     src = visual.get("src", "")
     if src:
         if not Path(src).is_file():
             raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
-        from . import media_review  # noqa: PLC0415 - review at the last responsible moment
+        from . import media_review, meta_image  # noqa: PLC0415 - review at the last responsible moment
 
-        media_review.review_file(src)  # automation never ships an ugly visual
+        media_review.review_file(src)  # heuristics first, offline and free
+        if os.environ.get("MODEL_API_KEY"):
+            ai_verdict = meta_image.ai_review(Path(src).read_bytes())
+            if ai_verdict != "pass":
+                raise BrowserError(
+                    f"Why: AI review {ai_verdict}.\n"
+                    "Fix: regenerate or fix the visual; manual posting via prepare() stays possible."
+                )
         attached = page.attach_media([src])
     clicked = False
     posted = False
@@ -126,7 +140,8 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
         "media_attached": attached,
         "clicked": clicked,
         "posted": posted,
-        "receipt": {"mode": "browser", "clicked": clicked, "live": posted},
+        "ai_review": ai_verdict,
+        "receipt": {"mode": "browser", "clicked": clicked, "live": posted, "ai_review": ai_verdict},
     }
 
 
