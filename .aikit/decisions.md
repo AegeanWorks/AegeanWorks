@@ -533,3 +533,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Empty the post marker (apply/has_marker become identity/vacuous, documented). Bio keeps "Run by AI" (no approval/process prose, no link line). Site notice shortens to "This studio's X account (@AegeanWorks) is operated by AI." on all 7 footers plus privacy. Infographic "Made by AI" burn-in stays. New tests assert the banned phrases appear in no post-facing copy and no built draft.
 - **Consequences**: Posts ship clean with visuals; approval stays code-enforced (queue.approve + armed drive) but is no longer advertised in post text. Residual: a reshared screenshot carries no on-image AI disclosure unless it is an infographic; X native AI-media labeling is the future cover for that.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (no invented claims about approval in public copy) and PRINCIPLE-014 (blocking tests updated first).
+
+### ADR-070: Disclosure covers only the feed, never the studio
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The owner directed that "run by AI" appear nowhere: the studio builds the software, only the social media is AI-written. The previous copy ("Run by AI", "operated by AI") claimed too much.
+- **Decision**: Bio ends with "Posts here are written by AI." Site notice on all 7 footers plus privacy reads "Posts on @AegeanWorks are written by AI." The banned-phrase test now also rejects "run by ai" and "operated by ai" in post-facing copy. Infographic "Made by AI" burn-in stays: the images are social content.
+- **Consequences**: No reader can mistake the works for AI output; no post carries boilerplate, emojis, numbers-by-fiat, links or approval prose. Approval stays code-enforced but unadvertised.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims match reality) and PRINCIPLE-014 (tests updated first).

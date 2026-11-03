@@ -10,7 +10,7 @@
 - **Total Classes**: `31`
 - **Total Top-Level Functions**: `138`
 - **Total Class Methods**: `155`
-- **Total Source Lines**: `5407`
+- **Total Source Lines**: `5409`
 
 ---
 
@@ -152,7 +152,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `339` lines (`14933` bytes)
+**Size**: `341` lines (`15058` bytes)
 
 **Classes:**
 - `class DisclosureTests`

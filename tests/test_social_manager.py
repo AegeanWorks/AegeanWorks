@@ -53,12 +53,14 @@ def draft_record(state, text="AIKit ships a new ledger view", repo="AIKit"):
 
 
 class DisclosureTests(unittest.TestCase):
-    BANNED = ("human-approved", "human approval", "automated draft", "automated posts are marked")
+    BANNED = ("human-approved", "human approval", "automated draft", "automated posts are marked",
+              "run by ai", "operated by ai", "🤖")
 
     def test_copy_pinned(self):
         data = disclosure.load_disclosure()
-        self.assertIn("🤖", data["bio"])
-        self.assertIn("operated by AI", data["site_notice"])
+        self.assertIn("written by AI", data["bio"])
+        self.assertIn("written by AI", data["site_notice"])
+        self.assertIn("Made by AI", data["infographic_ai_mark"])
         self.assertIn("Made by AI", data["infographic_ai_mark"])
 
     def test_no_boilerplate_in_post_facing_copy(self):
@@ -331,7 +333,7 @@ class SiteDisclosureTests(unittest.TestCase):
 
     def test_privacy_names_ai_operation(self):
         privacy = (ROOT / "docs" / "privacy.html").read_text(encoding="utf-8")
-        self.assertIn("operated by AI", privacy)
+        self.assertIn("written by AI", privacy)
         self.assertIn("No X credential is stored", privacy)
 
 
