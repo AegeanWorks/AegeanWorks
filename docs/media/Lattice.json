@@ -8,9 +8,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:284fd93290b139ae4ebb9dfd848410cf82a06131fcb4ac65729f6e0602749f7a",
-    "commit": "5313d2c703e6deacb39c607f6653ace558643314",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Lattice/5313d2c703e6deacb39c607f6653ace558643314/assets/logo.jpg"
+    "commit": "0a138573111040bdad0d56dbd60fbc12815ac9d2",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Lattice/0a138573111040bdad0d56dbd60fbc12815ac9d2/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Lattice/social-preview.webp",
@@ -18,8 +18,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:01521e8e8a36a613410f7da7b44e63a8551fc59fef21e50476ebc929edc79b93",
-    "commit": "5313d2c703e6deacb39c607f6653ace558643314",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Lattice/5313d2c703e6deacb39c607f6653ace558643314/assets/social-preview.png"
+    "commit": "0a138573111040bdad0d56dbd60fbc12815ac9d2",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Lattice/0a138573111040bdad0d56dbd60fbc12815ac9d2/assets/social-preview.png"
   }
 }

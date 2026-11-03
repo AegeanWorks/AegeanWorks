@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:de74f5bd2344a2bd7fb06894ea3bd95567b30f8418b8239006c384f4c80b881d",
-    "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/6ece836f9ca6586360b3d83a07f34364af31577e/assets/logo.svg"
+    "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/863816def7e953ad7d39b16f71220cede4fee6db/assets/logo.svg"
   },
   "preview": {
     "src": "media/Modelduck/social-preview.webp",
@@ -17,9 +17,9 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:5e448f466a3822adb39437bddf9de8f0274925931fbfc027d3d55a2a691c7734",
-    "commit": "6ece836f9ca6586360b3d83a07f34364af31577e",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/6ece836f9ca6586360b3d83a07f34364af31577e/assets/social-preview.png"
+    "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/863816def7e953ad7d39b16f71220cede4fee6db/assets/social-preview.png"
   },
   "screenshots": [
     {
@@ -105,6 +105,42 @@
       "height": 900,
       "digest": "sha256:eb981b413db06c0931108539218536183d61846ad53113f03ebe4b3901bd3072",
       "source": "Modelduck:assets/screenshots/05-bench-tune-help.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-03-06-bench-models.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 06 Bench Models",
+      "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:0f8df06655143eee4cf715aad7a6be04e7f7b0a6952d17a32763392e42fce27d",
+      "source": "Modelduck:assets/screenshots/06-bench-models.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-03-07-bench-model-details.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 07 Bench Model Details",
+      "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:4dc80798dbee25dac846a6c7cc560c094e88136977ccdf82f16a97a56149eabc",
+      "source": "Modelduck:assets/screenshots/07-bench-model-details.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-03-08-bench-runs.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 08 Bench Runs",
+      "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:5f26d867dab2a865cac9f58757d054b2b1003aaa3ee67b0146fe05c1d61aa796",
+      "source": "Modelduck:assets/screenshots/08-bench-runs.png"
     }
   ]
 }

@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:099f55416e3450d7575e9a4c7652bde07ef1bf876b00959d1674c505da7344fa",
-    "commit": "0b3cd43cdec61f21301aac47a9606bbde58440ae",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0b3cd43cdec61f21301aac47a9606bbde58440ae/assets/logo.svg"
+    "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0a2d24e2f74e0e1726adb69d99577c3340d094b2/assets/logo.svg"
   },
   "preview": {
     "src": "media/Dustline/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:7e72b1efe339a749cbb211a4d68898458e39cd7600e41564e57c962525e4c243",
-    "commit": "0b3cd43cdec61f21301aac47a9606bbde58440ae",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0b3cd43cdec61f21301aac47a9606bbde58440ae/assets/social-preview.svg"
+    "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
+    "taken_at": "2026-11-03",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0a2d24e2f74e0e1726adb69d99577c3340d094b2/assets/social-preview.svg"
   },
   "screenshots": [
     {
@@ -76,6 +76,42 @@
       "width": 1100,
       "height": 750,
       "digest": "sha256:5bc17a74b89b04ec6d367e9ab9f44f7b2d775f4aa97af2c63c9a3afc30ec74ba"
+    },
+    {
+      "src": "media/Dustline/2026-11-03-boss.webp",
+      "alt": "Dustline screenshot",
+      "caption": "Dustline — 2026 11 03 Boss",
+      "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1100,
+      "height": 750,
+      "digest": "sha256:38335491c1eb4e15a1c84383842705fe461294413cce35c628721e90a6b82ed7",
+      "source": "Dustline:assets/screenshots/2026-11-03-boss.png"
+    },
+    {
+      "src": "media/Dustline/2026-11-03-combat.webp",
+      "alt": "Dustline screenshot",
+      "caption": "Dustline — 2026 11 03 Combat",
+      "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1100,
+      "height": 750,
+      "digest": "sha256:e48ad50788f202564f0f29367548b5208055baca88be98136bf71b9fa496a602",
+      "source": "Dustline:assets/screenshots/2026-11-03-combat.png"
+    },
+    {
+      "src": "media/Dustline/2026-11-03-loadout.webp",
+      "alt": "Dustline screenshot",
+      "caption": "Dustline — 2026 11 03 Loadout",
+      "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
+      "taken_at": "2026-11-03",
+      "viewport": "",
+      "width": 1100,
+      "height": 750,
+      "digest": "sha256:ea0b4d2b4f5085762e3885ae7720527e88d4e0f7cbaffc290fc0c4e086014671",
+      "source": "Dustline:assets/screenshots/2026-11-03-loadout.png"
     }
   ]
 }
