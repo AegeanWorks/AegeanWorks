@@ -1,7 +1,19 @@
 {
   "schema": 2,
   "repo": "NobetWizard",
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "media/NobetWizard/2026-11-03-nobet-app.webp",
+      "alt": "NobetWizard login at 2026-11-03",
+      "caption": "Login gate: language picker, Login and Register tabs, credential fields.",
+      "commit": "f8b591d1b60e40c03e278925935bc5210365a794",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:51565035975c933a10cb300be1fa93b3738f2e597a88cd57f6bdfb8a79381e20"
+    }
+  ],
   "logo": {
     "src": "media/NobetWizard/logo.webp",
     "alt": "NobetWizard logo",
