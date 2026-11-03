@@ -10,7 +10,7 @@
 - **Total Classes**: `6`
 - **Total Top-Level Functions**: `79`
 - **Total Class Methods**: `97`
-- **Total Source Lines**: `3813`
+- **Total Source Lines**: `3834`
 
 ---
 
@@ -19,7 +19,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `1842` lines (`86289` bytes)
+**Size**: `1843` lines (`86305` bytes)
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -153,7 +153,7 @@
 ### [`tools/build_dossier_media.py`](tools/build_dossier_media.py)
 > *Build and verify the dossier media (logo, social preview, screenshots).*
 
-**Size**: `953` lines (`36848` bytes)
+**Size**: `973` lines (`38216` bytes)
 
 **Classes:**
 - `class MediaError`

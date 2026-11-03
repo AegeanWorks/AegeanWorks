@@ -806,13 +806,33 @@ def command_check(args: argparse.Namespace) -> int:
             if kind == "logo" and entry.get("generated"):
                 problems.append(f"{name}: logo is a fallback placeholder card, not authentic project artwork")
         for index, shot in enumerate(manifest.get("screenshots", [])):
-            src = shot.get("src", "") if isinstance(shot, dict) else ""
+            if not isinstance(shot, dict):
+                problems.append(f"{name}: screenshot {index} is not an object")
+                continue
+            src = shot.get("src", "")
             if (
                 not src.startswith(f"media/{name}/")
                 or not (ROOT / "docs" / src).exists()
                 or not exact_path(src)
             ):
                 problems.append(f"{name}: screenshot {index} file is missing: {src!r}")
+                continue
+            data = (ROOT / "docs" / src).read_bytes()
+            if not DIGEST.fullmatch(str(shot.get("digest", ""))):
+                problems.append(f"{name}: screenshot {index} digest is missing or malformed: {src!r}")
+            elif digest(data) != shot.get("digest"):
+                problems.append(f"{name}: screenshot {index} digest does not match {src}")
+            try:
+                _fmt, width, height = image_facts(data)
+            except MediaError as error:
+                problems.append(f"{name}: screenshot {index} is not a readable image ({error})")
+                continue
+            if (width, height) != (shot.get("width"), shot.get("height")):
+                problems.append(f"{name}: screenshot {index} size is {width}x{height}, manifest says {shot.get('width')}x{shot.get('height')}")
+            if shot.get("commit") and not COMMIT.fullmatch(str(shot["commit"])):
+                problems.append(f"{name}: screenshot {index} commit is not a SHA: {shot['commit']!r}")
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(shot.get("taken_at", ""))):
+                problems.append(f"{name}: screenshot {index} taken_at is not a date")
     known = {repo["name"].lower() for repo in load_repos()}
     for extra in sorted(MEDIA.glob("*.json")):
         if extra.name != "logos.json" and extra.stem.lower() not in known:
@@ -888,7 +908,7 @@ def command_ingest(args: argparse.Namespace) -> int:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
         print("--date must be YYYY-MM-DD.", file=sys.stderr)
         return 2
-    slug = safe_slug(Path(args.file).stem)
+    slug = re.sub(r"^(\d{4}-\d{2}-\d{2}-)+", "", safe_slug(Path(args.file).stem)) or "capture"
     relative = f"media/{name}/{date}-{slug}.{fmt}"
     write_atomic(ROOT / "docs" / relative, payload)
     manifest = read_manifest(name)

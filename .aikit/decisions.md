@@ -461,3 +461,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Context**: The README showed only the 2026-10-28 home capture; the live catalog (the dossier's public face) had no proof.
 - **Decision**: Register `2026-11-03-home.png` (studio home) and `2026-11-03-live.png` (live catalog with runnable app cards) from plain `http.server` on `docs/`, viewport 1440x900, commit `456af0e`, in `.aikit/media.json` and the README `aegean:screenshots` block. Card copy staleness (Weft chamber count, Tessera version) is a content follow-up, explicitly not this change.
 - **Consequences**: README proves home and catalog together. Reproduce with the serve plus headless `--screenshot` of `/` and `/live.html`.
+
+### ADR-061: Screenshots carry digests and ingest never double-dates
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: `tools/build_dossier_media.py check` verified logo and preview digests but only checked that screenshot files exist, so six `2026-10-28` PNG captures carried no digest and any byte drift passed silently. `command ingest` also built `media/<Repo>/<date>-<slug>` from the raw source stem, so a source file that already started with its capture date (`2026-11-02-board.png`) produced `2026-11-02-2026-11-02-board.webp` (Fold x2, Crypt-Crawler x1 from the same pattern).
+- **Decision**: `check` now verifies every screenshot the same way it verifies logos: digest must be well-formed and match the file bytes, dimensions must match `image_facts`, commit must be a 7-40 hex SHA when present, and `taken_at` must be a calendar date; backfill the six legacy PNG digests. `command ingest` strips leading `YYYY-MM-DD-` runs from the slug before prepending the capture date, mirroring `add_screenshots`.
+- **Consequences**: `python tools/build_dossier_media.py check` fails on a corrupted or undigested capture instead of passing, and future ingests keep single-date names. Existing double-date paths stay valid because the manifest is the source of truth; no file renames were needed.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (evidence over claims), PRINCIPLE-014 (regression coverage) and PRINCIPLE-016 (code and knowledge in one change).

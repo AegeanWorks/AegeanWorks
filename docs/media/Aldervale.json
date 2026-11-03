@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:388c5d0de45b7173b6e8b75fc2c0f436ee62d070e29df2cd531ae10d6980456f"
     },
     {
       "src": "media/Aldervale/2026-11-03-aldervale-studio.webp",

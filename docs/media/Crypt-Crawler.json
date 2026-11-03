@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:ba8f935913b5ef1dd4da1baa74da4d5210cf138c89b50db35da0b06e027f5df0"
     },
     {
       "src": "media/Crypt-Crawler/2026-10-30-dungeon.webp",

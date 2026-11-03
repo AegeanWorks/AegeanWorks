@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:fdf358ffc06e5e4e58b7c7865b67485a58290247c81916c2df89b6fc1e80be8a"
     },
     {
       "src": "media/PNN/2026-11-03-pnn-studio.webp",

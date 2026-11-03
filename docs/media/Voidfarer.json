@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:37baf6dc8716c809b395eb0c958c8c90c37690263fafe04c64d1cd23b53f81c1"
     },
     {
       "src": "media/Voidfarer/2026-10-30-slots.webp",

@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:e7a907fa50e0df38a7fa861af6ef898299a86750bb08d682757755659d613379"
     },
     {
       "src": "media/Cyberpulse/2026-11-03-cyber-menu.webp",

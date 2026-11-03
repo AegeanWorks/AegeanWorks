@@ -10,7 +10,8 @@
       "taken_at": "2026-10-28",
       "viewport": "1440x900",
       "width": 1440,
-      "height": 900
+      "height": 900,
+      "digest": "sha256:c6913da18987a387085866152a962dbe821f8f158a8c7f384033d0f2364bbe56"
     },
     {
       "src": "media/Prism-Relay/2026-10-30-title.webp",
