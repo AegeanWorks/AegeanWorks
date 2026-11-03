@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `6`
-- **Total Classes**: `6`
-- **Total Top-Level Functions**: `79`
-- **Total Class Methods**: `97`
-- **Total Source Lines**: `3834`
+- **Total Python Modules**: `23`
+- **Total Classes**: `27`
+- **Total Top-Level Functions**: `134`
+- **Total Class Methods**: `135`
+- **Total Source Lines**: `5074`
 
 ---
 
@@ -123,6 +123,63 @@
 
 ---
 
+### [`tests/test_social_manager.py`](tests/test_social_manager.py)
+> *Tests for the AegeanWorks social manager (tools/social/).*
+
+**Size**: `322` lines (`14154` bytes)
+
+**Classes:**
+- `class DisclosureTests`
+  - Method `.test_copy_pinned()`
+  - Method `.test_marker_applied_and_detected()`
+- `class TopicGateTests`
+  - Method `.test_allowlist_matches_public_repos()`
+  - Method `.test_off_topic_blocked()`
+  - Method `.test_draft_blocks_off_topic()`
+- `class EvidenceTests`
+  - Method `.test_bad_commit_blocked()`
+  - Method `.test_missing_data_file_blocked()`
+  - Method `.test_red_suite_blocked()`
+- `class MediaPipelineTests`
+  - Method `.test_capture_records_provenance()`
+  - Method `.test_recycled_screenshot_blocked()`
+  - Method `.test_capture_bad_commit_blocked()`
+  - Method `.test_chart_requires_units()`
+  - Method `.test_chart_blocks_cherry_pick()`
+  - Method `.test_chart_blocks_truncated_axis()`
+  - Method `.test_chart_deterministic()`
+  - Method `.test_compose_burns_provenance_and_ai_mark()`
+  - Method `.test_compose_blocks_missing_provenance()`
+  - Method `.test_provenance_verify()`
+- `class DraftQueueTests`
+  - Method `.test_text_only_visual_subject_blocked()`
+  - Method `.test_provenance_free_visual_blocked()`
+  - Method `.test_draft_unapproved_by_default()`
+  - Method `.test_publish_blocks_unapproved()`
+  - Method `.test_publish_mock_roundtrip_and_idempotency()`
+  - Method `.test_live_blocked_without_flag()`
+  - Method `.test_rephrased_repost_blocked()`
+  - Method `.test_exact_duplicate_blocked()`
+- `class CadenceTests`
+  - Method `.test_caps_enforced()`
+- `class ProfileTests`
+  - Method `.test_profile_change_needs_approval()`
+- `class ContextTests`
+  - Method `.test_context_from_repo_sources()`
+  - Method `.test_context_off_topic_blocked()`
+- `class SecretBoundaryTests`
+  - Method `.test_no_credential_values_in_module_or_tests()`
+  - Method `.test_credentials_env_only()`
+- `class SiteDisclosureTests`
+  - Method `.test_site_notice_on_every_shared_footer()`
+  - Method `.test_privacy_names_ai_operation()`
+
+**Functions:**
+- `def visual_fixture(**over)`
+- `def draft_record(state, text, repo)`
+
+---
+
 ### [`tests/test_sync_editor_digest.py`](tests/test_sync_editor_digest.py)
 **Size**: `57` lines (`2114` bytes)
 
@@ -197,6 +254,236 @@
 - `def safe_slug(value)`
 - `def command_ingest(args)`
 - `def main(argv)`
+
+---
+
+### [`tools/social/__init__.py`](tools/social/__init__.py)
+> *AegeanWorks social manager: posts about the works of AegeanWorks on X.*
+
+**Size**: `10` lines (`319` bytes)
+
+---
+
+### [`tools/social/context.py`](tools/social/context.py)
+> *Post context built only from in-repo sources (atlas, dossiers, live builds).*
+
+**Size**: `39` lines (`1548` bytes)
+
+**Functions:**
+- `def _read_json(relative)`
+- `def load_context(repo)` - *Assemble the verified context for a repo; raises on off-topic.*
+
+---
+
+### [`tools/social/disclosure.py`](tools/social/disclosure.py)
+> *Disclosure copy loader + marker application (un-droppable by construction).*
+
+**Size**: `50` lines (`1302` bytes)
+
+**Functions:**
+- `def load_disclosure()` - *Read the reviewed disclosure copy.*
+- `def bio_text()` - *Exact X bio stating AI operation.*
+- `def site_notice()` - *Exact website AI-run notice.*
+- `def post_marker()` - *Consistent per-post automation marker.*
+- `def ai_mark()` - *Made-by-AI mark burned into generated infographics.*
+- `def apply_marker(text)` - *Append the automation marker unless already present.*
+- `def has_marker(text)` - *True when the automation marker is present.*
+
+---
+
+### [`tools/social/draft.py`](tools/social/draft.py)
+> *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
+
+**Size**: `62` lines (`2496` bytes)
+
+**Classes:**
+- `class DraftError` - *Raised when a draft cannot be built.*
+
+**Functions:**
+- `def build_post(repo, text, kind, commit, data_file, suite_ok, visual, run_id, date, state_dir, existing_texts)` - *Build, gate and queue a draft; returns the queue record (unapproved).*
+
+---
+
+### [`tools/social/evidence.py`](tools/social/evidence.py)
+> *Verified-state gate: every post traces to a verified repo state.*
+
+**Size**: `55` lines (`1905` bytes)
+
+**Classes:**
+- `class UnverifiedError` - *Raised when evidence does not support a post.*
+
+**Functions:**
+- `def check_commit(commit)` - *Validate a 7-40 hex commit SHA.*
+- `def check_data_file(relative)` - *Validate that the cited data file exists inside the repo.*
+- `def require_evidence(repo, commit, data_file, suite_ok)` - *Return the evidence record or raise UnverifiedError.*
+
+---
+
+### [`tools/social/media_capture.py`](tools/social/media_capture.py)
+> *Fresh screenshot capture with ingest-equivalent provenance semantics.*
+
+**Size**: `111` lines (`4130` bytes)
+
+**Classes:**
+- `class CaptureError` - *Raised when a capture cannot prove what it shows.*
+
+**Functions:**
+- `def digest(data)` - *SHA-256 digest in the house format.*
+- `def image_size(data)` - *Return (width, height) for PNG/JPEG/WebP without decoding pixels.*
+- `def record_capture(raw, repo, commit, viewport, known_digests, taken_at)` - *Validate raw pixels and return the capture manifest entry (no file I/O).*
+- `def save_capture(raw, dest, entry)` - *Write pixels atomically and fill in src; mirrors the house writer.*
+
+---
+
+### [`tools/social/media_chart.py`](tools/social/media_chart.py)
+> *Plotted data from measured numbers (stdlib SVG; Pillow PNG optional).*
+
+**Size**: `116` lines (`4720` bytes)
+
+**Classes:**
+- `class ChartError` - *Raised when a chart would mislead.*
+
+**Functions:**
+- `def load_series(data_file, rows)` - *Assert rows match the cited series file row-for-row (no cherry-pick).*
+- `def render_svg(title, unit, rows, run_id, commit, broken_axis)` - *Render a deterministic bar chart SVG with provenance baked in.*
+- `def svg_digest(svg)` - *Deterministic digest so audits can re-plot and compare.*
+- `def render_png(svg, dest, title)` - *Rasterize the chart deterministically via Pillow (maintenance step).*
+
+---
+
+### [`tools/social/media_compose.py`](tools/social/media_compose.py)
+> *Infographic composer: title + numbers + provenance footer + AI mark.*
+
+**Size**: `47` lines (`1802` bytes)
+
+**Functions:**
+- `def compose_svg(title, lines, run_id, commit, data_file, date, ai_mark)` - *Compose the infographic SVG; raises if any provenance slot is empty.*
+- `def svg_digest(svg)` - *Deterministic digest for audit comparison.*
+
+---
+
+### [`tools/social/profile.py`](tools/social/profile.py)
+> *Profile maintenance: bio + site-notice proposals, approval-gated like posts.*
+
+**Size**: `25` lines (`1013` bytes)
+
+**Functions:**
+- `def propose_bio()` - *Return the reviewed bio proposal (apply on X by hand).*
+- `def propose_site_notice()` - *Return the reviewed site-notice proposal (applied to the shared footer).*
+- `def apply_profile_change(change, record)` - *Apply a bio/site-notice change only with explicit human approval.*
+
+---
+
+### [`tools/social/provenance.py`](tools/social/provenance.py)
+> *Provenance stamp + sidecar + verify (re-capture / re-plot audit).*
+
+**Size**: `65` lines (`2276` bytes)
+
+**Classes:**
+- `class ProvenanceError` - *Raised when a visual cannot prove its run.*
+
+**Functions:**
+- `def stamp(run_id, commit, data_file, date)` - *Return the provenance footer string burned into every visual.*
+- `def sidecar(src, digest_value, run_id, commit, data_file, produced_at)` - *Return the visual sidecar record.*
+- `def verify_digest(payload, expected)` - *Raise unless the payload digest equals the recorded digest.*
+- `def write_sidecar(path, record)` - *Write the sidecar JSON atomically.*
+
+---
+
+### [`tools/social/publish.py`](tools/social/publish.py)
+> *Publishing: approval-gated, marker-asserted, topic re-checked, idempotent.*
+
+**Size**: `41` lines (`1699` bytes)
+
+**Classes:**
+- `class PublishError` - *Raised when publishing is blocked.*
+
+**Functions:**
+- `def publish(draft_id, state_dir, transport, published_hashes)` - *Publish a queued draft; default transport is the dry-run mock.*
+
+---
+
+### [`tools/social/queue.py`](tools/social/queue.py)
+> *File-backed draft queue. Drafts are unapproved by default; approval is explicit.*
+
+**Size**: `99` lines (`3426` bytes)
+
+**Classes:**
+- `class QueueError` - *Raised for unknown drafts or bad approvals.*
+
+**Functions:**
+- `def _state_dir(state_dir)`
+- `def _path(state_dir)`
+- `def _read(state_dir)`
+- `def _write(state_dir, data)`
+- `def add_draft(draft, state_dir)` - *Store a draft as unapproved and return it with its id.*
+- `def approve(draft_id, approver, state_dir)` - *Mark a draft human-approved; approver name is required.*
+- `def get(draft_id, state_dir)` - *Return one draft record or raise.*
+- `def require_approval(record)` - *Raise unless the record carries explicit human approval.*
+
+---
+
+### [`tools/social/secrets.py`](tools/social/secrets.py)
+> *Environment-only credential loader. No defaults, no logging, no disk reads.*
+
+**Size**: `29` lines (`924` bytes)
+
+**Classes:**
+- `class MissingCredentialsError` - *Raised when live credentials are absent.*
+
+**Functions:**
+- `def load_x_credentials()` - *Return live X credentials from the environment or raise.*
+- `def live_enabled()` - *True only when the explicit live flag is set.*
+
+---
+
+### [`tools/social/spam_guard.py`](tools/social/spam_guard.py)
+> *Spam guards: cadence caps, exact-hash duplicates, similarity near-dupes.*
+
+**Size**: `85` lines (`3049` bytes)
+
+**Functions:**
+- `def load_cadence()` - *Read the reviewed cadence rules.*
+- `def normalize(text)` - *Lowercase, strip the automation marker, collapse whitespace.*
+- `def content_hash(text)` - *Exact-duplicate identity (marker-insensitive).*
+- `def _tokens(text)`
+- `def jaccard(left, right)` - *Token Jaccard similarity in [0, 1].*
+- `def levenshtein_ratio(left, right)` - *Normalized similarity from edit distance (bounded inputs only).*
+- `def is_near_duplicate(left, right, rules)` - *True when a rephrased repost would slip past exact hashing.*
+- `def cadence_ok(published_at, now, rules)` - *Enforce max/day, min gap, quiet hours and max/week.*
+
+---
+
+### [`tools/social/topic_gate.py`](tools/social/topic_gate.py)
+> *On-topic gate: a post is publishable only if it is about an AegeanWorks work.*
+
+**Size**: `43` lines (`1535` bytes)
+
+**Classes:**
+- `class OffTopicError` - *Raised when a subject is not an AegeanWorks work.*
+
+**Functions:**
+- `def load_works()` - *Return the lower-cased set of catalogue repository names.*
+- `def is_on_topic(subject)` - *True when the subject names an AegeanWorks work (case-insensitive).*
+- `def require_on_topic(subject)` - *Return the canonical subject or raise OffTopicError.*
+
+---
+
+### [`tools/social/x_client.py`](tools/social/x_client.py)
+> *Thin X API client: mock transport by default, live only if explicitly enabled.*
+
+**Size**: `41` lines (`1664` bytes)
+
+**Classes:**
+- `class MockTransport` - *Dry-run transport: records posts, publishes nothing.*
+  - Method `.__init__()`
+  - Method `.post(text, idempotency_key, media)` - *Record a post and return a mock receipt.*
+- `class LiveTransport` - *Real transport placeholder: enabled only with env credentials + live flag.*
+  - Method `.__init__(credentials)`
+  - Method `.post(text, idempotency_key, media)` - *Live posting is implemented when a human approves a live test.*
+
+**Functions:**
+- `def idempotency_key(text, visual_digest)` - *Idempotency key binding text to its visual.*
 
 ---
 

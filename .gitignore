@@ -7,3 +7,5 @@
 __pycache__/
 *.py[cod]
 node_modules/
+# Social manager runtime state (drafts, approvals, receipts stay local)
+tools/social/state/

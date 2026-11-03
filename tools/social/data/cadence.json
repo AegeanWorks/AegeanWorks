@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "max_posts_per_day": 2,
+  "min_gap_hours": 6,
+  "max_posts_per_week": 5,
+  "quiet_hours_utc": [0, 8],
+  "near_duplicate_jaccard": 0.82,
+  "near_duplicate_levenshtein": 0.85
+}
