@@ -549,3 +549,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: drive() now waits for media upload (tweetPhoto) before clicking, then waits up to 30s for X "sent" confirmation; receipt live=posted only when the confirmation is seen, and a new test proves an unconfirmed click claims nothing. Retries pre-flight the profile to refuse duplicates.
 - **Consequences**: A click without confirmation is reported as unposted, never as published. First tweet re-driven under the fixed transport.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (no unverified claims) and PRINCIPLE-014 (regression test first).
+
+### ADR-072: Automation refuses ugly visuals; AI judges plug in later
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The first studio wall collage shipped stretched tiles (1200x600 squeezed into 588x248, 8% drift). Owner requires aesthetic visuals and AI image analysis before tweeting.
+- **Decision**: Add tools/social/media_review.py: dimensions floor, no-stretch assertion, edge-energy sharpness (>=2.0, calibrated 8.65 sharp vs 0.8 blurred), sane file size. drive() pixel-reviews every attachment and refuses the click on failure; prepare() ships the report for human judgment. register_reviewer(name, fn) runs extra judges after heuristics: the seam where a vision-model reviewer plugs in once the owner provides its endpoint. Builders use crop-to-fill exclusively.
+- **Consequences**: Ugly cannot ship through automation; a human may still override by hand with eyes open. AI review/creation waits on an endpoint, not a bare key.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (measured bar), PRINCIPLE-009 (pluggable reviewer) and PRINCIPLE-014 (9 blocking tests).

@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `25`
-- **Total Classes**: `31`
-- **Total Top-Level Functions**: `138`
-- **Total Class Methods**: `158`
-- **Total Source Lines**: `5451`
+- **Total Python Modules**: `27`
+- **Total Classes**: `35`
+- **Total Top-Level Functions**: `145`
+- **Total Class Methods**: `173`
+- **Total Source Lines**: `5699`
 
 ---
 
@@ -210,6 +210,37 @@
 
 ---
 
+### [`tests/test_social_review.py`](tests/test_social_review.py)
+> *Tests for the aesthetic review gate (tools/social/media_review.py).*
+
+**Size**: `132` lines (`5193` bytes)
+
+**Classes:**
+- `class FakePage`
+  - Method `.__init__()`
+  - Method `.goto(url)`
+  - Method `.fill_composer(text)`
+  - Method `.attach_media(paths)`
+  - Method `.click_post()`
+  - Method `.confirm_posted()`
+- `class ReviewTests`
+  - Method `.test_sharp_passes()`
+  - Method `.test_blurry_blocked()`
+  - Method `.test_tiny_blocked()`
+  - Method `.test_non_raster_blocked()`
+  - Method `.test_distortion_blocked()`
+  - Method `.test_proportional_ok()`
+  - Method `.test_pluggable_reviewer()`
+- `class DriveReviewTests`
+  - Method `.test_drive_blocks_ugly_attachment()`
+  - Method `.test_drive_attaches_reviewed_visual()`
+
+**Functions:**
+- `def make_png(path, width, height, blur)`
+- `def visual_for(src)`
+
+---
+
 ### [`tests/test_sync_editor_digest.py`](tests/test_sync_editor_digest.py)
 **Size**: `57` lines (`2114` bytes)
 
@@ -297,7 +328,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `187` lines (`7622` bytes)
+**Size**: `198` lines (`8199` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -412,6 +443,23 @@
 **Functions:**
 - `def compose_svg(title, lines, run_id, commit, data_file, date, ai_mark)` - *Compose the infographic SVG; raises if any provenance slot is empty.*
 - `def svg_digest(svg)` - *Deterministic digest for audit comparison.*
+
+---
+
+### [`tools/social/media_review.py`](tools/social/media_review.py)
+> *Aesthetic review: no ugly visual ships through automation.*
+
+**Size**: `105` lines (`3801` bytes)
+
+**Classes:**
+- `class ReviewError` - *Raised when a visual fails aesthetic review.*
+
+**Functions:**
+- `def register_reviewer(name, fn)` - *Add an extra judge (e.g. a vision model) run after the heuristics.*
+- `def edge_energy(raw)` - *Mean FIND_EDGES response on a downscaled luminance copy.*
+- `def assert_no_distortion(src_size, dst_size)` - *Fail when a resize stretches content (crop-to-fill instead).*
+- `def review_bytes(raw, kind)` - *Review pixels; return the report or raise ReviewError.*
+- `def review_file(path)` - *Review a visual file by path.*
 
 ---
 

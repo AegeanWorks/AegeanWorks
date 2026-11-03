@@ -56,17 +56,25 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
     text = record["draft"]["text"]
     (dest / "post.txt").write_text(text + "\n", encoding="utf-8")
     media: list[str] = []
+    reviews: dict[str, dict] = {}
     visual = record["draft"].get("visual") or {}
     src = visual.get("src", "")
     if src and Path(src).is_file():
         target = dest / Path(src).name
         shutil.copyfile(src, target)
         media.append(target.name)
+        from . import media_review  # noqa: PLC0415 - report travels with the package
+
+        try:
+            reviews[target.name] = media_review.review_file(src)
+        except Exception as error:  # noqa: BLE001 - human path reports, automation blocks
+            reviews[target.name] = {"aesthetic": f"flagged: {error}".split(chr(10))[0]}
     manifest = {
         "draft_id": record["id"],
         "repo": record["draft"]["repo"],
         "text_file": "post.txt",
         "media": media,
+        "review": reviews,
         "visual_digest": visual.get("digest", ""),
         "approved_by": record["approver"],
         "approved_at": record["approved_at"],
@@ -97,6 +105,9 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
     if src:
         if not Path(src).is_file():
             raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
+        from . import media_review  # noqa: PLC0415 - review at the last responsible moment
+
+        media_review.review_file(src)  # automation never ships an ugly visual
         attached = page.attach_media([src])
     clicked = False
     posted = False

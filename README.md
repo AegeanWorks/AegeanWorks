@@ -305,6 +305,7 @@ AegeanWorks/
     ├── test_profile.py      <- Content, metadata and link integrity tests
     ├── test_social_manager.py <- Social gates: topic, evidence, media, spam, approval
     ├── test_social_browser.py <- Browser publish: package, compose-only, armed click
+    ├── test_social_review.py <- Aesthetic review: distortion, size, sharpness blocks
     ├── test_sync_live_digest.py <- Live build digest and retention tests
     ├── test_sync_editor_digest.py <- Editor line-ending and binary digest tests
     ├── live/
