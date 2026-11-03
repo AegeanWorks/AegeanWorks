@@ -541,3 +541,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Bio ends with "Posts here are written by AI." Site notice on all 7 footers plus privacy reads "Posts on @AegeanWorks are written by AI." The banned-phrase test now also rejects "run by ai" and "operated by ai" in post-facing copy. Infographic "Made by AI" burn-in stays: the images are social content.
 - **Consequences**: No reader can mistake the works for AI output; no post carries boilerplate, emojis, numbers-by-fiat, links or approval prose. Approval stays code-enforced but unadvertised.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims match reality) and PRINCIPLE-014 (tests updated first).
+
+### ADR-071: The browser claims posted only on X confirmation
+- **Date**: 2026-11-03
+- **Status**: Accepted
+- **Context**: The first live drive clicked Post and returned live=true, but the profile showed 0 posts: the browser was closed before X finished, and nothing waited for the sent confirmation.
+- **Decision**: drive() now waits for media upload (tweetPhoto) before clicking, then waits up to 30s for X "sent" confirmation; receipt live=posted only when the confirmation is seen, and a new test proves an unconfirmed click claims nothing. Retries pre-flight the profile to refuse duplicates.
+- **Consequences**: A click without confirmation is reported as unposted, never as published. First tweet re-driven under the fixed transport.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (no unverified claims) and PRINCIPLE-014 (regression test first).

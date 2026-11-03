@@ -26,12 +26,13 @@ DATA_FILE = "docs/live.json"
 class FakePage:
     """Minimal page adapter double: records calls, never clicks by itself."""
 
-    def __init__(self, echo_ok: bool = True) -> None:
+    def __init__(self, echo_ok: bool = True, confirmed: bool = True) -> None:
         self.calls: list = []
         self.composed = ""
         self.media: list[str] = []
         self.clicks = 0
         self.echo_ok = echo_ok
+        self.confirmed = confirmed
 
     def goto(self, url: str) -> None:
         self.calls.append(("goto", url))
@@ -49,6 +50,10 @@ class FakePage:
     def click_post(self) -> None:
         self.calls.append(("click",))
         self.clicks += 1
+
+    def confirm_posted(self) -> bool:
+        self.calls.append(("confirm",))
+        return self.confirmed
 
 
 def approved_draft(state: str, text: str = "AIKit dossier carries its social card") -> dict:
@@ -128,6 +133,22 @@ class BrowserPostTests(unittest.TestCase):
             record = approved_draft(state)
             with self.assertRaises(browser_post.BrowserError):
                 browser_post.drive(FakePage(echo_ok=False), record["id"], state)
+
+    def test_drive_unconfirmed_click_claims_nothing(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            page = FakePage(confirmed=False)
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                result = browser_post.drive(page, record["id"], state, final_click=True)
+                self.assertTrue(result["clicked"])
+                self.assertFalse(result["posted"])
+                self.assertFalse(result["receipt"]["live"])
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
 
     def test_drive_missing_visual_file_blocked(self):
         with tempfile.TemporaryDirectory() as state:

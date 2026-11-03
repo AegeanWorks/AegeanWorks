@@ -87,7 +87,7 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
     visual = record["draft"].get("visual") or {}
     page.goto(X_HOME)
     echoed = page.fill_composer(text)
-    if echoed != text:
+    if echoed.strip() != text.strip():
         raise BrowserError(
             "Why: composer echo differs from the approved text; the page may have altered it.\n"
             "Fix: abort, keep the approved draft byte-identical."
@@ -99,6 +99,7 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
             raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
         attached = page.attach_media([src])
     clicked = False
+    posted = False
     if final_click:
         if os.environ.get("AEGEAN_SOCIAL_BROWSER") != "1":
             raise BrowserError(
@@ -107,12 +108,14 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
             )
         page.click_post()
         clicked = True
+        posted = page.confirm_posted()
     return {
         "draft_id": record["id"],
         "composed": True,
         "media_attached": attached,
         "clicked": clicked,
-        "receipt": {"mode": "browser", "clicked": clicked, "live": clicked},
+        "posted": posted,
+        "receipt": {"mode": "browser", "clicked": clicked, "live": posted},
     }
 
 
@@ -138,12 +141,11 @@ class PlaywrightPage:
     def _first(self, test_ids: tuple[str, ...]):
         failures: list[str] = []
         for test_id in test_ids:
-            locator = self._page.get_by_test_id(test_id)
             try:
-                if locator.count() > 0:
-                    return locator.first
+                self._page.wait_for_selector(f'[data-testid="{test_id}"]', timeout=20000)
+                return self._page.get_by_test_id(test_id).first
             except Exception as error:  # noqa: BLE001 - selector probe; every failure is reported below
-                failures.append(f"{test_id}: {error}")
+                failures.append(f"{test_id}: {error}".split("Call log")[0][:200])
                 continue
         raise BrowserError(
             f"Why: x.com composer element not found (tried {', '.join(test_ids)}); the page markup moved.\n"
@@ -155,12 +157,31 @@ class PlaywrightPage:
         box = self._first(self.COMPOSER_IDS)
         box.click()
         box.fill(text)
-        return box.input_value() if hasattr(box, "input_value") else box.inner_text()
+        try:
+            echoed = box.input_value()
+        except Exception:  # noqa: BLE001 - rich-text editors expose inner_text instead
+            echoed = box.inner_text()
+        return echoed.strip()
 
     def attach_media(self, paths: list[str]) -> list[str]:
         picker = self._first(self.FILE_IDS)
         picker.set_input_files(paths)
+        try:
+            self._page.wait_for_selector('[data-testid="tweetPhoto"]', timeout=20000)
+        except Exception as error:  # noqa: BLE001 - upload never completed
+            raise BrowserError(
+                f"Why: attached media never appeared in the composer: {error}.\n"
+                "Fix: retry; if it persists, post text-only through a new approved draft."
+            ) from error
         return [Path(path).name for path in paths]
+
+    def confirm_posted(self, timeout_ms: int = 30000) -> bool:
+        """True only when X shows the sent confirmation; never assume."""
+        try:
+            self._page.get_by_text("Your post was sent", exact=False).wait_for(timeout=timeout_ms)
+            return True
+        except Exception:  # noqa: BLE001 - no confirmation, no claim
+            return False
 
     def click_post(self) -> None:
         self._first(self.POST_IDS).click()

@@ -9,8 +9,8 @@
 - **Total Python Modules**: `25`
 - **Total Classes**: `31`
 - **Total Top-Level Functions**: `138`
-- **Total Class Methods**: `155`
-- **Total Source Lines**: `5409`
+- **Total Class Methods**: `158`
+- **Total Source Lines**: `5451`
 
 ---
 
@@ -126,15 +126,16 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `146` lines (`5953` bytes)
+**Size**: `167` lines (`6908` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
-  - Method `.__init__(echo_ok)`
+  - Method `.__init__(echo_ok, confirmed)`
   - Method `.goto(url)`
   - Method `.fill_composer(text)`
   - Method `.attach_media(paths)`
   - Method `.click_post()`
+  - Method `.confirm_posted()`
 - `class BrowserPostTests`
   - Method `.test_prepare_writes_exact_package()`
   - Method `.test_prepare_needs_approval()`
@@ -142,6 +143,7 @@
   - Method `.test_drive_click_needs_env_flag()`
   - Method `.test_drive_needs_approval()`
   - Method `.test_drive_rejects_mutated_echo()`
+  - Method `.test_drive_unconfirmed_click_claims_nothing()`
   - Method `.test_drive_missing_visual_file_blocked()`
 
 **Functions:**
@@ -295,7 +297,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `166` lines (`6584` bytes)
+**Size**: `187` lines (`7622` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -305,6 +307,7 @@
   - Method `._first(test_ids)`
   - Method `.fill_composer(text)`
   - Method `.attach_media(paths)`
+  - Method `.confirm_posted(timeout_ms)` - *True only when X shows the sent confirmation; never assume.*
   - Method `.click_post()`
 
 **Functions:**
