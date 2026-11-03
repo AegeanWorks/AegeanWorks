@@ -49,6 +49,17 @@
       "height": 820,
       "digest": "sha256:b0c143fee375bf621b6670a913118b9417dae5d6d9a77e8cc39992cdeb6b7275",
       "source": "NeuroCore:screenshots/tools_library.png"
+    },
+    {
+      "src": "media/NeuroCore/2026-11-03-neuro-home.webp",
+      "alt": "NeuroCore dashboard at 2026-11-03",
+      "caption": "Home dashboard: nav, overview counts, quick actions, recent sessions.",
+      "commit": "10ebfa5fefee0c67d48a9fa87113b3631febb842",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:67fcc7fdbe9f57b69283c39fa79bd7ed674b47e6c013d7dbf9493d4cdcef7c83"
     }
   ],
   "logo": {
