@@ -11,6 +11,17 @@
       "viewport": "1440x900",
       "width": 1440,
       "height": 900
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-03-cyber-menu.webp",
+      "alt": "Cyberpulse menu at 2026-11-03",
+      "caption": "Menu: longer briefing, difficulty and allegiance pickers, CONTINUE and DAILY RUN buttons.",
+      "commit": "26693b84b575855e38337d31a3300da27260fc72",
+      "taken_at": "2026-11-03",
+      "viewport": "1440x900",
+      "width": 1200,
+      "height": 750,
+      "digest": "sha256:c5d827afcdbe2c1ce84d2ef465b3461428f09f7bc7b59d003f3c2109faaff0e3"
     }
   ],
   "logo": {
