@@ -108,21 +108,23 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
         )
     attached: list[str] = []
     ai_verdict = "skipped (no key)"
-    src = visual.get("src", "")
-    if src:
-        if not Path(src).is_file():
-            raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
+    srcs = [s for s in [visual.get("src", "")] + list(visual.get("extra_srcs", []) or []) if s]
+    if srcs:
         from . import media_review, meta_image  # noqa: PLC0415 - review at the last responsible moment
 
-        media_review.review_file(src)  # heuristics first, offline and free
+        for src in srcs:
+            if not Path(src).is_file():
+                raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
+            media_review.review_file(src)  # heuristics first, offline and free
         if os.environ.get("MODEL_API_KEY"):
-            ai_verdict = meta_image.ai_review(Path(src).read_bytes())
-            if ai_verdict != "pass":
-                raise BrowserError(
-                    f"Why: AI review {ai_verdict}.\n"
-                    "Fix: regenerate or fix the visual; manual posting via prepare() stays possible."
-                )
-        attached = page.attach_media([src])
+            for src in srcs:
+                ai_verdict = meta_image.ai_review(Path(src).read_bytes())
+                if ai_verdict != "pass":
+                    raise BrowserError(
+                        f"Why: AI review {ai_verdict}.\n"
+                        "Fix: regenerate or fix the visual; manual posting via prepare() stays possible."
+                    )
+        attached = page.attach_media(srcs)
     clicked = False
     posted = False
     if final_click:

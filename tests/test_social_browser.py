@@ -174,6 +174,35 @@ class BrowserPostTests(unittest.TestCase):
             with self.assertRaises(browser_post.BrowserError):
                 browser_post.drive(FakePage(), record["id"], state)
 
+    def test_drive_attaches_multiple_visuals(self):
+        from PIL import Image, ImageDraw  # noqa: PLC0415 - fixture pixels only
+
+        def _png(path: Path) -> Path:
+            image = Image.new("RGB", (1200, 630), (4, 6, 12))
+            draw = ImageDraw.Draw(image)
+            for y in range(40, 590, 24):
+                draw.rectangle([40, y, 1160, y + 10], fill=(103, 232, 249))
+            image.save(path, format="PNG")
+            return path
+
+        with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
+            first = _png(Path(temp) / "one.png")
+            second = _png(Path(temp) / "two.png")
+            visual = {
+                "digest": "sha256:" + "e" * 64, "run": RUN, "commit": COMMIT,
+                "data_file": DATA_FILE, "src": str(first), "extra_srcs": [str(second)],
+            }
+            record = draft.build_post(
+                "AIKit", "AIKit is crash-resilient governance for AI coding agents. Look", "screenshot",
+                COMMIT, DATA_FILE, True, visual, RUN, DATE, state,
+                explainer="AIKit is crash-resilient governance for AI coding agents.",
+            )
+            queue.approve(record["id"], "owner", state)
+            page = FakePage()
+            result = browser_post.drive(page, record["id"], state)
+            self.assertEqual(result["media_attached"], ["one.png", "two.png"])
+            self.assertFalse(result["clicked"])
+
 
 if __name__ == "__main__":
     unittest.main()

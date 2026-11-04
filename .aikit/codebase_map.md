@@ -9,8 +9,8 @@
 - **Total Python Modules**: `28`
 - **Total Classes**: `39`
 - **Total Top-Level Functions**: `151`
-- **Total Class Methods**: `188`
-- **Total Source Lines**: `6078`
+- **Total Class Methods**: `189`
+- **Total Source Lines**: `6109`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `179` lines (`7636` bytes)
+**Size**: `208` lines (`9082` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -146,6 +146,7 @@
   - Method `.test_drive_rejects_mutated_echo()`
   - Method `.test_drive_unconfirmed_click_claims_nothing()`
   - Method `.test_drive_missing_visual_file_blocked()`
+  - Method `.test_drive_attaches_multiple_visuals()`
 
 **Functions:**
 - `def approved_draft(state, text)`
@@ -346,7 +347,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `222` lines (`9658` bytes)
+**Size**: `224` lines (`9812` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
