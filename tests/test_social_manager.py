@@ -243,7 +243,9 @@ class CadenceTests(unittest.TestCase):
     def test_caps_enforced(self):
         ok, _ = spam_guard.cadence_ok([], "2026-11-03T12:00:00+00:00")
         self.assertTrue(ok)
-        ok, why = spam_guard.cadence_ok(["2026-11-03T11:00:00+00:00", "2026-11-03T10:00:00+00:00"], "2026-11-03T12:00:00+00:00")
+        ok, why = spam_guard.cadence_ok(
+            ["2026-11-03T08:00:00+00:00", "2026-11-03T09:00:00+00:00", "2026-11-03T10:00:00+00:00"],
+            "2026-11-03T12:00:00+00:00")
         self.assertFalse(ok)
         self.assertIn("daily", why)
         ok, why = spam_guard.cadence_ok([], "2026-11-03T03:00:00+00:00")
@@ -252,6 +254,21 @@ class CadenceTests(unittest.TestCase):
         ok, why = spam_guard.cadence_ok(["2026-11-03T11:30:00+00:00"], "2026-11-03T12:00:00+00:00")
         self.assertFalse(ok)
         self.assertIn("gap", why)
+
+    def test_three_daily_slots_pass(self):
+        day = "2026-11-03"
+        ok, _ = spam_guard.cadence_ok([], f"{day}T12:00:00+03:00")
+        self.assertTrue(ok)
+        ok, _ = spam_guard.cadence_ok([f"{day}T12:00:00+03:00"], f"{day}T17:00:00+03:00")
+        self.assertTrue(ok)
+        ok, _ = spam_guard.cadence_ok(
+            [f"{day}T12:00:00+03:00", f"{day}T17:00:00+03:00"], f"{day}T21:00:00+03:00")
+        self.assertTrue(ok)
+        ok, why = spam_guard.cadence_ok(
+            [f"{day}T12:00:00+03:00", f"{day}T17:00:00+03:00", f"{day}T21:00:00+03:00"],
+            f"{day}T22:00:00+03:00")
+        self.assertFalse(ok)
+        self.assertIn("daily", why)
 
 
 class ProfileTests(unittest.TestCase):

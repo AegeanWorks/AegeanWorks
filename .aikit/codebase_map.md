@@ -9,8 +9,8 @@
 - **Total Python Modules**: `28`
 - **Total Classes**: `38`
 - **Total Top-Level Functions**: `149`
-- **Total Class Methods**: `183`
-- **Total Source Lines**: `5972`
+- **Total Class Methods**: `184`
+- **Total Source Lines**: `5989`
 
 ---
 
@@ -154,7 +154,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `341` lines (`15058` bytes)
+**Size**: `358` lines (`15784` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -192,6 +192,7 @@
   - Method `.test_exact_duplicate_blocked()`
 - `class CadenceTests`
   - Method `.test_caps_enforced()`
+  - Method `.test_three_daily_slots_pass()`
 - `class ProfileTests`
   - Method `.test_profile_change_needs_approval()`
 - `class ContextTests`
