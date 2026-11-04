@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Keystone",
+  "logo": {
+    "src": "media/Keystone/logo.svg",
+    "alt": "Keystone logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:76edc78d6173191f2fdb198d84a222e2152fd491e29e73634513739f91a9eddd",
+    "commit": "f653b6482df36b4a861bb60668e60f9f8a927a0c",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/f653b6482df36b4a861bb60668e60f9f8a927a0c/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Keystone/social-preview.svg",
+    "alt": "Keystone social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:52828b51e2aadbcc7367c93d0e8bdc4d3ee99bbe3aab92f51b06a38c3ff8c779",
+    "commit": "f653b6482df36b4a861bb60668e60f9f8a927a0c",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/f653b6482df36b4a861bb60668e60f9f8a927a0c/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

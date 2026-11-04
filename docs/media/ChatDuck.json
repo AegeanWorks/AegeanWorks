@@ -1,8 +1,8 @@
 {
   "schema": 2,
-  "repo": "Chatduck",
+  "repo": "ChatDuck",
   "logo": {
-    "src": "media/Chatduck/logo.svg",
+    "src": "media/ChatDuck/logo.svg",
     "alt": "Chatduck logo",
     "width": 512,
     "height": 512,
@@ -12,7 +12,7 @@
     "source": "https://raw.githubusercontent.com/AegeanWorks/Chatduck/0d2dc697acff9d78aa747b4aeb6c0c8fd24164e4/assets/logo.svg"
   },
   "preview": {
-    "src": "media/Chatduck/social-preview.svg",
+    "src": "media/ChatDuck/social-preview.svg",
     "alt": "Chatduck social preview",
     "width": 1280,
     "height": 640,
@@ -23,7 +23,7 @@
   },
   "screenshots": [
     {
-      "src": "media/Chatduck/2026-11-03-chatduck-chat.webp",
+      "src": "media/ChatDuck/2026-11-03-chatduck-chat.webp",
       "alt": "ChatDuck new chat at 2026-11-03",
       "caption": "Fresh chat with no model server running: empty library, suggestion cards, composer; sidebar shows Offline.",
       "commit": "f2c1c0b47c93884e396eac44c5ba1f5173c8bf42",
@@ -34,7 +34,7 @@
       "digest": "sha256:9eb4d8817ed8a8b9fdb7c1a20610c3d135301c472f61241063e442432ba5c6ed"
     },
     {
-      "src": "media/Chatduck/2026-11-03-chatduck-settings.webp",
+      "src": "media/ChatDuck/2026-11-03-chatduck-settings.webp",
       "alt": "ChatDuck settings at 2026-11-03",
       "caption": "After opening Settings: server URL, API key, model, system preset and prompt, sampling controls, library backup and clear.",
       "commit": "f2c1c0b47c93884e396eac44c5ba1f5173c8bf42",

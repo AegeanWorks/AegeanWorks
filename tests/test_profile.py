@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_REPOS = {
     "Aegean-Licensing",
     "Pocket-Planner",
-    "Modelduck",
+    "ModelDuck",
     "Dustline",
     "Dupefinder",
     "Driftwood",
@@ -61,7 +61,9 @@ PUBLIC_REPOS = {
     "UI-Sandbox",
     "Voidfarer",
     "Research-Engine",
-    "Chatduck",
+    "ChatDuck",
+    "Atlas",
+    "Keystone",
 }
 
 CATEGORY_LABELS = {

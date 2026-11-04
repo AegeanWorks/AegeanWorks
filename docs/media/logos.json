@@ -31,13 +31,18 @@
       "width": 256,
       "height": 256
     },
+    "Atlas": {
+      "src": "media/Atlas/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "Cairn": {
       "src": "media/Cairn/logo.svg",
       "width": 512,
       "height": 512
     },
-    "Chatduck": {
-      "src": "media/Chatduck/logo.svg",
+    "ChatDuck": {
+      "src": "media/ChatDuck/logo.svg",
       "width": 512,
       "height": 512
     },
@@ -91,6 +96,11 @@
       "width": 512,
       "height": 512
     },
+    "Keystone": {
+      "src": "media/Keystone/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "Lacon": {
       "src": "media/Lacon/logo.webp",
       "width": 256,
@@ -116,8 +126,8 @@
       "width": 256,
       "height": 256
     },
-    "Modelduck": {
-      "src": "media/Modelduck/logo.svg",
+    "ModelDuck": {
+      "src": "media/ModelDuck/logo.svg",
       "width": 512,
       "height": 512
     },

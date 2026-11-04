@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Atlas",
+  "logo": {
+    "src": "media/Atlas/logo.svg",
+    "alt": "Atlas logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:6c2fa5ff094e1a894267f22dffa19243e08b77d59bdf2af97fb58f9ceb7be1fd",
+    "commit": "45c9223e91a81cf96c1f332407ed12dd39327199",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/45c9223e91a81cf96c1f332407ed12dd39327199/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Atlas/social-preview.webp",
+    "alt": "Atlas social preview",
+    "width": 1200,
+    "height": 600,
+    "digest": "sha256:c1cfef1396ffaf89ecb2349f9b09ef1e8a13b3d93cc4a5c5afb4dc3c8d4a8d91",
+    "commit": "45c9223e91a81cf96c1f332407ed12dd39327199",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/45c9223e91a81cf96c1f332407ed12dd39327199/assets/social-preview.png"
+  },
+  "screenshots": []
+}

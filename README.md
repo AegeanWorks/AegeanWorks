@@ -54,7 +54,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 
 | Project | Description |
 |---|---|
-| [Modelduck](https://github.com/AegeanWorks/Modelduck) | A local GGUF chat studio: load a model, talk to it, and serve an OpenAI-compatible API. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry. Chats, prompts and settings stay on your computer; the only network requests are model downloads you start (the inference runtime is never downloaded or built on demand). |
+| [ModelDuck](https://github.com/AegeanWorks/ModelDuck) | A local GGUF chat studio: load a model, talk to it, and serve an OpenAI-compatible API. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry. Chats, prompts and settings stay on your computer; the only network requests are model downloads you start (the inference runtime is never downloaded or built on demand). |
 | [Cairn](https://github.com/AegeanWorks/Cairn) | An agent-first systems language with its own x86-64 backend. Cairn compiles straight to a Windows PE executable: no C compiler, no assembler, no linker, no libc, no runtime library. |
 | [NeuroCore](https://github.com/AegeanWorks/NeuroCore) | A self-hosted, modular AI agent framework for persistent, tool-using autonomous systems: workflows, long-term memory, RAG and a plugin architecture in one platform. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [AIKit](https://github.com/AegeanWorks/AIKit) | Crash-resilient governance and delivery gates for AI coding agents: versioned task ledger, commit-level verification, secret scanning and per-project gates. Free for personal use under AL-1.1; commercial use under ACL-1.0. |
@@ -62,7 +62,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Lattice](https://github.com/AegeanWorks/Lattice) | A provenance-first research knowledge graph for humans and AI agents. Local-first, SQLite-backed and standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Assay](https://github.com/AegeanWorks/Assay) | Tamper-evident audit evidence for AI agents: a local-first hash-chained ledger, policy review, and offline-verifiable evidence packs. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Aegean-Licensing](https://github.com/AegeanWorks/Aegean-Licensing) | The Aegean License family (AL, AGL and ASL 1.1) and the Aegean Commercial License: canonical texts, policies, commercial templates and certificate verification tooling for AegeanWorks projects. |
-| [Chatduck](https://github.com/AegeanWorks/Chatduck) | A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
+| [ChatDuck](https://github.com/AegeanWorks/ChatDuck) | A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
 
 </details>
 
@@ -78,6 +78,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Orrery](https://github.com/AegeanWorks/Orrery) | An N-body gravitational sandbox for the terminal or the browser: nine curated worlds, a symplectic integrator, optional relativity and collisions, live energy diagnostics, orbit trails and CSV/JSON export. Standard library only. Free non-commercial research under ASL-1.1; commercial use under ACL-1.0. |
 | [Research-Engine](https://github.com/AegeanWorks/Research-Engine) | A falsification-first research engine that turns questions into provenance-backed claims, executable kill tests, and auditable verdicts. |
 | [NeurologyClinicTemplates-TR](https://github.com/AegeanWorks/NeurologyClinicTemplates-TR) | Standardized Turkish anamnesis (patient history) templates for common neurology complaints, helping neurologists, residents and medical students document assessments completely and systematically. Free personal use under AL-1.1; commercial use under ACL-1.0. |
+| [Atlas](https://github.com/AegeanWorks/Atlas) | An interactive visual knowledge platform for scientific figures. |
 
 </details>
 
@@ -134,6 +135,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Fold](https://github.com/AegeanWorks/Fold) | A 4x4 tile-merge puzzle you run on your own machine: one Python process, a browser page, no dependencies, no account and no network calls. Slide, merge and chase 2048; the server owns the rules and the browser only renders. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
 | [Prism-Relay](https://github.com/AegeanWorks/Prism-Relay) | A neon light-routing puzzle game: rotate mirrors and splitters, fold beams through portals, and charge every receiver across three episodes. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
 | [Voidfarer](https://github.com/AegeanWorks/Voidfarer) | A zero-dependency space flight and exploration simulator with an autonomous deep-space fleet, a procedural galaxy and a Windows cockpit: route reactor power, board derelicts, scoop fuel, command drones, fight and trade. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
+| [Keystone](https://github.com/AegeanWorks/Keystone) | A small, game-agnostic 3D engine core in Python: OpenGL 3.3 rendering, textured materials, scene graph, meshes and OBJ loading, fixed-step loop, action input, collision primitives, deterministic replay, atomic serialization, and a human HUD/help overlay rendered with an embedded bitmap font. |
 
 </details>
 

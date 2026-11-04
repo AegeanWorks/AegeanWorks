@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" data-motif="cube" data-layout="grid">
+  <title id="title">Keystone logo</title>
+  <desc id="desc">Project-specific cube mark for Keystone; AegeanWorks identity.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#130f07"/><stop offset="1" stop-color="#2b3012"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g transform="translate(256 210) scale(1.45)" opacity="1.0"><path d="M0 -56L50 -28V28L0 56L-50 28V-28Z" fill="none" stroke="#f3da5e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 -56V0M-50 -28L0 0L50 -28M0 0V56" fill="none" stroke="#f3da5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-50 -28L0 0L0 56L-50 28Z" fill="#f3da5e" fill-opacity="0.10"/><path d="M50 -28L0 0L0 56L50 28Z" fill="#93f490" fill-opacity="0.10"/><circle cx="0" cy="0" r="6" fill="#93f490"/></g>
+  <text x="256" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700" fill="#F8FAFC" letter-spacing="2">KE</text><text x="256" y="438" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="5" fill="#F8FAFC" fill-opacity="0.62">AEGEANWORKS</text>
+</svg>
