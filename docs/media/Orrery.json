@@ -23,6 +23,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:690cbb545ecc94f8788c93e00d5aa7d2096213d278c2c8103331169d3d9a7e9b"
+    },
+    {
+      "src": "media/Orrery/2026-11-04-figure-eight.webp",
+      "alt": "Orrery screenshot",
+      "caption": "Orrery — 2026 11 03 Figure Eight",
+      "commit": "23ad71d2b0af6f516bc5893af9f92bc30f730296",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:5cd7278d8cc6872e9078d3c52cd6ee95e6c2bdb8d0bc7f449cb35794d44005e1",
+      "source": "Orrery:assets/screenshots/2026-11-03-figure-eight.png"
+    },
+    {
+      "src": "media/Orrery/2026-11-04-solar.webp",
+      "alt": "Orrery screenshot",
+      "caption": "Orrery — 2026 11 03 Solar",
+      "commit": "23ad71d2b0af6f516bc5893af9f92bc30f730296",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:1323a72a28d9a84831b3084a19da03a173378f965111c4ae7941410678c9662b",
+      "source": "Orrery:assets/screenshots/2026-11-03-solar.png"
     }
   ],
   "logo": {
@@ -31,9 +55,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:58c7d892f6ba7055d5ad3fc87be6bb2ac23a73e7b922828ab2692765d1a7c316",
-    "commit": "9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4/assets/logo.jpg"
+    "commit": "23ad71d2b0af6f516bc5893af9f92bc30f730296",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/23ad71d2b0af6f516bc5893af9f92bc30f730296/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Orrery/social-preview.webp",
@@ -41,8 +65,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:e91b352e65a880d8eeda0acf463ccb4010d6f101b118150b7ef93e524a04c9f0",
-    "commit": "9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4",
-    "taken_at": "2026-10-30",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/9b2428f81191f5f0f0e0702e1ff2e74009ef2bb4/assets/social-preview.png"
+    "commit": "23ad71d2b0af6f516bc5893af9f92bc30f730296",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/23ad71d2b0af6f516bc5893af9f92bc30f730296/assets/social-preview.png"
   }
 }

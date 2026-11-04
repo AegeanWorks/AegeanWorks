@@ -56,6 +56,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:de3bd0a8238ddde7a9efcd462057250b73e824abf212a5bb0dd9f06116dead1c"
+    },
+    {
+      "src": "media/UI-Sandbox/2026-11-04-dev.webp",
+      "alt": "UI-Sandbox screenshot",
+      "caption": "UI-Sandbox — 2026 11 03 Dev",
+      "commit": "8dc1bed7bbcce50068db7bf698ee7b1830fe09fc",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:41c6b08f279b1294016252ebc023cc54148a6a642da3d603672853048f6fd428",
+      "source": "UI-Sandbox:assets/screenshots/2026-11-03-dev.png"
+    },
+    {
+      "src": "media/UI-Sandbox/2026-11-04-prod.webp",
+      "alt": "UI-Sandbox screenshot",
+      "caption": "UI-Sandbox — 2026 11 03 Prod",
+      "commit": "8dc1bed7bbcce50068db7bf698ee7b1830fe09fc",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:2f0c7fd1517ab86168fbc1a1a3dc33e2c0b31be8a19c848706ba3f6c4322b7d2",
+      "source": "UI-Sandbox:assets/screenshots/2026-11-03-prod.png"
     }
   ],
   "logo": {
@@ -64,9 +88,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:a6f4f35cb1aabdb62220f18678131abe05480d325b3bcea1089ec68b956e9735",
-    "commit": "2a7663db1296cdd6688e6c368e8d95966866929f",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/UI-Sandbox/2a7663db1296cdd6688e6c368e8d95966866929f/assets/logo.jpg"
+    "commit": "8dc1bed7bbcce50068db7bf698ee7b1830fe09fc",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/UI-Sandbox/8dc1bed7bbcce50068db7bf698ee7b1830fe09fc/assets/logo.jpg"
   },
   "preview": {
     "src": "media/UI-Sandbox/social-preview.webp",
@@ -74,8 +98,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:554e48706763fa1cf61582185fde9ca21cfc7b93ff672b0e7dacce119221a568",
-    "commit": "2a7663db1296cdd6688e6c368e8d95966866929f",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/UI-Sandbox/2a7663db1296cdd6688e6c368e8d95966866929f/assets/social-preview.png"
+    "commit": "8dc1bed7bbcce50068db7bf698ee7b1830fe09fc",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/UI-Sandbox/8dc1bed7bbcce50068db7bf698ee7b1830fe09fc/assets/social-preview.png"
   }
 }

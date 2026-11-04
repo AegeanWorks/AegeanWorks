@@ -7,9 +7,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:6b9c18777b91bdd8c1fd85c6ac09a0631bf477ddc699c104703dd6d003ad45cc",
-    "commit": "155afd620ae15fa5165a17f3f1f65ad1d7a97c34",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Afterimage/155afd620ae15fa5165a17f3f1f65ad1d7a97c34/assets/logo.png"
+    "commit": "28c20517a0816f98a5836b1863a68babb1ade349",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Afterimage/28c20517a0816f98a5836b1863a68babb1ade349/assets/logo.png"
   },
   "preview": {
     "src": "media/Afterimage/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:7e93834317ac26e4fc624bd1f4b1c373d2d7a004b4ba6234843ddee1c2bd6daa",
-    "commit": "155afd620ae15fa5165a17f3f1f65ad1d7a97c34",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Afterimage/155afd620ae15fa5165a17f3f1f65ad1d7a97c34/assets/social-preview.svg"
+    "commit": "28c20517a0816f98a5836b1863a68babb1ade349",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Afterimage/28c20517a0816f98a5836b1863a68babb1ade349/assets/social-preview.svg"
   },
   "screenshots": [
     {
@@ -43,6 +43,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:a5e1fce7c12d611328ca143ebb9232ed8308aaf0ab907fbd494777bc5f131e90"
+    },
+    {
+      "src": "media/Afterimage/2026-11-04-daily.webp",
+      "alt": "Afterimage screenshot",
+      "caption": "Afterimage — 2026 11 03 Daily",
+      "commit": "28c20517a0816f98a5836b1863a68babb1ade349",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:f374bff02d2c9aef65ae8445a8972e752a8ad9b16c17c56dcd6b8098def08850",
+      "source": "Afterimage:assets/screenshots/2026-11-03-daily.png"
+    },
+    {
+      "src": "media/Afterimage/2026-11-04-menu.webp",
+      "alt": "Afterimage screenshot",
+      "caption": "Afterimage — 2026 11 03 Menu",
+      "commit": "28c20517a0816f98a5836b1863a68babb1ade349",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:e5607d4a916da9bf5e9015f6a8a44c957e5416aa7b0e6dad6e5ac63e06b46c21",
+      "source": "Afterimage:assets/screenshots/2026-11-03-menu.png"
     }
   ]
 }

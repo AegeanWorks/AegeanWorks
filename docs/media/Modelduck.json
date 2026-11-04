@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:de74f5bd2344a2bd7fb06894ea3bd95567b30f8418b8239006c384f4c80b881d",
-    "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/863816def7e953ad7d39b16f71220cede4fee6db/assets/logo.svg"
+    "commit": "add01e87f05b47fa750322b37db27dfc41687868",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/add01e87f05b47fa750322b37db27dfc41687868/assets/logo.svg"
   },
   "preview": {
     "src": "media/Modelduck/social-preview.webp",
@@ -17,9 +17,9 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:5e448f466a3822adb39437bddf9de8f0274925931fbfc027d3d55a2a691c7734",
-    "commit": "863816def7e953ad7d39b16f71220cede4fee6db",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/863816def7e953ad7d39b16f71220cede4fee6db/assets/social-preview.png"
+    "commit": "add01e87f05b47fa750322b37db27dfc41687868",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Modelduck/add01e87f05b47fa750322b37db27dfc41687868/assets/social-preview.png"
   },
   "screenshots": [
     {
@@ -141,6 +141,30 @@
       "height": 900,
       "digest": "sha256:5f26d867dab2a865cac9f58757d054b2b1003aaa3ee67b0146fe05c1d61aa796",
       "source": "Modelduck:assets/screenshots/08-bench-runs.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-04-09-bench-run-detail.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 09 Bench Run Detail",
+      "commit": "add01e87f05b47fa750322b37db27dfc41687868",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:30af7708d99bf1b3baf0b9ac746ae4c3dacb37fc9dcd50730479841174907dc9",
+      "source": "Modelduck:assets/screenshots/09-bench-run-detail.png"
+    },
+    {
+      "src": "media/Modelduck/2026-11-04-10-bench-tune-settings.webp",
+      "alt": "Modelduck screenshot",
+      "caption": "Modelduck — 10 Bench Tune Settings",
+      "commit": "add01e87f05b47fa750322b37db27dfc41687868",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:77b60c9f1e1db513c28232a4a610d67bafec1ebaf3530f84d658b3b46aff5dbe",
+      "source": "Modelduck:assets/screenshots/10-bench-tune-settings.png"
     }
   ]
 }

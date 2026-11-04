@@ -112,6 +112,30 @@
       "height": 750,
       "digest": "sha256:ea0b4d2b4f5085762e3885ae7720527e88d4e0f7cbaffc290fc0c4e086014671",
       "source": "Dustline:assets/screenshots/2026-11-03-loadout.png"
+    },
+    {
+      "src": "media/Dustline/2026-11-04-menu.webp",
+      "alt": "Dustline screenshot",
+      "caption": "Dustline — 2026 11 03 Menu",
+      "commit": "a519926fca36b856592fed2a030d71735cb83447",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1100,
+      "height": 750,
+      "digest": "sha256:bbe7942787de42395a960ddc5d041b3e38415119302faabd3faca26662194bc0",
+      "source": "Dustline:assets/screenshots/2026-11-03-menu.png"
+    },
+    {
+      "src": "media/Dustline/2026-11-04-setup.webp",
+      "alt": "Dustline screenshot",
+      "caption": "Dustline — 2026 11 03 Setup",
+      "commit": "a519926fca36b856592fed2a030d71735cb83447",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1100,
+      "height": 750,
+      "digest": "sha256:8fe0a4a9a85770526f4cb3bfd99a6fc3bd437a260844ec2766e9444aa911eb4c",
+      "source": "Dustline:assets/screenshots/2026-11-03-setup.png"
     }
   ]
 }

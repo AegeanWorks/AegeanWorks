@@ -43,6 +43,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:aa11d6fea5c631346c8f86c3e662160601e3c6df46f2050d6f4cad020bdd9bda"
+    },
+    {
+      "src": "media/Tessera/2026-11-04-pinwheel.webp",
+      "alt": "Tessera screenshot",
+      "caption": "Tessera — 2026 11 03 Pinwheel",
+      "commit": "9f6ddedb9704a72585d6e49e4e3c166277b701a5",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:787483540dae2a6432be0971807ce17c2a5c002b915d8128e2015d2464fc26f6",
+      "source": "Tessera:assets/screenshots/2026-11-03-pinwheel.png"
+    },
+    {
+      "src": "media/Tessera/2026-11-04-wave.webp",
+      "alt": "Tessera screenshot",
+      "caption": "Tessera — 2026 11 03 Wave",
+      "commit": "9f6ddedb9704a72585d6e49e4e3c166277b701a5",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:a64b75289ca6fa2aa03a38b2d2cf609a199ae83ed296c1ebaed3b39777f187e0",
+      "source": "Tessera:assets/screenshots/2026-11-03-wave.png"
     }
   ]
 }

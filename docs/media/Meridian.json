@@ -7,9 +7,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:fb6fe6e5bd09a76f2e1af2311f3bcdbae3ab809c76e7a69a1addac959845ba00",
-    "commit": "981454d94acc1e3e3665acc1fe4f1f836f2bc9dd",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Meridian/981454d94acc1e3e3665acc1fe4f1f836f2bc9dd/assets/logo.png"
+    "commit": "9ccb6bd6a3ce5fc4d49730e39d3e37d819708c0c",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Meridian/9ccb6bd6a3ce5fc4d49730e39d3e37d819708c0c/assets/logo.png"
   },
   "preview": {
     "src": "media/Meridian/social-preview.webp",
@@ -17,9 +17,9 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:5206a19841d0687c4f29d63dce012f0ec997cc2d6cd825457e6dcd36f2d89c7a",
-    "commit": "981454d94acc1e3e3665acc1fe4f1f836f2bc9dd",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Meridian/981454d94acc1e3e3665acc1fe4f1f836f2bc9dd/assets/social-preview.png"
+    "commit": "9ccb6bd6a3ce5fc4d49730e39d3e37d819708c0c",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Meridian/9ccb6bd6a3ce5fc4d49730e39d3e37d819708c0c/assets/social-preview.png"
   },
   "screenshots": [
     {
@@ -54,6 +54,18 @@
       "width": 390,
       "height": 844,
       "digest": "sha256:41035f81e04a9cbd1ed51c1737081a70718e3b4c2b2f3d26905667c41fbdd2e8"
+    },
+    {
+      "src": "media/Meridian/2026-11-04-mobile.webp",
+      "alt": "Meridian screenshot",
+      "caption": "Meridian — 2026 11 03 Mobile",
+      "commit": "9ccb6bd6a3ce5fc4d49730e39d3e37d819708c0c",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 390,
+      "height": 844,
+      "digest": "sha256:71a9441fee1075909a83e9e2e3c532c6f802a5b81da15fb23521830ff33a6974",
+      "source": "Meridian:assets/screenshots/2026-11-03-mobile.png"
     }
   ]
 }

@@ -12,6 +12,18 @@
       "width": 1200,
       "height": 813,
       "digest": "sha256:903d2950be396e9196f8f4560ee2e4e40163380b7f359d96d2d76c4f49d279d5"
+    },
+    {
+      "src": "media/NoMoreClutter/2026-11-04-main.webp",
+      "alt": "NoMoreClutter screenshot",
+      "caption": "NoMoreClutter — 2026 11 03 Main",
+      "commit": "7354762b6d35517e455f6039888c42038d58ebed",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1356,
+      "height": 919,
+      "digest": "sha256:ca99306e4ba5b925a416a2cd68c1e83c96e509aadd3b93dbfc03d0a0502cd657",
+      "source": "NoMoreClutter:assets/screenshots/2026-11-03-main.png"
     }
   ],
   "logo": {
@@ -20,9 +32,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:1cde725609be06ac2f615722961e22cd6f12dc4511fe69fb949e7b7668ca9171",
-    "commit": "b9cb347b6abcb9a5a92970a46c460f10002641bd",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NoMoreClutter/b9cb347b6abcb9a5a92970a46c460f10002641bd/assets/logo.jpg"
+    "commit": "7354762b6d35517e455f6039888c42038d58ebed",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NoMoreClutter/7354762b6d35517e455f6039888c42038d58ebed/assets/logo.jpg"
   },
   "preview": {
     "src": "media/NoMoreClutter/social-preview.webp",
@@ -30,8 +42,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:daf288f220bae5b35805929bb2a7dd14c8c21e10ea83649dc3856a4e3654ab88",
-    "commit": "b9cb347b6abcb9a5a92970a46c460f10002641bd",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NoMoreClutter/b9cb347b6abcb9a5a92970a46c460f10002641bd/assets/social-preview.png"
+    "commit": "7354762b6d35517e455f6039888c42038d58ebed",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NoMoreClutter/7354762b6d35517e455f6039888c42038d58ebed/assets/social-preview.png"
   }
 }

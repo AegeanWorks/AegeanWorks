@@ -12,6 +12,18 @@
       "width": 516,
       "height": 939,
       "digest": "sha256:ee3a124fbd143ab196b25ea7d06bd42ac6b0a850e255ac6943d7fbe05e91fa0e"
+    },
+    {
+      "src": "media/NeuroOptic/2026-11-04-launcher.webp",
+      "alt": "NeuroOptic screenshot",
+      "caption": "NeuroOptic — 2026 11 03 Launcher",
+      "commit": "e01ba51fa7d822283e51d8be377a3520513ab1fe",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 516,
+      "height": 939,
+      "digest": "sha256:7441de05df19f12d3f439256c8f355c210fb91dbdbe3f96772e8bd986334931e",
+      "source": "NeuroOptic:assets/screenshots/2026-11-03-launcher.png"
     }
   ],
   "logo": {
@@ -20,9 +32,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:a10704e987ed16f1c1716dc697b09293670d03e47bf4d2ff1238648d3bedc087",
-    "commit": "36f9038404166e22966ea376a9d2ae204dd7b5e5",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroOptic/36f9038404166e22966ea376a9d2ae204dd7b5e5/assets/logo.jpg"
+    "commit": "e01ba51fa7d822283e51d8be377a3520513ab1fe",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroOptic/e01ba51fa7d822283e51d8be377a3520513ab1fe/assets/logo.jpg"
   },
   "preview": {
     "src": "media/NeuroOptic/social-preview.webp",
@@ -30,8 +42,8 @@
     "width": 1200,
     "height": 480,
     "digest": "sha256:ebe86c54d1ac53bdfa59e39bf99bf9e7e3fc15e060e4c37c23be6c9a5411127d",
-    "commit": "36f9038404166e22966ea376a9d2ae204dd7b5e5",
-    "taken_at": "2026-10-30",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroOptic/36f9038404166e22966ea376a9d2ae204dd7b5e5/assets/social-preview.jpg"
+    "commit": "e01ba51fa7d822283e51d8be377a3520513ab1fe",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroOptic/e01ba51fa7d822283e51d8be377a3520513ab1fe/assets/social-preview.jpg"
   }
 }

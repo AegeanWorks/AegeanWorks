@@ -43,6 +43,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:d9af758d8d6b0346866d205131dcd00a1415031e537601b6db2dd1502c935bfb"
+    },
+    {
+      "src": "media/Weft/2026-11-04-chamber.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 03 Chamber",
+      "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:12fd556cedac788a840001265880945a74f429380e3f77639fb02e2d2362f750",
+      "source": "Weft:assets/screenshots/2026-11-03-chamber.png"
+    },
+    {
+      "src": "media/Weft/2026-11-04-title.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 03 Title",
+      "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:b7aefad7dbce5428347f66fc8e38b5cf69635026b93bb0fa31a067d0ead3d83f",
+      "source": "Weft:assets/screenshots/2026-11-03-title.png"
     }
   ]
 }

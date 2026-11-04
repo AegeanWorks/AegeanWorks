@@ -67,6 +67,18 @@
       "width": 1200,
       "height": 675,
       "digest": "sha256:cdb80ec4b3138b876bcd8a239391da09a9ffec9bb99c2fbde4f371d32c4f34a7"
+    },
+    {
+      "src": "media/Voidfarer/2026-11-04-menu.webp",
+      "alt": "Voidfarer screenshot",
+      "caption": "Voidfarer — 2026 11 03 Menu",
+      "commit": "1d424a33c2ca695cb4a3a5b13a885e2277846160",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 810,
+      "digest": "sha256:216917a4a6b6a1bce59e41f0f56155d6d9fa618c8e1e58285365d16a85674893",
+      "source": "Voidfarer:assets/screenshots/2026-11-03-menu.png"
     }
   ],
   "logo": {
@@ -75,9 +87,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:a71dd59293c5682bf4414e32100ea32dd0183a2d4e618498b2719a4892da6db9",
-    "commit": "14f28247b0fa5a5c6ab4de9d24ca2e418ec4d15f",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/14f28247b0fa5a5c6ab4de9d24ca2e418ec4d15f/assets/logo.jpg"
+    "commit": "1d424a33c2ca695cb4a3a5b13a885e2277846160",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/1d424a33c2ca695cb4a3a5b13a885e2277846160/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Voidfarer/social-preview.webp",
@@ -85,8 +97,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:f36db9223b71621eed40863342b1170b5329750b4b3fce39c88ecb3a8bb9cd7f",
-    "commit": "14f28247b0fa5a5c6ab4de9d24ca2e418ec4d15f",
-    "taken_at": "2026-11-03",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/14f28247b0fa5a5c6ab4de9d24ca2e418ec4d15f/assets/social-preview.png"
+    "commit": "1d424a33c2ca695cb4a3a5b13a885e2277846160",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/1d424a33c2ca695cb4a3a5b13a885e2277846160/assets/social-preview.png"
   }
 }

@@ -12,6 +12,18 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:1794c59c5284c0c1e014fe0424733f260230079b1f2da4dabbe74253ee4415d4"
+    },
+    {
+      "src": "media/Primordia/2026-11-04-observatory.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — 2026 11 03 Observatory",
+      "commit": "c819dda586185243388e0c285c64f6145e85bf77",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:f35697b8ee85c97286bbb5e2b691039dc2be7b499301dc1b5e6d738c8522a56a",
+      "source": "Primordia:assets/screenshots/2026-11-03-observatory.png"
     }
   ],
   "logo": {
@@ -20,9 +32,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:915a67cac9280e14503cca5bffa84222c62ac0fd9605cea91df957c74f1326d3",
-    "commit": "4b22927ffba58e614a6956fa67b7a5f3d241d75c",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/4b22927ffba58e614a6956fa67b7a5f3d241d75c/assets/logo.jpg"
+    "commit": "c819dda586185243388e0c285c64f6145e85bf77",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/c819dda586185243388e0c285c64f6145e85bf77/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Primordia/social-preview.webp",
@@ -30,8 +42,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:369020eccc190f11f773e72c9710cac3269fb094db503382e1c5ee22a433974c",
-    "commit": "4b22927ffba58e614a6956fa67b7a5f3d241d75c",
-    "taken_at": "2026-10-30",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/4b22927ffba58e614a6956fa67b7a5f3d241d75c/assets/social-preview.png"
+    "commit": "c819dda586185243388e0c285c64f6145e85bf77",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/c819dda586185243388e0c285c64f6145e85bf77/assets/social-preview.png"
   }
 }

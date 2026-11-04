@@ -12,6 +12,18 @@
       "width": 1016,
       "height": 839,
       "digest": "sha256:ecff976d31428d14ca119232f77172a1fffcdb5a6911dbc084d230352d013612"
+    },
+    {
+      "src": "media/N1-Engine/2026-11-04-main.webp",
+      "alt": "N1-Engine screenshot",
+      "caption": "N1-Engine — 2026 11 03 Main",
+      "commit": "565f28c45afcf8f324366373f3348cb8acac1d22",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1016,
+      "height": 839,
+      "digest": "sha256:3f798ff504159c14478160061c310d8323bd9da30d3bbcbb1fa98f53be597c58",
+      "source": "N1-Engine:assets/screenshots/2026-11-03-main.png"
     }
   ],
   "logo": {
@@ -20,9 +32,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:abd4f6d039e8332b7baa966f8d90873ba9326b70f9ace06e7782eb48ac6c7098",
-    "commit": "43605f9bbb8ad8563f07dce0bf2c9f65fa56cc22",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/N1-Engine/43605f9bbb8ad8563f07dce0bf2c9f65fa56cc22/assets/logo.jpg"
+    "commit": "565f28c45afcf8f324366373f3348cb8acac1d22",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/N1-Engine/565f28c45afcf8f324366373f3348cb8acac1d22/assets/logo.jpg"
   },
   "preview": {
     "src": "media/N1-Engine/social-preview.webp",
@@ -30,8 +42,8 @@
     "width": 1200,
     "height": 568,
     "digest": "sha256:bcec49b795ad6538a6133670f9e8ca4348ba500deffd3dbec86bc1acec8b9035",
-    "commit": "43605f9bbb8ad8563f07dce0bf2c9f65fa56cc22",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/N1-Engine/43605f9bbb8ad8563f07dce0bf2c9f65fa56cc22/assets/social-preview.png"
+    "commit": "565f28c45afcf8f324366373f3348cb8acac1d22",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/N1-Engine/565f28c45afcf8f324366373f3348cb8acac1d22/assets/social-preview.png"
   }
 }

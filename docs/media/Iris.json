@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:40e797461c2d1531f80b35e66f8a96316b7626858efdc6e3014618c22e6bec52",
-    "commit": "279fa6c27b350fc65d656dfe13f26aa948d8cc39",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Iris/279fa6c27b350fc65d656dfe13f26aa948d8cc39/assets/logo.svg"
+    "commit": "e3249c68b6ba73ccbc51d611fec60f1824eebe8a",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Iris/e3249c68b6ba73ccbc51d611fec60f1824eebe8a/assets/logo.svg"
   },
   "preview": {
     "src": "media/Iris/social-preview.webp",
@@ -17,9 +17,9 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:b808a5eded55b5cb908ec25df676b261f4fc01b2b4c7515985212f6bc2d1d60b",
-    "commit": "279fa6c27b350fc65d656dfe13f26aa948d8cc39",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Iris/279fa6c27b350fc65d656dfe13f26aa948d8cc39/assets/social-preview.png"
+    "commit": "e3249c68b6ba73ccbc51d611fec60f1824eebe8a",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Iris/e3249c68b6ba73ccbc51d611fec60f1824eebe8a/assets/social-preview.png"
   },
   "screenshots": [
     {
@@ -43,6 +43,30 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:c0437f7f957a6bc2afe6960e22797bb8f5428cd3bf36c289dc105608f46c1114"
+    },
+    {
+      "src": "media/Iris/2026-11-04-chamber.webp",
+      "alt": "Iris screenshot",
+      "caption": "Iris — 2026 11 03 Chamber",
+      "commit": "e3249c68b6ba73ccbc51d611fec60f1824eebe8a",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:f752fa931a06eb110400a8418cd992f5a7c8217bff0235dfe31c99f59c3f95fd",
+      "source": "Iris:assets/screenshots/2026-11-03-chamber.png"
+    },
+    {
+      "src": "media/Iris/2026-11-04-title.webp",
+      "alt": "Iris screenshot",
+      "caption": "Iris — 2026 11 03 Title",
+      "commit": "e3249c68b6ba73ccbc51d611fec60f1824eebe8a",
+      "taken_at": "2026-11-04",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:4716b2ba9eda9164fd86d49f8b104105ac4e543e8bc24df13d8b66de94091195",
+      "source": "Iris:assets/screenshots/2026-11-03-title.png"
     }
   ]
 }
