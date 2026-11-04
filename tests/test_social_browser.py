@@ -93,6 +93,16 @@ class BrowserPostTests(unittest.TestCase):
             with self.assertRaises(queue.QueueError):
                 browser_post.prepare(record["id"], out, state)
 
+    def test_prepare_checklist_names_metadata_not_burned_footer(self):
+        # ADR-074: pixels stay clean; provenance rides in metadata + sidecar.
+        with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as out:
+            record = approved_draft(state)
+            manifest = browser_post.prepare(record["id"], out, state)
+            checklist = " ".join(manifest["checklist"]).lower()
+            self.assertNotIn("footer", checklist)
+            self.assertNotIn("burned", checklist)
+            self.assertIn("metadata", checklist)
+
     def test_drive_compose_only_by_default(self):
         with tempfile.TemporaryDirectory() as state:
             record = approved_draft(state)

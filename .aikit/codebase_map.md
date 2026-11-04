@@ -9,8 +9,8 @@
 - **Total Python Modules**: `28`
 - **Total Classes**: `38`
 - **Total Top-Level Functions**: `149`
-- **Total Class Methods**: `184`
-- **Total Source Lines**: `6001`
+- **Total Class Methods**: `185`
+- **Total Source Lines**: `6011`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `167` lines (`6908` bytes)
+**Size**: `177` lines (`7475` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -139,6 +139,7 @@
 - `class BrowserPostTests`
   - Method `.test_prepare_writes_exact_package()`
   - Method `.test_prepare_needs_approval()`
+  - Method `.test_prepare_checklist_names_metadata_not_burned_footer()`
   - Method `.test_drive_compose_only_by_default()`
   - Method `.test_drive_click_needs_env_flag()`
   - Method `.test_drive_needs_approval()`
@@ -341,7 +342,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `222` lines (`9639` bytes)
+**Size**: `222` lines (`9658` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -507,13 +508,13 @@
 ### [`tools/social/provenance.py`](tools/social/provenance.py)
 > *Provenance stamp + sidecar + verify (re-capture / re-plot audit).*
 
-**Size**: `65` lines (`2276` bytes)
+**Size**: `65` lines (`2303` bytes)
 
 **Classes:**
 - `class ProvenanceError` - *Raised when a visual cannot prove its run.*
 
 **Functions:**
-- `def stamp(run_id, commit, data_file, date)` - *Return the provenance footer string burned into every visual.*
+- `def stamp(run_id, commit, data_file, date)` - *Return the provenance record string for visual metadata and sidecar (pixels stay clean).*
 - `def sidecar(src, digest_value, run_id, commit, data_file, produced_at)` - *Return the visual sidecar record.*
 - `def verify_digest(payload, expected)` - *Raise unless the payload digest equals the recorded digest.*
 - `def write_sidecar(path, record)` - *Write the sidecar JSON atomically.*

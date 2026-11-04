@@ -86,7 +86,7 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
         "approved_at": record["approved_at"],
         "checklist": [
             "Confirm the text matches the approved draft exactly.",
-            "Confirm the attached visual carries its provenance footer and AI mark.",
+            "Confirm the attached visual's provenance in its metadata and sidecar (pixels stay clean).",
             "Press Post yourself, or re-run drive() with final_click=True and AEGEAN_SOCIAL_BROWSER=1.",
         ],
     }

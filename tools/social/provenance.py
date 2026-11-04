@@ -11,7 +11,7 @@ class ProvenanceError(ValueError):
 
 
 def stamp(run_id: str, commit: str, data_file: str, date: str) -> str:
-    """Return the provenance footer string burned into every visual."""
+    """Return the provenance record string for visual metadata and sidecar (pixels stay clean)."""
     if not all((run_id, commit, data_file, date)):
         raise ProvenanceError(
             "Why: provenance needs run, commit and data file.\nFix: cite the run that produced the visual."
