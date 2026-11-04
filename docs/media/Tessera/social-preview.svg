@@ -49,9 +49,9 @@
   <text x="96" y="378" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#b6c4d8">tune every line, and export crisp editable SVG.</text>
   <g font-family="Cascadia Code, Consolas, monospace" font-size="18">
     <rect x="96" y="444" width="196" height="48" rx="24" fill="#0b1220" fill-opacity="0.72" stroke="#94a3b8" stroke-opacity="0.35"/>
-    <text x="194" y="474" text-anchor="middle" fill="#67e8f9">6 MOTIFS</text>
+    <text x="194" y="474" text-anchor="middle" fill="#67e8f9">8 MOTIFS</text>
     <rect x="310" y="444" width="212" height="48" rx="24" fill="#0b1220" fill-opacity="0.72" stroke="#94a3b8" stroke-opacity="0.35"/>
-    <text x="416" y="474" text-anchor="middle" fill="#67e8f9">6 PALETTES</text>
+    <text x="416" y="474" text-anchor="middle" fill="#67e8f9">8 PALETTES</text>
     <rect x="540" y="444" width="238" height="48" rx="24" fill="#0b1220" fill-opacity="0.72" stroke="#94a3b8" stroke-opacity="0.35"/>
     <text x="659" y="474" text-anchor="middle" fill="#67e8f9">ZERO NETWORK</text>
   </g>

@@ -7,19 +7,19 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:8a179f8a16ed7f9a65d17f8df03248cc800184661b809189a8c209dc35eeba2e",
-    "commit": "cc1f5877e1d29578696aa86f40ce6629dade98a7",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/cc1f5877e1d29578696aa86f40ce6629dade98a7/assets/logo.svg"
+    "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/c0b4c53aed76b5c88bdbb7378ea47b34fc241d20/assets/logo.svg"
   },
   "preview": {
     "src": "media/Weft/social-preview.svg",
     "alt": "Weft social preview",
     "width": 1280,
     "height": 640,
-    "digest": "sha256:4d551c5b6146b4f4b130805b7004158b099618fb5ac0b18dee088fdc01bc48d7",
-    "commit": "cc1f5877e1d29578696aa86f40ce6629dade98a7",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/cc1f5877e1d29578696aa86f40ce6629dade98a7/assets/social-preview.svg"
+    "digest": "sha256:0f223cba2de19d44a91325f6b125da57c571a639c015c7dd775a36145743c250",
+    "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/c0b4c53aed76b5c88bdbb7378ea47b34fc241d20/assets/social-preview.svg"
   },
   "screenshots": [
     {

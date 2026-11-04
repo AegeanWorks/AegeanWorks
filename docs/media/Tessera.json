@@ -7,19 +7,19 @@
     "width": 1024,
     "height": 1024,
     "digest": "sha256:1c9839de8c4df07f0a10bc910480479d0565d8f35a2bdc3ae1c6106c8e6a441d",
-    "commit": "2d822bba17866f43fd81438beffd2df540a75a68",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Tessera/2d822bba17866f43fd81438beffd2df540a75a68/assets/logo.svg"
+    "commit": "9f6ddedb9704a72585d6e49e4e3c166277b701a5",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Tessera/9f6ddedb9704a72585d6e49e4e3c166277b701a5/assets/logo.svg"
   },
   "preview": {
     "src": "media/Tessera/social-preview.svg",
     "alt": "Tessera social preview",
     "width": 1280,
     "height": 640,
-    "digest": "sha256:dcd16ce3a7b789bb2ffcaf7236cabc7ca90e6323243084ea073cf2443d7ce0d3",
-    "commit": "2d822bba17866f43fd81438beffd2df540a75a68",
-    "taken_at": "2026-11-01",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Tessera/2d822bba17866f43fd81438beffd2df540a75a68/assets/social-preview.svg"
+    "digest": "sha256:79399789b50939f5d58081aafcfb8dff1370c5d2a0a164da61efffb498e00d3f",
+    "commit": "9f6ddedb9704a72585d6e49e4e3c166277b701a5",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Tessera/9f6ddedb9704a72585d6e49e4e3c166277b701a5/assets/social-preview.svg"
   },
   "screenshots": [
     {

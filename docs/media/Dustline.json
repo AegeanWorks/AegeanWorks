@@ -6,20 +6,34 @@
     "alt": "Dustline logo",
     "width": 512,
     "height": 512,
+<<<<<<< HEAD
     "digest": "sha256:099f55416e3450d7575e9a4c7652bde07ef1bf876b00959d1674c505da7344fa",
     "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
     "taken_at": "2026-11-03",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0a2d24e2f74e0e1726adb69d99577c3340d094b2/assets/logo.svg"
+=======
+    "digest": "sha256:da657e1e78991e1d080030ae06bbb2a41ca464eae261923bc2cc2e78c1f225af",
+    "commit": "a519926fca36b856592fed2a030d71735cb83447",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/a519926fca36b856592fed2a030d71735cb83447/assets/logo.svg"
+>>>>>>> 7a6a717 (fix(media): refresh Weft 24 chambers, Tessera 8 motifs, Dustline bunker motif)
   },
   "preview": {
     "src": "media/Dustline/social-preview.svg",
     "alt": "Dustline social preview",
     "width": 1280,
     "height": 640,
+<<<<<<< HEAD
     "digest": "sha256:7e72b1efe339a749cbb211a4d68898458e39cd7600e41564e57c962525e4c243",
     "commit": "0a2d24e2f74e0e1726adb69d99577c3340d094b2",
     "taken_at": "2026-11-03",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/0a2d24e2f74e0e1726adb69d99577c3340d094b2/assets/social-preview.svg"
+=======
+    "digest": "sha256:7346e9a327234f4091b7e892d5ddbb75bd2e72fbe448e0f0228819aedd61ba4d",
+    "commit": "a519926fca36b856592fed2a030d71735cb83447",
+    "taken_at": "2026-11-04",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/a519926fca36b856592fed2a030d71735cb83447/assets/social-preview.svg"
+>>>>>>> 7a6a717 (fix(media): refresh Weft 24 chambers, Tessera 8 motifs, Dustline bunker motif)
   },
   "screenshots": [
     {
