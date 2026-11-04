@@ -5,9 +5,39 @@ from __future__ import annotations
 from . import disclosure, evidence, provenance, queue, spam_guard
 from .topic_gate import require_on_topic
 
+RULES = (
+    "R1: every post is about one catalogue work (topic gate).",
+    "R2: every post traces to a verified state (evidence gate).",
+    "R3: every visible/measured subject ships a reviewed visual with provenance.",
+    "R4: no naked name-drops: a post that mentions a project explains what it "
+    "is first (explainer gate — cold audiences have never heard of it).",
+    "R5: no post publishes without explicit human approval.",
+)
+
 
 class DraftError(ValueError):
     """Raised when a draft cannot be built."""
+
+
+def _squash(text: str) -> str:
+    import re  # noqa: PLC0415 - tiny local normalizer
+
+    return re.sub(r"\s+", " ", text.lower()).strip()
+
+
+def require_explainer(text: str, explainer: str | None) -> str:
+    """Enforce R4: the post must say what the project is, in its own words."""
+    if not explainer or not explainer.strip():
+        raise DraftError(
+            "Why: the post names a project but never says what it is; cold audiences bounce.\n"
+            "Fix: pass explainer=<one or two sentences a stranger would understand>."
+        )
+    if _squash(explainer) not in _squash(text):
+        raise DraftError(
+            "Why: the explainer is missing from the post text; the gate checks words, not intent.\n"
+            "Fix: include the explainer verbatim in the post."
+        )
+    return explainer.strip()
 
 
 def build_post(
@@ -22,11 +52,14 @@ def build_post(
     date: str,
     state_dir=None,
     existing_texts: list[str] | None = None,
+    explainer: str | None = None,
 ) -> dict:
     """Build, gate and queue a draft; returns the queue record (unapproved)."""
     if kind not in ("screenshot", "chart", "infographic", "notice"):
         raise DraftError(f"Why: unknown post kind {kind!r}.\nFix: use screenshot, chart, infographic or notice.")
     subject = require_on_topic(repo)
+    if kind in ("screenshot", "chart", "infographic"):
+        require_explainer(text, explainer)
     record = evidence.require_evidence(subject, commit, data_file, suite_ok)
     if kind in ("screenshot", "chart", "infographic"):
         if not visual:

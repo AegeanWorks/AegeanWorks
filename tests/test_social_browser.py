@@ -163,10 +163,12 @@ class BrowserPostTests(unittest.TestCase):
     def test_drive_missing_visual_file_blocked(self):
         with tempfile.TemporaryDirectory() as state:
             record = draft.build_post(
-                "AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
+                "AIKit", "AIKit is crash-resilient governance for AI coding agents. Look", "screenshot",
+                COMMIT, DATA_FILE, True,
                 {"digest": "sha256:" + "c" * 64, "run": RUN, "commit": COMMIT,
                  "data_file": DATA_FILE, "src": str(Path(state) / "gone.png")},
                 RUN, DATE, state,
+                explainer="AIKit is crash-resilient governance for AI coding agents.",
             )
             queue.approve(record["id"], "owner", state)
             with self.assertRaises(browser_post.BrowserError):

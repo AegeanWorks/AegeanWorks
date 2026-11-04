@@ -37,10 +37,14 @@ def visual_fixture(**over):
     return base
 
 
-def draft_record(state, text="AIKit ships a new ledger view", repo="AIKit"):
+EXPLAINER = "AIKit is crash-resilient governance for AI coding agents."
+
+
+def draft_record(state, text="Ships a new ledger view", repo="AIKit", explainer=EXPLAINER):
+    full = f"{explainer} {text}" if explainer else text
     return draft.build_post(
         repo=repo,
-        text=text,
+        text=full,
         kind="screenshot",
         commit=COMMIT,
         data_file=DATA_FILE,
@@ -49,6 +53,7 @@ def draft_record(state, text="AIKit ships a new ledger view", repo="AIKit"):
         run_id=RUN,
         date=DATE,
         state_dir=state,
+        explainer=explainer,
     )
 
 
@@ -60,7 +65,6 @@ class DisclosureTests(unittest.TestCase):
         data = disclosure.load_disclosure()
         self.assertIn("written by AI", data["bio"])
         self.assertIn("written by AI", data["site_notice"])
-        self.assertIn("Made by AI", data["infographic_ai_mark"])
         self.assertIn("Made by AI", data["infographic_ai_mark"])
 
     def test_no_boilerplate_in_post_facing_copy(self):
@@ -185,12 +189,14 @@ class DraftQueueTests(unittest.TestCase):
     def test_text_only_visual_subject_blocked(self):
         with tempfile.TemporaryDirectory() as state:
             with self.assertRaises(draft.DraftError):
-                draft.build_post("AIKit", "numbers!", "chart", COMMIT, DATA_FILE, True, None, RUN, DATE, state)
+                draft.build_post("AIKit", f"{EXPLAINER} Numbers!", "chart", COMMIT, DATA_FILE, True,
+                                 None, RUN, DATE, state, explainer=EXPLAINER)
 
     def test_provenance_free_visual_blocked(self):
         with tempfile.TemporaryDirectory() as state:
             with self.assertRaises(draft.DraftError):
-                draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True, {"digest": ""}, RUN, DATE, state)
+                draft.build_post("AIKit", f"{EXPLAINER} Look", "screenshot", COMMIT, DATA_FILE, True,
+                                 {"digest": ""}, RUN, DATE, state, explainer=EXPLAINER)
 
     def test_draft_unapproved_by_default(self):
         with tempfile.TemporaryDirectory() as state:
@@ -230,8 +236,9 @@ class DraftQueueTests(unittest.TestCase):
             queue.approve(record["id"], "owner", state)
             shipped = record["draft"]["text"]
             with self.assertRaises(draft.DraftError):
-                draft.build_post("AIKit", first + " today", "screenshot", COMMIT, DATA_FILE, True,
-                                 visual_fixture(), RUN, DATE, state, existing_texts=[shipped])
+                draft.build_post("AIKit", f"{EXPLAINER} " + first + " today", "screenshot", COMMIT, DATA_FILE, True,
+                                 visual_fixture(), RUN, DATE, state, existing_texts=[shipped],
+                                 explainer=EXPLAINER)
 
     def test_exact_duplicate_blocked(self):
         text = "AIKit ships a new ledger view"
@@ -240,8 +247,9 @@ class DraftQueueTests(unittest.TestCase):
             record = draft_record(state, text=text)
             with self.assertRaises(draft.DraftError):
                 draft_record(state, text=text + " ")
-                draft.build_post("AIKit", text, "screenshot", COMMIT, DATA_FILE, True,
-                                 visual_fixture(), RUN, DATE, state, existing_texts=[record["draft"]["text"]])
+                draft.build_post("AIKit", f"{EXPLAINER} " + text, "screenshot", COMMIT, DATA_FILE, True,
+                                 visual_fixture(), RUN, DATE, state, existing_texts=[record["draft"]["text"]],
+                                 explainer=EXPLAINER)
 
 
 class CadenceTests(unittest.TestCase):
@@ -274,6 +282,26 @@ class CadenceTests(unittest.TestCase):
             f"{day}T22:00:00+03:00")
         self.assertFalse(ok)
         self.assertIn("daily", why)
+
+
+class ExplainerGateTests(unittest.TestCase):
+    def test_naked_name_drop_blocked(self):
+        with tempfile.TemporaryDirectory() as state:
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "AIKit ships today", "screenshot", COMMIT, DATA_FILE, True,
+                                 visual_fixture(), RUN, DATE, state)
+
+    def test_explainer_missing_from_text_blocked(self):
+        with tempfile.TemporaryDirectory() as state:
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "Something entirely different", "screenshot", COMMIT, DATA_FILE,
+                                 True, visual_fixture(), RUN, DATE, state, explainer=EXPLAINER)
+
+    def test_notice_needs_no_explainer(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = draft.build_post("AIKit", "Heads up", "notice", COMMIT, DATA_FILE,
+                                      True, None, RUN, DATE, state)
+            self.assertFalse(record["approved"])
 
 
 class ProfileTests(unittest.TestCase):

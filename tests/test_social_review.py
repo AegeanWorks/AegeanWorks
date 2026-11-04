@@ -123,12 +123,16 @@ class ReviewTests(unittest.TestCase):
             del media_review.REVIEWERS["test-judge"]
 
 
+EXPLAINER = "AIKit is crash-resilient governance for AI coding agents."
+EXPLAINED_LOOK = EXPLAINER + " Look."
+
+
 class DriveReviewTests(unittest.TestCase):
     def test_drive_blocks_ugly_attachment(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             bad = make_png(Path(temp) / "bad.png", blur=True)
-            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
-                                      visual_for(bad), RUN, DATE, state)
+            record = draft.build_post("AIKit", EXPLAINED_LOOK, "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(bad), RUN, DATE, state, explainer=EXPLAINER)
             queue.approve(record["id"], "owner", state)
             page = FakePage()
             with self.assertRaises(media_review.ReviewError):
@@ -139,8 +143,8 @@ class DriveReviewTests(unittest.TestCase):
     def test_drive_attaches_reviewed_visual(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             good = make_png(Path(temp) / "good.png")
-            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
-                                      visual_for(good), RUN, DATE, state)
+            record = draft.build_post("AIKit", EXPLAINED_LOOK, "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(good), RUN, DATE, state, explainer=EXPLAINER)
             queue.approve(record["id"], "owner", state)
             page = FakePage()
             result = browser_post.drive(page, record["id"], state)
@@ -212,8 +216,8 @@ class MetaImageTests(unittest.TestCase):
     def test_drive_ai_flag_blocks_click(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             good = make_png(Path(temp) / "good.png")
-            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
-                                      visual_for(good), RUN, DATE, state)
+            record = draft.build_post("AIKit", EXPLAINED_LOOK, "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(good), RUN, DATE, state, explainer=EXPLAINER)
             queue.approve(record["id"], "owner", state)
             __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY",
                                              "AEGEAN_SOCIAL_BROWSER": "1"})
@@ -232,8 +236,8 @@ class MetaImageTests(unittest.TestCase):
     def test_drive_ai_pass_records_verdict(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             good = make_png(Path(temp) / "good.png")
-            record = draft.build_post("AIKit", "look", "screenshot", COMMIT, DATA_FILE, True,
-                                      visual_for(good), RUN, DATE, state)
+            record = draft.build_post("AIKit", EXPLAINED_LOOK, "screenshot", COMMIT, DATA_FILE, True,
+                                      visual_for(good), RUN, DATE, state, explainer=EXPLAINER)
             queue.approve(record["id"], "owner", state)
             __import__("os").environ.update({"MODEL_API_KEY": "TEST_ONLY_KEY",
                                              "AEGEAN_SOCIAL_BROWSER": "1"})

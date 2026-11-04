@@ -7,10 +7,10 @@
 
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `28`
-- **Total Classes**: `38`
-- **Total Top-Level Functions**: `149`
-- **Total Class Methods**: `185`
-- **Total Source Lines**: `6011`
+- **Total Classes**: `39`
+- **Total Top-Level Functions**: `151`
+- **Total Class Methods**: `188`
+- **Total Source Lines**: `6078`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `177` lines (`7475` bytes)
+**Size**: `179` lines (`7636` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -155,7 +155,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `363` lines (`15984` bytes)
+**Size**: `391` lines (`17412` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -194,6 +194,10 @@
 - `class CadenceTests`
   - Method `.test_caps_enforced()`
   - Method `.test_three_daily_slots_pass()`
+- `class ExplainerGateTests`
+  - Method `.test_naked_name_drop_blocked()`
+  - Method `.test_explainer_missing_from_text_blocked()`
+  - Method `.test_notice_needs_no_explainer()`
 - `class ProfileTests`
   - Method `.test_profile_change_needs_approval()`
 - `class ContextTests`
@@ -208,14 +212,14 @@
 
 **Functions:**
 - `def visual_fixture(**over)`
-- `def draft_record(state, text, repo)`
+- `def draft_record(state, text, repo, explainer)`
 
 ---
 
 ### [`tests/test_social_review.py`](tests/test_social_review.py)
 > *Tests for the aesthetic review gate (tools/social/media_review.py).*
 
-**Size**: `254` lines (`10441` bytes)
+**Size**: `258` lines (`10669` bytes)
 
 **Classes:**
 - `class FakePage`
@@ -392,13 +396,15 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `62` lines (`2496` bytes)
+**Size**: `95` lines (`3901` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
 
 **Functions:**
-- `def build_post(repo, text, kind, commit, data_file, suite_ok, visual, run_id, date, state_dir, existing_texts)` - *Build, gate and queue a draft; returns the queue record (unapproved).*
+- `def _squash(text)`
+- `def require_explainer(text, explainer)` - *Enforce R4: the post must say what the project is, in its own words.*
+- `def build_post(repo, text, kind, commit, data_file, suite_ok, visual, run_id, date, state_dir, existing_texts, explainer)` - *Build, gate and queue a draft; returns the queue record (unapproved).*
 
 ---
 

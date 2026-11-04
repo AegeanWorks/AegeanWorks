@@ -573,3 +573,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: compose_svg carries provenance in a non-rendered <metadata> block; tests assert the facts are pixel-clean while metadata holds run/commit/data/date/AI mark. Pillow launch scripts stopped burning footers (sidecars unchanged). Chart run/commit axis labels stay: those are data labels required by the chart-crime guards, not watermarks.
 - **Consequences**: Pixels stay clean; provenance is proved by sidecar + metadata + deterministic re-render. Already-posted visuals keep their burned footers (history is not rewritten).
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims still traceable) and PRINCIPLE-014 (blocking test updated first).
+
+### ADR-075: Every works post explains the project first
+- **Date**: 2026-11-04
+- **Status**: Accepted
+- **Context**: Cold audiences have never heard of any catalogue project; name-dropping AIKit means nothing. Owner rule: mentioning a project requires explaining it first.
+- **Decision**: draft.build_post takes explainer=<1-2 plain sentences> for screenshot/chart/infographic kinds and rejects drafts whose text lacks it verbatim (R4 in the draft RULES block). Notice kind stays exempt. Tests updated with a shared explainer fixture plus three blocking tests.
+- **Consequences**: No naked name-drops can queue; drafters write the explainer up front, in words a stranger understands.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (evidence over assumption) and PRINCIPLE-014 (blocking tests first).
