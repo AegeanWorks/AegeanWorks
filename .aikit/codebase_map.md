@@ -10,7 +10,7 @@
 - **Total Classes**: `39`
 - **Total Top-Level Functions**: `151`
 - **Total Class Methods**: `190`
-- **Total Source Lines**: `6119`
+- **Total Source Lines**: `6121`
 
 ---
 
@@ -398,7 +398,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `99` lines (`4066` bytes)
+**Size**: `101` lines (`4206` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*

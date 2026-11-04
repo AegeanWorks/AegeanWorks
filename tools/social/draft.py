@@ -9,9 +9,11 @@ RULES = (
     "R1: every post is about one catalogue work (topic gate).",
     "R2: every post traces to a verified state (evidence gate).",
     "R3: every visible/measured subject ships a reviewed visual with provenance.",
-    "R4: no naked name-drops: a post that mentions a project explains what it "
+    "R4: no naked name-drops: a post that mentions a project says what it "
     "is first (explainer gate — cold audiences have never heard of it).",
     "R5: no post publishes without explicit human approval.",
+    "R6: UI works ship the banner first, then 1-3 fresh screenshots captured "
+    "from the running project — never stock, never recycled.",
 )
 
 
