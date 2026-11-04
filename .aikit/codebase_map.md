@@ -10,7 +10,7 @@
 - **Total Classes**: `38`
 - **Total Top-Level Functions**: `149`
 - **Total Class Methods**: `184`
-- **Total Source Lines**: `5989`
+- **Total Source Lines**: `6001`
 
 ---
 
@@ -154,7 +154,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `358` lines (`15784` bytes)
+**Size**: `363` lines (`15984` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -178,7 +178,7 @@
   - Method `.test_chart_blocks_cherry_pick()`
   - Method `.test_chart_blocks_truncated_axis()`
   - Method `.test_chart_deterministic()`
-  - Method `.test_compose_burns_provenance_and_ai_mark()`
+  - Method `.test_compose_carries_provenance_without_pixel_watermark()`
   - Method `.test_compose_blocks_missing_provenance()`
   - Method `.test_provenance_verify()`
 - `class DraftQueueTests`
@@ -449,9 +449,9 @@
 ---
 
 ### [`tools/social/media_compose.py`](tools/social/media_compose.py)
-> *Infographic composer: title + numbers + provenance footer + AI mark.*
+> *Infographic composer: title + numbers, clean pixels.*
 
-**Size**: `47` lines (`1802` bytes)
+**Size**: `54` lines (`1932` bytes)
 
 **Functions:**
 - `def compose_svg(title, lines, run_id, commit, data_file, date, ai_mark)` - *Compose the infographic SVG; raises if any provenance slot is empty.*

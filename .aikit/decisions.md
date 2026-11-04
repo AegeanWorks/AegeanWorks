@@ -565,3 +565,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: Add tools/social/meta_image.py (stdlib urllib only): generate_image via /v1/images/generations and ai_review via chat completions vision, both env-key-only, key never logged. drive() runs AI review after heuristics when MODEL_API_KEY is set and blocks the click on a flag; without a key it records skipped and proceeds on heuristics. Generated art is decorative only: post-text claims still trace to repo evidence; every generated visual passes the same review gate plus provenance sidecar. register_reviewer stays as the offline seam.
 - **Consequences**: AI creation and AI review are wired and tested with fakes (6 new tests); the live call runs when the key reaches the agent environment. No key material in repo, logs or tests.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-011 (env-only secrets), PRINCIPLE-014 (blocking tests) and PRINCIPLE-019.
+
+### ADR-074: No watermarks in photos; provenance rides alongside
+- **Date**: 2026-11-04
+- **Status**: Accepted
+- **Context**: The owner ruled no watermarks in photos from 2026-11-04 onward. Burned footers and AI marks made images ugly.
+- **Decision**: compose_svg carries provenance in a non-rendered <metadata> block; tests assert the facts are pixel-clean while metadata holds run/commit/data/date/AI mark. Pillow launch scripts stopped burning footers (sidecars unchanged). Chart run/commit axis labels stay: those are data labels required by the chart-crime guards, not watermarks.
+- **Consequences**: Pixels stay clean; provenance is proved by sidecar + metadata + deterministic re-render. Already-posted visuals keep their burned footers (history is not rewritten).
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims still traceable) and PRINCIPLE-014 (blocking test updated first).

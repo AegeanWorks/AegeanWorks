@@ -1,7 +1,9 @@
-"""Infographic composer: title + numbers + provenance footer + AI mark.
+"""Infographic composer: title + numbers, clean pixels.
 
 Deterministic SVG so re-render is byte-comparable for audit.
-The provenance footer and the made-by-AI mark are burned in, not metadata.
+Provenance (run, commit, data file, date, AI mark) travels in the SVG
+<metadata> block and the sidecar — never burned over the image, per owner
+rule: no watermarks in photos from 2026-11-04 onward.
 """
 
 from __future__ import annotations
@@ -30,14 +32,19 @@ def compose_svg(
     facts = "\n".join(
         f'<text x="48" y="{140 + index * 34}">{html.escape(line)}</text>' for index, line in enumerate(lines[:4])
     )
-    footer = f"run {html.escape(run_id)} · commit {html.escape(commit)} · {html.escape(data_file)} · {html.escape(date)}"
+    meta = (
+        "<metadata>"
+        f"run={html.escape(run_id)} commit={html.escape(commit)} "
+        f"data_file={html.escape(data_file)} date={html.escape(date)} "
+        f"ai={html.escape(ai_mark)}"
+        "</metadata>"
+    )
     return (
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" role="img">'
         f"<title>{html.escape(title)}</title>"
+        f"{meta}"
         f'<text x="48" y="80">{html.escape(title)}</text>'
         f"{facts}"
-        f'<text x="48" y="560">{footer}</text>'
-        f'<text x="48" y="596">{html.escape(ai_mark)}</text>'
         "</svg>"
     )
 

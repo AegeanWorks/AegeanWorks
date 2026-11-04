@@ -157,10 +157,15 @@ class MediaPipelineTests(unittest.TestCase):
         second = media_chart.render_svg("t", "tests", rows, RUN, COMMIT)
         self.assertEqual(media_chart.svg_digest(first), media_chart.svg_digest(second))
 
-    def test_compose_burns_provenance_and_ai_mark(self):
+    def test_compose_carries_provenance_without_pixel_watermark(self):
+        import re
+
         svg = media_compose.compose_svg("AIKit week", ["95 tests green"], RUN, COMMIT, DATA_FILE, DATE, disclosure.ai_mark())
         for token in (RUN, COMMIT, DATA_FILE, DATE, "Made by AI"):
             self.assertIn(token, svg)
+        visible = " ".join(re.findall(r"<text[^>]*>(.*?)</text>", svg))
+        for token in (RUN, COMMIT, "Made by AI"):
+            self.assertNotIn(token, visible)
 
     def test_compose_blocks_missing_provenance(self):
         with self.assertRaises(ValueError):
