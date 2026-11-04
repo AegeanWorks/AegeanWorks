@@ -115,7 +115,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Photo-Harbor](https://github.com/AegeanWorks/Photo-Harbor) | A self-hosted photo server for Windows: an iPhone sends new photos over home Wi-Fi through Apple Shortcuts, with no app to install, verified-hash cleanup and a gallery. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Muse](https://github.com/AegeanWorks/Muse) | Prompt-driven AI music creation with an automated listener that scores how well each track fits its theme, available as a CLI and a Python library. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [UI-Sandbox](https://github.com/AegeanWorks/UI-Sandbox) | A small React + Vite surface for exercising AIKit's bounded UI guard: one screen, token-driven theming, and a labelled control for every interaction. Free personal use under AL-1.1; commercial use under ACL-1.0. |
-| [Aegean-Reforge](https://github.com/AegeanWorks/Aegean-Reforge) | Archived: integrated into AIKit. Progressive, evidence-backed Git history auditing and safe repair now ships as AIKit's reforge/ package plus reforge.py; the archived repository keeps its history and tags. Free for personal use under AL-1.1; commercial use under ACL-1.0. |
+| [Aegean-Reforge](https://github.com/AegeanWorks/Aegean-Reforge) | Archived: Aegean Reforge is integrated into AegeanWorks/AIKit. Progressive, evidence-backed Git history auditing and safe repair now ships as reforge/ plus reforge.py. |
 
 </details>
 
@@ -124,9 +124,9 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 
 | Project | Description |
 |---|---|
-| [Weft](https://github.com/AegeanWorks/Weft) | A zero-dependency thread-routing puzzle: draw glowing threads between matching spools, fill every cell of the loom, and restore the tapestry across eighteen chambers, with a fresh 7×7 daily weave. The whole game is static HTML, CSS and ES modules, so it runs from any static host — including the AegeanWorks Play page. |
+| [Weft](https://github.com/AegeanWorks/Weft) | A zero-dependency thread-routing puzzle: draw glowing threads between matching spools, fill every cell of the loom, and restore the tapestry across twenty-four chambers, with a fresh 7x7 daily weave. Static HTML/CSS/ES modules for any static host. |
 | [Iris](https://github.com/AegeanWorks/Iris) | A neon color-mixing puzzle: route red, green and blue beams through rotating mirrors and dye cells, blend exact hues, and light every receiver across three episodes. |
-| [Dustline](https://github.com/AegeanWorks/Dustline) | Dustline is a fast top-down 2D Counter-Strike style arena shooter demo: wave-based bot combat, recoil-driven gunplay and a Dust-inspired map in plain HTML5 canvas. |
+| [Dustline](https://github.com/AegeanWorks/Dustline) | Dustline: Survivors is a top-down horde-survival shooter with endless procedural arenas, auto-firing weapons, 7 maps, 18 mob types, rotating bosses plus megas, Boss Rush mode and extraction banking. |
 | [Aldervale](https://github.com/AegeanWorks/Aldervale) | A 2.5D medieval RPG drawn in tiny ASCII cells: low-poly 3D models baked into shaded sprites, voxel terrain, fog, day and night, water, quests, combat, loot, shops and saves. Python standard library only: no dependencies, no assets, no build step. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
 | [MemoryReconstruction](https://github.com/AegeanWorks/MemoryReconstruction) | A top-down action roguelike about rebuilding a shattered world from lost memories: expeditions from the Sanctuary through sixteen procedurally generated sections, built with TypeScript and PixiJS. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
 | [Crypt-Crawler](https://github.com/AegeanWorks/Crypt-Crawler) | A tactical turn-based dungeon crawler for the browser: procedural levels, inventory, combat and headless browser inspection. Free personal play under AGL-1.1; commercial use under ACL-1.0. |
