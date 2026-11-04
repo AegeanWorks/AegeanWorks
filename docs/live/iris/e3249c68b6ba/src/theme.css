@@ -20,10 +20,8 @@
   --muted-2: #857aa8;
 
   --iris: #7fdcff;
-  --iris-deep: #4f6bff;
   --violet: #b48cff;
   --focus: #7fdcff;
-  --danger: #ff6b81;
 
   --beam-r: #ff536b;
   --beam-g: #45e58a;
@@ -39,7 +37,6 @@
   --shadow: 0 24px 60px rgba(2, 2, 10, 0.6);
   --shadow-soft: 0 10px 30px rgba(2, 2, 10, 0.4);
   --glow: 0 0 20px rgba(127, 220, 255, 0.22);
-  --tile: rgba(255, 255, 255, 0.025);
   --tile-line: rgba(180, 166, 255, 0.14);
   --tile-hover: rgba(255, 255, 255, 0.05);
   --win-glow: 0 0 42px rgba(255, 248, 242, 0.18);

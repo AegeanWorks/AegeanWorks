@@ -258,11 +258,18 @@ export function validateLevel(level) {
       `Level ${level.id} has an invalid solution orientation at ${key}.`);
   }
   const tiles = buildTiles(level);
-  return Object.freeze({ ...level, tiles });
+  return Object.freeze({
+    ...level,
+    emitters: Object.freeze(level.emitters.map((emitter) => Object.freeze({ ...emitter }))),
+    receivers: Object.freeze(level.receivers.map((receiver) => Object.freeze({ ...receiver }))),
+    rows: Object.freeze([...level.rows]),
+    solution: Object.freeze({ ...level.solution }),
+    tiles,
+  });
 }
 
 export function createGame(level) {
-  const prepared = level.tiles ? level : validateLevel(level);
+  const prepared = validateLevel(level);
   const orientations = {};
   for (const mirror of mirrorTiles(prepared)) {
     orientations[mirrorKey(mirror.x, mirror.y)] = mirror.orientation;

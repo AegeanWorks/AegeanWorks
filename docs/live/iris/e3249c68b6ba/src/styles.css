@@ -584,7 +584,7 @@ button {
   background-image:
     linear-gradient(var(--tile-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--tile-line) 1px, transparent 1px);
-  background-size: var(--grid-x, 20%) var(--grid-y, 20%);
+  background-size: var(--grid-x, calc(100% / 6)) var(--grid-y, calc(100% / 6));
   box-shadow: var(--shadow);
   overflow: hidden;
   isolation: isolate;

@@ -599,8 +599,8 @@ dd {
 
 .chamber-card.is-locked {
   cursor: not-allowed;
-  filter: saturate(0.35);
-  opacity: 0.62;
+  filter: saturate(0.6);
+  opacity: 0.85;
 }
 
 .chamber-card.is-locked:hover {
@@ -810,7 +810,7 @@ dd {
 
 .board-frame.is-complete {
   border-color: var(--success);
-  box-shadow: var(--shadow-panel), 0 0 54px var(--beam-cyan-soft), 0 0 0 1px var(--success) inset;
+  box-shadow: var(--shadow-panel), var(--shadow-glow), 0 0 54px var(--beam-cyan-soft), 0 0 0 1px var(--success) inset;
 }
 
 .board {
@@ -844,8 +844,8 @@ dd {
 }
 
 .beam--halo {
-  filter: drop-shadow(0 0 6px var(--beam-cyan));
-  opacity: 0.42;
+  filter: drop-shadow(0 0 8px var(--beam-cyan));
+  opacity: 0.55;
   stroke-width: 0.34;
 }
 
@@ -876,7 +876,55 @@ dd {
   animation: beam-flow 1.35s linear infinite;
   stroke: var(--beam-white);
   stroke-dasharray: 0.12 0.52;
-  stroke-width: 0.062;
+  stroke-width: 0.075;
+}
+
+.beam-end {
+  stroke: none;
+}
+
+.beam-end--0 {
+  fill: var(--beam-cyan);
+}
+
+.beam-end--1 {
+  fill: var(--beam-magenta);
+}
+
+.beam-end--2 {
+  fill: var(--beam-lime);
+}
+
+.beam-end--lit {
+  opacity: 0.95;
+}
+
+.beam-end--0.beam-end--lit {
+  filter: drop-shadow(0 0 6px var(--beam-cyan));
+}
+
+.beam-end--1.beam-end--lit {
+  filter: drop-shadow(0 0 6px var(--beam-magenta));
+}
+
+.beam-end--2.beam-end--lit {
+  filter: drop-shadow(0 0 6px var(--beam-lime));
+}
+
+.beam-end--dead {
+  opacity: 0.85;
+}
+
+.beam-end--0.beam-end--dead {
+  filter: drop-shadow(0 0 4px var(--beam-cyan));
+}
+
+.beam-end--1.beam-end--dead {
+  filter: drop-shadow(0 0 4px var(--beam-magenta));
+}
+
+.beam-end--2.beam-end--dead {
+  filter: drop-shadow(0 0 4px var(--beam-lime));
 }
 
 .cell {
@@ -1736,6 +1784,12 @@ dd {
     stroke: Highlight;
   }
 
+  .beam-end {
+    fill: Highlight;
+    filter: none;
+    opacity: 1;
+  }
+
   .cell--receiver.is-lit .piece--receiver {
     border-color: Highlight;
   }
@@ -1981,7 +2035,7 @@ dd {
 }
 
 .episode-block.is-locked .episode-grid {
-  opacity: 0.55;
+  opacity: 0.8;
 }
 
 .episode-block.is-locked .episode-head h3 {

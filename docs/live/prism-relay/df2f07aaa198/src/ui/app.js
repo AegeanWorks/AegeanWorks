@@ -429,6 +429,7 @@ function traceSession() {
   const trace = traceBeams(state.session.board);
   state.session.paths = trace.paths;
   state.session.litCount = trace.litCount;
+  state.session.litKeys = [...trace.lit];
   state.session.complete = trace.complete;
   if (trace.complete) {
     state.session.stars = starsFor(state.session.moves, state.level.par);
@@ -470,6 +471,8 @@ function renderBeams() {
     return;
   }
   elements.beamLayer.replaceChildren();
+  const board = state.session.board;
+  const lit = new Set(state.session.litKeys ?? []);
   for (const path of state.session.paths) {
     const points = path.points
       .map((point) => `${point.x.toFixed(2)} ${point.y.toFixed(2)}`)
@@ -481,7 +484,42 @@ function renderBeams() {
       line.setAttribute("class", `beam beam--${layer} beam--${color}`);
       elements.beamLayer.append(line);
     }
+    const end = path.points[path.points.length - 1];
+    if (!end) {
+      continue;
+    }
+    const cell = cellNear(board, end);
+    if (cell?.kind === "portal") {
+      continue;
+    }
+    const key = cell ? `${cell.x},${cell.y}` : null;
+    const isLit = key !== null && lit.has(key);
+    const dot = document.createElementNS(SVG_NS, "circle");
+    dot.setAttribute("cx", end.x.toFixed(2));
+    dot.setAttribute("cy", end.y.toFixed(2));
+    dot.setAttribute("r", isLit ? "0.11" : "0.085");
+    dot.setAttribute(
+      "class",
+      `beam-end beam-end--${color} beam-end--${isLit ? "lit" : "dead"}`,
+    );
+    elements.beamLayer.append(dot);
   }
+}
+
+function cellNear(board, point) {
+  const x = Math.floor(point.x);
+  const y = Math.floor(point.y);
+  const clampedX = Math.min(Math.max(x, 0), board.width - 1);
+  const clampedY = Math.min(Math.max(y, 0), board.height - 1);
+  const direct = board.cells[clampedY]?.[clampedX] ?? null;
+  if (
+    direct &&
+    Math.abs(point.x - (direct.x + 0.5)) < 0.52 &&
+    Math.abs(point.y - (direct.y + 0.5)) < 0.52
+  ) {
+    return direct;
+  }
+  return null;
 }
 
 function updateGameView() {

@@ -173,16 +173,16 @@ export function rankFor(stars) {
   if (value >= TOTAL_STARS) {
     return "Relay Master";
   }
-  if (value >= 32) {
+  if (value >= 44) {
     return "Lumen";
   }
-  if (value >= 23) {
+  if (value >= 32) {
     return "Architect";
   }
-  if (value >= 14) {
+  if (value >= 19) {
     return "Weaver";
   }
-  if (value >= 6) {
+  if (value >= 8) {
     return "Operator";
   }
   return "Cadet";

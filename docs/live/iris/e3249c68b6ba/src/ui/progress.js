@@ -58,6 +58,9 @@ export function normalizeProgress(value) {
       if (typeof levelId !== "string" || levelId.length === 0) {
         continue;
       }
+      if (levelId === "__proto__" || levelId === "constructor" || levelId === "prototype") {
+        continue;
+      }
       const normalized = normalizeEntry(entry);
       if (normalized) {
         solved[levelId] = normalized;
@@ -97,6 +100,9 @@ export function loadProgress(storage) {
 export function saveProgress(progress, storage) {
   try {
     const store = storage ?? globalThis.localStorage;
+    if (!store) {
+      return false;
+    }
     store?.setItem(STORAGE_KEY, JSON.stringify(normalizeProgress(progress)));
     return true;
   } catch {
@@ -174,7 +180,7 @@ export function nextUnsolved(progress, levels) {
 }
 
 export function ratingFor(moves, par) {
-  if (!Number.isInteger(moves) || !Number.isInteger(par) || par < 0) {
+  if (!Number.isInteger(moves) || moves < 0 || !Number.isInteger(par) || par < 0) {
     return 1;
   }
   if (moves <= par) {

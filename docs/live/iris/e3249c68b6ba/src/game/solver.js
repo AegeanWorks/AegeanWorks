@@ -17,9 +17,10 @@ export function solutionStates(level) {
 }
 
 export function solutionMoves(level) {
+  const prepared = validateLevel(level);
   let moves = 0;
-  for (const mirror of mirrorTiles(level)) {
-    if (level.solution[mirrorKey(mirror.x, mirror.y)] !== mirror.orientation) {
+  for (const mirror of mirrorTiles(prepared)) {
+    if (prepared.solution[mirrorKey(mirror.x, mirror.y)] !== mirror.orientation) {
       moves += 1;
     }
   }
@@ -27,9 +28,13 @@ export function solutionMoves(level) {
 }
 
 export function solveLevel(level, options = {}) {
+  const opts = options ?? {};
+  if (opts.limit !== undefined && (!Number.isInteger(opts.limit) || opts.limit < 1)) {
+    throw new RangeError(`Search limit must be a whole number of at least 1, not '${opts.limit}'.`);
+  }
   const prepared = validateLevel(level);
   const mirrors = mirrorTiles(prepared);
-  const limit = Number.isInteger(options.limit) ? options.limit : 2 ** mirrors.length;
+  const limit = Number.isInteger(opts.limit) ? opts.limit : 2 ** mirrors.length;
   const total = Math.min(limit, 2 ** mirrors.length);
   let best = null;
   for (let mask = 0; mask < total; mask += 1) {
@@ -58,6 +63,7 @@ export function solveLevel(level, options = {}) {
     states: best ? best.states : null,
     mirrors: mirrors.length,
     searched: total,
+    truncated: total < 2 ** mirrors.length,
   });
 }
 
