@@ -9,8 +9,8 @@
 - **Total Python Modules**: `28`
 - **Total Classes**: `39`
 - **Total Top-Level Functions**: `151`
-- **Total Class Methods**: `189`
-- **Total Source Lines**: `6109`
+- **Total Class Methods**: `190`
+- **Total Source Lines**: `6119`
 
 ---
 
@@ -156,7 +156,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `391` lines (`17412` bytes)
+**Size**: `397` lines (`17707` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -199,6 +199,7 @@
   - Method `.test_naked_name_drop_blocked()`
   - Method `.test_explainer_missing_from_text_blocked()`
   - Method `.test_notice_needs_no_explainer()`
+  - Method `.test_overlong_post_blocked()`
 - `class ProfileTests`
   - Method `.test_profile_change_needs_approval()`
 - `class ContextTests`
@@ -397,7 +398,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `95` lines (`3901` bytes)
+**Size**: `99` lines (`4066` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*

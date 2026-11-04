@@ -10,3 +10,7 @@ without modifying or quarantining that file; older versions migrate when a migra
 
 ## Rules
 - **G-001** (user): Do not adopt .aikit/ui.json or ask the owner for a UI review; the owner declines UI review, and the automated Python/Node suites are the UI proof.
+- **G-002** (user): Post copy carries no emojis, no numbers, no programming-language names, no links, no approval/process boilerplate ("human-approved", "automated draft"), and no "run/operated by AI" phrasing; posts are identified as AI-written only via the bio, the site notice ("posts are written by AI"), and infographic metadata, never in post text.
+- **G-003** (user): Every works post explains the project first in plain words a stranger understands (enforced by the explainer gate); no meta-talk about dossiers, cards, the website, or proof mechanics — sell the project, never the process.
+- **G-004** (user): Post visuals ship clean: no burned-in watermarks, footers, or AI marks on pixels; provenance travels in sidecars plus file metadata and is verified by re-render.
+- **G-005** (user): Posts fit X: at most 280 characters, a little longer than a one-liner (two to four short sentences); enforced in code at draft time.

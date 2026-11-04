@@ -57,6 +57,10 @@ def build_post(
     """Build, gate and queue a draft; returns the queue record (unapproved)."""
     if kind not in ("screenshot", "chart", "infographic", "notice"):
         raise DraftError(f"Why: unknown post kind {kind!r}.\nFix: use screenshot, chart, infographic or notice.")
+    if len(text) > 280:
+        raise DraftError(
+            f"Why: post is {len(text)} chars; X fits 280.\nFix: shorten to two to four short sentences."
+        )
     subject = require_on_topic(repo)
     if kind in ("screenshot", "chart", "infographic"):
         require_explainer(text, explainer)

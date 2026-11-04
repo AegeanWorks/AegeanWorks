@@ -303,6 +303,12 @@ class ExplainerGateTests(unittest.TestCase):
                                       True, None, RUN, DATE, state)
             self.assertFalse(record["approved"])
 
+    def test_overlong_post_blocked(self):
+        with tempfile.TemporaryDirectory() as state:
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "x" * 281, "notice", COMMIT, DATA_FILE,
+                                 True, None, RUN, DATE, state)
+
 
 class ProfileTests(unittest.TestCase):
     def test_profile_change_needs_approval(self):
