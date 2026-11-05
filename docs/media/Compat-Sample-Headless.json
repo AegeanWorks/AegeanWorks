@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "repo": "Compat-Sample-Headless",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Compat-Sample-Headless/logo.svg",
+    "alt": "Compat-Sample-Headless logo"
+  }
+}
