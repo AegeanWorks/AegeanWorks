@@ -118,10 +118,26 @@ function betterResult(previous, moves, stars) {
 
 export function recordResult(progress, levelId, moves, stars, nextLevelId = null) {
   const next = normalizeProgress(progress);
+  if (
+    typeof levelId !== "string" ||
+    !LEVELS.some((level) => level.id === levelId) ||
+    !Number.isInteger(moves) ||
+    moves < 0 ||
+    !Number.isInteger(stars) ||
+    stars < 1 ||
+    stars > 3
+  ) {
+    return next;
+  }
   if (betterResult(next.best[levelId], moves, stars)) {
     next.best[levelId] = { moves, stars };
   }
-  if (nextLevelId && !next.unlocked.includes(nextLevelId)) {
+  if (
+    typeof nextLevelId === "string" &&
+    nextLevelId.length > 0 &&
+    LEVELS.some((level) => level.id === nextLevelId) &&
+    !next.unlocked.includes(nextLevelId)
+  ) {
     next.unlocked.push(nextLevelId);
   }
   return normalizeProgress(next);
@@ -173,16 +189,16 @@ export function rankFor(stars) {
   if (value >= TOTAL_STARS) {
     return "Relay Master";
   }
-  if (value >= 32) {
+  if (value >= 44) {
     return "Lumen";
   }
-  if (value >= 23) {
+  if (value >= 32) {
     return "Architect";
   }
-  if (value >= 14) {
+  if (value >= 19) {
     return "Weaver";
   }
-  if (value >= 6) {
+  if (value >= 8) {
     return "Operator";
   }
   return "Cadet";

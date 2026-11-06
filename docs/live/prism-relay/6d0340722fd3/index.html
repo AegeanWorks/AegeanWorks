@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Prism Relay is a neon light-routing puzzle game. Rotate mirrors and splitters, split beams through prisms, fold space through portals, and charge every receiver across three episodes.">
+    <meta name="description" content="Prism Relay is a neon light-routing puzzle game. Rotate mirrors and splitters, split beams through prisms, fold space through portals, and charge every receiver across four episodes.">
     <title>Prism Relay — a light-routing puzzle</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./src/theme.css">
@@ -23,7 +23,7 @@
           <span class="brand__word">PRISM <span>RELAY</span></span>
         </button>
         <div class="topbar__meta">
-          <span class="topbar__chapter" data-cue="topbar-status">LIGHT ROUTING / 13 CHAMBERS</span>
+          <span class="topbar__chapter" data-cue="topbar-status">LIGHT ROUTING / 18 CHAMBERS</span>
           <button class="profile-chip" data-ui="open-profile" aria-label="Open operator profile">
             <span class="sigil sigil--mini" id="profile-chip-sigil" data-sigil="prism" aria-hidden="true"></span>
             <span class="profile-chip__name" id="profile-chip-name">OPERATOR</span>
@@ -40,7 +40,7 @@
           <div class="title-copy">
             <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> A light-routing puzzle</p>
             <h1>Bend the light.<br><em>Close the relay.</em></h1>
-            <p class="lede">Rotate mirrors and splitters, fold space through portals, and charge every receiver. Three episodes. Thirteen chambers. One perfect circuit.</p>
+            <p class="lede">Rotate mirrors and splitters, fold space through portals, and charge every receiver. Four episodes. Eighteen chambers. One perfect circuit.</p>
             <div class="title-actions">
               <button class="button button--primary" data-ui="start-game">
                 Enter the relay <span aria-hidden="true">→</span>
@@ -50,11 +50,11 @@
             <dl class="title-stats">
               <div>
                 <dt>Chambers</dt>
-                <dd>13</dd>
+                <dd>18</dd>
               </div>
               <div>
                 <dt>Stars</dt>
-                <dd><span id="title-stars">00</span><em data-cue="title-star-total">/39</em></dd>
+                <dd><span id="title-stars">00</span><em data-cue="title-star-total">/54</em></dd>
               </div>
               <div>
                 <dt>Best moves</dt>
@@ -93,8 +93,8 @@
           </div>
           <div class="chamber-progress">
             <span class="chamber-progress__label">Relay calibration</span>
-            <div class="progress-track" id="chamber-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="13" aria-valuenow="0" aria-label="Chambers completed"><span id="chamber-progress-fill"></span></div>
-            <span class="chamber-progress__value" id="chamber-progress-value" data-cue="chamber-progress">0 / 13 chambers</span>
+            <div class="progress-track" id="chamber-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0" aria-label="Chambers completed"><span id="chamber-progress-fill"></span></div>
+            <span class="chamber-progress__value" id="chamber-progress-value" data-cue="chamber-progress">0 / 18 chambers</span>
           </div>
           <div class="chamber-grid" id="chamber-grid" data-ui="chamber-grid" data-panel="chamber-grid"></div>
         </section>
@@ -204,8 +204,8 @@
 
             <aside class="profile-side">
               <div class="profile-stats" id="profile-stats" data-ui="profile-stats" data-panel="profile-stats">
-                <div class="profile-stat"><span>Chambers</span><strong id="profile-stat-chambers">0 / 13</strong></div>
-                <div class="profile-stat"><span>Stars</span><strong id="profile-stat-stars">0 / 39</strong></div>
+                <div class="profile-stat"><span>Chambers</span><strong id="profile-stat-chambers">0 / 18</strong></div>
+                <div class="profile-stat"><span>Stars</span><strong id="profile-stat-stars">0 / 54</strong></div>
                 <div class="profile-stat"><span>Perfect routes</span><strong id="profile-stat-perfect">0</strong></div>
                 <div class="profile-stat"><span>Best moves</span><strong id="profile-stat-moves">0</strong></div>
               </div>
@@ -233,7 +233,7 @@
       <footer class="footer">
         <span>PRISM RELAY</span>
         <span>Built with AIKit</span>
-        <span data-cue="footer-note">13 chambers · 3 episodes · pure light</span>
+        <span data-cue="footer-note">18 chambers · 4 episodes · pure light</span>
       </footer>
     </div>
 

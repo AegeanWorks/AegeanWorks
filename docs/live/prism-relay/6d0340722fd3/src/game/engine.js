@@ -176,7 +176,7 @@ export function traceBeams(board) {
         break;
       }
 
-      const key = `${nx},${ny},${direction}`;
+      const key = `${source}:${nx},${ny},${direction}`;
       if (visited.has(key)) {
         paths.push({ points, source });
         break;
@@ -225,7 +225,7 @@ export function traceBeams(board) {
         if (!exit) {
           break;
         }
-        const exitKey = `${exit.x},${exit.y},${direction}`;
+        const exitKey = `${source}:${exit.x},${exit.y},${direction}`;
         if (visited.has(exitKey)) {
           break;
         }
