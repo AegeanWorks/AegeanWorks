@@ -127,6 +127,7 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False, link_r
             if not Path(src).is_file():
                 raise BrowserError(f"Why: visual file is missing: {src}.\nFix: re-render it from the run.")
             media_review.review_file(src)  # heuristics first, offline and free
+        media_review.assert_no_duplicates(srcs)
         if os.environ.get("MODEL_API_KEY"):
             for src in srcs:
                 ai_verdict = meta_image.ai_review(Path(src).read_bytes())

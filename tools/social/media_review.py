@@ -30,6 +30,21 @@ class ReviewError(ValueError):
     """Raised when a visual fails aesthetic review."""
 
 
+def assert_no_duplicates(paths: list) -> None:
+    """Refuse to attach the same bytes twice; similar-looking shots are the human's call."""
+    import hashlib  # noqa: PLC0415 - trivial local import
+
+    seen: dict[str, str] = {}
+    for path in paths:
+        digest = "sha256:" + hashlib.sha256(Path(path).read_bytes()).hexdigest()
+        if digest in seen:
+            raise ReviewError(
+                f"Why: {Path(path).name} is byte-identical to {seen[digest]}; posting it twice adds nothing.\n"
+                "Fix: attach one copy, or use a genuinely different shot."
+            )
+        seen[digest] = Path(path).name
+
+
 def register_reviewer(name: str, fn) -> None:
     """Add an extra judge (e.g. a vision model) run after the heuristics."""
     REVIEWERS[name] = fn

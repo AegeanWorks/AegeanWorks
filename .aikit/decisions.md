@@ -626,3 +626,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Status**: Accepted
 - **Context**: A commit+date line briefly landed in link replies; the owner ruled replies carry only the repo URL. Provenance belongs in receipts and sidecars.
 - **Decision**: reply text is exactly the repo URL (verified by a test asserting no commit/date content). R7/G-007 restored to bare-URL wording.
+
+### ADR-082: No identical image twice in one post
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: Multi-visual posts risk shipping byte-identical attachments. Separately, pixel comparison showed the removed Weft banner and screenshot are different images (dHash 26/64 apart) - that call stays a human taste call, not an automated one.
+- **Decision**: drive() refuses byte-identical attachments via digest comparison before any click. Near-duplicates remain human judgment by design.
+- **Consequences**: Duplicates can never ship through automation; aesthetic similarity calls stay with the owner.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 and PRINCIPLE-014.

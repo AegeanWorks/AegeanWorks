@@ -112,6 +112,17 @@ class ReviewTests(unittest.TestCase):
     def test_proportional_ok(self):
         media_review.assert_no_distortion((1200, 630), (600, 315))
 
+    def test_duplicate_bytes_rejected(self):
+        import shutil  # noqa: PLC0415 - test fixture copy
+
+        with tempfile.TemporaryDirectory() as temp:
+            first = make_png(Path(temp) / "one.png")
+            shutil.copyfile(first, Path(temp) / "one_copy.png")
+            with self.assertRaises(media_review.ReviewError):
+                media_review.assert_no_duplicates([str(first), str(Path(temp) / "one_copy.png")])
+            other = make_png(Path(temp) / "other.png", width=1000)
+            media_review.assert_no_duplicates([str(first), str(other)])
+
     def test_pluggable_reviewer(self):
         media_review.register_reviewer("test-judge", lambda raw, kind: "needs more contrast")
         try:

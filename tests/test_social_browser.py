@@ -202,17 +202,17 @@ class BrowserPostTests(unittest.TestCase):
     def test_drive_attaches_multiple_visuals(self):
         from PIL import Image, ImageDraw  # noqa: PLC0415 - fixture pixels only
 
-        def _png(path: Path) -> Path:
+        def _png(path: Path, bars: int = 24) -> Path:
             image = Image.new("RGB", (1200, 630), (4, 6, 12))
             draw = ImageDraw.Draw(image)
-            for y in range(40, 590, 24):
+            for y in range(40, 590, bars):
                 draw.rectangle([40, y, 1160, y + 10], fill=(103, 232, 249))
             image.save(path, format="PNG")
             return path
 
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             first = _png(Path(temp) / "one.png")
-            second = _png(Path(temp) / "two.png")
+            second = _png(Path(temp) / "two.png", bars=32)
             visual = {
                 "digest": "sha256:" + "e" * 64, "run": RUN, "commit": COMMIT,
                 "data_file": DATA_FILE, "src": str(first), "extra_srcs": [str(second)],
@@ -227,6 +227,35 @@ class BrowserPostTests(unittest.TestCase):
             result = browser_post.drive(page, record["id"], state)
             self.assertEqual(result["media_attached"], ["one.png", "two.png"])
             self.assertFalse(result["clicked"])
+
+    def test_drive_rejects_duplicate_bytes(self):
+        import shutil  # noqa: PLC0415 - duplicate fixture
+
+        from PIL import Image, ImageDraw  # noqa: PLC0415 - fixture pixels only
+        from social import media_review as _media_review  # noqa: PLC0415 - asserted exception type
+
+        with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
+            first = str(Path(temp) / "dup.png")
+            image = Image.new("RGB", (1200, 630), (4, 6, 12))
+            draw = ImageDraw.Draw(image)
+            for y in range(40, 590, 24):
+                draw.rectangle([40, y, 1160, y + 10], fill=(103, 232, 249))
+            image.save(first, format="PNG")
+            shutil.copyfile(first, str(Path(temp) / "dup_copy.png"))
+            visual = {
+                "digest": "sha256:" + "f" * 64, "run": RUN, "commit": COMMIT,
+                "data_file": DATA_FILE, "src": first, "extra_srcs": [str(Path(temp) / "dup_copy.png")],
+            }
+            record = draft.build_post(
+                "AIKit", "AIKit is crash-resilient governance for AI coding agents. Look", "screenshot",
+                COMMIT, DATA_FILE, True, visual, RUN, DATE, state,
+                explainer="AIKit is crash-resilient governance for AI coding agents.",
+            )
+            queue.approve(record["id"], "owner", state)
+            page = FakePage()
+            with self.assertRaises(_media_review.ReviewError):
+                browser_post.drive(page, record["id"], state)
+            self.assertFalse(any(call[0] == "attach" for call in page.calls))
 
 
 class LinkReplyTests(unittest.TestCase):

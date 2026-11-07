@@ -8,9 +8,9 @@
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `29`
 - **Total Classes**: `41`
-- **Total Top-Level Functions**: `161`
-- **Total Class Methods**: `213`
-- **Total Source Lines**: `6569`
+- **Total Top-Level Functions**: `162`
+- **Total Class Methods**: `215`
+- **Total Source Lines**: `6625`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `335` lines (`15185` bytes)
+**Size**: `364` lines (`16797` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -153,6 +153,7 @@
   - Method `.test_drive_unconfirmed_click_claims_nothing()`
   - Method `.test_drive_missing_visual_file_blocked()`
   - Method `.test_drive_attaches_multiple_visuals()`
+  - Method `.test_drive_rejects_duplicate_bytes()`
 - `class LinkReplyTests`
   - Method `.test_reply_posts_bare_repo_url()`
   - Method `.test_reply_skipped_when_duplicate()`
@@ -240,7 +241,7 @@
 ### [`tests/test_social_review.py`](tests/test_social_review.py)
 > *Tests for the aesthetic review gate (tools/social/media_review.py).*
 
-**Size**: `269` lines (`10932` bytes)
+**Size**: `280` lines (`11506` bytes)
 
 **Classes:**
 - `class FakePage`
@@ -262,6 +263,7 @@
   - Method `.test_non_raster_blocked()`
   - Method `.test_distortion_blocked()`
   - Method `.test_proportional_ok()`
+  - Method `.test_duplicate_bytes_rejected()`
   - Method `.test_pluggable_reviewer()`
 - `class DriveReviewTests`
   - Method `.setUp()`
@@ -369,7 +371,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `353` lines (`15631` bytes)
+**Size**: `354` lines (`15679` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -501,12 +503,13 @@
 ### [`tools/social/media_review.py`](tools/social/media_review.py)
 > *Aesthetic review: no ugly visual ships through automation.*
 
-**Size**: `105` lines (`3801` bytes)
+**Size**: `120` lines (`4435` bytes)
 
 **Classes:**
 - `class ReviewError` - *Raised when a visual fails aesthetic review.*
 
 **Functions:**
+- `def assert_no_duplicates(paths)` - *Refuse to attach the same bytes twice; similar-looking shots are the human's call.*
 - `def register_reviewer(name, fn)` - *Add an extra judge (e.g. a vision model) run after the heuristics.*
 - `def edge_energy(raw)` - *Mean FIND_EDGES response on a downscaled luminance copy.*
 - `def assert_no_distortion(src_size, dst_size)` - *Fail when a resize stretches content (crop-to-fill instead).*
