@@ -215,19 +215,41 @@ class PlaywrightPage:
             ) from error
         self._page = page
         self._attached = 0
+        self._in_reply = False
 
     def goto(self, url: str) -> None:
         self._page.goto(url, wait_until="domcontentloaded", timeout=30000)
 
     def _first(self, test_ids: tuple[str, ...]):
         failures: list[str] = []
+        found_dialog: list = []
         for test_id in test_ids:
             try:
+                if self._in_reply:
+                    try:
+                        self._page.wait_for_selector(
+                            f'div[role="dialog"] [data-testid="{test_id}"]', timeout=15000
+                        )
+                    except Exception as error:  # noqa: BLE001 - try the next hook
+                        failures.append(f"{test_id}: {error}".split("Call log")[0][:200])
+                        continue
+                    matches = self._page.get_by_test_id(test_id)
+                    found_dialog = [
+                        m for m in matches.all() if m.evaluate("e => !!e.closest('[role=dialog]')")
+                    ]
+                    if not found_dialog:
+                        failures.append(f"{test_id}: no in-dialog match")
+                        continue
+                    return found_dialog[0]
                 self._page.wait_for_selector(f'[data-testid="{test_id}"]', timeout=20000)
                 return self._page.get_by_test_id(test_id).first
             except Exception as error:  # noqa: BLE001 - selector probe; every failure is reported below
                 failures.append(f"{test_id}: {error}".split("Call log")[0][:200])
                 continue
+        if self._in_reply and not found_dialog:
+            raise BrowserError(
+                "Why: reply composer vanished; no in-dialog composer or Post button.\nFix: re-open the reply."
+            )
         raise BrowserError(
             f"Why: x.com composer element not found (tried {', '.join(test_ids)}); the page markup moved.\n"
             f"Page said: {'; '.join(failures)[:300]}\n"
@@ -269,19 +291,26 @@ class PlaywrightPage:
         """Return the first status URL on the profile containing the snippet."""
         self.goto(PROFILE_URL)
         self._page.wait_for_timeout(4000)
-        return self._page.evaluate(
-            """(snippet) => {
-                const arts = Array.from(document.querySelectorAll('article'));
-                for (const a of arts) {
-                    if ((a.innerText || '').includes(snippet)) {
-                        const link = a.querySelector('a[href*="/status/"]');
-                        if (link) return link.getAttribute('href');
+        for _ in range(12):
+            found = self._page.evaluate(
+                """(snippet) => {
+                    const norm = (s) => (s || '').replace(/\\s+/g, ' ');
+                    const arts = Array.from(document.querySelectorAll('article'));
+                    for (const a of arts) {
+                        if (norm(a.innerText).includes(norm(snippet))) {
+                            const link = a.querySelector('a[href*="/status/"]');
+                            if (link) return link.getAttribute('href');
+                        }
                     }
-                }
-                return '';
-            }""",
-            snippet,
-        )
+                    return '';
+                }""",
+                snippet,
+            )
+            if found:
+                return found
+            self._page.evaluate("() => window.scrollBy(0, 1200)")
+            self._page.wait_for_timeout(2000)
+        return ""
 
     def open_tweet(self, path: str) -> None:
         url = path if path.startswith("http") else "https://x.com" + path
@@ -293,7 +322,13 @@ class PlaywrightPage:
         return text in (body or "")
 
     def click_reply(self) -> None:
-        self._first(self.REPLY_IDS).click(timeout=30000)
+        # The reply button lives on the tweet page, outside any dialog;
+        # only the composer interactions after it are dialog-scoped.
+        self._in_reply = False
+        try:
+            self._first(self.REPLY_IDS).click(timeout=30000)
+        finally:
+            self._in_reply = True
 
     def click_post(self) -> None:
         # No Escape press: on a filled composer it can summon the discard dialog,
