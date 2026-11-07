@@ -37,6 +37,14 @@ const apps = [
     version: "0.1.1",
     commit: "fedcba9876543210",
   },
+  {
+    slug: "archived",
+    title: "Archived",
+    available: true,
+    archived: true,
+    version: "1.0.0",
+    commit: "aaaaaaaaaaaaaaaa",
+  },
 ];
 
 equal(findApp(apps, "prism-relay").title, "Prism Relay", "slug lookup");
@@ -52,7 +60,8 @@ equal(appStatus(apps[1]), "Run locally", "local app status");
 equal(findApp(apps, "weft").title, "Weft", "second browser app lookup");
 equal(versionLabel(apps[2]), "v0.1.1 \u00b7 fedcba9", "second app version and commit");
 equal(appStatus(apps[2]), "Runs in browser", "second browser app status");
-equal(appsFromManifest({ schema: 2, apps }).length, 3, "manifest apps kept");
+equal(appStatus(apps[3]), "Archived \u00b7 runs in browser", "archived app stays live");
+equal(appsFromManifest({ schema: 2, apps }).length, 4, "manifest apps kept");
 equal(appsFromManifest({ schema: 1, apps }), [], "old schema ignored");
 equal(appsFromManifest({ schema: 2, apps: [null, { slug: "Bad Slug" }] }), [], "invalid entries dropped");
 equal(appsFromManifest(null), [], "missing manifest ignored");

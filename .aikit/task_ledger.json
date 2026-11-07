@@ -1,98 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "palette-portfolio",
+    "task_id": "live-archive-retention",
     "last_phase": "phase 4",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1793435827.1873147,
-    "owner": "opencode:editor-live",
-    "started_by": "opencode:editor-live",
+    "updated_at": 1794077768.450862,
+    "owner": "opencode:deepseek-v4.1-flash",
+    "started_by": "opencode:deepseek-v4.1-flash",
     "continuations": [],
-    "completed_at": 1793435827.5188406
+    "completed_at": 1794077818.6584485
   },
   "checkpoints": [
-    {
-      "task_id": "live-iris",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/2]-[2/2] Iris is in the Live catalog and its commit-named build is synced; checklists: passed; site tests 91/91, verify 58, project 88, live 20, sync --check-source/--write/--check and a headless Live-page boot solving a chamber all pass",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1793349132.514066,
-      "timestamp_str": "2026-10-30 11:32:12",
-      "agent": "kilo:iris",
-      "handoff": {
-        "state": "18 modified and 2 untracked paths including the Iris build and a Tessera build refresh",
-        "next": "commit the catalog refresh and push main",
-        "failed": "none",
-        "open": "none",
-        "evidence": "test_profile 91 pass, all Node suites pass, sync checks pass, in-page Iris solved at 1 move with 3 stars"
-      }
-    },
-    {
-      "task_id": "live-iris",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Final verification after rebasing onto the daily live refresh; checklists: passed; site tests 94/94, all four Node suites, strict project gates 4/4, sync_editor --check and sync_live_apps --check pass, and the Live page boots Iris and solves a chamber in a headless browser",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1793349804.246307,
-      "timestamp_str": "2026-10-30 11:43:24",
-      "agent": "kilo:iris",
-      "handoff": {
-        "state": "clean tree, 3 commits ahead of the pre-task remote",
-        "next": "push main and complete the task",
-        "failed": "none",
-        "open": "none",
-        "evidence": "editor manifest now line-ending stable (fd9bd000), Iris build fa020321803d in live.json, Weft refreshed to f93d4f8c96fb, UI warning is pre-existing because this site has no UI contract"
-      }
-    },
-    {
-      "task_id": "live-iris",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'live-iris' completed successfully.",
-      "status": "completed",
-      "timestamp": 1793350178.97498,
-      "timestamp_str": "2026-10-30 11:49:38",
-      "agent": "kilo:iris"
-    },
-    {
-      "task_id": "live-iris-shots",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Capture a 1440x900 Iris screenshot set for the home live slider. [2/2] Register the shots, cover Iris in the slider tests, verify the site suites and push.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1793350867.3329334,
-      "timestamp_str": "2026-10-30 12:01:07",
-      "agent": "kilo:iris",
-      "impact_assessment": {
-        "why": "The home page live slider reads docs/live/shots.json and still lists only the three older apps, so Iris would be absent from the showcase even though its Live card works.",
-        "benefits": "Six reviewed Iris captures and a tested slider entry make the new game visible on the landing page and keep the parity check honest for every live app.",
-        "risks": "contract: the screenshots must show the commit-named build; dependency: none beyond the existing static build; concurrency: the daily live refresh may advance Weft/Tessera but not Iris; state: docs/live/shots.json and the PNG set change together.",
-        "mitigation": "Capture from the deployed build directory, record its commit, validate every alt and file in tests, and run the full suites plus the strict gate before pushing."
-      }
-    },
-    {
-      "task_id": "live-iris-shots",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/2]-[2/2] Six Iris captures are registered and the home slider no longer truncates the catalog; checklists: passed; site tests 94/94, live 20, gates 4/4, and a headless home render shows four cards with six Iris screenshots",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1793351200.188847,
-      "timestamp_str": "2026-10-30 12:06:40",
-      "agent": "kilo:iris",
-      "handoff": {
-        "state": "4 modified and 1 untracked path",
-        "next": "commit and push, then confirm the Pages deployment exposes the Iris shots",
-        "failed": "none",
-        "open": "none",
-        "evidence": "home-smoke OK, shots.json validated, every alt/file covered by tests"
-      }
-    },
     {
       "task_id": "live-iris-shots",
       "phase": "completed",
@@ -287,6 +206,67 @@
       "timestamp": 1793435827.5188417,
       "timestamp_str": "2026-10-31 11:37:07",
       "agent": "opencode:editor-live"
+    },
+    {
+      "task_id": "live-archive-retention",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/4] Plan: archived projects stay in the Live catalog; failing tests first",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794077016.7557755,
+      "timestamp_str": "2026-11-07 21:43:36",
+      "agent": "opencode:deepseek-v4.1-flash",
+      "impact_assessment": {
+        "why": "The user requires that archiving a project never removes its playable card from the website Live section",
+        "benefits": "An archived live app keeps its last verified build, version, commit and Open button; local archive moves no longer break sync_live_apps.py",
+        "risks": "contract: live.json schema 2 gains an optional archived flag and Live status text; dependency: none (stdlib); concurrency: none; state: generated docs/live.json and project ADR",
+        "mitigation": "failing-first fixture tests for archived source, missing archived source retention and non-archived missing source refusal; run the project gate plus a real simulated archive"
+      },
+      "plan_digest": "13198c1b10ba869255a63d256b0f73c6c9c0a790098f9afbb7b09c8d42d8a691"
+    },
+    {
+      "task_id": "live-archive-retention",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/4] Archive-aware Live sync: projects/archive fallback, archived flag, last-build retention, archived status; failing-first Python+Node tests green",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794077717.6425946,
+      "timestamp_str": "2026-11-07 21:55:17",
+      "agent": "opencode:deepseek-v4.1-flash"
+    },
+    {
+      "task_id": "live-archive-retention",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[3/4] ADR-083, README note, shell v43 bump, AST codebase map refreshed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794077719.4100688,
+      "timestamp_str": "2026-11-07 21:55:19",
+      "agent": "opencode:deepseek-v4.1-flash"
+    },
+    {
+      "task_id": "live-archive-retention",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[4/4] Full phase-4 gates green (4/4: test/hygiene/guidelines/secrets), Node suites 67/21/88/58, simulated archive proof kept all six apps with iris archived; checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794077768.450862,
+      "timestamp_str": "2026-11-07 21:56:08",
+      "agent": "opencode:deepseek-v4.1-flash"
+    },
+    {
+      "task_id": "live-archive-retention",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'live-archive-retention' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794077818.6584513,
+      "timestamp_str": "2026-11-07 21:56:58",
+      "agent": "opencode:deepseek-v4.1-flash"
     }
   ]
 }

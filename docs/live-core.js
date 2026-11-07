@@ -41,7 +41,9 @@ export function versionLabel(app) {
 }
 
 export function appStatus(app) {
-  return app && app.available ? "Runs in browser" : "Run locally";
+  const status = app && app.available ? "Runs in browser" : "Run locally";
+  if (!app || !app.archived) return status;
+  return "Archived \u00b7 " + status.charAt(0).toLowerCase() + status.slice(1);
 }
 
 /**

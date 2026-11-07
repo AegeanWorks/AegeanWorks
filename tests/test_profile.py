@@ -575,7 +575,7 @@ class ProfileIntegrityTests(unittest.TestCase):
                 self.assertTrue((ROOT / "docs" / shot["src"]).is_file())
         home_script = (ROOT / "docs" / "live-home.js").read_text(encoding="utf-8")
         self.assertNotIn("slice(0, 3)", home_script)
-        for token in ("live-home-slider", "live-home-nav", "live/shots.json", "Dossier", "app.dossier"):
+        for token in ("live-home-slider", "live-home-nav", "live/shots.json", "Dossier", "app.dossier", "app.archived"):
             with self.subTest(token=token):
                 self.assertIn(token, home_script)
         redirect = (ROOT / "docs" / "live.html").read_text(encoding="utf-8")
@@ -755,6 +755,109 @@ class ProfileIntegrityTests(unittest.TestCase):
             (Path(temp) / "optional").mkdir()
             problems = module.source_problems(Path(temp))
         self.assertTrue(any("no root index.html" in problem for problem in problems), problems)
+
+    def _live_sync_module(self, name):
+        import importlib.util
+
+        tool = ROOT / "tools" / "sync_live_apps.py"
+        spec = importlib.util.spec_from_file_location(name, tool)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def _live_fixture(self, root, archived):
+        source = root / ("archive" if archived else "") / "fixture"
+        (source / "src").mkdir(parents=True)
+        (source / "index.html").write_text("<!doctype html>\n", encoding="utf-8")
+        (source / "src" / "app.js").write_text("export const ready = true;\n", encoding="utf-8")
+        (source / "package.json").write_text('{"version": "1.0.0"}\n', encoding="utf-8")
+        (source / "LICENSE").write_text("# Aegean License 1.1\n", encoding="utf-8")
+        if archived:
+            (source / ".aikit").mkdir()
+            (source / ".aikit" / "project.json").write_text(
+                '{"name": "fixture", "archived": true}\n', encoding="utf-8"
+            )
+        return source
+
+    def _live_fixture_app(self):
+        return {
+            "slug": "fixture",
+            "repo": "Fixture",
+            "source": "fixture",
+            "title": "Fixture",
+            "description": "A fixture app.",
+            "license": "AL-1.1",
+            "mode": "browser",
+            "runtime": ("index.html", "src"),
+            "version_file": "package.json",
+            "logo": "live/fixture/logo.svg",
+        }
+
+    def test_archived_live_source_is_retained_after_the_folder_moves(self):
+        import shutil
+        import tempfile
+        from unittest import mock
+
+        module = self._live_sync_module("sync_live_apps_archived")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = self._live_fixture(root, archived=True)
+            (root / "docs" / "live" / "fixture").mkdir(parents=True)
+            (root / "docs" / "live" / "fixture" / "logo.svg").write_text(
+                "<svg/>\n", encoding="utf-8"
+            )
+            module.PROJECT_ROOT = root
+            module.DOCS = root / "docs"
+            module.MANIFEST_REL = "docs/live.json"
+            module.APPS = (self._live_fixture_app(),)
+            git_stub = lambda _source, *args: (
+                "a" * 40 if args[:1] == ("rev-parse",) else "2026-11-07"
+            )
+            with mock.patch.object(module, "_git", side_effect=git_stub):
+                manifest = module.build_manifest(root)
+            entry = manifest["apps"][0]
+            self.assertTrue(entry["archived"], entry)
+            self.assertTrue(entry["available"])
+            self.assertEqual(
+                entry["path"], "live/fixture/aaaaaaaaaaaa/index.html"
+            )
+            manifest_path = root / "docs" / "live.json"
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            self.assertEqual(module.check_manifest(), [])
+            shutil.rmtree(source)
+            self.assertEqual(module.source_problems(root), [])
+            self.assertEqual(module.build_manifest(root), manifest)
+            self.assertEqual(module.check_manifest(), [])
+
+    def test_missing_unarchived_live_source_still_refuses(self):
+        import shutil
+        import tempfile
+        from unittest import mock
+
+        module = self._live_sync_module("sync_live_apps_unarchived")
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            source = self._live_fixture(root, archived=False)
+            (root / "docs" / "live" / "fixture").mkdir(parents=True)
+            (root / "docs" / "live" / "fixture" / "logo.svg").write_text(
+                "<svg/>\n", encoding="utf-8"
+            )
+            module.PROJECT_ROOT = root
+            module.DOCS = root / "docs"
+            module.MANIFEST_REL = "docs/live.json"
+            module.APPS = (self._live_fixture_app(),)
+            git_stub = lambda _source, *args: (
+                "b" * 40 if args[:1] == ("rev-parse",) else "2026-11-07"
+            )
+            with mock.patch.object(module, "_git", side_effect=git_stub):
+                manifest = module.build_manifest(root)
+            (root / "docs" / "live.json").write_text(
+                json.dumps(manifest), encoding="utf-8"
+            )
+            shutil.rmtree(source)
+            self.assertTrue(module.source_problems(root))
+            with self.assertRaises(module.SyncError):
+                module.build_manifest(root)
 
     def test_build_digest_is_stable_across_platforms(self):
         import importlib.util

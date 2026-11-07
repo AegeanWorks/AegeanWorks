@@ -8,9 +8,9 @@
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `29`
 - **Total Classes**: `41`
-- **Total Top-Level Functions**: `162`
-- **Total Class Methods**: `215`
-- **Total Source Lines**: `6625`
+- **Total Top-Level Functions**: `164`
+- **Total Class Methods**: `220`
+- **Total Source Lines**: `6775`
 
 ---
 
@@ -19,7 +19,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `1846` lines (`86355` bytes)
+**Size**: `1949` lines (`90865` bytes)
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -39,6 +39,11 @@
   - Method `.test_editor_page_is_wired_and_synced()`
   - Method `.test_source_validator_covers_every_runtime_file()`
   - Method `.test_optional_live_source_can_be_absent()`
+  - Method `._live_sync_module(name)`
+  - Method `._live_fixture(root, archived)`
+  - Method `._live_fixture_app()`
+  - Method `.test_archived_live_source_is_retained_after_the_folder_moves()`
+  - Method `.test_missing_unarchived_live_source_still_refuses()`
   - Method `.test_build_digest_is_stable_across_platforms()`
   - Method `.test_portfolio_cards_use_repository_logos()`
   - Method `.test_dossier_media_manifests_are_consistent()`
@@ -699,7 +704,7 @@
 ### [`tools/sync_live_apps.py`](tools/sync_live_apps.py)
 > *Sync the live browser apps and their catalog.*
 
-**Size**: `698` lines (`28128` bytes)
+**Size**: `745` lines (`30175` bytes)
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*
@@ -715,6 +720,8 @@
 - `def _runtime_files(target)`
 - `def _source_path(source, relative)` - *Resolve an index reference inside the source, or None when it escapes it.*
 - `def _allowed_url(value)` - *Only the W3C SVG and XLink namespaces may be named as external URLs.*
+- `def source_directory(game, source_root)` - *The live source checkout, or its archived copy after ``aikit archive`` moved it.*
+- `def source_is_archived(source)` - *Whether the source lives under ``archive/`` or records an archived project.*
 - `def validate_source(game, source_root)` - *Check the static contract the website relies on before copying a build.*
 - `def source_problems(source_root)`
 - `def _manifest_entry(slug)` - *The previous manifest entry for one game, or an empty mapping.*

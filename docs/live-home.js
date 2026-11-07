@@ -119,7 +119,9 @@ function card(app, shots) {
   titleLink.href = "play.html?app=" + encodeURIComponent(app.slug);
   heading.appendChild(titleLink);
   body.appendChild(heading);
-  body.appendChild(element("span", "live-home-meta", versionLabel(app)));
+  const meta = element("span", "live-home-meta", versionLabel(app));
+  if (app.archived) meta.append(" \u00b7 archived");
+  body.appendChild(meta);
   body.appendChild(element("span", "live-home-description", app.description));
 
   const links = element("div", "live-home-links");

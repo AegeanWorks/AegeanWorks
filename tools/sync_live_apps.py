@@ -108,6 +108,7 @@ APPS = (
 )
 
 MANIFEST_REL = "docs/live.json"
+ARCHIVE_DIRNAME = "archive"
 COMMIT_RE = re.compile(r"^[0-9a-f]{7,40}$")
 KEEP_BUILDS = 3
 LICENSE_HEADERS = {
@@ -246,13 +247,36 @@ def _allowed_url(value: str) -> bool:
     return value.startswith(("http://www.w3.org/", "https://www.w3.org/"))
 
 
+def source_directory(game: dict, source_root: Path) -> Path | None:
+    """The live source checkout, or its archived copy after ``aikit archive`` moved it."""
+    direct = source_root / game["source"]
+    if direct.is_dir():
+        return direct
+    archived = source_root / ARCHIVE_DIRNAME / game["source"]
+    return archived if archived.is_dir() else None
+
+
+def source_is_archived(source: Path) -> bool:
+    """Whether the source lives under ``archive/`` or records an archived project."""
+    if source.parent.name == ARCHIVE_DIRNAME:
+        return True
+    marker = source / ".aikit" / "project.json"
+    try:
+        config = json.loads(marker.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    return isinstance(config, dict) and config.get("archived") is True
+
+
 def validate_source(game: dict, source_root: Path) -> list[str]:
     """Check the static contract the website relies on before copying a build."""
     problems: list[str] = []
-    source = source_root / game["source"]
+    source = source_directory(game, source_root)
+    if source is None:
+        expected = source_root / game["source"]
+        archived = source_root / ARCHIVE_DIRNAME / game["source"]
+        return [f"{game['repo']} source is missing at {expected} or {archived}"]
     index = source / "index.html"
-    if not source.is_dir():
-        return [f"{game['repo']} source is missing at {source}"]
     if not index.is_file():
         return [f"{game['repo']} has no root index.html"]
     try:
@@ -326,7 +350,13 @@ def validate_source(game: dict, source_root: Path) -> list[str]:
 def source_problems(source_root: Path) -> list[str]:
     problems: list[str] = []
     for game in APPS:
-        if game.get("optional") and not (source_root / game["source"]).is_dir():
+        if source_directory(game, source_root) is None:
+            recorded = _manifest_entry(game["slug"])
+            if game.get("optional") or recorded.get("archived") is True:
+                continue
+            problems.append(
+                f"{game['repo']} source is missing at {source_root / game['source']}"
+            )
             continue
         problems.extend(validate_source(game, source_root))
     return problems
@@ -379,12 +409,15 @@ def _retained_paths(game: dict, base: Path, current: str) -> list[str]:
 
 
 def _browser_entry(game: dict, source_root: Path) -> dict:
-    source = source_root / game["source"]
-    if not source.is_dir():
+    source = source_directory(game, source_root)
+    if source is None:
+        expected = source_root / game["source"]
+        archived = source_root / ARCHIVE_DIRNAME / game["source"]
         raise SyncError(
-            f"The {game['repo']} source is missing at {source}.",
+            f"The {game['repo']} source is missing at {expected} or {archived}.",
             "the live build cannot be copied without its repository.",
-            "check out the game beside AegeanWorks or pass --source-root, then retry.",
+            "check out the game beside AegeanWorks, keep its archived folder in "
+            "projects/archive/, or pass --source-root, then retry.",
         )
     commit = _git(source, "rev-parse", "HEAD")
     if not COMMIT_RE.match(commit):
@@ -416,7 +449,7 @@ def _browser_entry(game: dict, source_root: Path) -> dict:
         )
     files = _runtime_files(target)
     version = _version(source, game["version_file"])
-    return {
+    entry = {
         "slug": game["slug"],
         "repo": game["repo"],
         "title": game["title"],
@@ -438,6 +471,9 @@ def _browser_entry(game: dict, source_root: Path) -> dict:
         "logo": game["logo"],
         "dossier": game.get("dossier", ""),
     }
+    if source_is_archived(source):
+        entry["archived"] = True
+    return entry
 
 
 def _runtime_entry_files(root: Path, entries: tuple[str, ...]) -> list[Path]:
@@ -453,12 +489,15 @@ def _runtime_entry_files(root: Path, entries: tuple[str, ...]) -> list[Path]:
 
 def _local_entry(game: dict, source_root: Path) -> dict:
     """Describe a build that is already vendored inside docs/ (no copy)."""
-    source = source_root / game["source"]
-    if not source.is_dir():
+    source = source_directory(game, source_root)
+    if source is None:
+        expected = source_root / game["source"]
+        archived = source_root / ARCHIVE_DIRNAME / game["source"]
         raise SyncError(
-            f"The {game['repo']} source is missing at {source}.",
+            f"The {game['repo']} source is missing at {expected} or {archived}.",
             "the live catalog cannot prove the vendored build is current.",
-            "check out the app beside AegeanWorks or pass --source-root, then retry.",
+            "check out the app beside AegeanWorks, keep its archived folder in "
+            "projects/archive/, or pass --source-root, then retry.",
         )
     commit = _git(source, "rev-parse", "HEAD")
     if not COMMIT_RE.match(commit):
@@ -478,7 +517,7 @@ def _local_entry(game: dict, source_root: Path) -> dict:
         )
     root = target.parent
     files = _runtime_entry_files(root, tuple(game["runtime"]))
-    return {
+    entry = {
         "slug": game["slug"],
         "repo": game["repo"],
         "title": game["title"],
@@ -497,6 +536,9 @@ def _local_entry(game: dict, source_root: Path) -> dict:
         "logo": game["logo"],
         "dossier": game.get("dossier", ""),
     }
+    if source_is_archived(source):
+        entry["archived"] = True
+    return entry
 
 
 def build_manifest(source_root: Path) -> dict:
@@ -508,10 +550,13 @@ def build_manifest(source_root: Path) -> dict:
     }
     apps = []
     for game in APPS:
-        if game.get("optional") and not (source_root / game["source"]).is_dir():
-            if game["slug"] in recorded:
-                apps.append(recorded[game["slug"]])
-            continue
+        if source_directory(game, source_root) is None:
+            kept = recorded.get(game["slug"])
+            if kept and (game.get("optional") or kept.get("archived") is True):
+                apps.append(kept)
+                continue
+            if game.get("optional"):
+                continue
         if game.get("local"):
             apps.append(_local_entry(game, source_root))
         else:
@@ -558,6 +603,8 @@ def check_manifest() -> list[str]:
             problems.append(f"{spec['slug']} has no valid commit date")
         if game.get("license") != spec["license"]:
             problems.append(f"{spec['slug']} has the wrong license label")
+        if "archived" in game and not isinstance(game["archived"], bool):
+            problems.append(f"{spec['slug']} has a non-boolean archived flag")
         if not game.get("available"):
             problems.append(f"{spec['slug']} is not marked available")
             continue
