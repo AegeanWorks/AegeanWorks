@@ -39,8 +39,20 @@ PROFILE_URL = "https://x.com/AegeanWorks"
 
 
 def reply_url_for(repo: str) -> str:
-    """The deterministic link-reply for a post: the repo URL, nothing else."""
+    """The repo URL carried by a link-reply."""
     return f"https://github.com/AegeanWorks/{repo.strip()}"
+
+
+def reply_text_for(draft: dict) -> str:
+    """Full link-reply text: repo URL plus the run's commit and date."""
+    url = reply_url_for(draft["repo"])
+    commit = str(draft.get("evidence", {}).get("commit", ""))[:7]
+    date = str(draft.get("date", ""))
+    lines = [url]
+    provenance = " ".join(part for part in (f"commit {commit}" if commit else "", date) if part)
+    if provenance:
+        lines.append(provenance)
+    return "\n".join(lines)
 
 
 class BrowserError(ValueError):
@@ -87,7 +99,7 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
         "text_file": "post.txt",
         "media": media,
         "review": reviews,
-        "link_reply": reply_url_for(record["draft"]["repo"]),
+        "link_reply": reply_text_for(record["draft"]),
         "visual_digest": visual.get("digest", ""),
         "approved_by": record["approver"],
         "approved_at": record["approved_at"],
@@ -176,9 +188,10 @@ def post_link_reply(draft_id: str, page, state_dir=None, final_click: bool = Fal
     checking the thread first.
     """
     record = _record(state_dir, draft_id)
+    text = reply_text_for(record["draft"])
     url = reply_url_for(record["draft"]["repo"])
     if not final_click:
-        return {"link_reply": url, "clicked": False, "note": "compose-only; post the reply by hand"}
+        return {"link_reply": text, "clicked": False, "note": "compose-only; post the reply by hand"}
     if os.environ.get("AEGEAN_SOCIAL_BROWSER") != "1":
         raise BrowserError(
             "Why: reply click needs AEGEAN_SOCIAL_BROWSER=1.\nFix: arm the flag or post the reply by hand."
@@ -191,16 +204,16 @@ def post_link_reply(draft_id: str, page, state_dir=None, final_click: bool = Fal
         )
     page.open_tweet(found)
     if page.thread_contains(url):
-        return {"link_reply": url, "clicked": False, "duplicate": True}
+        return {"link_reply": text, "clicked": False, "duplicate": True}
     page.click_reply()
-    echoed = page.fill_composer(url)
-    if echoed.strip() != url:
+    echoed = page.fill_composer(text)
+    if echoed.strip() != text.strip():
         raise BrowserError(
-            "Why: composer echo differs from the link; the page may have altered it.\nFix: abort."
+            "Why: composer echo differs from the reply; the page may have altered it.\nFix: abort."
         )
     page.click_post()
     posted = page.confirm_posted()
-    return {"link_reply": url, "clicked": True, "posted": posted}
+    return {"link_reply": text, "clicked": True, "posted": posted}
 
 
 class PlaywrightPage:

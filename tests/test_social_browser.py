@@ -241,8 +241,9 @@ class LinkReplyTests(unittest.TestCase):
                 result = browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
                 self.assertTrue(result["posted"])
                 self.assertTrue(result["reply"]["posted"])
-                self.assertEqual(result["reply"]["link_reply"], "https://github.com/AegeanWorks/AIKit")
-                self.assertEqual(page.composed, "https://github.com/AegeanWorks/AIKit")
+                expected_reply = "https://github.com/AegeanWorks/AIKit\ncommit ea26791 2026-11-03"
+                self.assertEqual(result["reply"]["link_reply"], expected_reply)
+                self.assertEqual(page.composed, expected_reply)
             finally:
                 os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
                 if backup is not None:
