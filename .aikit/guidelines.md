@@ -17,3 +17,5 @@ without modifying or quarantining that file; older versions migrate when a migra
 - **G-006** (user): For works with a UI, the post carries the banner first, then one to three fresh screenshots captured from the running project; never stock art, never recycled screenshots.
 - **G-007** (user): Every published post gets exactly one reply containing only the work's repository URL; commit and date live in receipts and sidecars, never in posts or replies.
 - **G-008** (user): Screenshot drops are follow-ups only: bare caption ("Here is a screenshot from X." / "Here are some screenshots from X."), one to three fresh captures, never dossier cards or social previews, and only for projects that already have a live intro post - never cold.
+
+- **G-009** (user): Never propose or approve a screenshot post sight-unseen: attach the image in-chat with the draft, approval follows the visual, never the other way around.
