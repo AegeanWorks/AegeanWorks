@@ -581,3 +581,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: draft.build_post takes explainer=<1-2 plain sentences> for screenshot/chart/infographic kinds and rejects drafts whose text lacks it verbatim (R4 in the draft RULES block). Notice kind stays exempt. Tests updated with a shared explainer fixture plus three blocking tests.
 - **Consequences**: No naked name-drops can queue; drafters write the explainer up front, in words a stranger understands.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (evidence over assumption) and PRINCIPLE-014 (blocking tests first).
+
+### ADR-076: Pin Aegean-TGE as the 51st work; exclusions documented
+- **Date**: 2026-11-04
+- **Status**: Accepted
+- **Context**: Live org grew to 58 repos; Aegean-TGE (native Windows hybrid CPU/GPU LLM inference engine, AL-1.1 verified via LICENSE endpoint) is real and active. Idea-Catcher is archived, proprietary (restricted license), and folded into AIKit. Compat-Sample-*/Shooter stubs broke the media gate without catalogue entries.
+- **Decision**: TGE joins the pinned set (snapshot, allowlist, license ledger AL, README row, index card + JSON-LD + CSP, media via builder fetch). Idea-Catcher stays excluded (matches the pre-existing IGNORED_REPOS intent). The non-catalogue stub dossiers were removed from docs/media to restore the gate (restorable from git history; upstream repos untouched). Tests touching MODEL_API_KEY now scrub it in setUp after a leak was found in the agent shell.
+- **Consequences**: Catalogue is 51; gates green; shared-tree collisions resolved by converging on the gate-passing state.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003, PRINCIPLE-014 and PRINCIPLE-019.

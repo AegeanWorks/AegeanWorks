@@ -76,6 +76,13 @@ def approved_draft(state: str, text: str = "AIKit dossier carries its social car
 
 
 class BrowserPostTests(unittest.TestCase):
+    def setUp(self):
+        self._saved_key = os.environ.pop("MODEL_API_KEY", None)
+
+    def tearDown(self):
+        if self._saved_key is not None:
+            os.environ.update({"MODEL_API_KEY": self._saved_key})  # hygiene: allow test restores the prior environment value
+
     def test_prepare_writes_exact_package(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as out:
             record = approved_draft(state)

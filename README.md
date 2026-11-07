@@ -54,6 +54,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 
 | Project | Description |
 |---|---|
+| [Aegean-TGE](https://github.com/AegeanWorks/Aegean-TGE) | Native Windows hybrid CPU and GPU LLM inference engine in C++20 that treats system RAM and GPU VRAM as one coordinated memory tier. |
 | [ModelDuck](https://github.com/AegeanWorks/ModelDuck) | A local GGUF chat studio: load a model, talk to it, and serve an OpenAI-compatible API. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry. Chats, prompts and settings stay on your computer; the only network requests are model downloads you start (the inference runtime is never downloaded or built on demand). |
 | [Cairn](https://github.com/AegeanWorks/Cairn) | An agent-first systems language with its own x86-64 backend. Cairn compiles straight to a Windows PE executable: no C compiler, no assembler, no linker, no libc, no runtime library. |
 | [NeuroCore](https://github.com/AegeanWorks/NeuroCore) | A self-hosted, modular AI agent framework for persistent, tool-using autonomous systems: workflows, long-term memory, RAG and a plugin architecture in one platform. Free personal use under AL-1.1; commercial use under ACL-1.0. |

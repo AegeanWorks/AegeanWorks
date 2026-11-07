@@ -61,6 +61,7 @@ PUBLIC_REPOS = {
     "UI-Sandbox",
     "Voidfarer",
     "Research-Engine",
+    "Aegean-TGE",
     "ChatDuck",
     "Atlas",
     "Keystone",

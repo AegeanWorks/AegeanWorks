@@ -9,8 +9,8 @@
 - **Total Python Modules**: `28`
 - **Total Classes**: `39`
 - **Total Top-Level Functions**: `151`
-- **Total Class Methods**: `190`
-- **Total Source Lines**: `6123`
+- **Total Class Methods**: `194`
+- **Total Source Lines**: `6142`
 
 ---
 
@@ -19,7 +19,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `1845` lines (`86337` bytes)
+**Size**: `1846` lines (`86355` bytes)
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `208` lines (`9082` bytes)
+**Size**: `215` lines (`9359` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -137,6 +137,8 @@
   - Method `.click_post()`
   - Method `.confirm_posted()`
 - `class BrowserPostTests`
+  - Method `.setUp()`
+  - Method `.tearDown()`
   - Method `.test_prepare_writes_exact_package()`
   - Method `.test_prepare_needs_approval()`
   - Method `.test_prepare_checklist_names_metadata_not_burned_footer()`
@@ -221,7 +223,7 @@
 ### [`tests/test_social_review.py`](tests/test_social_review.py)
 > *Tests for the aesthetic review gate (tools/social/media_review.py).*
 
-**Size**: `258` lines (`10669` bytes)
+**Size**: `269` lines (`10932` bytes)
 
 **Classes:**
 - `class FakePage`
@@ -245,6 +247,8 @@
   - Method `.test_proportional_ok()`
   - Method `.test_pluggable_reviewer()`
 - `class DriveReviewTests`
+  - Method `.setUp()`
+  - Method `.tearDown()`
   - Method `.test_drive_blocks_ugly_attachment()`
   - Method `.test_drive_attaches_reviewed_visual()`
 - `class MetaImageTests`

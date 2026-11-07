@@ -11,6 +11,11 @@
       "width": 256,
       "height": 256
     },
+    "Aegean-TGE": {
+      "src": "media/Aegean-TGE/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "Afterimage": {
       "src": "media/Afterimage/logo.webp",
       "width": 256,

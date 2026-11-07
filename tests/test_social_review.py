@@ -128,6 +128,17 @@ EXPLAINED_LOOK = EXPLAINER + " Look."
 
 
 class DriveReviewTests(unittest.TestCase):
+    def setUp(self):
+        import os as _os
+
+        self._saved_key = _os.environ.pop("MODEL_API_KEY", None)
+
+    def tearDown(self):
+        import os as _os
+
+        if self._saved_key is not None:
+            _os.environ["MODEL_API_KEY"] = self._saved_key
+
     def test_drive_blocks_ugly_attachment(self):
         with tempfile.TemporaryDirectory() as state, tempfile.TemporaryDirectory() as temp:
             bad = make_png(Path(temp) / "bad.png", blur=True)

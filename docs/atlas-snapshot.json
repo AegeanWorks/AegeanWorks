@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-04",
+  "generated_at": "2026-11-07",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -1533,6 +1533,24 @@
       "language": "Python",
       "license": "NOASSERTION",
       "pushed_at": "2026-11-04T13:03:34Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
+    },
+    {
+      "id": 1441392804,
+      "name": "Aegean-TGE",
+      "description": "Native Windows hybrid CPU and GPU LLM inference engine in C++20 that treats system RAM and GPU VRAM as one coordinated memory tier.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "source-available"
+      ],
+      "language": "C++",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-04T17:44:40Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

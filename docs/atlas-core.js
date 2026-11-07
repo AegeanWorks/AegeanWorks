@@ -111,6 +111,7 @@ export const REPO_LICENSES = Object.freeze({
   "driftwood": "AL",
   "cairn": "AL",
   "aegean-reforge": "AL",
+  "aegean-tge": "AL",
   aikit: "AL",
   aldervale: "AGL",
   afterimage: "AGL",
