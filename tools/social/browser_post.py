@@ -39,20 +39,12 @@ PROFILE_URL = "https://x.com/AegeanWorks"
 
 
 def reply_url_for(repo: str) -> str:
-    """The repo URL carried by a link-reply."""
+    """The link reply is exactly this URL — no commit, no date, no prose.
+
+    Provenance (commit, run, date) travels in receipts and sidecars, never in
+    post or reply text (owner rule: the timeline stays clean).
+    """
     return f"https://github.com/AegeanWorks/{repo.strip()}"
-
-
-def reply_text_for(draft: dict) -> str:
-    """Full link-reply text: repo URL plus the run's commit and date."""
-    url = reply_url_for(draft["repo"])
-    commit = str(draft.get("evidence", {}).get("commit", ""))[:7]
-    date = str(draft.get("date", ""))
-    lines = [url]
-    provenance = " ".join(part for part in (f"commit {commit}" if commit else "", date) if part)
-    if provenance:
-        lines.append(provenance)
-    return "\n".join(lines)
 
 
 class BrowserError(ValueError):
@@ -99,7 +91,7 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
         "text_file": "post.txt",
         "media": media,
         "review": reviews,
-        "link_reply": reply_text_for(record["draft"]),
+        "link_reply": reply_url_for(record["draft"]["repo"]),
         "visual_digest": visual.get("digest", ""),
         "approved_by": record["approver"],
         "approved_at": record["approved_at"],
@@ -188,8 +180,7 @@ def post_link_reply(draft_id: str, page, state_dir=None, final_click: bool = Fal
     checking the thread first.
     """
     record = _record(state_dir, draft_id)
-    text = reply_text_for(record["draft"])
-    url = reply_url_for(record["draft"]["repo"])
+    text = reply_url_for(record["draft"]["repo"])
     if not final_click:
         return {"link_reply": text, "clicked": False, "note": "compose-only; post the reply by hand"}
     if os.environ.get("AEGEAN_SOCIAL_BROWSER") != "1":
@@ -203,7 +194,7 @@ def post_link_reply(draft_id: str, page, state_dir=None, final_click: bool = Fal
             "Fix: post the main draft first, then the reply."
         )
     page.open_tweet(found)
-    if page.thread_contains(url):
+    if page.thread_contains(text):
         return {"link_reply": text, "clicked": False, "duplicate": True}
     page.click_reply()
     echoed = page.fill_composer(text)
@@ -307,27 +298,29 @@ class PlaywrightPage:
 
     def find_tweet(self, snippet: str) -> str:
         """Return the first status URL on the profile containing the snippet."""
-        self.goto(PROFILE_URL)
-        self._page.wait_for_timeout(4000)
-        for _ in range(12):
-            found = self._page.evaluate(
-                """(snippet) => {
-                    const norm = (s) => (s || '').replace(/\\s+/g, ' ');
-                    const arts = Array.from(document.querySelectorAll('article'));
-                    for (const a of arts) {
-                        if (norm(a.innerText).includes(norm(snippet))) {
-                            const link = a.querySelector('a[href*="/status/"]');
-                            if (link) return link.getAttribute('href');
+        for attempt in range(4):
+            self.goto(PROFILE_URL)
+            self._page.wait_for_timeout(4000)
+            for _ in range(6):
+                found = self._page.evaluate(
+                    """(snippet) => {
+                        const norm = (s) => (s || '').replace(/\\s+/g, ' ');
+                        const arts = Array.from(document.querySelectorAll('article'));
+                        for (const a of arts) {
+                            if (norm(a.innerText).includes(norm(snippet))) {
+                                const link = a.querySelector('a[href*="/status/"]');
+                                if (link) return link.getAttribute('href');
+                            }
                         }
-                    }
-                    return '';
-                }""",
-                snippet,
-            )
-            if found:
-                return found
-            self._page.evaluate("() => window.scrollBy(0, 1200)")
-            self._page.wait_for_timeout(2000)
+                        return '';
+                    }""",
+                    snippet,
+                )
+                if found:
+                    return found
+                self._page.evaluate("() => window.scrollBy(0, 1200)")
+                self._page.wait_for_timeout(2000)
+            self._page.wait_for_timeout(20000)
         return ""
 
     def open_tweet(self, path: str) -> None:

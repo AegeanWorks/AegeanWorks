@@ -13,7 +13,7 @@ RULES = (
     "is first (explainer gate — cold audiences have never heard of it).",
     "R5: no post publishes without explicit human approval.",
     "R6: UI works ship the banner first, then 1-3 fresh screenshots from the running project.",
-    "R7: every published post gets one link-reply (repo URL plus run commit and date) — links never appear in posts.",
+    "R7: every published post gets one bare-URL link-reply; provenance lives in receipts and sidecars, never in post or reply text.",
     "R8: screenshot drops are follow-ups only: bare caption plus fresh captures (never dossier cards), "
     "allowed solely for projects that already have a live post.",
 )

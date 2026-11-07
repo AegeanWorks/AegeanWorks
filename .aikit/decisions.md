@@ -620,3 +620,9 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: draft.build_post kind=shots refuses any visual whose file matches the repo dossier manifest preview/logo (by path or filename). R8/G-008 wording updated to fresh captures only. Existing card-first intros are untouched (banner use is honest labeling, not passing off).
 - **Consequences**: Only genuine captures can ship as shots; blocked attempts name the fix.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 and PRINCIPLE-014.
+
+### ADR-081: Link replies stay bare URLs; provenance never enters post text
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: A commit+date line briefly landed in link replies; the owner ruled replies carry only the repo URL. Provenance belongs in receipts and sidecars.
+- **Decision**: reply text is exactly the repo URL (verified by a test asserting no commit/date content). R7/G-007 restored to bare-URL wording.

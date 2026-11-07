@@ -241,7 +241,7 @@ class LinkReplyTests(unittest.TestCase):
                 result = browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
                 self.assertTrue(result["posted"])
                 self.assertTrue(result["reply"]["posted"])
-                expected_reply = "https://github.com/AegeanWorks/AIKit\ncommit ea26791 2026-11-03"
+                expected_reply = "https://github.com/AegeanWorks/AIKit"
                 self.assertEqual(result["reply"]["link_reply"], expected_reply)
                 self.assertEqual(page.composed, expected_reply)
             finally:
@@ -286,6 +286,24 @@ class LinkReplyTests(unittest.TestCase):
             record = draft.build_post("AIKit", "hello", "notice", COMMIT, DATA_FILE, True, None, RUN, DATE, state)
             with self.assertRaises(queue.QueueError):
                 browser_post.post_link_reply(record["id"], FakePage(), state, final_click=True)
+
+    def test_reply_is_bare_url_only(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            page = FakePage()
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                result = browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
+                text = result["reply"]["link_reply"]
+                self.assertEqual(text, "https://github.com/AegeanWorks/AIKit")
+                self.assertNotIn("commit", text.lower())
+                self.assertNotRegex(text, r"\d{4}-\d{2}-\d{2}")
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
 
     def test_compose_only_reports_reply_for_manual(self):
         with tempfile.TemporaryDirectory() as state:

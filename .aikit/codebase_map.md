@@ -8,9 +8,9 @@
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `29`
 - **Total Classes**: `41`
-- **Total Top-Level Functions**: `162`
-- **Total Class Methods**: `212`
-- **Total Source Lines**: `6558`
+- **Total Top-Level Functions**: `161`
+- **Total Class Methods**: `213`
+- **Total Source Lines**: `6569`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `317` lines (`14292` bytes)
+**Size**: `335` lines (`15185` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -158,6 +158,7 @@
   - Method `.test_reply_skipped_when_duplicate()`
   - Method `.test_reply_needs_parent_on_profile()`
   - Method `.test_reply_needs_approval()`
+  - Method `.test_reply_is_bare_url_only()`
   - Method `.test_compose_only_reports_reply_for_manual()`
   - Method `.test_drive_records_posted_repo()`
 
@@ -368,7 +369,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `360` lines (`15777` bytes)
+**Size**: `353` lines (`15631` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -386,8 +387,7 @@
   - Method `.click_post()`
 
 **Functions:**
-- `def reply_url_for(repo)` - *The repo URL carried by a link-reply.*
-- `def reply_text_for(draft)` - *Full link-reply text: repo URL plus the run's commit and date.*
+- `def reply_url_for(repo)` - *The link reply is exactly this URL — no commit, no date, no prose.*
 - `def _record(state_dir, draft_id)`
 - `def prepare(draft_id, out_dir, state_dir)` - *Write the publish package; returns the package manifest (never posts).*
 - `def drive(page, draft_id, state_dir, final_click, link_reply)` - *Compose the approved draft in the browser; clicks Post only if armed.*
@@ -425,7 +425,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `168` lines (`7183` bytes)
+**Size**: `168` lines (`7196` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
