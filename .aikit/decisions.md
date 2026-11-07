@@ -604,3 +604,19 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: New draft kind `shots`: bare canonical caption ("Here is a screenshot from X." / "Here are some screenshots from X."), 1-3 reviewed visuals, allowed only when the repo has a recorded live post (published.json, written by drive() on every confirmed post, backfilled for the five live posts). R4 explainer is exempt here — the intro post carries it. Recorded as R8/G-008.
 - **Consequences**: No cold drops; captions are uniform and test-asserted.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 and PRINCIPLE-014.
+
+### ADR-079: Link-replies carry the run commit and date
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: A bare repo URL answers where but not which state; the visual proves the run, so the thread should cite it.
+- **Decision**: post_link_reply text is the repo URL plus one line: commit <7-char> and run date. G-007/R7 wording updated. Duplicate detection stays on the URL substring so re-purposed text cannot double-post.
+- **Consequences**: Every thread carries its provenance in words; posts stay clean.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (claims cite the run) and PRINCIPLE-014.
+
+### ADR-080: Screenshot drops reject dossier cards as screenshots
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: A rasterized dossier social card shipped as a "screenshot"; it reads as marketing, not proof. Owner rule: social media previews are never screenshots.
+- **Decision**: draft.build_post kind=shots refuses any visual whose file matches the repo dossier manifest preview/logo (by path or filename). R8/G-008 wording updated to fresh captures only. Existing card-first intros are untouched (banner use is honest labeling, not passing off).
+- **Consequences**: Only genuine captures can ship as shots; blocked attempts name the fix.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 and PRINCIPLE-014.

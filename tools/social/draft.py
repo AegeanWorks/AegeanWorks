@@ -13,8 +13,8 @@ RULES = (
     "is first (explainer gate — cold audiences have never heard of it).",
     "R5: no post publishes without explicit human approval.",
     "R6: UI works ship the banner first, then 1-3 fresh screenshots from the running project.",
-    "R7: every published post gets one link-reply carrying the repo URL — links never appear in posts.",
-    "R8: screenshot drops are follow-ups only: bare caption plus fresh or dossier shots, "
+    "R7: every published post gets one link-reply (repo URL plus run commit and date) — links never appear in posts.",
+    "R8: screenshot drops are follow-ups only: bare caption plus fresh captures (never dossier cards), "
     "allowed solely for projects that already have a live post.",
 )
 
@@ -58,8 +58,8 @@ def require_posted_first(repo: str, state_dir) -> str:
 
 def require_shots_caption(text: str, name: str, visual: dict) -> int:
     """Enforce the drop caption: singular for one shot, plural for 2-3."""
-    total = (1 if (visual or {}).get("src") else 0) + len((visual or {}).get("extra_srcs") or [])
-    if not 1 <= total <= 3:
+    total = (1 if (visual or {}).get("src") else 0) + len((visual or {}).get("extra_srcs", []) or [])
+    if not total or total > 3:
         raise DraftError(
             f"Why: a screenshot drop carries 1-3 shots, not {total}.\nFix: attach one, two or three reviewed shots."
         )
@@ -69,9 +69,40 @@ def require_shots_caption(text: str, name: str, visual: dict) -> int:
         want = f"Here are some screenshots from {name}."
     if _squash(text) != _squash(want):
         raise DraftError(
-            f"Why: a screenshot drop says exactly '{want}'.\nFix: use the canonical caption for {total} shot(s)."
+            "Why: a screenshot drop says exactly '{0}'.\nFix: use the canonical caption for {1} shot(s).".format(want, total)
         )
     return total
+
+
+def require_fresh_shots(repo: str, visual: dict) -> None:
+    """Enforce that shots are captures, not dossier cards passed off as screenshots."""
+    from pathlib import Path as _Path
+
+    manifest_path = _Path(__file__).resolve().parents[2] / "docs" / "media" / f"{repo}.json"
+    if not manifest_path.is_file():
+        return
+    try:
+        import json as _json
+
+        manifest = _json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return
+    banned = set()
+    for key in ("preview", "logo", "social_card"):
+        entry = manifest.get(key)
+        if isinstance(entry, dict) and entry.get("src"):
+            banned.add(str(entry["src"]).lower())
+    used = [str((visual or {}).get("src", "") or "").lower()] + [
+        str(s or "").lower() for s in ((visual or {}).get("extra_srcs") or [])
+    ]
+    for src in used:
+        if not src:
+            continue
+        if src in banned or _Path(src).name.lower() in {b.split("/")[-1] for b in banned}:
+            raise DraftError(
+                "Why: a dossier card is marketing art, not a screenshot; passing one off as a shot "
+                "breaks the visual-proof promise.\nFix: capture the running project (or art) fresh instead."
+            )
 
 
 def build_post(
@@ -101,6 +132,7 @@ def build_post(
     if kind == "shots":
         require_posted_first(subject, state_dir)
         require_shots_caption(text, subject, visual)
+        require_fresh_shots(subject, visual)
     record = evidence.require_evidence(subject, commit, data_file, suite_ok)
     if kind in ("screenshot", "chart", "infographic", "shots"):
         if not visual:

@@ -343,6 +343,16 @@ class ShotsTests(unittest.TestCase):
                                       DATA_FILE, True, two, RUN, DATE, state)
             self.assertFalse(record["approved"])
 
+    def test_shots_rejects_dossier_card_as_screenshot(self):
+        from social import published as _published
+
+        with tempfile.TemporaryDirectory() as state:
+            _published.record(state, "seed", "AIKit", "AIKit intro", "screenshot")
+            card = dict(visual_fixture(), src="docs/media/AIKit/social-preview.webp")
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "Here is a screenshot from AIKit.", "shots", COMMIT,
+                                 DATA_FILE, True, card, RUN, DATE, state)
+
 
 class ProfileTests(unittest.TestCase):
     def test_profile_change_needs_approval(self):

@@ -8,9 +8,9 @@
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `29`
 - **Total Classes**: `41`
-- **Total Top-Level Functions**: `160`
-- **Total Class Methods**: `211`
-- **Total Source Lines**: `6502`
+- **Total Top-Level Functions**: `162`
+- **Total Class Methods**: `212`
+- **Total Source Lines**: `6558`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `316` lines (`14241` bytes)
+**Size**: `317` lines (`14292` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -169,7 +169,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `431` lines (`19732` bytes)
+**Size**: `441` lines (`20291` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -217,6 +217,7 @@
   - Method `.test_shots_needs_posted_intro_first()`
   - Method `.test_shots_caption_must_match_count()`
   - Method `.test_shots_post_builds_without_explainer()`
+  - Method `.test_shots_rejects_dossier_card_as_screenshot()`
 - `class ProfileTests`
   - Method `.test_profile_change_needs_approval()`
 - `class ContextTests`
@@ -367,7 +368,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `347` lines (`15305` bytes)
+**Size**: `360` lines (`15777` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -385,7 +386,8 @@
   - Method `.click_post()`
 
 **Functions:**
-- `def reply_url_for(repo)` - *The deterministic link-reply for a post: the repo URL, nothing else.*
+- `def reply_url_for(repo)` - *The repo URL carried by a link-reply.*
+- `def reply_text_for(draft)` - *Full link-reply text: repo URL plus the run's commit and date.*
 - `def _record(state_dir, draft_id)`
 - `def prepare(draft_id, out_dir, state_dir)` - *Write the publish package; returns the package manifest (never posts).*
 - `def drive(page, draft_id, state_dir, final_click, link_reply)` - *Compose the approved draft in the browser; clicks Post only if armed.*
@@ -423,7 +425,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `136` lines (`5829` bytes)
+**Size**: `168` lines (`7183` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
@@ -433,6 +435,7 @@
 - `def require_explainer(text, explainer)` - *Enforce R4: the post must say what the project is, in its own words.*
 - `def require_posted_first(repo, state_dir)` - *Enforce R8: screenshot drops only build on an already-posted project.*
 - `def require_shots_caption(text, name, visual)` - *Enforce the drop caption: singular for one shot, plural for 2-3.*
+- `def require_fresh_shots(repo, visual)` - *Enforce that shots are captures, not dossier cards passed off as screenshots.*
 - `def build_post(repo, text, kind, commit, data_file, suite_ok, visual, run_id, date, state_dir, existing_texts, explainer)` - *Build, gate and queue a draft; returns the queue record (unapproved).*
 
 ---
