@@ -15,3 +15,4 @@ without modifying or quarantining that file; older versions migrate when a migra
 - **G-004** (user): Post visuals ship clean: no burned-in watermarks, footers, or AI marks on pixels; provenance travels in sidecars plus file metadata and is verified by re-render.
 - **G-005** (user): Posts fit X: at most 280 characters, a little longer than a one-liner (two to four short sentences); enforced in code at draft time.
 - **G-006** (user): For works with a UI, the post carries the banner first, then one to three fresh screenshots captured from the running project; never stock art, never recycled screenshots.
+- **G-007** (user): Every published post gets exactly one reply containing only the work's repository URL; links never appear in post bodies.

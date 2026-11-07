@@ -26,13 +26,31 @@ DATA_FILE = "docs/live.json"
 class FakePage:
     """Minimal page adapter double: records calls, never clicks by itself."""
 
-    def __init__(self, echo_ok: bool = True, confirmed: bool = True) -> None:
+    def __init__(self, echo_ok: bool = True, confirmed: bool = True,
+                 found_tweet: str = "/test/status/1", thread_has_link: bool = False) -> None:
         self.calls: list = []
         self.composed = ""
         self.media: list[str] = []
         self.clicks = 0
         self.echo_ok = echo_ok
         self.confirmed = confirmed
+        self.found_tweet = found_tweet
+        self.thread_has_link = thread_has_link
+
+    def find_tweet(self, snippet: str) -> str:
+        self.calls.append(("find", snippet[:20]))
+        return self.found_tweet
+
+    def open_tweet(self, url: str) -> None:
+        self.calls.append(("open", url))
+
+    def thread_contains(self, text: str) -> bool:
+        self.calls.append(("thread_has", text[:20]))
+        return self.thread_has_link
+
+    def click_reply(self) -> None:
+        self.calls.append(("reply-click",))
+        self.clicks += 1
 
     def goto(self, url: str) -> None:
         self.calls.append(("goto", url))
@@ -209,6 +227,71 @@ class BrowserPostTests(unittest.TestCase):
             result = browser_post.drive(page, record["id"], state)
             self.assertEqual(result["media_attached"], ["one.png", "two.png"])
             self.assertFalse(result["clicked"])
+
+
+class LinkReplyTests(unittest.TestCase):
+    def test_reply_posts_bare_repo_url(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            page = FakePage()
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                result = browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
+                self.assertTrue(result["posted"])
+                self.assertTrue(result["reply"]["posted"])
+                self.assertEqual(result["reply"]["link_reply"], "https://github.com/AegeanWorks/AIKit")
+                self.assertEqual(page.composed, "https://github.com/AegeanWorks/AIKit")
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
+
+    def test_reply_skipped_when_duplicate(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            page = FakePage(thread_has_link=True)
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                result = browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
+                self.assertTrue(result["posted"])
+                self.assertTrue(result["reply"].get("duplicate"))
+                self.assertEqual(page.clicks, 1)
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
+
+    def test_reply_needs_parent_on_profile(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            page = FakePage(found_tweet="")
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                with self.assertRaises(browser_post.BrowserError):
+                    browser_post.drive(page, record["id"], state, final_click=True, link_reply=True)
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
+
+    def test_reply_needs_approval(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = draft.build_post("AIKit", "hello", "notice", COMMIT, DATA_FILE, True, None, RUN, DATE, state)
+            with self.assertRaises(queue.QueueError):
+                browser_post.post_link_reply(record["id"], FakePage(), state, final_click=True)
+
+    def test_compose_only_reports_reply_for_manual(self):
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            result = browser_post.drive(FakePage(), record["id"], state)
+            self.assertEqual(result["reply"]["link_reply"], "manual (post the repo URL as a reply by hand)")
 
 
 if __name__ == "__main__":

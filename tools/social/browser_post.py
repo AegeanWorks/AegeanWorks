@@ -35,6 +35,12 @@ from pathlib import Path
 from . import disclosure, queue
 
 X_HOME = "https://x.com/home"
+PROFILE_URL = "https://x.com/AegeanWorks"
+
+
+def reply_url_for(repo: str) -> str:
+    """The deterministic link-reply for a post: the repo URL, nothing else."""
+    return f"https://github.com/AegeanWorks/{repo.strip()}"
 
 
 class BrowserError(ValueError):
@@ -81,6 +87,7 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
         "text_file": "post.txt",
         "media": media,
         "review": reviews,
+        "link_reply": reply_url_for(record["draft"]["repo"]),
         "visual_digest": visual.get("digest", ""),
         "approved_by": record["approver"],
         "approved_at": record["approved_at"],
@@ -94,7 +101,7 @@ def prepare(draft_id: str, out_dir: str | Path, state_dir=None) -> dict:
     return manifest
 
 
-def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dict:
+def drive(page, draft_id: str, state_dir=None, final_click: bool = False, link_reply: bool = False) -> dict:
     """Compose the approved draft in the browser; clicks Post only if armed."""
     record = _record(state_dir, draft_id)
     text = record["draft"]["text"]
@@ -136,6 +143,14 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
         page.click_post()
         clicked = True
         posted = page.confirm_posted()
+    reply: dict = {"link_reply": "manual (post the repo URL as a reply by hand)"}
+    if link_reply:
+        if not posted:
+            raise BrowserError(
+                "Why: the main post is unconfirmed, so there is nothing to thread under.\n"
+                "Fix: confirm the main post first; never thread under a maybe."
+            )
+        reply = post_link_reply(draft_id, page, state_dir, final_click=final_click)
     return {
         "draft_id": record["id"],
         "composed": True,
@@ -143,8 +158,44 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False) -> dic
         "clicked": clicked,
         "posted": posted,
         "ai_review": ai_verdict,
-        "receipt": {"mode": "browser", "clicked": clicked, "live": posted, "ai_review": ai_verdict},
+        "reply": reply,
+        "receipt": {"mode": "browser", "clicked": clicked, "live": posted, "ai_review": ai_verdict,
+                    "reply": reply},
     }
+
+
+def post_link_reply(draft_id: str, page, state_dir=None, final_click: bool = False) -> dict:
+    """Post the deterministic repo-URL reply under the draft's live post.
+
+    Same gates as a post (approval + armed click); refuses duplicates by
+    checking the thread first.
+    """
+    record = _record(state_dir, draft_id)
+    url = reply_url_for(record["draft"]["repo"])
+    if not final_click:
+        return {"link_reply": url, "clicked": False, "note": "compose-only; post the reply by hand"}
+    if os.environ.get("AEGEAN_SOCIAL_BROWSER") != "1":
+        raise BrowserError(
+            "Why: reply click needs AEGEAN_SOCIAL_BROWSER=1.\nFix: arm the flag or post the reply by hand."
+        )
+    found = page.find_tweet(record["draft"]["text"][:60])
+    if not found:
+        raise BrowserError(
+            "Why: the main post is not on the profile yet; nothing to thread under.\n"
+            "Fix: post the main draft first, then the reply."
+        )
+    page.open_tweet(found)
+    if page.thread_contains(url):
+        return {"link_reply": url, "clicked": False, "duplicate": True}
+    page.click_reply()
+    echoed = page.fill_composer(url)
+    if echoed.strip() != url:
+        raise BrowserError(
+            "Why: composer echo differs from the link; the page may have altered it.\nFix: abort."
+        )
+    page.click_post()
+    posted = page.confirm_posted()
+    return {"link_reply": url, "clicked": True, "posted": posted}
 
 
 class PlaywrightPage:
@@ -153,6 +204,7 @@ class PlaywrightPage:
     COMPOSER_IDS = ("tweetTextarea_0",)
     POST_IDS = ("tweetButtonInline", "tweetButton")
     FILE_IDS = ("fileInput",)
+    REPLY_IDS = ("reply",)
 
     def __init__(self, page) -> None:
         try:
@@ -212,6 +264,36 @@ class PlaywrightPage:
             return True
         except Exception:  # noqa: BLE001 - no confirmation, no claim
             return False
+
+    def find_tweet(self, snippet: str) -> str:
+        """Return the first status URL on the profile containing the snippet."""
+        self.goto(PROFILE_URL)
+        self._page.wait_for_timeout(4000)
+        return self._page.evaluate(
+            """(snippet) => {
+                const arts = Array.from(document.querySelectorAll('article'));
+                for (const a of arts) {
+                    if ((a.innerText || '').includes(snippet)) {
+                        const link = a.querySelector('a[href*="/status/"]');
+                        if (link) return link.getAttribute('href');
+                    }
+                }
+                return '';
+            }""",
+            snippet,
+        )
+
+    def open_tweet(self, path: str) -> None:
+        url = path if path.startswith("http") else "https://x.com" + path
+        self.goto(url)
+        self._page.wait_for_timeout(3000)
+
+    def thread_contains(self, text: str) -> bool:
+        body = self._page.evaluate("() => document.body.innerText")
+        return text in (body or "")
+
+    def click_reply(self) -> None:
+        self._first(self.REPLY_IDS).click(timeout=30000)
 
     def click_post(self) -> None:
         # No Escape press: on a filled composer it can summon the discard dialog,

@@ -7,10 +7,10 @@
 
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `28`
-- **Total Classes**: `39`
-- **Total Top-Level Functions**: `151`
-- **Total Class Methods**: `194`
-- **Total Source Lines**: `6142`
+- **Total Classes**: `40`
+- **Total Top-Level Functions**: `153`
+- **Total Class Methods**: `207`
+- **Total Source Lines**: `6307`
 
 ---
 
@@ -126,11 +126,15 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `215` lines (`9359` bytes)
+**Size**: `298` lines (`13365` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
-  - Method `.__init__(echo_ok, confirmed)`
+  - Method `.__init__(echo_ok, confirmed, found_tweet, thread_has_link)`
+  - Method `.find_tweet(snippet)`
+  - Method `.open_tweet(url)`
+  - Method `.thread_contains(text)`
+  - Method `.click_reply()`
   - Method `.goto(url)`
   - Method `.fill_composer(text)`
   - Method `.attach_media(paths)`
@@ -149,6 +153,12 @@
   - Method `.test_drive_unconfirmed_click_claims_nothing()`
   - Method `.test_drive_missing_visual_file_blocked()`
   - Method `.test_drive_attaches_multiple_visuals()`
+- `class LinkReplyTests`
+  - Method `.test_reply_posts_bare_repo_url()`
+  - Method `.test_reply_skipped_when_duplicate()`
+  - Method `.test_reply_needs_parent_on_profile()`
+  - Method `.test_reply_needs_approval()`
+  - Method `.test_compose_only_reports_reply_for_manual()`
 
 **Functions:**
 - `def approved_draft(state, text)`
@@ -352,7 +362,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `224` lines (`9812` bytes)
+**Size**: `306` lines (`13224` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -363,12 +373,18 @@
   - Method `.fill_composer(text)`
   - Method `.attach_media(paths)`
   - Method `.confirm_posted(timeout_ms)` - *True only when X shows the sent confirmation; never assume.*
+  - Method `.find_tweet(snippet)` - *Return the first status URL on the profile containing the snippet.*
+  - Method `.open_tweet(path)`
+  - Method `.thread_contains(text)`
+  - Method `.click_reply()`
   - Method `.click_post()`
 
 **Functions:**
+- `def reply_url_for(repo)` - *The deterministic link-reply for a post: the repo URL, nothing else.*
 - `def _record(state_dir, draft_id)`
 - `def prepare(draft_id, out_dir, state_dir)` - *Write the publish package; returns the package manifest (never posts).*
-- `def drive(page, draft_id, state_dir, final_click)` - *Compose the approved draft in the browser; clicks Post only if armed.*
+- `def drive(page, draft_id, state_dir, final_click, link_reply)` - *Compose the approved draft in the browser; clicks Post only if armed.*
+- `def post_link_reply(draft_id, page, state_dir, final_click)` - *Post the deterministic repo-URL reply under the draft's live post.*
 
 ---
 
@@ -402,7 +418,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `101` lines (`4206` bytes)
+**Size**: `101` lines (`4265` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*

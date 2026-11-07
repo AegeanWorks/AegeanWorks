@@ -12,8 +12,8 @@ RULES = (
     "R4: no naked name-drops: a post that mentions a project says what it "
     "is first (explainer gate — cold audiences have never heard of it).",
     "R5: no post publishes without explicit human approval.",
-    "R6: UI works ship the banner first, then 1-3 fresh screenshots captured "
-    "from the running project — never stock, never recycled.",
+    "R6: UI works ship the banner first, then 1-3 fresh screenshots from the running project.",
+    "R7: every published post gets one link-reply carrying the repo URL — links never appear in posts.",
 )
 
 

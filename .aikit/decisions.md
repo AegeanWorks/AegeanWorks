@@ -589,3 +589,10 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: TGE joins the pinned set (snapshot, allowlist, license ledger AL, README row, index card + JSON-LD + CSP, media via builder fetch). Idea-Catcher stays excluded (matches the pre-existing IGNORED_REPOS intent). The non-catalogue stub dossiers were removed from docs/media to restore the gate (restorable from git history; upstream repos untouched). Tests touching MODEL_API_KEY now scrub it in setUp after a leak was found in the agent shell.
 - **Consequences**: Catalogue is 51; gates green; shared-tree collisions resolved by converging on the gate-passing state.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003, PRINCIPLE-014 and PRINCIPLE-019.
+
+### ADR-076: Every post gets one link-reply, never a link in the post
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: Links in posts read as boilerplate, but a studio account with no path to the repo strands interested readers. The owner rule: the link lives underneath the post, not in it, for every tweet (G-007).
+- **Decision**: drive() gains link_reply: after a confirmed main post it threads a reply containing only https://github.com/AegeanWorks/<repo>. Same approval and arming gates; refuses duplicates by checking the thread; refuses to thread under an unconfirmed post. prepare() reports the reply text for the manual path.
+- **Consequences**: Posts stay clean; every post carries exactly one path to its repo, idempotently.
