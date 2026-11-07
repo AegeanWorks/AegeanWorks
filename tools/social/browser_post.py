@@ -143,6 +143,11 @@ def drive(page, draft_id: str, state_dir=None, final_click: bool = False, link_r
         page.click_post()
         clicked = True
         posted = page.confirm_posted()
+        if posted:
+            from . import published as _published  # noqa: PLC0415 - the posted log grounds follow-ups
+
+            _published.record(state_dir, record["id"], record["draft"]["repo"],
+                              record["draft"]["text"], record["draft"].get("kind", "screenshot"))
     reply: dict = {"link_reply": "manual (post the repo URL as a reply by hand)"}
     if link_reply:
         if not posted:

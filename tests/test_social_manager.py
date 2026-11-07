@@ -310,6 +310,40 @@ class ExplainerGateTests(unittest.TestCase):
                                  True, None, RUN, DATE, state)
 
 
+class ShotsTests(unittest.TestCase):
+    def test_shots_needs_posted_intro_first(self):
+        with tempfile.TemporaryDirectory() as state:
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "Here is a screenshot from AIKit.", "shots", COMMIT, DATA_FILE,
+                                 True, dict(visual_fixture(), src="card.png"), RUN, DATE, state)
+
+    def test_shots_caption_must_match_count(self):
+        from social import published as _published
+
+        with tempfile.TemporaryDirectory() as state:
+            _published.record(state, "seed", "AIKit", "AIKit intro", "screenshot")
+            with self.assertRaises(draft.DraftError):
+                draft.build_post("AIKit", "Here are some screenshots from AIKit.", "shots", COMMIT,
+                                 DATA_FILE, True, dict(visual_fixture(), src="card.png"), RUN, DATE, state)
+            with self.assertRaises(draft.DraftError):
+                draft.build_post(
+                    "AIKit", "Here is a screenshot from AIKit.", "shots", COMMIT, DATA_FILE, True,
+                    dict(visual_fixture(), src="card.png", extra_srcs=["a.png", "b.png", "c.png"]), RUN, DATE, state)
+
+    def test_shots_post_builds_without_explainer(self):
+        from social import published as _published
+
+        with tempfile.TemporaryDirectory() as state:
+            _published.record(state, "seed", "AIKit", "AIKit intro", "screenshot")
+            record = draft.build_post("AIKit", "Here is a screenshot from AIKit.", "shots", COMMIT,
+                                      DATA_FILE, True, dict(visual_fixture(), src="card.png"), RUN, DATE, state)
+            self.assertFalse(record["approved"])
+            two = dict(visual_fixture(), src="card.png", extra_srcs=["a.png"])
+            record = draft.build_post("AIKit", "Here are some screenshots from AIKit.", "shots", COMMIT,
+                                      DATA_FILE, True, two, RUN, DATE, state)
+            self.assertFalse(record["approved"])
+
+
 class ProfileTests(unittest.TestCase):
     def test_profile_change_needs_approval(self):
         with tempfile.TemporaryDirectory() as state:

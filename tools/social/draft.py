@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from . import disclosure, evidence, provenance, queue, spam_guard
+from . import disclosure, evidence, provenance, published, queue, spam_guard
 from .topic_gate import require_on_topic
 
 RULES = (
@@ -14,6 +14,8 @@ RULES = (
     "R5: no post publishes without explicit human approval.",
     "R6: UI works ship the banner first, then 1-3 fresh screenshots from the running project.",
     "R7: every published post gets one link-reply carrying the repo URL — links never appear in posts.",
+    "R8: screenshot drops are follow-ups only: bare caption plus fresh shots, "
+    "allowed solely for projects that already have a live post.",
 )
 
 
@@ -42,6 +44,36 @@ def require_explainer(text: str, explainer: str | None) -> str:
     return explainer.strip()
 
 
+def require_posted_first(repo: str, state_dir) -> str:
+    """Enforce R8: screenshot drops only build on an already-posted project."""
+    from . import published as _published
+
+    if not _published.has_repo_post(state_dir, repo):
+        raise DraftError(
+            f"Why: {repo} has no live post yet; a screenshot drop with no intro post confuses cold followers.\n"
+            "Fix: publish the explainer post first, then drop screenshots."
+        )
+    return repo
+
+
+def require_shots_caption(text: str, name: str, visual: dict) -> int:
+    """Enforce the drop caption: singular for one shot, plural for 2-3."""
+    total = (1 if (visual or {}).get("src") else 0) + len((visual or {}).get("extra_srcs") or [])
+    if not 1 <= total <= 3:
+        raise DraftError(
+            f"Why: a screenshot drop carries 1-3 shots, not {total}.\nFix: attach one, two or three reviewed shots."
+        )
+    if total == 1:
+        want = f"Here is a screenshot from {name}."
+    else:
+        want = f"Here are some screenshots from {name}."
+    if _squash(text) != _squash(want):
+        raise DraftError(
+            f"Why: a screenshot drop says exactly '{want}'.\nFix: use the canonical caption for {total} shot(s)."
+        )
+    return total
+
+
 def build_post(
     repo: str,
     text: str,
@@ -57,8 +89,8 @@ def build_post(
     explainer: str | None = None,
 ) -> dict:
     """Build, gate and queue a draft; returns the queue record (unapproved)."""
-    if kind not in ("screenshot", "chart", "infographic", "notice"):
-        raise DraftError(f"Why: unknown post kind {kind!r}.\nFix: use screenshot, chart, infographic or notice.")
+    if kind not in ("screenshot", "chart", "infographic", "notice", "shots"):
+        raise DraftError(f"Why: unknown post kind {kind!r}.\nFix: use screenshot, chart, infographic, notice or shots.")
     if len(text) > 280:
         raise DraftError(
             f"Why: post is {len(text)} chars; X fits 280.\nFix: shorten to two to four short sentences."
@@ -66,8 +98,11 @@ def build_post(
     subject = require_on_topic(repo)
     if kind in ("screenshot", "chart", "infographic"):
         require_explainer(text, explainer)
+    if kind == "shots":
+        require_posted_first(subject, state_dir)
+        require_shots_caption(text, subject, visual)
     record = evidence.require_evidence(subject, commit, data_file, suite_ok)
-    if kind in ("screenshot", "chart", "infographic"):
+    if kind in ("screenshot", "chart", "infographic", "shots"):
         if not visual:
             raise DraftError(
                 "Why: a visible or measured subject needs a visual; text-only is blocked.\n"

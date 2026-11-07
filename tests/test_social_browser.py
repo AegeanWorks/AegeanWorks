@@ -293,6 +293,24 @@ class LinkReplyTests(unittest.TestCase):
             result = browser_post.drive(FakePage(), record["id"], state)
             self.assertEqual(result["reply"]["link_reply"], "manual (post the repo URL as a reply by hand)")
 
+    def test_drive_records_posted_repo(self):
+        from social import published as _published
+
+        with tempfile.TemporaryDirectory() as state:
+            record = approved_draft(state)
+            queue.approve(record["id"], "owner", state)
+            self.assertFalse(_published.has_repo_post(state, "AIKit"))
+            backup = os.environ.get("AEGEAN_SOCIAL_BROWSER")
+            os.environ.update({"AEGEAN_SOCIAL_BROWSER": "1"})
+            try:
+                result = browser_post.drive(FakePage(), record["id"], state, final_click=True)
+                self.assertTrue(result["posted"])
+                self.assertTrue(_published.has_repo_post(state, "AIKit"))
+            finally:
+                os.environ.pop("AEGEAN_SOCIAL_BROWSER", None)
+                if backup is not None:
+                    os.environ.update({"AEGEAN_SOCIAL_BROWSER": backup})
+
 
 if __name__ == "__main__":
     unittest.main()

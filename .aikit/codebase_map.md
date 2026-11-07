@@ -6,11 +6,11 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `28`
-- **Total Classes**: `40`
-- **Total Top-Level Functions**: `153`
-- **Total Class Methods**: `207`
-- **Total Source Lines**: `6343`
+- **Total Python Modules**: `29`
+- **Total Classes**: `41`
+- **Total Top-Level Functions**: `160`
+- **Total Class Methods**: `211`
+- **Total Source Lines**: `6502`
 
 ---
 
@@ -126,7 +126,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `298` lines (`13365` bytes)
+**Size**: `316` lines (`14241` bytes)
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -159,6 +159,7 @@
   - Method `.test_reply_needs_parent_on_profile()`
   - Method `.test_reply_needs_approval()`
   - Method `.test_compose_only_reports_reply_for_manual()`
+  - Method `.test_drive_records_posted_repo()`
 
 **Functions:**
 - `def approved_draft(state, text)`
@@ -168,7 +169,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `397` lines (`17707` bytes)
+**Size**: `431` lines (`19732` bytes)
 
 **Classes:**
 - `class DisclosureTests`
@@ -212,6 +213,10 @@
   - Method `.test_explainer_missing_from_text_blocked()`
   - Method `.test_notice_needs_no_explainer()`
   - Method `.test_overlong_post_blocked()`
+- `class ShotsTests`
+  - Method `.test_shots_needs_posted_intro_first()`
+  - Method `.test_shots_caption_must_match_count()`
+  - Method `.test_shots_post_builds_without_explainer()`
 - `class ProfileTests`
   - Method `.test_profile_change_needs_approval()`
 - `class ContextTests`
@@ -362,7 +367,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `342` lines (`15004` bytes)
+**Size**: `347` lines (`15305` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -418,7 +423,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `101` lines (`4265` bytes)
+**Size**: `136` lines (`5818` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
@@ -426,6 +431,8 @@
 **Functions:**
 - `def _squash(text)`
 - `def require_explainer(text, explainer)` - *Enforce R4: the post must say what the project is, in its own words.*
+- `def require_posted_first(repo, state_dir)` - *Enforce R8: screenshot drops only build on an already-posted project.*
+- `def require_shots_caption(text, name, visual)` - *Enforce the drop caption: singular for one shot, plural for 2-3.*
 - `def build_post(repo, text, kind, commit, data_file, suite_ok, visual, run_id, date, state_dir, existing_texts, explainer)` - *Build, gate and queue a draft; returns the queue record (unapproved).*
 
 ---
@@ -559,6 +566,20 @@
 
 **Functions:**
 - `def publish(draft_id, state_dir, transport, published_hashes)` - *Publish a queued draft; default transport is the dry-run mock.*
+
+---
+
+### [`tools/social/published.py`](tools/social/published.py)
+> *Posted-post log: which repos already have a live post.*
+
+**Size**: `67` lines (`2057` bytes)
+
+**Functions:**
+- `def _path(state_dir)`
+- `def _read(state_dir)`
+- `def _write(state_dir, data)`
+- `def record(state_dir, draft_id, repo, text, kind)` - *Record a posted tweet; idempotent per draft id.*
+- `def has_repo_post(state_dir, repo)` - *True when the repo already has at least one recorded live post.*
 
 ---
 

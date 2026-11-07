@@ -596,3 +596,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Context**: Links in posts read as boilerplate, but a studio account with no path to the repo strands interested readers. The owner rule: the link lives underneath the post, not in it, for every tweet (G-007).
 - **Decision**: drive() gains link_reply: after a confirmed main post it threads a reply containing only https://github.com/AegeanWorks/<repo>. Same approval and arming gates; refuses duplicates by checking the thread; refuses to thread under an unconfirmed post. prepare() reports the reply text for the manual path.
 - **Consequences**: Posts stay clean; every post carries exactly one path to its repo, idempotently.
+
+### ADR-078: Screenshot drops follow intro posts only
+- **Date**: 2026-11-07
+- **Status**: Accepted
+- **Context**: Follow-up posts need no re-introduction, but a screenshot drop for a never-posted project confuses cold followers. The owner set the caption convention: singular for one shot, plural for several.
+- **Decision**: New draft kind `shots`: bare canonical caption ("Here is a screenshot from X." / "Here are some screenshots from X."), 1-3 reviewed visuals, allowed only when the repo has a recorded live post (published.json, written by drive() on every confirmed post, backfilled for the five live posts). R4 explainer is exempt here — the intro post carries it. Recorded as R8/G-008.
+- **Consequences**: No cold drops; captions are uniform and test-asserted.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 and PRINCIPLE-014.
