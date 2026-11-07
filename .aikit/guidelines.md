@@ -16,4 +16,4 @@ without modifying or quarantining that file; older versions migrate when a migra
 - **G-005** (user): Posts fit X: at most 280 characters, a little longer than a one-liner (two to four short sentences); enforced in code at draft time.
 - **G-006** (user): For works with a UI, the post carries the banner first, then one to three fresh screenshots captured from the running project; never stock art, never recycled screenshots.
 - **G-007** (user): Every published post gets exactly one reply containing only the work's repository URL; links never appear in post bodies.
-- **G-008** (user): Screenshot drops are follow-ups only: bare caption ("Here is a screenshot from X." / "Here are some screenshots from X."), one to three fresh shots, and only for projects that already have a live intro post — never cold.
+- **G-008** (user): Screenshot drops are follow-ups only: bare caption ("Here is a screenshot from X." / "Here are some screenshots from X."), one to three fresh or dossier shots, and only for projects that already have a live intro post — never cold.

@@ -14,7 +14,7 @@ RULES = (
     "R5: no post publishes without explicit human approval.",
     "R6: UI works ship the banner first, then 1-3 fresh screenshots from the running project.",
     "R7: every published post gets one link-reply carrying the repo URL — links never appear in posts.",
-    "R8: screenshot drops are follow-ups only: bare caption plus fresh shots, "
+    "R8: screenshot drops are follow-ups only: bare caption plus fresh or dossier shots, "
     "allowed solely for projects that already have a live post.",
 )
 

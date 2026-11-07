@@ -423,7 +423,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `136` lines (`5818` bytes)
+**Size**: `136` lines (`5829` bytes)
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
