@@ -590,7 +590,7 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Consequences**: Catalogue is 51; gates green; shared-tree collisions resolved by converging on the gate-passing state.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003, PRINCIPLE-014 and PRINCIPLE-019.
 
-### ADR-076: Every post gets one link-reply, never a link in the post
+### ADR-077: Every post gets one link-reply, never a link in the post
 - **Date**: 2026-11-07
 - **Status**: Accepted
 - **Context**: Links in posts read as boilerplate, but a studio account with no path to the repo strands interested readers. The owner rule: the link lives underneath the post, not in it, for every tweet (G-007).

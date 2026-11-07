@@ -303,4 +303,5 @@ class PlaywrightPage:
                 "Why: the media preview is gone from the composer.\n"
                 "Fix: re-attach the visual; if it persists, post by hand via prepare()."
             )
+        self._page.wait_for_timeout(3000)  # let the veil clear before the click
         self._first(self.POST_IDS).click(timeout=60000)

@@ -10,7 +10,7 @@
 - **Total Classes**: `40`
 - **Total Top-Level Functions**: `153`
 - **Total Class Methods**: `207`
-- **Total Source Lines**: `6307`
+- **Total Source Lines**: `6308`
 
 ---
 
@@ -362,7 +362,7 @@
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `306` lines (`13224` bytes)
+**Size**: `307` lines (`13305` bytes)
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
