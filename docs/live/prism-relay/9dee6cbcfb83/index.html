@@ -43,10 +43,21 @@
             <p class="lede">Rotate mirrors and splitters, fold space through portals, and charge every receiver. Four episodes. Eighteen chambers. One perfect circuit.</p>
             <div class="title-actions">
               <button class="button button--primary" data-ui="start-game">
-                Enter the relay <span aria-hidden="true">→</span>
+                <span id="start-label">Enter the relay</span> <span aria-hidden="true">→</span>
               </button>
               <button class="button button--quiet" data-ui="open-chambers">Episode index</button>
             </div>
+            <button class="daily-card" type="button" data-ui="daily-run" aria-label="Play today's Daily Relay">
+              <span class="daily-card__main">
+                <span class="daily-card__kicker">Daily relay · <span id="daily-date" data-cue="daily-date">TODAY</span></span>
+                <span class="daily-card__name" id="daily-level">First Light</span>
+              </span>
+              <span class="daily-card__meta">
+                <span id="daily-status" data-cue="daily-status">Not run yet</span>
+                <span class="daily-card__streak" id="daily-streak" data-cue="daily-streak">Start a streak</span>
+                <span class="daily-card__history" id="daily-history" data-cue="daily-history" aria-hidden="true"></span>
+              </span>
+            </button>
             <dl class="title-stats">
               <div>
                 <dt>Chambers</dt>
@@ -96,6 +107,7 @@
             <div class="progress-track" id="chamber-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0" aria-label="Chambers completed"><span id="chamber-progress-fill"></span></div>
             <span class="chamber-progress__value" id="chamber-progress-value" data-cue="chamber-progress">0 / 18 chambers</span>
           </div>
+          <div class="episode-tabs" id="episode-tabs" data-ui="episode-tabs" role="group" aria-label="Episode filter"></div>
           <div class="chamber-grid" id="chamber-grid" data-ui="chamber-grid" data-panel="chamber-grid"></div>
         </section>
 
@@ -113,20 +125,28 @@
                 <span>Moves</span>
                 <strong id="hud-moves" data-ui="hud-moves">0</strong>
                 <em>/ <span id="hud-par" data-cue="hud-par">1</span> par</em>
+                <span class="stars metric__stars" id="hud-stars" data-cue="hud-stars" aria-label="On pace for 3 stars"></span>
               </div>
               <div class="metric">
                 <span>Receivers</span>
                 <strong id="hud-relays" data-ui="hud-relays">0/1</strong>
               </div>
+              <button class="icon-button" data-ui="undo-move" aria-label="Undo last rotation">↶</button>
               <button class="icon-button" data-ui="reset-level" aria-label="Restart chamber">↺</button>
               <button class="icon-button" data-ui="pause-game" aria-label="Pause chamber">Ⅱ</button>
             </div>
           </div>
 
+          <p class="board-pan-hint" id="board-pan-hint" data-cue="board-pan-hint" hidden>Swipe the board to pan. Rotate your phone for the full relay.</p>
+
           <div class="game-layout">
             <div class="board-frame" id="board-frame">
-              <div class="board" id="board" data-ui="board" data-panel="board" role="group" aria-label="Laser puzzle board"></div>
-              <svg class="beam-layer" id="beam-layer" aria-hidden="true"></svg>
+              <div class="board-viewport" id="board-viewport">
+                <div class="board-stage" id="board-stage">
+                  <div class="board" id="board" data-ui="board" data-panel="board" role="group" aria-label="Laser puzzle board"></div>
+                  <svg class="beam-layer" id="beam-layer" aria-hidden="true"></svg>
+                </div>
+              </div>
               <div class="board-corner board-corner--tl" aria-hidden="true"></div>
               <div class="board-corner board-corner--tr" aria-hidden="true"></div>
               <div class="board-corner board-corner--bl" aria-hidden="true"></div>
@@ -153,7 +173,8 @@
 
           <div class="game-foot">
             <p id="status-line" data-ui="status-line" data-cue="status-line" aria-live="polite">Rotate a piece to begin.</p>
-            <p>Arrow keys move · Space rotates · R resets · P profile · Esc pauses</p>
+            <button class="button button--quiet game-foot__next" data-ui="next-step" hidden>Next chamber &rarr;</button>
+            <p>Arrow keys move · Space rotates · Z undoes · R resets · P profile · Esc pauses</p>
           </div>
         </section>
 
@@ -174,6 +195,7 @@
                   <p class="eyebrow">Callsign</p>
                   <h3 id="profile-callsign-display">OPERATOR</h3>
                   <p class="profile-rank" id="profile-rank" data-cue="profile-rank">Cadet</p>
+                  <p class="profile-rank-next" id="profile-rank-next" data-cue="profile-rank-next"></p>
                 </div>
               </div>
 
@@ -208,6 +230,8 @@
                 <div class="profile-stat"><span>Stars</span><strong id="profile-stat-stars">0 / 54</strong></div>
                 <div class="profile-stat"><span>Perfect routes</span><strong id="profile-stat-perfect">0</strong></div>
                 <div class="profile-stat"><span>Best moves</span><strong id="profile-stat-moves">0</strong></div>
+                <div class="profile-stat"><span>Daily relays</span><strong id="profile-stat-daily" data-cue="profile-daily">0</strong></div>
+                <div class="profile-stat"><span>Best streak</span><strong id="profile-stat-streak" data-cue="profile-streak">0</strong></div>
               </div>
 
               <div class="profile-audio">
@@ -245,11 +269,11 @@
         <h2 id="modal-title" data-ui="modal-title">Message</h2>
         <div class="stars" id="modal-stars" aria-label="Star rating"></div>
         <p id="modal-body" data-ui="modal-body"></p>
-        <div class="modal__actions">
-          <button class="button button--primary" id="modal-primary" data-ui="modal-primary">Continue</button>
-          <button class="button button--quiet" id="modal-secondary" data-ui="modal-secondary">Close</button>
-          <button class="button button--quiet" id="modal-tertiary" data-ui="modal-tertiary" hidden>Back</button>
-        </div>
+      </div>
+      <div class="modal__actions">
+        <button class="button button--primary" id="modal-primary" data-ui="modal-primary">Continue</button>
+        <button class="button button--quiet" id="modal-secondary" data-ui="modal-secondary">Close</button>
+        <button class="button button--quiet" id="modal-tertiary" data-ui="modal-tertiary" hidden>Back</button>
       </div>
     </dialog>
 

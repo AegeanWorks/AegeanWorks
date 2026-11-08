@@ -9,6 +9,7 @@ let padNodes = [];
 let musicStep = 0;
 
 const MUSIC_NOTES = [261.63, 329.63, 392.0, 523.25, 392.0, 329.63];
+const MUSIC_LEVEL = 0.05;
 
 function ensureContext() {
   if (!context) {
@@ -58,7 +59,7 @@ function schedulePad(audio) {
 
   musicGain = audio.createGain();
   musicGain.gain.setValueAtTime(0.0001, audio.currentTime);
-  musicGain.gain.exponentialRampToValueAtTime(0.05, audio.currentTime + 2.4);
+  musicGain.gain.exponentialRampToValueAtTime(MUSIC_LEVEL, audio.currentTime + 2.4);
   musicGain.connect(musicFilter);
 
   const voices = [
@@ -164,6 +165,27 @@ export function isMusicPlaying() {
   return musicPlaying;
 }
 
+export function musicLevel() {
+  return musicGain ? musicGain.gain.value : null;
+}
+
+export function duckMusic(
+  level = MUSIC_LEVEL * 0.28,
+  hold = 1.0,
+  restore = 1.8,
+) {
+  if (!context || !musicGain || musicGain.gain.value < MUSIC_LEVEL * 0.5) {
+    return;
+  }
+  const now = context.currentTime;
+  const current = Math.max(0.0001, musicGain.gain.value);
+  musicGain.gain.cancelScheduledValues(now);
+  musicGain.gain.setValueAtTime(current, now);
+  musicGain.gain.exponentialRampToValueAtTime(level, now + 0.12);
+  musicGain.gain.setValueAtTime(level, now + hold);
+  musicGain.gain.exponentialRampToValueAtTime(MUSIC_LEVEL, now + restore);
+}
+
 export function playRotate() {
   tone(660, 0.08, "triangle", 0.035);
 }
@@ -171,6 +193,11 @@ export function playRotate() {
 export function playSplit() {
   tone(520, 0.07, "triangle", 0.03);
   tone(780, 0.09, "sine", 0.025, 0.04);
+}
+
+export function playCharge() {
+  tone(880, 0.09, "sine", 0.024);
+  tone(1318.5, 0.14, "sine", 0.02, 0.055);
 }
 
 export function playPortal() {
@@ -187,6 +214,10 @@ export function playError() {
 }
 
 export function playVictory() {
+  if (!sfxEnabled) {
+    return;
+  }
+  duckMusic();
   tone(523.25, 0.16, "triangle", 0.035, 0);
   tone(659.25, 0.16, "triangle", 0.035, 0.1);
   tone(783.99, 0.2, "triangle", 0.04, 0.2);

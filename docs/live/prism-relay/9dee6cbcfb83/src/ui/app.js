@@ -8,18 +8,30 @@ import {
   nextLevel,
 } from "../game/levels.js";
 import {
+  cellNear,
   createSession,
   resetSession,
   rotateSessionCell,
   starsFor,
   traceBeams,
+  undoSession,
 } from "../game/engine.js";
 import { solveLevel } from "../game/solver.js";
 import * as audio from "./audio.js";
 import {
+  BOARD_MAX_WIDTH,
+  BOARD_MIN_WIDTH,
+  MOBILE_MIN_CELL,
+  TALL_MIN_CELL,
+  fitBoardWidth,
+  wideBoardNeedsPan,
+} from "./layout.js";
+import {
   isUnlocked,
   loadProgress,
-  rankFor,
+  nextEpisodeId,
+  episodeIdAfterLevel,
+  rankProgress,
   recordResult,
   saveProgress,
   setMusic,
@@ -27,6 +39,21 @@ import {
   statsFor,
   updateProfile,
 } from "./progress.js";
+import { feedbackFor, livePortalPairs, newlyLitKeys, portalTransitKey } from "./cues.js";
+import { parHint, postVictoryAction, relayCtaLabel, restartPrompt, saveStatusMessage } from "./hints.js";
+import { mechanicNotes } from "./mechanics.js";
+import { starLabel, starsMarkup } from "./stars.js";
+import {
+  dailyDateLabelForKey,
+  dailyHistory,
+  dailyLevelId,
+  dailyStats,
+  dailySummary,
+  dateKey,
+  loadDaily,
+  recordDailyResult,
+  saveDaily,
+} from "./daily.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const storage = (() => {
@@ -37,6 +64,10 @@ const storage = (() => {
   }
 })();
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const compactLayout = window.matchMedia("(max-width: 900px)");
+const BOARD_FOOT_RESERVE = 56;
+const chargeTimers = new WeakMap();
+const turnTimers = new WeakMap();
 
 const screens = new Map(
   ["title", "chambers", "game", "profile"].map((name) => [
@@ -53,7 +84,15 @@ const elements = {
   profileChipSigil: document.getElementById("profile-chip-sigil"),
   titleStars: document.getElementById("title-stars"),
   titleBest: document.getElementById("title-best"),
+  dailyRun: document.querySelector('[data-ui="daily-run"]'),
+  dailyDate: document.getElementById("daily-date"),
+  dailyLevel: document.getElementById("daily-level"),
+  dailyStatus: document.getElementById("daily-status"),
+  dailyStreak: document.getElementById("daily-streak"),
+  dailyHistory: document.getElementById("daily-history"),
+  startLabel: document.getElementById("start-label"),
   chamberGrid: document.getElementById("chamber-grid"),
+  chamberTabs: document.getElementById("episode-tabs"),
   chamberProgressFill: document.getElementById("chamber-progress-fill"),
   chamberProgressTrack: document.getElementById("chamber-progress-track"),
   chamberProgressValue: document.getElementById("chamber-progress-value"),
@@ -62,12 +101,18 @@ const elements = {
   gameSubtitle: document.getElementById("game-subtitle"),
   hudMoves: document.getElementById("hud-moves"),
   hudPar: document.getElementById("hud-par"),
+  hudStars: document.getElementById("hud-stars"),
   hudRelays: document.getElementById("hud-relays"),
+  undoMove: document.querySelector('[data-ui="undo-move"]'),
   gameHint: document.getElementById("game-hint"),
   gameMechanic: document.getElementById("game-mechanic"),
   statusLine: document.getElementById("status-line"),
+  nextStep: document.querySelector('[data-ui="next-step"]'),
   board: document.getElementById("board"),
   boardFrame: document.getElementById("board-frame"),
+  boardViewport: document.getElementById("board-viewport"),
+  boardStage: document.getElementById("board-stage"),
+  boardPanHint: document.getElementById("board-pan-hint"),
   beamLayer: document.getElementById("beam-layer"),
   legendSplitter: document.querySelector('[data-legend="splitter"]'),
   legendPortal: document.querySelector('[data-legend="portal"]'),
@@ -84,6 +129,7 @@ const elements = {
   profileSigil: document.getElementById("profile-sigil"),
   profileCallsignDisplay: document.getElementById("profile-callsign-display"),
   profileRank: document.getElementById("profile-rank"),
+  profileRankNext: document.getElementById("profile-rank-next"),
   profileForm: document.getElementById("profile-form"),
   profileCallsign: document.getElementById("profile-callsign"),
   profileSaveStatus: document.getElementById("profile-save-status"),
@@ -91,6 +137,8 @@ const elements = {
   profileStatStars: document.getElementById("profile-stat-stars"),
   profileStatPerfect: document.getElementById("profile-stat-perfect"),
   profileStatMoves: document.getElementById("profile-stat-moves"),
+  profileStatDaily: document.getElementById("profile-stat-daily"),
+  profileStatStreak: document.getElementById("profile-stat-streak"),
   profileEpisodes: document.getElementById("profile-episodes"),
   profileMusic: document.getElementById("profile-music"),
   profileSfx: document.getElementById("profile-sfx"),
@@ -100,7 +148,10 @@ const elements = {
 
 const state = {
   progress: loadProgress(storage),
+  daily: loadDaily(storage),
   screen: "title",
+  chamberEpisode: null,
+  dailyDate: null,
   level: null,
   session: null,
   completed: false,
@@ -148,6 +199,9 @@ function showScreen(name) {
   if (name !== "game") {
     closeModal();
   }
+  if (name === "game") {
+    fitBoardToViewport();
+  }
   window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
 }
 
@@ -155,6 +209,48 @@ function updateTitleStats() {
   const stats = statsFor(state.progress);
   elements.titleStars.textContent = String(stats.stars).padStart(2, "0");
   elements.titleBest.textContent = stats.completed > 0 ? `${stats.moves} moves` : "—";
+  if (elements.startLabel) {
+    elements.startLabel.textContent = relayCtaLabel(stats.completed, stats.totalLevels);
+  }
+  const today = new Date();
+  const summary = dailySummary(state.daily, today);
+  const dailyLevel = LEVELS.find((level) => level.id === summary.levelId) ?? LEVELS[0];
+  const status = summary.result
+    ? `${summary.result.moves} moves · ${summary.result.stars} stars`
+    : "Not run yet";
+  const streak = summary.streak > 0 ? `${summary.streak}-day streak` : "Start a streak";
+  const history = dailyHistory(state.daily, today);
+  const played = history.filter((entry) => entry.played).length;
+  if (elements.dailyHistory) {
+    elements.dailyHistory.replaceChildren();
+    for (const entry of history) {
+      const dot = document.createElement("span");
+      dot.className = "daily-card__day";
+      dot.classList.toggle("is-played", entry.played);
+      dot.classList.toggle("is-today", entry.today);
+      dot.dataset.date = entry.key;
+      elements.dailyHistory.append(dot);
+    }
+  }
+  if (elements.dailyDate) {
+    elements.dailyDate.textContent = summary.label;
+  }
+  if (elements.dailyLevel) {
+    elements.dailyLevel.textContent = dailyLevel.name;
+  }
+  if (elements.dailyStatus) {
+    elements.dailyStatus.textContent = status;
+  }
+  if (elements.dailyStreak) {
+    elements.dailyStreak.textContent = streak;
+  }
+  if (elements.dailyRun) {
+    elements.dailyRun.dataset.level = summary.levelId;
+    elements.dailyRun.setAttribute(
+      "aria-label",
+      `Daily relay for ${summary.label}: ${dailyLevel.name}. ${summary.result ? `${summary.result.moves} moves, ${summary.result.stars} stars` : "Not run yet"}. ${streak}. Played ${played} of the last ${history.length} days.`,
+    );
+  }
 }
 
 function updateTopbarStatus() {
@@ -204,21 +300,36 @@ function nextPlayableLevel() {
   );
 }
 
-function starsMarkup(count) {
-  return [1, 2, 3]
-    .map((index) => `<span class="star${index <= count ? " is-earned" : ""}" aria-hidden="true">★</span>`)
-    .join("");
-}
-
-function starLabel(count) {
-  return count === 0 ? "No stars yet" : `${count} of 3 stars`;
-}
-
 function renderChambers() {
   if (!elements.chamberGrid) {
     return;
   }
   elements.chamberGrid.replaceChildren();
+  const activeEpisode =
+    state.chamberEpisode &&
+    EPISODES.some((episode) => episode.id === state.chamberEpisode)
+      ? state.chamberEpisode
+      : nextEpisodeId(state.progress);
+  if (elements.chamberTabs) {
+    elements.chamberTabs.replaceChildren();
+    for (const episode of EPISODES) {
+      const tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "episode-tab";
+      tab.dataset.ui = "episode-tab";
+      tab.dataset.episode = episode.id;
+      tab.classList.toggle("is-active", episode.id === activeEpisode);
+      tab.setAttribute("aria-pressed", String(episode.id === activeEpisode));
+      tab.setAttribute("aria-label", `Episode ${episode.number}: ${episode.name}`);
+      tab.textContent = `EP ${episode.number}`;
+      tab.addEventListener("click", () => {
+        state.chamberEpisode = episode.id;
+        renderChambers();
+        elements.chamberTabs?.querySelector(".is-active")?.focus();
+      });
+      elements.chamberTabs.append(tab);
+    }
+  }
   for (const episode of EPISODES) {
     const episodeLocked = !isUnlocked(state.progress, episode.levels[0].id);
     const cleared = episode.levels.filter((level) => state.progress.best[level.id]).length;
@@ -229,6 +340,7 @@ function renderChambers() {
     const block = document.createElement("section");
     block.className = "episode-block";
     block.classList.toggle("is-locked", episodeLocked);
+    block.classList.toggle("is-active", episode.id === activeEpisode);
     block.dataset.episode = episode.id;
     block.innerHTML = `
       <header class="episode-head">
@@ -307,6 +419,7 @@ function startLevel(levelId, options = {}) {
   closeModal();
   state.level = level;
   state.session = createSession(level);
+  state.dailyDate = options.dailyDate ?? null;
   state.completed = false;
   state.paused = false;
   state.result = null;
@@ -370,6 +483,100 @@ function renderBoard() {
   }
   state.rotatableCells.forEach((cell, index) => {
     cell.element.tabIndex = index === 0 ? 0 : -1;
+  });
+  fitBoardToViewport();
+}
+
+function fitBoardToViewport() {
+  if (
+    !elements.boardFrame ||
+    !state.session ||
+    elements.boardFrame.offsetParent === null
+  ) {
+    return;
+  }
+  const frame = elements.boardFrame;
+  frame.style.width = "";
+  if (elements.boardStage) {
+    elements.boardStage.style.width = "";
+  }
+  const styles = getComputedStyle(frame);
+  const frameX =
+    (Number.parseFloat(styles.paddingLeft) || 0) +
+    (Number.parseFloat(styles.paddingRight) || 0) +
+    (Number.parseFloat(styles.borderLeftWidth) || 0) +
+    (Number.parseFloat(styles.borderRightWidth) || 0);
+  const frameY =
+    (Number.parseFloat(styles.paddingTop) || 0) +
+    (Number.parseFloat(styles.paddingBottom) || 0) +
+    (Number.parseFloat(styles.borderTopWidth) || 0) +
+    (Number.parseFloat(styles.borderBottomWidth) || 0);
+  const rect = frame.getBoundingClientRect();
+  let documentTop = 0;
+  for (let node = frame; node; node = node.offsetParent) {
+    documentTop += node.offsetTop;
+  }
+  if (compactLayout.matches) {
+    const board = state.session.board;
+    const viewportWidth = elements.boardViewport?.clientWidth ?? 0;
+    if (wideBoardNeedsPan({ columns: board.width, rows: board.height, viewportWidth })) {
+      elements.boardStage.style.width = `${board.width * MOBILE_MIN_CELL}px`;
+    } else if (board.height > board.width) {
+      const availableHeight = window.innerHeight - documentTop - 8;
+      if (rect.height > availableHeight) {
+        const fit = fitBoardWidth({
+          columns: board.width,
+          rows: board.height,
+          availableHeight,
+          paddingX: frameX,
+          paddingY: frameY,
+          minWidth: board.width * TALL_MIN_CELL + frameX,
+          maxWidth: Math.min(BOARD_MAX_WIDTH, rect.width),
+        });
+        const fitHeight =
+          ((fit - frameX) * board.height) / board.width + frameY;
+        if (fitHeight <= availableHeight || fit < rect.width - 24) {
+          frame.style.width = `${fit}px`;
+        }
+      }
+    }
+    updateBoardPanHint();
+    return;
+  }
+  const availableHeight = window.innerHeight - documentTop - BOARD_FOOT_RESERVE;
+  const width = fitBoardWidth({
+    columns: state.session.board.width,
+    rows: state.session.board.height,
+    availableHeight,
+    paddingX: frameX,
+    paddingY: frameY,
+    minWidth: BOARD_MIN_WIDTH,
+    maxWidth: Math.min(BOARD_MAX_WIDTH, rect.width),
+  });
+  frame.style.width = `${width}px`;
+  updateBoardPanHint();
+}
+
+function updateBoardPanHint() {
+  if (!elements.boardPanHint || !state.session) {
+    return;
+  }
+  const board = state.session.board;
+  const viewportWidth = elements.boardViewport?.clientWidth ?? 0;
+  elements.boardPanHint.hidden =
+    !compactLayout.matches ||
+    !wideBoardNeedsPan({ columns: board.width, rows: board.height, viewportWidth });
+}
+
+let boardFitFrame = 0;
+
+function scheduleBoardFit() {
+  if (boardFitFrame) {
+    return;
+  }
+  boardFitFrame = requestAnimationFrame(() => {
+    boardFitFrame = 0;
+    fitBoardToViewport();
   });
 }
 
@@ -437,7 +644,7 @@ function traceSession() {
   return trace;
 }
 
-function updateBoard() {
+function updateBoard(previousLit = null) {
   if (!state.session || !state.level) {
     return;
   }
@@ -458,6 +665,26 @@ function updateBoard() {
       node.classList.toggle("is-lit", lit);
       node.setAttribute("aria-label", lit ? "Receiver, charged." : "Receiver, waiting for light.");
     }
+  }
+  if (previousLit) {
+    markChargedReceivers(previousLit, trace.lit);
+  } else {
+    clearChargeBursts();
+  }
+  const livePairs = new Set(livePortalPairs(state.session.board, trace.paths));
+  for (const portal of state.session.board.portals) {
+    const node = state.cellElements.get(`${portal.x},${portal.y}`);
+    if (!node) {
+      continue;
+    }
+    const live = livePairs.has(portal.pair);
+    node.classList.toggle("is-live", live);
+    node.setAttribute(
+      "aria-label",
+      live
+        ? `${cellLabel(portal)} The beam is passing through this pair.`
+        : cellLabel(portal),
+    );
   }
   renderBeams();
   updateGameView();
@@ -506,22 +733,6 @@ function renderBeams() {
   }
 }
 
-function cellNear(board, point) {
-  const x = Math.floor(point.x);
-  const y = Math.floor(point.y);
-  const clampedX = Math.min(Math.max(x, 0), board.width - 1);
-  const clampedY = Math.min(Math.max(y, 0), board.height - 1);
-  const direct = board.cells[clampedY]?.[clampedX] ?? null;
-  if (
-    direct &&
-    Math.abs(point.x - (direct.x + 0.5)) < 0.52 &&
-    Math.abs(point.y - (direct.y + 0.5)) < 0.52
-  ) {
-    return direct;
-  }
-  return null;
-}
-
 function updateGameView() {
   if (!state.session || !state.level) {
     return;
@@ -530,36 +741,37 @@ function updateGameView() {
   const episode = episodeForLevel(state.level.id);
   const total = board.receivers.length;
   const lit = state.session.litCount;
-  elements.gameChapter.textContent = `Episode ${episode?.number ?? "I"} / Chamber ${state.level.chapter}`;
+  elements.gameChapter.textContent = state.dailyDate
+    ? `Daily relay / ${dailyDateLabelForKey(state.dailyDate)}`
+    : `Episode ${episode?.number ?? "I"} / Chamber ${state.level.chapter}`;
   elements.gameTitle.textContent = state.level.name;
   elements.gameSubtitle.textContent = state.level.subtitle;
   elements.hudMoves.textContent = String(state.session.moves);
   elements.hudPar.textContent = String(state.level.par);
+  const pace = starsFor(state.session.moves, state.level.par);
+  if (elements.hudStars) {
+    elements.hudStars.innerHTML = starsMarkup(pace);
+    elements.hudStars.setAttribute(
+      "aria-label",
+      `On pace for ${pace} star${pace === 1 ? "" : "s"}`,
+    );
+  }
   elements.hudRelays.textContent = `${lit}/${total}`;
+  if (elements.undoMove) {
+    elements.undoMove.disabled = state.session.history.length === 0;
+  }
   elements.gameHint.textContent = board.portals.length
     ? "Portals preserve direction. Follow the paired number."
     : board.splitters.length
       ? "Click a splitter to flip which side receives the fork."
-      : `Par is ${state.level.par} moves. Every rotation counts.`;
+      : parHint(state.level.par);
   elements.legendSplitter.hidden = board.splitters.length === 0;
   elements.legendPortal.hidden = board.portals.length === 0;
 
-  const mechanics = [];
-  if (board.splitters.length > 0) {
-    mechanics.push([
-      "Splitter",
-      "The main beam passes through; a copy forks to the bright side.",
-    ]);
-  }
-  if (board.portals.length > 0) {
-    mechanics.push([
-      "Portal",
-      "Enter one gate, leave the twin in the same direction. Numbers pair the gates.",
-    ]);
-  }
+  const mechanics = mechanicNotes(board);
   elements.gameMechanic.hidden = mechanics.length === 0;
   elements.gameMechanic.innerHTML = mechanics
-    .map(([name, text]) => `<strong>${name}</strong>${text}`)
+    .map(({ name, text }) => `<strong>${name}</strong>${text}`)
     .join("<br>");
   elements.boardFrame.classList.toggle("is-complete", state.session.complete);
 
@@ -574,6 +786,59 @@ function updateGameView() {
   } else {
     elements.statusLine.textContent = "All receivers charged. Hold the circuit.";
   }
+  const nextAction = state.completed ? postVictoryAction(state.result) : null;
+  if (elements.nextStep) {
+    elements.nextStep.hidden = !nextAction;
+    if (nextAction) {
+      elements.nextStep.textContent = nextAction.label;
+    }
+  }
+}
+
+function markChargedReceivers(previousLit, lit) {
+  const charged = new Set(newlyLitKeys(previousLit, lit));
+  for (const receiver of state.session.board.receivers) {
+    const node = state.cellElements.get(`${receiver.x},${receiver.y}`);
+    if (!node) {
+      continue;
+    }
+    const timer = chargeTimers.get(node);
+    if (timer) {
+      clearTimeout(timer);
+      chargeTimers.delete(node);
+    }
+    node.classList.remove("is-charging");
+    if (!charged.has(`${receiver.x},${receiver.y}`)) {
+      continue;
+    }
+    void node.offsetWidth;
+    node.classList.add("is-charging");
+    chargeTimers.set(
+      node,
+      window.setTimeout(() => {
+        node.classList.remove("is-charging");
+        chargeTimers.delete(node);
+      }, 600),
+    );
+  }
+}
+
+function clearChargeBursts() {
+  if (!state.session) {
+    return;
+  }
+  for (const receiver of state.session.board.receivers) {
+    const node = state.cellElements.get(`${receiver.x},${receiver.y}`);
+    if (!node) {
+      continue;
+    }
+    const timer = chargeTimers.get(node);
+    if (timer) {
+      clearTimeout(timer);
+      chargeTimers.delete(node);
+    }
+    node.classList.remove("is-charging");
+  }
 }
 
 function finishLevel() {
@@ -587,27 +852,56 @@ function finishLevel() {
   const nextEpisode = next ? episodeForLevel(next.id) : null;
   const episodeComplete = !next || nextEpisode.id !== episode.id;
   const stars = state.session.stars || starsFor(state.session.moves, level.par);
-  const previousBest = state.progress.best[level.id] ?? null;
   state.session.stars = stars;
-  state.progress = recordResult(
-    state.progress,
-    level.id,
-    state.session.moves,
-    stars,
-    next?.id ?? null,
-  );
-  saveProgress(storage, state.progress);
-  state.result = {
-    stars,
-    moves: state.session.moves,
-    previousBest: previousBest?.moves ?? null,
-    bestMoves: state.progress.best[level.id]?.moves ?? state.session.moves,
-    next: next?.id ?? null,
-    nextEpisode: nextEpisode?.number ?? null,
-    episodeComplete,
-    episodeNumber: episode?.number ?? "I",
-    preview: false,
-  };
+  if (state.dailyDate) {
+    state.daily = recordDailyResult(
+      state.daily,
+      state.dailyDate,
+      level.id,
+      state.session.moves,
+      stars,
+    );
+    const saved = saveDaily(storage, state.daily);
+    const summary = dailySummary(state.daily, new Date());
+    state.result = {
+      stars,
+      moves: state.session.moves,
+      bestMoves: state.daily.days[state.dailyDate]?.moves ?? state.session.moves,
+      bestStars: state.daily.days[state.dailyDate]?.stars ?? stars,
+      daily: true,
+      dailyDate: state.dailyDate,
+      streak: summary.streak,
+      preview: false,
+      saveFailed: !saved,
+    };
+  } else {
+    const nextEpisodeTab = episodeIdAfterLevel(level.id);
+    if (nextEpisodeTab) {
+      state.chamberEpisode = nextEpisodeTab;
+    }
+    const previousBest = state.progress.best[level.id] ?? null;
+    state.progress = recordResult(
+      state.progress,
+      level.id,
+      state.session.moves,
+      stars,
+      next?.id ?? null,
+    );
+    const saved = saveProgress(storage, state.progress);
+    state.result = {
+      stars,
+      moves: state.session.moves,
+      previousBest: previousBest?.moves ?? null,
+      bestMoves: state.progress.best[level.id]?.moves ?? state.session.moves,
+      next: next?.id ?? null,
+      nextEpisode: nextEpisode?.number ?? null,
+      episodeComplete,
+      episodeNumber: episode?.number ?? "I",
+      preview: false,
+      saveFailed: !saved,
+    };
+  }
+  updateGameView();
   updateTitleStats();
   updateTopbarStatus();
   updateProfileChip();
@@ -699,22 +993,104 @@ function rotatePiece(x, y, element) {
     return;
   }
   const cell = state.session.board.cells[y]?.[x];
+  const beforeLit = new Set(state.session.litKeys ?? []);
+  const before = {
+    lit: state.session.litCount,
+    portalKey: portalTransitKey(state.session.board, state.session.paths),
+  };
   const changed = rotateSessionCell(state.session, x, y);
   if (!changed || !cell) {
     return;
   }
   for (const piece of state.rotatableCells) {
     piece.element.tabIndex = piece.element === element ? 0 : -1;
+    piece.element.classList.toggle("is-last-moved", piece.element === element);
   }
   if (cell.kind === "splitter") {
     audio.playSplit();
   } else {
     audio.playRotate();
   }
+  const feedback = feedbackFor(before, {
+    lit: state.session.litCount,
+    portalKey: portalTransitKey(state.session.board, state.session.paths),
+  });
+  if (feedback.charge) {
+    audio.playCharge();
+  }
+  if (feedback.portal) {
+    audio.playPortal();
+  }
+  const priorTurn = turnTimers.get(element);
+  if (priorTurn) {
+    clearTimeout(priorTurn);
+    turnTimers.delete(element);
+  }
   element.classList.remove("is-turning");
   void element.offsetWidth;
   element.classList.add("is-turning");
+  turnTimers.set(
+    element,
+    window.setTimeout(() => {
+      element.classList.remove("is-turning");
+      turnTimers.delete(element);
+    }, 320),
+  );
+  updateBoard(beforeLit);
+}
+
+function undoLastMove() {
+  if (
+    state.screen !== "game" ||
+    state.paused ||
+    state.completed ||
+    state.modalOpen ||
+    !state.session ||
+    !state.level
+  ) {
+    return;
+  }
+  const last = state.session.history[state.session.history.length - 1];
+  if (!undoSession(state.session)) {
+    return;
+  }
+  state.result = null;
+  state.victoryPending = false;
+  for (const piece of state.rotatableCells) {
+    const timer = turnTimers.get(piece.element);
+    if (timer) {
+      clearTimeout(timer);
+      turnTimers.delete(piece.element);
+    }
+    piece.element.classList.remove("is-turning");
+    piece.element.classList.toggle(
+      "is-last-moved",
+      Boolean(last) && piece.element === state.cellElements.get(`${last.x},${last.y}`),
+    );
+  }
   updateBoard();
+  audio.playUi();
+}
+
+function requestReset() {
+  if (!state.session || !state.level || state.screen !== "game" || state.modalOpen) {
+    return;
+  }
+  if (state.session.moves === 0 || state.completed) {
+    resetCurrentLevel();
+    return;
+  }
+  state.paused = true;
+  const copy = restartPrompt(state.level.name, state.session.moves);
+  audio.playUi();
+  openModal({
+    kind: "restart",
+    kicker: "Restart chamber",
+    title: copy.title,
+    bodyHtml: `<p>${copy.body}</p>`,
+    primary: { label: "Keep playing", run: () => {} },
+    secondary: { label: "Restart chamber", run: resetCurrentLevel },
+  });
 }
 
 function resetCurrentLevel() {
@@ -733,7 +1109,13 @@ function resetCurrentLevel() {
   state.preview = false;
   state.victoryPending = false;
   for (const piece of state.rotatableCells) {
+    const timer = turnTimers.get(piece.element);
+    if (timer) {
+      clearTimeout(timer);
+      turnTimers.delete(piece.element);
+    }
     piece.element.classList.remove("is-turning");
+    piece.element.classList.remove("is-last-moved");
   }
   updateBoard();
   audio.playUi();
@@ -858,6 +1240,38 @@ function openVictoryModal() {
       : result.stars === 2
         ? "Relay closed. A cleaner path is still waiting."
         : "Relay closed. There is a sharper route through the light.";
+  if (result.daily) {
+    const saveWarning = result.saveFailed
+      ? `<p class="modal__fine">Today's daily result is not being stored.</p>`
+      : "";
+    const streakLine =
+      result.streak > 1
+        ? `<p><strong>${result.streak}-day streak.</strong> Return tomorrow to keep it alive.</p>`
+        : `<p><strong>Streak started.</strong> Return tomorrow to keep it alive.</p>`;
+    openModal({
+      kind: "victory",
+      kicker: "Daily relay cleared",
+      title: level.name,
+      stars: result.stars,
+      bodyHtml: `
+        <p>${message}</p>
+        ${streakLine}
+        <dl class="result-grid">
+          <div><dt>Moves</dt><dd>${result.moves}</dd></div>
+          <div><dt>Par</dt><dd>${level.par}</dd></div>
+          <div><dt>Best today</dt><dd>${result.bestMoves} · ${result.bestStars} stars</dd></div>
+        </dl>
+        <p class="modal__fine">Daily results stay separate; campaign progress is unchanged.</p>
+        ${saveWarning}
+      `,
+      primary: { label: "Back to title", run: () => showScreen("title") },
+      secondary: {
+        label: "Play again",
+        run: () => startLevel(level.id, { dailyDate: result.dailyDate }),
+      },
+    });
+    return;
+  }
   const episodeLine = result.episodeComplete
     ? `<p><strong>Episode ${result.episodeNumber} complete.</strong>${result.nextEpisode ? ` Episode ${result.nextEpisode} is now open.` : " Every relay is closed."}</p>`
     : "";
@@ -872,6 +1286,9 @@ function openVictoryModal() {
         label: "Return to chambers",
         run: () => showScreen("chambers"),
       };
+  const saveWarning = result.saveFailed
+    ? `<p class="modal__fine">Progress for this run is not being stored.</p>`
+    : "";
   openModal({
     kind: "victory",
     kicker: result.episodeComplete ? "Episode complete" : "Chamber complete",
@@ -885,6 +1302,7 @@ function openVictoryModal() {
         <div><dt>Par</dt><dd>${level.par}</dd></div>
         <div><dt>Best</dt><dd>${result.bestMoves}</dd></div>
       </dl>
+      ${saveWarning}
     `,
     primary: nextAction,
     secondary: { label: "Replay", run: () => startLevel(level.id) },
@@ -903,14 +1321,27 @@ function openProfile() {
 function renderProfile() {
   const stats = statsFor(state.progress);
   const { callsign, sigil } = state.progress.profile;
+  const rank = rankProgress(stats.stars);
   elements.profileCallsignDisplay.textContent = callsign;
   elements.profileCallsign.value = callsign;
-  elements.profileRank.textContent = rankFor(stats.stars);
+  elements.profileRank.textContent = rank.current;
+  if (elements.profileRankNext) {
+    elements.profileRankNext.textContent = rank.next
+      ? `${rank.remaining} star${rank.remaining === 1 ? "" : "s"} to ${rank.next}`
+      : `All ${rank.target} stars collected`;
+  }
   elements.profileSigil.dataset.sigil = sigil;
   elements.profileStatChambers.textContent = `${stats.completed} / ${stats.totalLevels}`;
   elements.profileStatStars.textContent = `${stats.stars} / ${stats.totalStars}`;
   elements.profileStatPerfect.textContent = String(stats.perfect);
   elements.profileStatMoves.textContent = String(stats.moves);
+  const lifetimeDaily = dailyStats(state.daily);
+  if (elements.profileStatDaily) {
+    elements.profileStatDaily.textContent = String(lifetimeDaily.totalDays);
+  }
+  if (elements.profileStatStreak) {
+    elements.profileStatStreak.textContent = String(lifetimeDaily.bestStreak);
+  }
   elements.profileMusic.checked = state.progress.music;
   elements.profileSfx.checked = state.progress.sound;
   for (const option of elements.sigilOptions) {
@@ -971,21 +1402,21 @@ function setProfileStatus(message) {
 function saveCallsign(event) {
   event.preventDefault();
   state.progress = updateProfile(state.progress, { callsign: elements.profileCallsign.value });
-  saveProgress(storage, state.progress);
+  const saved = saveProgress(storage, state.progress);
   renderProfile();
   updateTitleStats();
   updateTopbarStatus();
-  setProfileStatus("Callsign saved.");
+  setProfileStatus(saveStatusMessage(saved, "Callsign saved."));
   audio.playUi();
 }
 
 function chooseSigil(sigil) {
   const draft = elements.profileCallsign.value;
   state.progress = updateProfile(state.progress, { sigil });
-  saveProgress(storage, state.progress);
+  const saved = saveProgress(storage, state.progress);
   renderProfile();
   elements.profileCallsign.value = draft;
-  setProfileStatus("Sigil updated.");
+  setProfileStatus(saveStatusMessage(saved, "Sigil updated."));
   audio.playUi();
 }
 
@@ -1027,7 +1458,10 @@ function toggleAllAudio() {
   const enable = !(state.progress.sound || state.progress.music);
   state.progress = setSound(state.progress, enable);
   state.progress = setMusic(state.progress, enable);
-  saveProgress(storage, state.progress);
+  const saved = saveProgress(storage, state.progress);
+  if (!saved && state.screen === "profile") {
+    setProfileStatus(saveStatusMessage(false, ""));
+  }
   if (enable) {
     state.audioUnlocked = true;
     audio.setEnabled(true);
@@ -1050,7 +1484,10 @@ function toggleAllAudio() {
 
 function toggleMusic(enabled) {
   state.progress = setMusic(state.progress, enabled);
-  saveProgress(storage, state.progress);
+  const saved = saveProgress(storage, state.progress);
+  if (!saved && state.screen === "profile") {
+    setProfileStatus(saveStatusMessage(false, ""));
+  }
   audio.setMusicEnabled(state.progress.music);
   if (state.progress.music) {
     unlockAudio();
@@ -1063,7 +1500,10 @@ function toggleMusic(enabled) {
 
 function toggleEffects(enabled) {
   state.progress = setSound(state.progress, enabled);
-  saveProgress(storage, state.progress);
+  const saved = saveProgress(storage, state.progress);
+  if (!saved && state.screen === "profile") {
+    setProfileStatus(saveStatusMessage(false, ""));
+  }
   audio.setEnabled(state.progress.sound);
   updateSoundButton();
   if (state.progress.sound) {
@@ -1106,11 +1546,17 @@ function handleGlobalKeydown(event) {
   }
   if (key === "r") {
     event.preventDefault();
-    resetCurrentLevel();
+    requestReset();
+    return;
+  }
+  if (key === "z") {
+    event.preventDefault();
+    undoLastMove();
     return;
   }
   if (event.key === "Escape") {
     event.preventDefault();
+    audio.playUi();
     openPauseModal();
   }
 }
@@ -1119,15 +1565,27 @@ function previewVictory() {
   if (!state.session) {
     startLevel(LEVELS[0].id, { preview: true, silent: true });
   }
-  const solution = solveLevel(state.level);
-  if (solution) {
-    state.session.board.rotatables.forEach((piece, index) => {
-      piece.orientation = solution.orientations[index];
+  const rotatables = state.session.board.rotatables;
+  const embedded = state.level.solution;
+  if (Array.isArray(embedded) && embedded.length === rotatables.length) {
+    rotatables.forEach((piece, index) => {
+      piece.orientation = embedded[index];
     });
-    state.session.moves = solution.moves;
+    state.session.moves = state.level.par;
     traceSession();
     state.completed = true;
     updateBoard();
+  } else {
+    const solution = solveLevel(state.level);
+    if (solution) {
+      state.session.board.rotatables.forEach((piece, index) => {
+        piece.orientation = solution.orientations[index];
+      });
+      state.session.moves = solution.moves;
+      traceSession();
+      state.completed = true;
+      updateBoard();
+    }
   }
   const episode = episodeForLevel(state.level.id);
   const next = nextLevel(state.level.id);
@@ -1144,6 +1602,7 @@ function previewVictory() {
     episodeNumber: episode?.number ?? "I",
     preview: true,
   };
+  updateGameView();
   openVictoryModal();
 }
 
@@ -1184,6 +1643,10 @@ function bindEvents() {
   document.querySelectorAll('[data-ui="start-game"]').forEach((button) => {
     button.addEventListener("click", () => startLevel(nextPlayableLevel().id));
   });
+  elements.dailyRun?.addEventListener("click", () => {
+    const now = new Date();
+    startLevel(dailyLevelId(now), { dailyDate: dateKey(now) });
+  });
   document.querySelectorAll('[data-ui="open-chambers"]').forEach((button) => {
     button.addEventListener("click", () => {
       audio.playUi();
@@ -1191,24 +1654,49 @@ function bindEvents() {
     });
   });
   document.querySelectorAll('[data-ui="open-howto"]').forEach((button) => {
-    button.addEventListener("click", openHowToModal);
+    button.addEventListener("click", () => {
+      audio.playUi();
+      openHowToModal();
+    });
   });
   document.querySelectorAll('[data-ui="open-profile"]').forEach((button) => {
     button.addEventListener("click", openProfile);
   });
   document.querySelectorAll('[data-ui="back-to-title"], [data-ui="brand-home"]').forEach((button) => {
-    button.addEventListener("click", () => showScreen("title"));
+    button.addEventListener("click", () => {
+      audio.playUi();
+      showScreen("title");
+    });
   });
   document.querySelectorAll('[data-ui="game-back"]').forEach((button) => {
-    button.addEventListener("click", () => showScreen("chambers"));
+    button.addEventListener("click", () => {
+      audio.playUi();
+      showScreen("chambers");
+    });
   });
   document.querySelectorAll('[data-ui="reset-level"], [data-ui="restart-level-side"]').forEach((button) => {
-    button.addEventListener("click", resetCurrentLevel);
+    button.addEventListener("click", requestReset);
+  });
+  elements.undoMove?.addEventListener("click", undoLastMove);
+  elements.nextStep?.addEventListener("click", () => {
+    const action = postVictoryAction(state.result);
+    if (!action) {
+      return;
+    }
+    if (action.levelId) {
+      startLevel(action.levelId, action.dailyDate ? { dailyDate: action.dailyDate } : {});
+    } else {
+      showScreen(action.screen ?? "chambers");
+    }
   });
   document.querySelectorAll('[data-ui="pause-game"]').forEach((button) => {
-    button.addEventListener("click", openPauseModal);
+    button.addEventListener("click", () => {
+      audio.playUi();
+      openPauseModal();
+    });
   });
   elements.profileBack?.addEventListener("click", () => {
+    audio.playUi();
     showScreen(state.profileReturn === "profile" ? "title" : state.profileReturn);
   });
   elements.profileForm?.addEventListener("submit", saveCallsign);
@@ -1223,7 +1711,10 @@ function bindEvents() {
     toggleEffects(event.target.checked);
   });
   elements.soundToggle?.addEventListener("click", toggleAllAudio);
-  elements.modalClose?.addEventListener("click", closeModal);
+  elements.modalClose?.addEventListener("click", () => {
+    audio.playUi();
+    closeModal();
+  });
   elements.modal.addEventListener("close", () => {
     state.modalOpen = false;
     state.modalKind = null;
@@ -1234,6 +1725,7 @@ function bindEvents() {
     }
   });
   window.addEventListener("keydown", handleGlobalKeydown);
+  window.addEventListener("resize", scheduleBoardFit);
   window.addEventListener("pointerdown", unlockAudio, { once: true });
   window.addEventListener("keydown", unlockAudio, { once: true });
   document.addEventListener("visibilitychange", () => {

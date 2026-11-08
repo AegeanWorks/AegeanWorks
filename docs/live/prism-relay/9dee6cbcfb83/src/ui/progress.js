@@ -1,4 +1,10 @@
-import { LEVELS, TOTAL_LEVELS, TOTAL_STARS } from "../game/levels.js";
+import {
+  EPISODES,
+  LEVELS,
+  TOTAL_LEVELS,
+  TOTAL_STARS,
+  episodeForLevel,
+} from "../game/levels.js";
 
 export const PROGRESS_KEY = "prism-relay.progress.v1";
 export const PROGRESS_VERSION = 1;
@@ -99,6 +105,23 @@ export function saveProgress(storage, progress) {
     return false;
   }
   try {
+    const existing = storage.getItem(PROGRESS_KEY);
+    if (existing) {
+      let previous = null;
+      try {
+        previous = JSON.parse(existing);
+      } catch {
+        previous = null;
+      }
+      if (
+        previous &&
+        typeof previous === "object" &&
+        Number.isInteger(previous.version) &&
+        previous.version > PROGRESS_VERSION
+      ) {
+        return false;
+      }
+    }
     storage.setItem(PROGRESS_KEY, JSON.stringify(normalizeProgress(progress)));
     return true;
   } catch {
@@ -118,10 +141,26 @@ function betterResult(previous, moves, stars) {
 
 export function recordResult(progress, levelId, moves, stars, nextLevelId = null) {
   const next = normalizeProgress(progress);
+  if (
+    typeof levelId !== "string" ||
+    !LEVELS.some((level) => level.id === levelId) ||
+    !Number.isInteger(moves) ||
+    moves < 0 ||
+    !Number.isInteger(stars) ||
+    stars < 1 ||
+    stars > 3
+  ) {
+    return next;
+  }
   if (betterResult(next.best[levelId], moves, stars)) {
     next.best[levelId] = { moves, stars };
   }
-  if (nextLevelId && !next.unlocked.includes(nextLevelId)) {
+  if (
+    typeof nextLevelId === "string" &&
+    nextLevelId.length > 0 &&
+    LEVELS.some((level) => level.id === nextLevelId) &&
+    !next.unlocked.includes(nextLevelId)
+  ) {
     next.unlocked.push(nextLevelId);
   }
   return normalizeProgress(next);
@@ -168,26 +207,56 @@ export function statsFor(progress) {
   };
 }
 
+export const RANKS = Object.freeze([
+  Object.freeze({ stars: 0, name: "Cadet" }),
+  Object.freeze({ stars: 8, name: "Operator" }),
+  Object.freeze({ stars: 19, name: "Weaver" }),
+  Object.freeze({ stars: 32, name: "Architect" }),
+  Object.freeze({ stars: 44, name: "Lumen" }),
+  Object.freeze({ stars: TOTAL_STARS, name: "Relay Master" }),
+]);
+
 export function rankFor(stars) {
   const value = Number.isFinite(stars) ? Math.max(0, Math.floor(stars)) : 0;
-  if (value >= TOTAL_STARS) {
-    return "Relay Master";
+  let name = RANKS[0].name;
+  for (const rank of RANKS) {
+    if (value >= rank.stars) {
+      name = rank.name;
+    }
   }
-  if (value >= 44) {
-    return "Lumen";
-  }
-  if (value >= 32) {
-    return "Architect";
-  }
-  if (value >= 19) {
-    return "Weaver";
-  }
-  if (value >= 8) {
-    return "Operator";
-  }
-  return "Cadet";
+  return name;
+}
+
+export function rankProgress(stars) {
+  const value = Number.isFinite(stars) ? Math.max(0, Math.floor(stars)) : 0;
+  const next = RANKS.find((rank) => rank.stars > value) ?? null;
+  return {
+    current: rankFor(value),
+    next: next?.name ?? null,
+    remaining: next ? next.stars - value : 0,
+    target: next?.stars ?? RANKS[RANKS.length - 1].stars,
+    stars: value,
+  };
 }
 
 export function isUnlocked(progress, levelId) {
   return normalizeProgress(progress).unlocked.includes(levelId);
+}
+
+export function nextEpisodeId(progress) {
+  const normalized = normalizeProgress(progress);
+  const next = LEVELS.find(
+    (level) => normalized.unlocked.includes(level.id) && !normalized.best[level.id],
+  );
+  return next ? episodeForLevel(next.id).id : EPISODES[0].id;
+}
+
+export function episodeIdAfterLevel(levelId) {
+  const index = LEVELS.findIndex((level) => level.id === levelId);
+  if (index < 0 || index >= LEVELS.length - 1) {
+    return null;
+  }
+  const current = episodeForLevel(levelId);
+  const next = episodeForLevel(LEVELS[index + 1].id);
+  return next.id === current.id ? null : next.id;
 }

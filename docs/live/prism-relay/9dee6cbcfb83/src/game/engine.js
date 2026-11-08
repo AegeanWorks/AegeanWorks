@@ -127,6 +127,22 @@ export function cellAt(board, x, y) {
   return board.cells[y][x];
 }
 
+export function cellNear(board, point) {
+  const x = Math.floor(point.x);
+  const y = Math.floor(point.y);
+  const clampedX = Math.min(Math.max(x, 0), board.width - 1);
+  const clampedY = Math.min(Math.max(y, 0), board.height - 1);
+  const direct = board.cells[clampedY]?.[clampedX] ?? null;
+  if (
+    direct &&
+    Math.abs(point.x - (direct.x + 0.5)) < 0.52 &&
+    Math.abs(point.y - (direct.y + 0.5)) < 0.52
+  ) {
+    return direct;
+  }
+  return null;
+}
+
 export function reflect(orientation, direction) {
   return orientation === 0 ? direction ^ 1 : direction ^ 3;
 }
@@ -176,7 +192,7 @@ export function traceBeams(board) {
         break;
       }
 
-      const key = `${nx},${ny},${direction}`;
+      const key = `${source}:${nx},${ny},${direction}`;
       if (visited.has(key)) {
         paths.push({ points, source });
         break;
@@ -225,7 +241,7 @@ export function traceBeams(board) {
         if (!exit) {
           break;
         }
-        const exitKey = `${exit.x},${exit.y},${direction}`;
+        const exitKey = `${source}:${exit.x},${exit.y},${direction}`;
         if (visited.has(exitKey)) {
           break;
         }
@@ -287,6 +303,7 @@ export function createSession(level) {
     stars: 0,
     litCount: 0,
     paths: [],
+    history: [],
   };
 }
 
@@ -302,10 +319,30 @@ export function refreshSession(session) {
 }
 
 export function rotateSessionCell(session, x, y) {
-  if (!rotateAt(session.board, x, y)) {
+  const cell = cellAt(session.board, x, y);
+  if (!cell || (cell.kind !== "mirror" && cell.kind !== "splitter")) {
     return false;
   }
+  session.history.push({ x, y, orientation: cell.orientation });
+  cell.orientation = cell.orientation === 0 ? 1 : 0;
   session.moves += 1;
+  session.complete = false;
+  session.stars = 0;
+  refreshSession(session);
+  return true;
+}
+
+export function undoSession(session) {
+  const last = session.history.pop();
+  if (!last) {
+    return false;
+  }
+  const cell = cellAt(session.board, last.x, last.y);
+  if (!cell) {
+    return false;
+  }
+  cell.orientation = last.orientation;
+  session.moves = Math.max(0, session.moves - 1);
   session.complete = false;
   session.stars = 0;
   refreshSession(session);
@@ -320,6 +357,7 @@ export function resetSession(session) {
   session.stars = 0;
   session.litCount = 0;
   session.paths = [];
+  session.history = [];
   refreshSession(session);
   return session;
 }
