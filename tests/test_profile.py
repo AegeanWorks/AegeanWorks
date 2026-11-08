@@ -370,7 +370,10 @@ class ProfileIntegrityTests(unittest.TestCase):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self.assertEqual(manifest["schema"], 2)
         apps = {app["slug"]: app for app in manifest["apps"]}
-        self.assertEqual(set(apps), {"prism-relay", "weft", "iris", "tessera", "meridian", "palette"})
+        self.assertEqual(
+            set(apps),
+            {"prism-relay", "weft", "iris", "tessera", "meridian", "palette", "afterimage"},
+        )
 
         prism = apps["prism-relay"]
         self.assertTrue(prism["available"])
@@ -496,6 +499,39 @@ class ProfileIntegrityTests(unittest.TestCase):
             with self.subTest(build=build):
                 self.assertTrue((ROOT / "docs" / build).is_file())
 
+        afterimage = apps["afterimage"]
+        self.assertTrue(afterimage["available"])
+        self.assertEqual(afterimage["mode"], "browser")
+        self.assertEqual(afterimage["license"], "AGL-1.1")
+        self.assertEqual(afterimage["dossier"], "project.html?repo=Afterimage")
+        self.assertEqual(
+            afterimage.get("source_url"),
+            "https://github.com/AegeanWorks/Afterimage",
+        )
+        self.assertRegex(afterimage["path"], r"^live/afterimage/[0-9a-f]{7,40}/index\.html$")
+        self.assertTrue((ROOT / "docs" / afterimage["path"]).is_file())
+        self.assertTrue((ROOT / "docs" / afterimage["license_path"]).is_file())
+        self.assertRegex(afterimage["commit"], r"^[0-9a-f]{7,40}$")
+        self.assertRegex(afterimage["updated"], r"^\d{4}-\d{2}-\d{2}$")
+        self.assertRegex(afterimage["digest"], r"^sha256:[0-9a-f]{64}$")
+        self.assertRegex(afterimage["version"], r"^\d+\.\d+\.\d+")
+        self.assertTrue((ROOT / "docs" / afterimage["logo"]).is_file())
+        afterimage_dir = (ROOT / "docs" / afterimage["path"]).parent
+        for asset in ("styles.css", "game.js", "manifest.json", "favicon.svg", "pwa.js"):
+            with self.subTest(asset=asset):
+                self.assertTrue((afterimage_dir / asset).is_file())
+        self.assertTrue((afterimage_dir / "icons" / "icon-192.png").is_file())
+        self.assertFalse((afterimage_dir / "sw.js").exists())
+        self.assertNotIn(
+            "serviceWorker",
+            (afterimage_dir / "pwa.js").read_text(encoding="utf-8"),
+        )
+        self.assertEqual(afterimage["builds"][0], afterimage["path"])
+        self.assertLessEqual(len(afterimage["builds"]), 3)
+        for build in afterimage["builds"]:
+            with self.subTest(build=build):
+                self.assertTrue((ROOT / "docs" / build).is_file())
+
         tool = ROOT / "tools" / "sync_live_apps.py"
         self.assertTrue(tool.is_file())
         result = subprocess.run(
@@ -599,6 +635,7 @@ class ProfileIntegrityTests(unittest.TestCase):
             "Iris",
             "Tessera",
             "Meridian",
+            "Afterimage",
             "sync_live_apps.py",
             "--check-source",
             "actions/checkout@v7",

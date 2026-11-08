@@ -52,6 +52,12 @@ jobs:
           repository: AegeanWorks/Meridian
           path: .app-src/meridian
           fetch-depth: 1
+      - name: Check out Afterimage
+        uses: actions/checkout@v7
+        with:
+          repository: AegeanWorks/Afterimage
+          path: .app-src/afterimage
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
