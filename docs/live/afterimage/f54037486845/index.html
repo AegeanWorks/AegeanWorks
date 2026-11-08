@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06060b">
+<meta name="description" content="Afterimage — a daily visual perception gauntlet across five modes. One tile is a shade, a size, or an angle off.">
+<title>Afterimage — see what's different</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Afterimage">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<main class="shell">
+  <header class="topbar">
+    <a class="brand" href="index.html">AFTERIMAGE<span>visual perception</span></a>
+    <div class="hud" id="hud" hidden>
+      <div class="hud-item mode-item">
+        <span class="k">Mode</span>
+        <span class="v" id="modeName">Focus</span>
+      </div>
+      <div class="hud-item">
+        <span class="k">Level</span>
+        <span class="v"><span id="levelNum">01</span><span class="dim" id="levelTotal">/–</span></span>
+      </div>
+      <div class="hud-item">
+        <span class="k">Score</span>
+        <span class="v" id="scoreNum">0</span>
+      </div>
+      <div class="hud-item lives">
+        <span class="k">Focus</span>
+        <span class="v lives-wrap">
+          <span class="lives" id="livesNum" role="img" aria-label="3 of 3 focus remaining"></span>
+          <span class="life-count" id="lifeCount" aria-hidden="true"></span>
+        </span>
+      </div>
+      <div class="hud-item streak" id="streakItem">
+        <span class="k">Streak</span>
+        <span class="v" id="streakNum">0</span>
+      </div>
+    </div>
+    <button class="sound" id="soundBtn" type="button" aria-pressed="true">SOUND ON</button>
+  </header>
+
+  <section class="playfield">
+    <div class="timer" id="timer" role="timer" aria-label="Time remaining"><i id="timerFill"></i></div>
+    <div class="stage" id="stage">
+      <canvas id="board" aria-hidden="true"></canvas>
+      <span class="surge-badge" id="surgeBadge" aria-hidden="true" hidden>SURGE · 1.5×</span>
+      <span class="final-badge" id="finalBadge" aria-hidden="true" hidden>FINAL BOARD</span>
+      <div class="cells" id="cells" role="group" aria-label="Answer grid"></div>
+    </div>
+    <p class="status" id="status" aria-live="polite">Pick a mode to begin.</p>
+  </section>
+
+  <footer class="foot">
+    <span>Find the tile that doesn't belong</span>
+    <span class="foot-keys"><kbd>Tab</kbd> + <kbd>Enter</kbd> works too · <kbd>H</kbd> hint</span>
+    <span class="foot-spacer"></span>
+    <button class="skip" id="hintBtn" type="button" hidden>Hint [H]</button>
+    <button class="skip" id="skipBtn" type="button" hidden>Skip level →</button>
+    <button class="skip" id="quitBtn" type="button" hidden>Quit run</button>
+  </footer>
+</main>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="title">
+  <section class="card" id="menu" aria-labelledby="title">
+    <p class="eyebrow">Daily challenge · five modes</p>
+    <h1 id="title">See what's<br><em>different.</em></h1>
+    <p class="lede">One tile in every grid is a shade, a size, or an angle off. Play today's set, or pick a mode.</p>
+    <button class="daily" id="dailyBtn" type="button">
+      <span class="daily-copy">
+        <span class="daily-kicker" id="dailyKicker">DAILY · TODAY</span>
+        <span class="daily-title">Today's board</span>
+        <span class="daily-sub" id="dailySub">A fresh seeded set · 10 boards · 3 lives</span>
+      </span>
+      <span class="daily-action" id="dailyAction">PLAY →</span>
+    </button>
+    <div class="modes">
+      <button class="mode" type="button" data-mode="focus">
+        <span class="mode-head"><span class="mode-name">Focus run</span><span class="mode-best" data-best="focus"></span></span>
+        <span class="mode-desc">10 boards · clock · 3 lives</span>
+      </button>
+      <button class="mode" type="button" data-mode="blitz">
+        <span class="mode-head"><span class="mode-name">Blitz</span><span class="mode-best" data-best="blitz"></span></span>
+        <span class="mode-desc">10 boards · half clock · 2 lives</span>
+      </button>
+      <button class="mode" type="button" data-mode="zen">
+        <span class="mode-head"><span class="mode-name">Zen</span><span class="mode-best" data-best="zen"></span></span>
+        <span class="mode-desc">10 boards · no clock · no fail</span>
+      </button>
+      <button class="mode danger" type="button" data-mode="nightmare">
+        <span class="mode-head"><span class="mode-name">Nightmare</span><span class="mode-best" data-best="nightmare"></span></span>
+        <span class="mode-desc">8 boards · 10×10 max · 1 life</span>
+      </button>
+      <button class="mode" type="button" data-mode="onslaught">
+        <span class="mode-head"><span class="mode-name">Onslaught</span><span class="mode-best" data-best="onslaught"></span></span>
+        <span class="mode-desc">8 boards · surge-heavy · 2 lives</span>
+      </button>
+    </div>
+    <div class="meta">
+      <span>No accounts · bests stay in this browser</span>
+      <span class="best" id="metaLevel">EYE LV 1</span>
+      <span class="best" id="metaStreak">Day one</span>
+    </div>
+  </section>
+
+  <section class="card" id="over" aria-labelledby="resultTitle" tabindex="-1" hidden>
+    <p class="eyebrow" id="resultKicker">Run complete</p>
+    <h2 class="result-title" id="resultTitle">Nice eyes.</h2>
+    <div class="scoreline">
+      <span class="score-big" id="resultScore">0</span>
+      <span class="rating" id="resultRating">SHARP SIGHT</span>
+      <span class="newbest" id="newBest" hidden>New best</span>
+    </div>
+    <p class="blurb" id="resultBlurb"></p>
+    <div class="stats">
+      <div class="stat"><span class="k">Cleared</span><span class="v" id="statCleared">0/10</span></div>
+      <div class="stat"><span class="k">Accuracy</span><span class="v" id="statAccuracy">0%</span></div>
+      <div class="stat"><span class="k">Best streak</span><span class="v" id="statStreak">0</span></div>
+    </div>
+    <div class="board-strip" id="boardStrip" aria-hidden="true"></div>
+    <div class="result-foot">
+      <p class="mode-note" id="resultMode">Focus run · 10 boards · 3 lives</p>
+      <button class="copy" id="copyResult" type="button">Copy result</button>
+    </div>
+    <div class="copy-fallback" id="copyFallback" hidden>
+      <label for="copyText">Text selected — press Ctrl+C / Cmd+C</label>
+      <textarea id="copyText" readonly spellcheck="false"></textarea>
+      <button class="skip" id="copyClose" type="button">Close</button>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="playAgain" type="button">Play again</button>
+      <div class="actions-row">
+        <button class="btn ghost" id="saveCard" type="button">Save card</button>
+        <button class="btn ghost" id="changeMode" type="button">Change mode</button>
+      </div>
+      <p class="save-status" id="saveStatus" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+    </div>
+  </section>
+</div>
+
+<noscript><p class="status">Afterimage needs JavaScript to play.</p></noscript>
+<script src="game.js"></script>
+<script src="pwa.js"></script>
+</body>
+</html>

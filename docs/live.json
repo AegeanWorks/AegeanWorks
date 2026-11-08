@@ -136,6 +136,27 @@
       ],
       "logo": "media/Palette/logo.webp",
       "dossier": "project.html?repo=Palette"
+    },
+    {
+      "slug": "afterimage",
+      "repo": "Afterimage",
+      "title": "Afterimage",
+      "description": "A daily visual perception gauntlet: one tile in every grid is a shade, a size, or an angle off. Find it before the clock runs out.",
+      "available": true,
+      "mode": "browser",
+      "path": "live/afterimage/f54037486845/index.html",
+      "source_url": "https://github.com/AegeanWorks/Afterimage",
+      "version": "1.0.0",
+      "commit": "f54037486845964b403b80775cb950ad7ee063a4",
+      "updated": "2026-11-08",
+      "license": "AGL-1.1",
+      "license_path": "live/afterimage/LICENSE",
+      "digest": "sha256:3b0b59d4026d7de9f636cad310971922e2babf271e433dfd47c659596f0fc4a3",
+      "builds": [
+        "live/afterimage/f54037486845/index.html"
+      ],
+      "logo": "live/afterimage/logo.svg",
+      "dossier": "project.html?repo=Afterimage"
     }
   ]
 }

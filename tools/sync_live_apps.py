@@ -105,6 +105,29 @@ APPS = (
         "logo": "media/Palette/logo.webp",
         "dossier": "project.html?repo=Palette",
     },
+    {
+        # The standalone PWA keeps its worker; the live copy swaps the
+        # registration for a no-op and omits sw.js to meet the static contract.
+        "slug": "afterimage",
+        "repo": "Afterimage",
+        "source": "afterimage",
+        "title": "Afterimage",
+        "description": "A daily visual perception gauntlet: one tile in every grid is a shade, a size, or an angle off. Find it before the clock runs out.",
+        "license": "AGL-1.1",
+        "mode": "browser",
+        "runtime": (
+            "index.html",
+            "styles.css",
+            "game.js",
+            "manifest.json",
+            "favicon.svg",
+            "icons",
+        ),
+        "live_files": {"pwa.js": "live/pwa.js"},
+        "version_file": "package.json",
+        "logo": "live/afterimage/logo.svg",
+        "dossier": "project.html?repo=Afterimage",
+    },
 )
 
 MANIFEST_REL = "docs/live.json"
@@ -210,6 +233,30 @@ def _copy_file(source: Path, target: Path) -> None:
     _write_atomic(target, payload)
 
 
+def _safe_build_path(value: str) -> bool:
+    path = Path(value)
+    return bool(value) and not path.is_absolute() and ".." not in path.parts
+
+
+def _copy_overrides(source: Path, target: Path, overrides: dict) -> None:
+    """Replace or add named build files from a source-relative path."""
+    for destination, relative in sorted(overrides.items()):
+        if not _safe_build_path(str(destination)) or not _safe_build_path(str(relative)):
+            raise SyncError(
+                f"The live build has an unsafe override: {destination} <- {relative}.",
+                "a build file could escape its own copied directory.",
+                "fix the live_files mapping in tools/sync_live_apps.py.",
+            )
+        override = source / str(relative)
+        if not override.is_file():
+            raise SyncError(
+                f"The live override is missing: {relative}.",
+                "the copied build would reference a file the site never wrote.",
+                "add the override to the app source or fix its live_files mapping.",
+            )
+        _copy_file(override, target / str(destination))
+
+
 def _copy_runtime(source: Path, target: Path, entries: tuple[str, ...]) -> None:
     for entry in entries:
         path = source / entry
@@ -307,6 +354,17 @@ def validate_source(game: dict, source_root: Path) -> list[str]:
             runtime_files.extend(child for child in path.rglob("*") if child.is_file())
         elif path.is_file():
             runtime_files.append(path)
+    for destination, relative in sorted((game.get("live_files") or {}).items()):
+        if not _safe_build_path(str(destination)) or not _safe_build_path(str(relative)):
+            problems.append(
+                f"{game['repo']} has an unsafe live override: {destination} <- {relative}"
+            )
+            continue
+        override = source / str(relative)
+        if not override.is_file():
+            problems.append(f"{game['repo']} live override is missing: {relative}")
+            continue
+        runtime_files.append(override)
     for path in sorted(set(runtime_files)):
         if path == index or path.suffix not in {".js", ".css", ".html", ".svg"}:
             continue
@@ -400,6 +458,7 @@ def _browser_entry(game: dict, source_root: Path) -> dict:
     if target.is_dir():
         shutil.rmtree(target)
     _copy_runtime(source, target, tuple(game["runtime"]))
+    _copy_overrides(source, target, game.get("live_files") or {})
     current = f"live/{game['slug']}/{short}/index.html"
     builds = _retained_paths(game, base, current)
     keep = {path.split("/")[2] for path in builds}

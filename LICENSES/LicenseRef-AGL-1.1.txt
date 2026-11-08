@@ -108,7 +108,7 @@ data.
 Commercial or Organizational Use of a Covered Game is not licensed under AGL-1.1. It needs the
 Aegean Commercial License 1.0 (ACL-1.0), evidenced by a certificate that names the project.
 Because ACL-1.0 covers software code and logic, Game Assets also need a separate written asset
-grant under AegeanWorks' `ASSET_POLICY.md`. Commercial use includes, without limitation:
+grant from AegeanWorks (`aegean-licensing@proton.me`). Commercial use includes, without limitation:
 
 1. selling, renting or licensing the game, a sequel, a remaster or a derivative game;
 2. paid mods, paid asset packs, soundtracks, art books, subscriptions, battle passes,
