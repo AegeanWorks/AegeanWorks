@@ -166,12 +166,12 @@
       "taken_at": "2026-11-08",
       "screenshots": [
         {
-          "src": "live/shots/afterimage/01-menu.png",
-          "alt": "Afterimage daily challenge menu with the five modes"
-        },
-        {
           "src": "live/shots/afterimage/02-daily.png",
           "alt": "Afterimage daily board with one tile in a different shade"
+        },
+        {
+          "src": "live/shots/afterimage/01-menu.png",
+          "alt": "Afterimage daily challenge menu with the five modes"
         }
       ]
     }
