@@ -1,0 +1,386 @@
+export const EPISODES = Object.freeze([
+  Object.freeze({
+    number: 1,
+    numeral: "I",
+    name: "First Light",
+    subtitle: "Mirrors and primary colors",
+  }),
+  Object.freeze({
+    number: 2,
+    numeral: "II",
+    name: "Mixing",
+    subtitle: "Dyes and secondary hues",
+  }),
+  Object.freeze({
+    number: 3,
+    numeral: "III",
+    name: "Spectrum",
+    subtitle: "Full color and white light",
+  }),
+]);
+
+const RAW_LEVELS = [
+  {
+    id: "first-light",
+    name: "First Light",
+    episode: 1,
+    width: 6,
+    height: 6,
+    par: 1,
+    rows: [
+      "......",
+      "......",
+      "......",
+      "...\\..",
+      "......",
+      "......",
+    ],
+    emitters: [{ x: 0, y: 3, color: "r", dir: "e" }],
+    receivers: [{ x: 3, y: 0, target: "r" }],
+    solution: { "3,3": "/" },
+  },
+  {
+    id: "double-bend",
+    name: "Double Bend",
+    episode: 1,
+    width: 6,
+    height: 6,
+    par: 2,
+    rows: [
+      "......",
+      "../...",
+      "......",
+      "......",
+      "../...",
+      "......",
+    ],
+    emitters: [{ x: 0, y: 1, color: "r", dir: "e" }],
+    receivers: [{ x: 5, y: 4, target: "r" }],
+    solution: { "2,1": "\\", "2,4": "\\" },
+  },
+  {
+    id: "crossroads",
+    name: "Crossroads",
+    episode: 1,
+    width: 7,
+    height: 7,
+    par: 2,
+    rows: [
+      ".......",
+      ".../...",
+      ".......",
+      ".......",
+      "...\\...",
+      "....\\..",
+      ".......",
+    ],
+    emitters: [
+      { x: 0, y: 1, color: "r", dir: "e" },
+      { x: 0, y: 5, color: "g", dir: "e" },
+    ],
+    receivers: [
+      { x: 4, y: 3, target: "g" },
+      { x: 6, y: 4, target: "r" },
+    ],
+    solution: { "3,1": "\\", "3,4": "\\", "4,5": "/" },
+  },
+  {
+    id: "the-vault",
+    name: "The Vault",
+    episode: 1,
+    width: 7,
+    height: 7,
+    par: 4,
+    rows: [
+      "../....",
+      "....##.",
+      "....##.",
+      "../../.",
+      "##.....",
+      "##.....",
+      "...\\...",
+    ],
+    emitters: [
+      { x: 0, y: 0, color: "r", dir: "e" },
+      { x: 0, y: 6, color: "g", dir: "e" },
+    ],
+    receivers: [
+      { x: 3, y: 4, target: "g" },
+      { x: 5, y: 6, target: "r" },
+    ],
+    solution: { "2,0": "\\", "2,3": "\\", "5,3": "\\", "3,6": "/" },
+  },
+  {
+    id: "yellow-room",
+    name: "Yellow Room",
+    episode: 2,
+    width: 7,
+    height: 7,
+    par: 2,
+    rows: [
+      ".......",
+      ".......",
+      ".......",
+      "../....",
+      "..2....",
+      "../....",
+      ".......",
+    ],
+    emitters: [{ x: 0, y: 3, color: "r", dir: "e" }],
+    receivers: [{ x: 5, y: 5, target: "y" }],
+    solution: { "2,3": "\\", "2,5": "\\" },
+  },
+  {
+    id: "deep-cyan",
+    name: "Deep Cyan",
+    episode: 2,
+    width: 8,
+    height: 8,
+    par: 3,
+    rows: [
+      "........",
+      ".../....",
+      "........",
+      "........",
+      "...2....",
+      "........",
+      ".../....",
+      ".....\\..",
+    ],
+    emitters: [
+      { x: 0, y: 1, color: "b", dir: "e" },
+      { x: 0, y: 7, color: "r", dir: "e" },
+    ],
+    receivers: [
+      { x: 5, y: 5, target: "r" },
+      { x: 6, y: 6, target: "c" },
+    ],
+    solution: { "3,1": "\\", "3,6": "\\", "5,7": "/" },
+  },
+  {
+    id: "magenta-gate",
+    name: "Magenta Gate",
+    episode: 2,
+    width: 8,
+    height: 8,
+    par: 3,
+    rows: [
+      "........",
+      "........",
+      "........",
+      "../.....",
+      "........",
+      "..3.....",
+      "../.....",
+      "....\\...",
+    ],
+    emitters: [
+      { x: 0, y: 3, color: "r", dir: "e" },
+      { x: 0, y: 7, color: "g", dir: "e" },
+    ],
+    receivers: [
+      { x: 4, y: 4, target: "g" },
+      { x: 6, y: 6, target: "m" },
+    ],
+    solution: { "2,3": "\\", "2,6": "\\", "4,7": "/" },
+  },
+  {
+    id: "white-chapel",
+    name: "White Chapel",
+    episode: 2,
+    width: 8,
+    height: 8,
+    par: 2,
+    rows: [
+      ".../....",
+      "........",
+      "........",
+      "........",
+      "........",
+      "........",
+      ".../....",
+      "........",
+    ],
+    emitters: [
+      { x: 0, y: 0, color: "r", dir: "e" },
+      { x: 6, y: 0, color: "g", dir: "s" },
+      { x: 6, y: 7, color: "b", dir: "n" },
+    ],
+    receivers: [{ x: 6, y: 6, target: "w" }],
+    solution: { "3,0": "\\", "3,6": "\\" },
+  },
+  {
+    id: "amber-circuit",
+    name: "Amber Circuit",
+    episode: 3,
+    width: 9,
+    height: 9,
+    par: 3,
+    rows: [
+      ".........",
+      "../......",
+      ".........",
+      ".........",
+      "..2......",
+      "../......",
+      ".........",
+      "....\\....",
+      ".....\\...",
+    ],
+    emitters: [
+      { x: 0, y: 1, color: "r", dir: "e" },
+      { x: 0, y: 7, color: "g", dir: "e" },
+      { x: 8, y: 8, color: "b", dir: "w" },
+    ],
+    receivers: [
+      { x: 4, y: 4, target: "g" },
+      { x: 6, y: 5, target: "y" },
+      { x: 5, y: 6, target: "b" },
+    ],
+    solution: { "2,1": "\\", "2,5": "\\", "4,7": "/", "5,8": "\\" },
+  },
+  {
+    id: "cyan-vault",
+    name: "Cyan Vault",
+    episode: 3,
+    width: 9,
+    height: 9,
+    par: 4,
+    rows: [
+      ".........",
+      ".../.....",
+      ".........",
+      "........\\",
+      "...2.....",
+      ".........",
+      ".../.....",
+      ".........",
+      ".....\\...",
+    ],
+    emitters: [
+      { x: 0, y: 1, color: "b", dir: "e" },
+      { x: 0, y: 8, color: "r", dir: "e" },
+      { x: 8, y: 0, color: "g", dir: "s" },
+    ],
+    receivers: [
+      { x: 7, y: 6, target: "c" },
+      { x: 5, y: 3, target: "r" },
+      { x: 6, y: 3, target: "g" },
+    ],
+    solution: { "3,1": "\\", "3,6": "\\", "5,8": "/", "8,3": "/" },
+  },
+  {
+    id: "the-long-spectrum",
+    name: "The Long Spectrum",
+    episode: 3,
+    width: 10,
+    height: 10,
+    par: 6,
+    rows: [
+      "..........",
+      "../..../..",
+      "..........",
+      "..........",
+      "..2....1..",
+      "../../....",
+      ".......\\..",
+      "..........",
+      ".....\\....",
+      "...\\......",
+    ],
+    emitters: [
+      { x: 0, y: 1, color: "r", dir: "e" },
+      { x: 9, y: 1, color: "b", dir: "w" },
+      { x: 0, y: 9, color: "g", dir: "e" },
+    ],
+    receivers: [
+      { x: 1, y: 8, target: "y" },
+      { x: 4, y: 6, target: "m" },
+      { x: 3, y: 7, target: "g" },
+    ],
+    solution: {
+      "2,1": "\\",
+      "2,5": "\\",
+      "5,5": "\\",
+      "5,8": "/",
+      "7,1": "/",
+      "7,6": "/",
+      "3,9": "/",
+    },
+  },
+  {
+    id: "white-crown",
+    name: "White Crown",
+    episode: 3,
+    width: 10,
+    height: 10,
+    par: 6,
+    rows: [
+      "../../....",
+      "..........",
+      ".../......",
+      "..........",
+      "...2\\.....",
+      "../.......",
+      "....2.....",
+      ".../......",
+      "....\\.....",
+      ".....\\....",
+    ],
+    emitters: [
+      { x: 0, y: 0, color: "r", dir: "e" },
+      { x: 9, y: 0, color: "g", dir: "w" },
+      { x: 0, y: 2, color: "r", dir: "e" },
+      { x: 0, y: 8, color: "b", dir: "e" },
+      { x: 9, y: 9, color: "b", dir: "w" },
+    ],
+    receivers: [
+      { x: 5, y: 5, target: "w" },
+      { x: 7, y: 7, target: "y" },
+      { x: 8, y: 4, target: "c" },
+    ],
+    solution: {
+      "2,0": "\\",
+      "5,0": "/",
+      "3,2": "\\",
+      "2,5": "\\",
+      "3,7": "\\",
+      "4,8": "/",
+      "4,4": "/",
+      "5,9": "\\",
+    },
+  },
+];
+
+export const LEVELS = Object.freeze(RAW_LEVELS.map((level) => Object.freeze({
+  ...level,
+  rows: Object.freeze([...level.rows]),
+  emitters: Object.freeze(level.emitters.map((emitter) => Object.freeze({ ...emitter }))),
+  receivers: Object.freeze(level.receivers.map((receiver) => Object.freeze({ ...receiver }))),
+  solution: Object.freeze({ ...level.solution }),
+})));
+
+export const LEVEL_BY_ID = Object.freeze(Object.assign(
+  Object.create(null),
+  Object.fromEntries(LEVELS.map((level) => [level.id, level])),
+));
+
+export const TOTAL_CHAMBERS = LEVELS.length;
+export const TOTAL_STARS = TOTAL_CHAMBERS * 3;
+
+export function levelsForEpisode(number) {
+  return Object.freeze(LEVELS.filter((level) => level.episode === number));
+}
+
+export function episodeForLevel(level) {
+  return EPISODES.find((episode) => episode.number === level.episode) ?? EPISODES[0];
+}
+
+export function isEpisodeFinal(level) {
+  const levels = levelsForEpisode(level.episode);
+  return levels.length > 0 && levels[levels.length - 1].id === level.id;
+}
+
+export function nextEpisodeForLevel(level) {
+  return EPISODES.find((episode) => episode.number === level.episode + 1) ?? null;
+}
