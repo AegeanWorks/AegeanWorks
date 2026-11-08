@@ -8,18 +8,18 @@
       "description": "A neon light-routing puzzle: rotate mirrors and splitters, fold beams through portals, and charge every receiver across three episodes.",
       "available": true,
       "mode": "browser",
-      "path": "live/prism-relay/c55b72dcca3c/index.html",
+      "path": "live/prism-relay/9dee6cbcfb83/index.html",
       "source_url": "https://github.com/AegeanWorks/Prism-Relay",
       "version": "0.3.0",
-      "commit": "c55b72dcca3ca25e2e7248acda2f551c36640ca2",
-      "updated": "2026-11-05",
+      "commit": "9dee6cbcfb83d6a86a15553d04e9323aa58a4d2f",
+      "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/prism-relay/LICENSE",
-      "digest": "sha256:8c468c7814504a2b42a4fd15211b1fb0e8befede275d8a4a76db19dad834559b",
+      "digest": "sha256:8567a245f390358dd074e55ce8612f7884438d747c2f814dffbd0f1400386d67",
       "builds": [
-        "live/prism-relay/c55b72dcca3c/index.html",
-        "live/prism-relay/df2f07aaa198/index.html",
-        "live/prism-relay/ce69fcb9a14e/index.html"
+        "live/prism-relay/9dee6cbcfb83/index.html",
+        "live/prism-relay/e04a546c6adf/index.html",
+        "live/prism-relay/6d0340722fd3/index.html"
       ],
       "logo": "media/Prism-Relay/logo.webp",
       "dossier": "project.html?repo=Prism-Relay"
@@ -31,18 +31,18 @@
       "description": "A zero-dependency thread-routing puzzle: connect matching spools, fill every cell of the loom, and restore the tapestry across eighteen chambers.",
       "available": true,
       "mode": "browser",
-      "path": "live/weft/ab7d87790a81/index.html",
+      "path": "live/weft/1c129d20c0c1/index.html",
       "source_url": "https://github.com/AegeanWorks/Weft",
       "version": "0.9.0",
-      "commit": "ab7d87790a814e62c9bc27b1999b45acdc42197b",
-      "updated": "2026-11-05",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/weft/LICENSE",
-      "digest": "sha256:7b13bc07a2fae88530659a310e57b28e86169e02dc6ead68839aa43d7e277c24",
+      "digest": "sha256:e1fa47666d51f5538ce5fe73d15832e679cc702b6f57ba6b777ba858d59a71f4",
       "builds": [
+        "live/weft/1c129d20c0c1/index.html",
         "live/weft/ab7d87790a81/index.html",
-        "live/weft/c0b4c53aed76/index.html",
-        "live/weft/cc1f5877e1d2/index.html"
+        "live/weft/c0b4c53aed76/index.html"
       ],
       "logo": "live/weft/logo.webp",
       "dossier": ""
@@ -54,18 +54,18 @@
       "description": "A neon color-mixing puzzle: route red, green and blue beams through rotating mirrors and dye cells, blend exact hues, and light every receiver across three episodes.",
       "available": true,
       "mode": "browser",
-      "path": "live/iris/e3249c68b6ba/index.html",
+      "path": "live/iris/21bf21ecd578/index.html",
       "source_url": "https://github.com/AegeanWorks/Iris",
       "version": "0.2.0",
-      "commit": "e3249c68b6ba73ccbc51d611fec60f1824eebe8a",
-      "updated": "2026-11-04",
+      "commit": "21bf21ecd5781f5d771b433a8fced8038e1a8e29",
+      "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/iris/LICENSE",
-      "digest": "sha256:4bfa04c5857a2c77818ad29588b45a62e45d5eae012e179a0f708df2c7aed277",
+      "digest": "sha256:459806df4571f807803b8b43d87d64f301f509cf42a0cd4137a05554ba6fe405",
       "builds": [
+        "live/iris/21bf21ecd578/index.html",
         "live/iris/e3249c68b6ba/index.html",
-        "live/iris/5e1a5face6b1/index.html",
-        "live/iris/279fa6c27b35/index.html"
+        "live/iris/5e1a5face6b1/index.html"
       ],
       "logo": "live/iris/logo.svg",
       "dossier": ""
