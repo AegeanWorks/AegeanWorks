@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:76edc78d6173191f2fdb198d84a222e2152fd491e29e73634513739f91a9eddd",
-    "commit": "f653b6482df36b4a861bb60668e60f9f8a927a0c",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/f653b6482df36b4a861bb60668e60f9f8a927a0c/assets/logo.svg"
+    "commit": "9663e5ce8a9803f80a8a6a66114fe909d5ac4720",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/9663e5ce8a9803f80a8a6a66114fe909d5ac4720/assets/logo.svg"
   },
   "preview": {
     "src": "media/Keystone/social-preview.svg",
@@ -17,9 +17,34 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:52828b51e2aadbcc7367c93d0e8bdc4d3ee99bbe3aab92f51b06a38c3ff8c779",
-    "commit": "f653b6482df36b4a861bb60668e60f9f8a927a0c",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/f653b6482df36b4a861bb60668e60f9f8a927a0c/assets/social-preview.svg"
+    "commit": "9663e5ce8a9803f80a8a6a66114fe909d5ac4720",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/9663e5ce8a9803f80a8a6a66114fe909d5ac4720/assets/social-preview.svg"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Keystone/2026-11-08-console.webp",
+      "alt": "Keystone screenshot",
+      "caption": "Keystone — 2026 11 03 Console",
+      "commit": "9663e5ce8a9803f80a8a6a66114fe909d5ac4720",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:a98d79d536640f2a06625cfe1ab43cb5a065c44310f788611ee4f1ffb70db3e7",
+      "source": "Keystone:assets/screenshots/2026-11-03-console.png"
+    },
+    {
+      "src": "media/Keystone/2026-11-08-hud.webp",
+      "alt": "Keystone screenshot",
+      "caption": "Keystone — 2026 11 03 Hud",
+      "commit": "9663e5ce8a9803f80a8a6a66114fe909d5ac4720",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 960,
+      "height": 540,
+      "digest": "sha256:c5ed674fb7f5844d97eeddf295abf85a19fb09990d0a141875793eea668b0e70",
+      "source": "Keystone:assets/screenshots/2026-11-03-hud.png"
+    }
+  ]
 }

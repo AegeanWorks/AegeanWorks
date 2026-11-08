@@ -56,9 +56,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:1c7c61b9137c44fe76bf6a35d80300fd7b6bc3a00de718ce2f8e6ea1aa68e64e",
-    "commit": "956fc4ac3642ac843b8568dbccd3c95befcb479c",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralDeck/956fc4ac3642ac843b8568dbccd3c95befcb479c/assets/logo.jpg"
+    "commit": "dcf215261789268fb4f53f5fb46457fac5c9ca2a",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralDeck/dcf215261789268fb4f53f5fb46457fac5c9ca2a/assets/logo.jpg"
   },
   "preview": {
     "src": "media/NeuralDeck/social-preview.webp",
@@ -66,8 +66,8 @@
     "width": 1200,
     "height": 485,
     "digest": "sha256:26f5c73acce8c234efa5e60dcea052257309e44d1a49dc665c9f0f6cb4943cb1",
-    "commit": "956fc4ac3642ac843b8568dbccd3c95befcb479c",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralDeck/956fc4ac3642ac843b8568dbccd3c95befcb479c/assets/social-preview.png"
+    "commit": "dcf215261789268fb4f53f5fb46457fac5c9ca2a",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralDeck/dcf215261789268fb4f53f5fb46457fac5c9ca2a/assets/social-preview.png"
   }
 }

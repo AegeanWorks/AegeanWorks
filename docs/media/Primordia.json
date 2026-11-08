@@ -24,6 +24,42 @@
       "height": 900,
       "digest": "sha256:f35697b8ee85c97286bbb5e2b691039dc2be7b499301dc1b5e6d738c8522a56a",
       "source": "Primordia:assets/screenshots/2026-11-03-observatory.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-08-cycle-baseline-2026-11-07.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle Baseline 2026 11 07",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:3c439f1e03515a2fc237f6315083d9d7199c3623a4d223ae53a9056982a50eb7",
+      "source": "Primordia:assets/screenshots/cycle-baseline-2026-11-07.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-08-cycle1-played-2026-11-07.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle1 Played 2026 11 07",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:db2bc709cc249285e7e598166b16e8b442ae594470c863229ff4535317f5499d",
+      "source": "Primordia:assets/screenshots/cycle1-played-2026-11-07.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-08-cycle1-trends-after-2026-11-07.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle1 Trends After 2026 11 07",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:2449762d61e36e980f1deedf5c3887bcee5e3078c5d3dabb864741580f5bb924",
+      "source": "Primordia:assets/screenshots/cycle1-trends-after-2026-11-07.png"
     }
   ],
   "logo": {
@@ -32,9 +68,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:915a67cac9280e14503cca5bffa84222c62ac0fd9605cea91df957c74f1326d3",
-    "commit": "c819dda586185243388e0c285c64f6145e85bf77",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/c819dda586185243388e0c285c64f6145e85bf77/assets/logo.jpg"
+    "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/269c94f3ad8ba658f5435ad4ea97ff57f89a2c77/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Primordia/social-preview.webp",
@@ -42,8 +78,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:369020eccc190f11f773e72c9710cac3269fb094db503382e1c5ee22a433974c",
-    "commit": "c819dda586185243388e0c285c64f6145e85bf77",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/c819dda586185243388e0c285c64f6145e85bf77/assets/social-preview.png"
+    "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/269c94f3ad8ba658f5435ad4ea97ff57f89a2c77/assets/social-preview.png"
   }
 }

@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:20c2c8171784ae9bbb093169f4cee5ff0b88e8d73fd013129c916035493976d8",
-    "commit": "92a7e3da39dbfa74b7421548a386abdc26404683",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/92a7e3da39dbfa74b7421548a386abdc26404683/assets/logo.svg"
+    "commit": "af888501c9052bfde5284977019a314094616a11",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/af888501c9052bfde5284977019a314094616a11/assets/logo.svg"
   },
   "preview": {
     "src": "media/Dupefinder/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:bd48a7bd58f925225f9570db9deb8a7e19c3c69bae34c8c681176317b0bf06a4",
-    "commit": "92a7e3da39dbfa74b7421548a386abdc26404683",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/92a7e3da39dbfa74b7421548a386abdc26404683/assets/social-preview.svg"
+    "commit": "af888501c9052bfde5284977019a314094616a11",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Dupefinder/af888501c9052bfde5284977019a314094616a11/assets/social-preview.svg"
   },
   "screenshots": []
 }

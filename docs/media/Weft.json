@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:8a179f8a16ed7f9a65d17f8df03248cc800184661b809189a8c209dc35eeba2e",
-    "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/c0b4c53aed76b5c88bdbb7378ea47b34fc241d20/assets/logo.svg"
+    "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/1c129d20c0c1bf5a905efb6b21c29301fd264306/assets/logo.svg"
   },
   "preview": {
     "src": "media/Weft/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:0f223cba2de19d44a91325f6b125da57c571a639c015c7dd775a36145743c250",
-    "commit": "c0b4c53aed76b5c88bdbb7378ea47b34fc241d20",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/c0b4c53aed76b5c88bdbb7378ea47b34fc241d20/assets/social-preview.svg"
+    "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Weft/1c129d20c0c1bf5a905efb6b21c29301fd264306/assets/social-preview.svg"
   },
   "screenshots": [
     {
@@ -67,6 +67,42 @@
       "height": 900,
       "digest": "sha256:b7aefad7dbce5428347f66fc8e38b5cf69635026b93bb0fa31a067d0ead3d83f",
       "source": "Weft:assets/screenshots/2026-11-03-title.png"
+    },
+    {
+      "src": "media/Weft/2026-11-08-daily-backfill-after.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Daily Backfill After",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:98bd670027d029f8ce703fd9a42ef0ccbfd9b652e09e173570ae7b7ed8b9d12e",
+      "source": "Weft:assets/screenshots/2026-11-07-daily-backfill-after.png"
+    },
+    {
+      "src": "media/Weft/2026-11-08-daily-backfill-before.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Daily Backfill Before",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:cac02e31ec6731d6622e3085d422003da8ec0b248c8313c8efc1e3a7a799c232",
+      "source": "Weft:assets/screenshots/2026-11-07-daily-backfill-before.png"
+    },
+    {
+      "src": "media/Weft/2026-11-08-help-mobile-after.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Help Mobile After",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 390,
+      "height": 844,
+      "digest": "sha256:aba3e4d8499323f20d14e6d7d1a09a0b7868b04e5036a300f38377e6e5f6264f",
+      "source": "Weft:assets/screenshots/2026-11-07-help-mobile-after.png"
     }
   ]
 }

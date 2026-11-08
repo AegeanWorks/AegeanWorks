@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:cf750fb408e35953b21f6c44ce9075b2a866c451c9018054d99ec4bb8a6901d1",
-    "commit": "12eb1fc275623ed0ea41dcda6f2356e4a930c03e",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Cairn/12eb1fc275623ed0ea41dcda6f2356e4a930c03e/assets/logo.svg"
+    "commit": "f95082faa3af14aa217c8573b792cd884c78ac86",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Cairn/f95082faa3af14aa217c8573b792cd884c78ac86/assets/logo.svg"
   },
   "preview": {
     "src": "media/Cairn/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:ac4dc7dc623a3314fe2e44b6395a9ce430ac20c7195ef96c6ae1b72401afc52e",
-    "commit": "12eb1fc275623ed0ea41dcda6f2356e4a930c03e",
-    "taken_at": "2026-11-02",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Cairn/12eb1fc275623ed0ea41dcda6f2356e4a930c03e/assets/social-preview.svg"
+    "commit": "f95082faa3af14aa217c8573b792cd884c78ac86",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Cairn/f95082faa3af14aa217c8573b792cd884c78ac86/assets/social-preview.svg"
   },
   "screenshots": []
 }

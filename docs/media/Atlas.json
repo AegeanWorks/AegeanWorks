@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:6c2fa5ff094e1a894267f22dffa19243e08b77d59bdf2af97fb58f9ceb7be1fd",
-    "commit": "45c9223e91a81cf96c1f332407ed12dd39327199",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/45c9223e91a81cf96c1f332407ed12dd39327199/assets/logo.svg"
+    "commit": "f3cd7470e99683bc95b05f49e404bb00bffa2663",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/f3cd7470e99683bc95b05f49e404bb00bffa2663/assets/logo.svg"
   },
   "preview": {
     "src": "media/Atlas/social-preview.webp",
@@ -17,9 +17,34 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:c1cfef1396ffaf89ecb2349f9b09ef1e8a13b3d93cc4a5c5afb4dc3c8d4a8d91",
-    "commit": "45c9223e91a81cf96c1f332407ed12dd39327199",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/45c9223e91a81cf96c1f332407ed12dd39327199/assets/social-preview.png"
+    "commit": "f3cd7470e99683bc95b05f49e404bb00bffa2663",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atlas/f3cd7470e99683bc95b05f49e404bb00bffa2663/assets/social-preview.png"
   },
-  "screenshots": []
+  "screenshots": [
+    {
+      "src": "media/Atlas/2026-11-08-figure.webp",
+      "alt": "Atlas screenshot",
+      "caption": "Atlas — 2026 11 03 Figure",
+      "commit": "f3cd7470e99683bc95b05f49e404bb00bffa2663",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:96f56729e50067ff37f986503411c2174e809fcf488ef8f698a77dbf0954eb49",
+      "source": "Atlas:assets/screenshots/2026-11-03-figure.png"
+    },
+    {
+      "src": "media/Atlas/2026-11-08-workspace.webp",
+      "alt": "Atlas screenshot",
+      "caption": "Atlas — 2026 11 03 Workspace",
+      "commit": "f3cd7470e99683bc95b05f49e404bb00bffa2663",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:2c48d13c73f95abb4b2224967cceb1b65884cfedb60074ac6816adcc88817967",
+      "source": "Atlas:assets/screenshots/2026-11-03-workspace.png"
+    }
+  ]
 }

@@ -87,9 +87,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:a71dd59293c5682bf4414e32100ea32dd0183a2d4e618498b2719a4892da6db9",
-    "commit": "1d424a33c2ca695cb4a3a5b13a885e2277846160",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/1d424a33c2ca695cb4a3a5b13a885e2277846160/assets/logo.jpg"
+    "commit": "5a9cac9e23634c81fede833090cc01dbb98b05ff",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/5a9cac9e23634c81fede833090cc01dbb98b05ff/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Voidfarer/social-preview.webp",
@@ -97,8 +97,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:f36db9223b71621eed40863342b1170b5329750b4b3fce39c88ecb3a8bb9cd7f",
-    "commit": "1d424a33c2ca695cb4a3a5b13a885e2277846160",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/1d424a33c2ca695cb4a3a5b13a885e2277846160/assets/social-preview.png"
+    "commit": "5a9cac9e23634c81fede833090cc01dbb98b05ff",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Voidfarer/5a9cac9e23634c81fede833090cc01dbb98b05ff/assets/social-preview.png"
   }
 }

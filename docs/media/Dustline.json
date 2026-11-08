@@ -12,14 +12,14 @@
     "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/a519926fca36b856592fed2a030d71735cb83447/assets/logo.svg"
   },
   "preview": {
-    "src": "media/Dustline/social-preview.svg",
+    "src": "media/Dustline/social-preview.webp",
     "alt": "Dustline social preview",
-    "width": 1280,
-    "height": 640,
-    "digest": "sha256:7346e9a327234f4091b7e892d5ddbb75bd2e72fbe448e0f0228819aedd61ba4d",
+    "width": 1200,
+    "height": 600,
+    "digest": "sha256:cde5c1a623eefd7bcc83c4f0df6a6e314244fc63d2ba588988436b451560e12e",
     "commit": "a519926fca36b856592fed2a030d71735cb83447",
-    "taken_at": "2026-11-04",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Dustline/a519926fca36b856592fed2a030d71735cb83447/assets/social-preview.svg"
+    "taken_at": "2026-11-08",
+    "generated": true
   },
   "screenshots": [
     {

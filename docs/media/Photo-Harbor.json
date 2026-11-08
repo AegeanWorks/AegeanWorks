@@ -12,6 +12,18 @@
       "width": 1200,
       "height": 750,
       "digest": "sha256:0c91c9da341926bb72cd91ce33666cf70f42e739a85b314b5ee90099bca843dd"
+    },
+    {
+      "src": "media/Photo-Harbor/2026-11-08-signin.webp",
+      "alt": "Photo-Harbor screenshot",
+      "caption": "Photo-Harbor — 2026 11 03 Signin",
+      "commit": "1fd8e9f5ffb64fd5b683973db9ddf8e9e3377312",
+      "taken_at": "2026-11-08",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:b040c079f5a73bb61729d41ae0a2d73918f2af5b330ac82da2bc9e4f4fd560d4",
+      "source": "Photo-Harbor:assets/screenshots/2026-11-03-signin.png"
     }
   ],
   "logo": {
@@ -20,9 +32,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:6b6572f8d81472c9a2c3edf782a2016ba478028f555fcd5c1040c0e7d92e0815",
-    "commit": "c73fa38b9b382e22f8dfb476dedd54a2818cf97e",
-    "taken_at": "2026-10-31",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Photo-Harbor/c73fa38b9b382e22f8dfb476dedd54a2818cf97e/assets/logo.jpg"
+    "commit": "1fd8e9f5ffb64fd5b683973db9ddf8e9e3377312",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Photo-Harbor/1fd8e9f5ffb64fd5b683973db9ddf8e9e3377312/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Photo-Harbor/social-preview.webp",
@@ -30,8 +42,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:ef6bef59ddf58ad802d98f95dda1321f72ab66457cb366b3b11480bcfed7cb18",
-    "commit": "c73fa38b9b382e22f8dfb476dedd54a2818cf97e",
-    "taken_at": "2026-10-30",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Photo-Harbor/c73fa38b9b382e22f8dfb476dedd54a2818cf97e/assets/social-preview.png"
+    "commit": "1fd8e9f5ffb64fd5b683973db9ddf8e9e3377312",
+    "taken_at": "2026-11-08",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Photo-Harbor/1fd8e9f5ffb64fd5b683973db9ddf8e9e3377312/assets/social-preview.png"
   }
 }
