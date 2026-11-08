@@ -1221,7 +1221,7 @@
     {
       "id": 1440704079,
       "name": "Afterimage",
-      "description": "A visual perception gauntlet with a daily challenge: one tile in every grid is a shade, a size, or an angle off. Installable, offline-capable PWA.",
+      "description": "[ARCHIVED] A visual perception gauntlet with a daily challenge: one tile in every grid is a shade, a size, or an angle off. Installable, offline-capable PWA.",
       "topics": [
         "aegean-game-license",
         "aikit",
@@ -1241,7 +1241,7 @@
       "license": "NOASSERTION",
       "pushed_at": "2026-11-04T12:32:17Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {

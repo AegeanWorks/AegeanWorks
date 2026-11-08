@@ -95,7 +95,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Mnemo](https://github.com/AegeanWorks/Mnemo) | A dependency-free, local-first spaced-repetition flashcard CLI: study each card on the day the SM-2 algorithm says it is due, and keep everything in one readable JSON file on your machine. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Meridian](https://github.com/AegeanWorks/Meridian) | A zero-dependency time zone meeting planner that runs entirely in the browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share it as a link or a calendar file. |
 | [Palette](https://github.com/AegeanWorks/Palette) | A local-first, zero-dependency image editor for the browser: layers, blend modes, selections, gradients, filters, autosave recovery and PNG/JPEG/WebP export. |
-| [Afterimage](https://github.com/AegeanWorks/Afterimage) | A visual perception gauntlet with a daily challenge: one tile in every grid is a shade, a size, or an angle off. Installable, offline-capable PWA. |
+| [Afterimage](https://github.com/AegeanWorks/Afterimage) | [ARCHIVED] A visual perception gauntlet with a daily challenge: one tile in every grid is a shade, a size, or an angle off. Installable, offline-capable PWA. |
 | [NoMoreClutter](https://github.com/AegeanWorks/NoMoreClutter) | An AI desktop app that organizes your files with large language models: it analyzes, categorizes and renames them with descriptive names, and works with local LLMs. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 
 </details>
