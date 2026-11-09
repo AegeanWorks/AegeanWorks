@@ -103,6 +103,42 @@
       "height": 844,
       "digest": "sha256:aba3e4d8499323f20d14e6d7d1a09a0b7868b04e5036a300f38377e6e5f6264f",
       "source": "Weft:assets/screenshots/2026-11-07-help-mobile-after.png"
+    },
+    {
+      "src": "media/Weft/2026-11-09-help-mobile-before.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Help Mobile Before",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 390,
+      "height": 844,
+      "digest": "sha256:3e87334878e3181bb8481c966b1d671d45631e18bab9253ef1ee2d2c04fb09c1",
+      "source": "Weft:assets/screenshots/2026-11-07-help-mobile-before.png"
+    },
+    {
+      "src": "media/Weft/2026-11-09-level-previews-after.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Level Previews After",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:50f3e7eab6d871f774acd3937f15aed28aabdacb890ded3613d5dda40e33f847",
+      "source": "Weft:assets/screenshots/2026-11-07-level-previews-after.png"
+    },
+    {
+      "src": "media/Weft/2026-11-09-level-previews-before.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Level Previews Before",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:8b63806c9d047f393fe3949755902d37d9b0faa6f1bea897b26e00f57c6befbd",
+      "source": "Weft:assets/screenshots/2026-11-07-level-previews-before.png"
     }
   ]
 }

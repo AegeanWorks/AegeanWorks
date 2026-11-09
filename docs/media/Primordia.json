@@ -60,6 +60,42 @@
       "height": 900,
       "digest": "sha256:2449762d61e36e980f1deedf5c3887bcee5e3078c5d3dabb864741580f5bb924",
       "source": "Primordia:assets/screenshots/cycle1-trends-after-2026-11-07.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-09-cycle10-load-after-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle10 Load After 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:33dc6a3f7c0c78d2f07393b9f4c367e0293622f243c4d205daf23203be4ddb9e",
+      "source": "Primordia:assets/screenshots/cycle10-load-after-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-09-cycle10-load-before-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle10 Load Before 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:302ebf1b9c346a9f560287d4aa5cd4cbd343fbbea02a1f1a1ee8e48325e9e42d",
+      "source": "Primordia:assets/screenshots/cycle10-load-before-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-09-cycle11-layout-after-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle11 Layout After 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-09",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:3b63370f265dd4a83f3199e116adabfc86d56bd264000f55f4a34f75079ff551",
+      "source": "Primordia:assets/screenshots/cycle11-layout-after-2026-11-08.png"
     }
   ],
   "logo": {
