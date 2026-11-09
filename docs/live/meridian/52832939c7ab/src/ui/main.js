@@ -4,18 +4,29 @@
  */
 
 import { buildIcsCalendar } from "../core/ics.js";
-import { bestSlotFor, buildDayPlan, slotSummary } from "../core/schedule.js";
+import { MACHINES } from "../core/machines.js";
 import {
+  DEFAULT_WORK,
+  bestSlotFor,
+  buildDayPlan,
+  nextDuration,
+  normalizeDuration,
+  normalizeSlot,
+  slotSummary,
+} from "../core/schedule.js";
+import {
+  HASH_STATUS,
   LABEL_MAX,
   MAX_PARTICIPANTS,
-  decodePlan,
   defaultPlan,
   encodePlan,
+  normalizeWorkHour,
   planEquals,
+  readShareHash,
   shareUrl,
 } from "../core/state.js";
-import { isValidTimeZone, localDateISO } from "../core/time.js";
-import { allTimeZones, zoneLabel } from "../core/zones.js";
+import { localDateISO, parseDateISO, stepDateISO } from "../core/time.js";
+import { allTimeZones, canonicalZone, zoneLabel } from "../core/zones.js";
 import { copyText } from "./clipboard.js";
 import { dateLabel, pad2, qualityShort, rangeText, summaryLines, summaryText } from "./format.js";
 import { createGrid } from "./grid.js";
@@ -81,12 +92,6 @@ function writeHash() {
   }
 }
 
-function dateStep(dateISO, delta) {
-  const [year, month, day] = dateISO.split("-").map(Number);
-  const next = new Date(Date.UTC(year, month - 1, day + delta));
-  return `${next.getUTCFullYear()}-${pad2(next.getUTCMonth() + 1)}-${pad2(next.getUTCDate())}`;
-}
-
 function nextParticipantId(plan) {
   const used = new Set(plan.participants.map((participant) => participant.id));
   for (let index = 1; index <= MAX_PARTICIPANTS; index += 1) {
@@ -97,13 +102,11 @@ function nextParticipantId(plan) {
 }
 
 function clampSlot() {
-  if (!state.slot) return;
-  const start = Math.max(0, Math.min(23, state.slot.start));
-  const hours = Math.max(1, state.slot.hours);
-  state.slot = { start, hours: Math.min(hours, 24 - start) };
+  state.slot = normalizeSlot(state.slot);
 }
 
 function syncDuration() {
+  state.duration = normalizeDuration(state.duration);
   for (const option of ui.duration.querySelectorAll("option[data-custom]")) option.remove();
   const value = String(state.duration);
   if (![...ui.duration.options].some((option) => option.value === value)) {
@@ -163,11 +166,8 @@ function applyPlan(next, { hash = true } = {}) {
 }
 
 function setSlot(slot) {
-  state.slot = slot;
-  clampSlot();
-  if (state.slot && state.slot.hours !== state.duration && state.slot.hours <= 12) {
-    state.duration = state.slot.hours;
-  }
+  state.slot = normalizeSlot(slot);
+  if (state.slot) state.duration = nextDuration(state.duration, state.slot.hours);
   syncDuration();
   grid.select(state.slot);
   paintSummary();
@@ -182,16 +182,16 @@ function changeParticipant(id, patch) {
     updated.label = label || zoneLabel(updated.zone);
   }
   if ("zone" in patch) {
-    const zone = String(patch.zone ?? "").trim();
-    if (!isValidTimeZone(zone)) {
-      say(`"${zone}" is not a known time zone; the previous zone is kept.`, "error");
+    const zone = canonicalZone(patch.zone);
+    if (!zone) {
+      say(`"${patch.zone}" is not a known time zone; the previous zone is kept.`, "error");
       panel.render(state.plan);
       return;
     }
     updated.zone = zone;
   }
-  if ("workStart" in patch) updated.workStart = Number(patch.workStart);
-  if ("workEnd" in patch) updated.workEnd = Number(patch.workEnd);
+  if ("workStart" in patch) updated.workStart = normalizeWorkHour(patch.workStart, updated.workStart);
+  if ("workEnd" in patch) updated.workEnd = normalizeWorkHour(patch.workEnd, updated.workEnd);
   const participants = state.plan.participants.map((participant) =>
     participant.id === id ? updated : participant,
   );
@@ -212,9 +212,9 @@ function addParticipant(entry) {
     say(`A plan holds at most ${MAX_PARTICIPANTS} people.`, "error");
     return false;
   }
-  const zone = String(entry.zone ?? "").trim();
-  if (!isValidTimeZone(zone)) {
-    say(`"${zone}" is not a known time zone.`, "error");
+  const zone = canonicalZone(entry.zone);
+  if (!zone) {
+    say(`"${entry.zone}" is not a known time zone.`, "error");
     return false;
   }
   const label =
@@ -223,8 +223,8 @@ function addParticipant(entry) {
     id: nextParticipantId(state.plan),
     label,
     zone,
-    workStart: Number.isInteger(entry.workStart) ? entry.workStart : 9,
-    workEnd: Number.isInteger(entry.workEnd) ? entry.workEnd : 17,
+    workStart: normalizeWorkHour(entry.workStart, DEFAULT_WORK.start),
+    workEnd: normalizeWorkHour(entry.workEnd, DEFAULT_WORK.end),
   };
   applyPlan({ ...state.plan, participants: [...state.plan.participants, participant] });
   say(`${label} added.`);
@@ -238,15 +238,15 @@ function resetPlan() {
 }
 
 function setDate(dateISO) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateISO))) return false;
+  if (!parseDateISO(dateISO)) return false;
   applyPlan({ ...state.plan, date: dateISO });
   return true;
 }
 
 function setReferenceZone(zone) {
-  const value = String(zone ?? "").trim();
-  if (!isValidTimeZone(value)) {
-    say(`"${value}" is not a known time zone; the previous zone is kept.`, "error");
+  const value = canonicalZone(zone);
+  if (!value) {
+    say(`"${zone}" is not a known time zone; the previous zone is kept.`, "error");
     syncControls();
     return false;
   }
@@ -285,8 +285,14 @@ function fillHourSelect(select, value) {
 }
 
 function bindEvents() {
-  ui.datePrev.addEventListener("click", () => setDate(dateStep(state.plan.date, -1)));
-  ui.dateNext.addEventListener("click", () => setDate(dateStep(state.plan.date, 1)));
+  document.querySelector(".skip").addEventListener("click", (event) => {
+    event.preventDefault();
+    ui.grid.focus({ preventScroll: true });
+    ui.grid.scrollIntoView({ block: "start" });
+  });
+
+  ui.datePrev.addEventListener("click", () => setDate(stepDateISO(state.plan.date, -1)));
+  ui.dateNext.addEventListener("click", () => setDate(stepDateISO(state.plan.date, 1)));
   ui.dateToday.addEventListener("click", () =>
     setDate(localDateISO(Date.now(), state.plan.referenceZone)),
   );
@@ -319,7 +325,8 @@ function bindEvents() {
   ui.planReset.addEventListener("click", resetPlan);
 
   ui.duration.addEventListener("change", () => {
-    state.duration = Number(ui.duration.value) || 1;
+    state.duration = normalizeDuration(ui.duration.value);
+    syncDuration();
     if (state.slot) setSlot({ start: state.slot.start, hours: state.duration });
   });
 
@@ -353,8 +360,14 @@ function bindEvents() {
   ui.downloadIcs.addEventListener("click", downloadIcs);
 
   window.addEventListener("hashchange", () => {
-    const plan = decodePlan(window.location.hash);
-    if (plan && !planEquals(plan, state.plan)) applyPlan(plan, { hash: false });
+    const next = readShareHash(window.location.hash);
+    if (next.status === HASH_STATUS.VALID) {
+      if (!planEquals(next.plan, state.plan)) applyPlan(next.plan, { hash: false });
+      return;
+    }
+    if (next.status === HASH_STATUS.INVALID) {
+      say("That share link could not be read; the current plan is kept.", "error");
+    }
   });
 
   window.addEventListener("resize", () => grid.updateNow(Date.now()));
@@ -373,9 +386,12 @@ function init() {
   fillHourSelect(ui.addStart, 9);
   fillHourSelect(ui.addEnd, 17);
 
-  const fromHash = decodePlan(window.location.hash);
-  state.plan = fromHash ?? defaultPlan();
-  if (!fromHash) writeHash();
+  const initial = readShareHash(window.location.hash);
+  state.plan = initial.plan ?? defaultPlan();
+  if (initial.status === HASH_STATUS.INVALID) {
+    say("That share link could not be read; showing the example plan.", "error");
+  }
+  if (initial.status !== HASH_STATUS.VALID) writeHash();
 
   const localZone = state.plan.referenceZone;
   ui.addZone.value = localZone;
@@ -414,6 +430,15 @@ globalThis.meridian = {
   },
   get dayPlan() {
     return dayPlan;
+  },
+  get duration() {
+    return state.duration;
+  },
+  get hashStatus() {
+    return readShareHash(window.location.hash).status;
+  },
+  get machines() {
+    return MACHINES;
   },
   setSlot,
   setDate,

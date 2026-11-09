@@ -442,6 +442,12 @@ button:focus-visible {
 
 .grid {
   min-width: 0;
+  scroll-margin-top: 84px;
+}
+
+.grid:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .grid-scroll {
@@ -460,7 +466,7 @@ button:focus-visible {
   border-spacing: 0;
   table-layout: fixed;
   width: 100%;
-  min-width: 900px;
+  min-width: 840px;
 }
 
 .corner,

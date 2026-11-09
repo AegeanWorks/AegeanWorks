@@ -3,6 +3,8 @@
  * fallback when it is not, plus labels and ranked search for the pickers.
  */
 
+import { isValidTimeZone } from "./time.js";
+
 const COMMON_ZONE_LIST = [
   "UTC",
   "Pacific/Honolulu",
@@ -82,6 +84,28 @@ export function allTimeZones() {
     if (!zones.includes(zone)) zones.push(zone);
   }
   return zones;
+}
+
+let ZONE_INDEX = null;
+
+function zoneIndex() {
+  if (!ZONE_INDEX) {
+    ZONE_INDEX = new Map();
+    for (const zone of allTimeZones()) {
+      const key = zone.toLowerCase();
+      if (!ZONE_INDEX.has(key)) ZONE_INDEX.set(key, zone);
+    }
+  }
+  return ZONE_INDEX;
+}
+
+export function canonicalZone(value) {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const known = zoneIndex().get(trimmed.toLowerCase());
+  if (known) return known;
+  return isValidTimeZone(trimmed) ? trimmed : null;
 }
 
 export function zoneLabel(zone) {

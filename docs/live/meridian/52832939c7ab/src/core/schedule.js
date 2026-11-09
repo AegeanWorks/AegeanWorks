@@ -9,6 +9,7 @@ export const DAY_HOURS = 24;
 export const DEFAULT_WORK = Object.freeze({ start: 9, end: 17 });
 export const AWAKE = Object.freeze({ start: 7, end: 22 });
 export const MAX_SLOT_HOURS = 24;
+export const MAX_SYNCED_DURATION = 12;
 
 export function workOf(participant) {
   return {
@@ -61,6 +62,31 @@ export function bestWindows(flags) {
     }
   }
   return windows.sort((a, b) => b.hours - a.hours || a.start - b.start);
+}
+
+export function normalizeDuration(value, fallback = 1) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.max(1, Math.min(Math.trunc(parsed), MAX_SLOT_HOURS));
+}
+
+export function nextDuration(current, hours) {
+  const duration = normalizeDuration(current);
+  const next = normalizeDuration(hours, duration);
+  return next !== duration && next <= MAX_SYNCED_DURATION ? next : duration;
+}
+
+export function normalizeSlot(slot) {
+  if (!slot || typeof slot !== "object") return null;
+  const start = Number(slot.start);
+  const hours = Number(slot.hours);
+  if (!Number.isFinite(start) || !Number.isFinite(hours)) return null;
+  const column = Math.trunc(start);
+  if (column < 0 || column >= DAY_HOURS) return null;
+  return {
+    start: column,
+    hours: Math.max(1, Math.min(Math.trunc(hours), DAY_HOURS - column, MAX_SLOT_HOURS)),
+  };
 }
 
 export function buildDayPlan({ date, participants, referenceZone }) {
@@ -145,6 +171,7 @@ export function slotSummary(dayPlan, startColumn, hours) {
 export function bestSlotFor(dayPlan, preferredHours) {
   const window = dayPlan.windows.work[0] ?? dayPlan.windows.awake[0];
   if (!window) return null;
-  const hours = Math.max(1, Math.min(preferredHours, window.hours, MAX_SLOT_HOURS));
+  const wanted = normalizeDuration(preferredHours);
+  const hours = Math.max(1, Math.min(wanted, window.hours, MAX_SLOT_HOURS));
   return { start: window.start, hours };
 }

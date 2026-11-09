@@ -100,18 +100,18 @@
       "description": "A zero-dependency time zone meeting planner that runs entirely in the browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share it as a link or a calendar file.",
       "available": true,
       "mode": "browser",
-      "path": "live/meridian/06d9da7f1dd3/index.html",
+      "path": "live/meridian/52832939c7ab/index.html",
       "source_url": "https://github.com/AegeanWorks/Meridian",
       "version": "0.1.1",
-      "commit": "06d9da7f1dd3b9eff8d79fa8f27a537bc30a4d9a",
+      "commit": "52832939c7abc2944ffffdb11452343b8bee7e4e",
       "updated": "2026-11-08",
       "license": "AL-1.1",
       "license_path": "live/meridian/LICENSE",
-      "digest": "sha256:89ef8e60aa85344f8cdd153e098ff4210f55165ac62eaf42e206f11d8c7bf08b",
+      "digest": "sha256:7b31cc4f04aa780ae8fdd914f1c4da924e4a91456586c2d113a163f693a55648",
       "builds": [
+        "live/meridian/52832939c7ab/index.html",
         "live/meridian/06d9da7f1dd3/index.html",
-        "live/meridian/9ccb6bd6a3ce/index.html",
-        "live/meridian/981454d94acc/index.html"
+        "live/meridian/9ccb6bd6a3ce/index.html"
       ],
       "logo": "media/Meridian/logo.webp",
       "dossier": "project.html?repo=Meridian"

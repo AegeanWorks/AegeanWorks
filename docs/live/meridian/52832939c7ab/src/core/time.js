@@ -108,6 +108,18 @@ export function toDateISO(clock) {
   return `${clock.year}-${pad(clock.month)}-${pad(clock.day)}`;
 }
 
+export function stepDateISO(dateISO, delta) {
+  const parsed = parseDateISO(dateISO);
+  const step = Number(delta);
+  if (!parsed || !Number.isFinite(step)) return null;
+  const next = new Date(Date.UTC(parsed.year, parsed.month - 1, parsed.day + Math.trunc(step)));
+  return toDateISO({
+    year: next.getUTCFullYear(),
+    month: next.getUTCMonth() + 1,
+    day: next.getUTCDate(),
+  });
+}
+
 export function localDateISO(instant, timeZone) {
   return toDateISO(wallClockFor(instant, timeZone));
 }

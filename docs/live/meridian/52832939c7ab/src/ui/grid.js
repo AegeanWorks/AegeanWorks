@@ -170,10 +170,14 @@ export function createGrid({ container, onSlotChange, slotHours = () => 1 }) {
     selectRange(Math.min(anchor, column), Math.max(anchor, column));
   });
 
-  window.addEventListener("pointerup", () => {
+  function endDrag() {
     dragging = false;
     anchor = -1;
-  });
+  }
+
+  window.addEventListener("pointerup", endDrag);
+  window.addEventListener("pointercancel", endDrag);
+  window.addEventListener("blur", endDrag);
 
   scroll.addEventListener("keydown", (event) => {
     const cell = event.target.closest?.("button.cell");
