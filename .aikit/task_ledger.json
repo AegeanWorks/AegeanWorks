@@ -1,63 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "app-ui-rebind-1115b",
-    "last_phase": "phase 4",
+    "task_id": "aegean-orrery-fixes",
+    "last_phase": "verification",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794656909.4237723,
-    "owner": "vibe:catalogue-finish",
-    "started_by": "vibe:catalogue-finish",
+    "updated_at": 1794657451.4137316,
+    "owner": "claude:compaction",
+    "started_by": "claude:compaction",
     "continuations": [],
-    "workspaces": [
-      {
-        "name": "AegeanWorks",
-        "path": "projects/AegeanWorks"
-      }
-    ],
-    "completed_at": 1794656915.445497
+    "completed_at": 1794657451.6853757
   },
   "checkpoints": [
-    {
-      "task_id": "live-archive-retention",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'live-archive-retention' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794077818.6584513,
-      "timestamp_str": "2026-11-07 21:56:58",
-      "agent": "opencode:deepseek-v4.1-flash"
-    },
-    {
-      "task_id": "orrery-live-registration",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/3] Register Orrery as a live in-page app on the AegeanWorks site",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794650416.3598423,
-      "timestamp_str": "2026-11-14 13:00:16",
-      "agent": "vibe:orrery-live",
-      "impact_assessment": {
-        "why": "User asked for Orrery on the Live page as a running app, not just an atlas card; the site only hosts sealed static builds registered through tools/sync_live_apps.py",
-        "benefits": "Orrery becomes the first research tool on the Live page; its sealed build keeps site contract guarantees (no fetch, local links, ASL-1.1 license copy)",
-        "risks": "contract: live.json schema 2 must match sync tool and workflow; dependency: adds ASL-1.1 license header mapping and source checkout step; concurrency: another completed task (live-archive-retention) owns the page area - no file overlaps after validation; state: docs/live plus shots must stay digest-consistent",
-        "mitigation": "sync tool --check gates the copy; test_profile extensions assert the new entry; the three failing tests are verified pre-existing at HEAD and unrelated to orrery"
-      },
-      "plan_digest": "e5848676c8499d037d3dbe23adc161579d43e528b2d4b9ff9558d36ec7e0d9ea"
-    },
-    {
-      "task_id": "orrery-live-registration",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "checklists: failed:test - aikit check aegeanworks 3/4; test gate fails on 3 failures verified present at HEAD (media digests, app.js cache version, atlas metadata drift); all orrery-related assertions and sync --check pass",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794650422.0919626,
-      "timestamp_str": "2026-11-14 13:00:22",
-      "agent": "vibe:orrery-live",
-      "checklists": "failed:test_profile.test_dossier_media_manifests_are_consistent,test_profile.test_portfolio_scripts_are_cache_coherent,test_profile.test_readme_atlas_matches_github_metadata"
-    },
     {
       "task_id": "orrery-live-registration",
       "phase": "completed",
@@ -342,6 +296,52 @@
       "timestamp": 1794656915.4454992,
       "timestamp_str": "2026-11-14 14:48:35",
       "agent": "vibe:catalogue-finish",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-orrery-fixes",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/1] Reploy the fixed studio build and retake the homepage shots",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794657419.5541515,
+      "timestamp_str": "2026-11-14 14:56:59",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "the studio-alignment fixes changed the sealed build, so the live catalog must serve a build matching the published orrery commit",
+        "benefits": "the live studio renders body-coloured legend markers and the catalog digest matches the pushed commit",
+        "risks": "contract: digest must be computed with the sync tool method; dependency: build must stay byte-identical to 81c1d41e; concurrency: other apps' archived-flag churn rejected from this commit; state: shots commit link",
+        "mitigation": "sync_live_apps --check reviews catalog+digest; 177 tests; only orrery entries touched"
+      },
+      "plan_digest": "ce91f17a31fc50b7c277b31857621925f38486ed9ae6a335463004fcfd929464"
+    },
+    {
+      "task_id": "aegean-orrery-fixes",
+      "phase": "verification",
+      "phase_num": 4,
+      "description": "[1/1] Verification: sync_live_apps check, 177 unittests, knowledge base",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794657451.4137316,
+      "timestamp_str": "2026-11-14 14:57:31",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest(177), sync check, kb, secret scan"
+    },
+    {
+      "task_id": "aegean-orrery-fixes",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-orrery-fixes' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794657451.6853776,
+      "timestamp_str": "2026-11-14 14:57:31",
+      "agent": "claude:compaction",
       "delivery": {
         "roots": [
           "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
