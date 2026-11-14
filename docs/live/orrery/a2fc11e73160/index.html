@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06060b">
+<meta name="description" content="Orrery live — an N-body gravitational sandbox in your browser: nine curated worlds, a symplectic integrator, optional 1PN relativity, Coulomb forces, collisions, trails and live energy diagnostics.">
+<title>Orrery — live N-body studio</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div>
+      <h1>Orrery <span class="dim">live N-body studio</span></h1>
+      <p class="tagline">The terminal sandbox, ported to the page: nine curated worlds on a
+      kick-drift-kick leapfrog integrator, with the same physics as the Python engine.</p>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <label class="field">
+      <span class="k">World</span>
+      <select id="scenario" aria-label="choose a world"></select>
+    </label>
+    <button id="play" type="button" class="btn btn-primary">Pause</button>
+    <button id="step" type="button" class="btn">Step</button>
+    <button id="reset" type="button" class="btn">Reset</button>
+    <label class="field">
+      <span class="k">Speed</span>
+      <span class="range-wrap">
+        <input id="speed" type="range" min="0.25" max="4" step="0.25" value="1">
+        <output id="speed-label" for="speed">1.00x</output>
+      </span>
+    </label>
+  </section>
+
+  <p class="units" id="units"></p>
+  <p class="description" id="description"></p>
+
+  <section class="stage-wrap">
+    <canvas id="stage" aria-label="animated N-body simulation view"></canvas>
+  </section>
+
+  <p class="telemetry" id="telemetry" role="status"></p>
+
+  <details class="physics">
+    <summary>Physics and display</summary>
+    <div class="physics-grid">
+      <label class="check">
+        <input id="trails" type="checkbox" checked>
+        <span>Trails</span>
+        <input id="trail-length" type="number" min="10" max="20000" step="10" value="2000"
+               aria-label="trail length in samples">
+      </label>
+      <label class="check">
+        <input id="relativity" type="checkbox">
+        <span>1PN relativity (c)</span>
+        <input id="c-light" type="number" min="1" step="any" placeholder="scenario c"
+               aria-label="speed of light override">
+      </label>
+      <label class="check">
+        <span>Coulomb k_e</span>
+        <input id="k-coulomb" type="number" min="0" step="any" value="0" aria-label="Coulomb constant">
+      </label>
+      <label class="check">
+        <input id="merge" type="checkbox">
+        <span>Inelastic merge, radius</span>
+        <input id="merge-radius" type="number" min="0" step="any" value="0.01" disabled
+               aria-label="merge radius">
+      </label>
+      <label class="check">
+        <input id="bounce" type="checkbox">
+        <span>Elastic bounce, radius</span>
+        <input id="bounce-radius" type="number" min="0" step="any" value="0.01" disabled
+               aria-label="bounce radius">
+        <span>restitution</span>
+        <input id="restitution" type="number" min="0" max="1" step="0.05" value="1" disabled
+               aria-label="restitution">
+      </label>
+    </div>
+    <p class="dim small">Collision toggles apply while running; physics edits above restart the
+    world from its initial state. Relativistic telemetry refuses bodies at or beyond the speed
+    of light instead of substituting a smaller energy.</p>
+  </details>
+
+  <section>
+    <h2 class="visually-hidden">Events</h2>
+    <ul id="events" class="events" aria-live="polite"></ul>
+  </section>
+
+  <footer class="foot">
+    <p class="dim small">Symplectic kick-drift-kick leapfrog · the browser twin of the
+    AegeanWorks Orrery engine — parity-tested against the Python side. Nothing leaves this
+    page, and no resource is loaded from anywhere.</p>
+  </footer>
+</main>
+<script src="data/scenarios.js"></script>
+<script src="src/orrery.js"></script>
+</body>
+</html>
