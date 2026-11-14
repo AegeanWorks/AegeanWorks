@@ -286,5 +286,23 @@
     "final_snapshot_digest": "",
     "final_snapshot_entries": 0,
     "surface_digest": "5406011951150b3a531ed737d6349e97f4f8bb5e0c95ff0cd88311b50d3f4357"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "baseline_commit": "e269b4f8e050090e39d53cd76659b6f47285f7d4",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1794672373.7502806,
+    "finished_at": 1794672380.406413,
+    "strikes": 0,
+    "reviewer": "Command Code (AI; archived-state markup only: ChatDuck card flags and metadata flags flipped to archived per ADR-083; no visual redesign; proof: tests 178/178 OK, build_dossier_media.py check 0 problems, 4/4 aikit gates)",
+    "allowed_removals": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "efdab2e4b03c6de49971e829894db4beeb0faae7cc2e2b7eed8becfacefb707a"
   }
 ]

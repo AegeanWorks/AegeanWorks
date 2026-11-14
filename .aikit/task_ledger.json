@@ -1,87 +1,23 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-resize",
-    "last_phase": "verification",
+    "task_id": "archive-chatduck-1114",
+    "last_phase": "phase 4",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794671968.8969223,
-    "owner": "claude:compaction",
-    "started_by": "claude:compaction",
+    "updated_at": 1794672351.3628557,
+    "owner": "vibe:catalogue-finish",
+    "started_by": "vibe:catalogue-finish",
     "continuations": [],
-    "completed_at": 1794671969.1468217
+    "workspaces": [
+      {
+        "name": "AegeanWorks",
+        "path": "projects/AegeanWorks"
+      }
+    ],
+    "completed_at": 1794672380.8559859
   },
   "checkpoints": [
-    {
-      "task_id": "aegean-orrery-fixes",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "[1/1] Verification: sync_live_apps check, 177 unittests, knowledge base",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794657451.4137316,
-      "timestamp_str": "2026-11-14 14:57:31",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(177), sync check, kb, secret scan"
-    },
-    {
-      "task_id": "aegean-orrery-fixes",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'aegean-orrery-fixes' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794657451.6853776,
-      "timestamp_str": "2026-11-14 14:57:31",
-      "agent": "claude:compaction",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "csp-hash-integrity-1115",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Plan: add a CSP script-src hash integrity test (every allowed hash matches an inline script; every executable inline script is allowed) and prune the two stale hashes from docs/index.html.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794657616.5322921,
-      "timestamp_str": "2026-11-14 15:00:16",
-      "agent": "vibe:catalogue-finish",
-      "impact_assessment": {
-        "why": "The CSP hash list is hand-maintained; the since-last-push review found two stale hashes and no test would catch a broken or stale rotation.",
-        "benefits": "CSP rotation becomes verified by the suite; allowlist shrinks by 2 unused entries.",
-        "risks": "contract: index.html CSP attribute changes (UI surface digest rebinds); dependency: none; concurrency: other session idle; state: no visual or behavioural change.",
-        "mitigation": "Failing-first test, prune hashes, full suite + gates, rebind UI evidence, publish, discard post-push regen churn."
-      },
-      "plan_digest": "c820a1a0574633288fb16b57a3820a50bb30be82146c599f7c4c9707dad8c507",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "csp-hash-integrity-1115",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Completed [1/2]: CSP hash integrity test added (failing-first), 2 stale hashes pruned from docs/index.html; suite and gates green.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794657770.304651,
-      "timestamp_str": "2026-11-14 15:02:50",
-      "agent": "vibe:catalogue-finish",
-      "checklists": "passed: tests (python -m unittest discover -s tests, 178/178 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify + finish (agent review recorded)",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "csp-hash-integrity-1115",
       "phase": "completed",
@@ -321,6 +257,81 @@
       "timestamp": 1794671969.1468236,
       "timestamp_str": "2026-11-14 18:59:29",
       "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "archive-chatduck-1114",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "Mark the ChatDuck card archived in the AegeanWorks catalogue after upstream repository archival.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794672326.4220402,
+      "timestamp_str": "2026-11-14 19:05:26",
+      "agent": "vibe:catalogue-finish",
+      "impact_assessment": {
+        "why": "ADR-083 keeps an archived project's Live card, but its metadata must reflect the archived state; the archive run rewrote the catalogue files locally.",
+        "benefits": "Catalogue metadata consistent with GitHub state.",
+        "risks": "contract: archived flag in repositories.json and card markup; dependency: none; concurrency: catalogue quiet; state: no behavioural change.",
+        "mitigation": "Suite + gates, UI rebind (surface files touched), commit, publish."
+      },
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "archive-chatduck-1114",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Completed: ChatDuck card archived in README rows, atlas snapshot, index cards and its dossier media manifest; 178/178 tests.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794672350.7898633,
+      "timestamp_str": "2026-11-14 19:05:50",
+      "agent": "vibe:catalogue-finish",
+      "checklists": "passed: tests (python -m unittest discover -s tests, 178/178 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify + finish (agent review, archived-state markup only)",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "archive-chatduck-1114",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Completed: ChatDuck card archived across catalogue files; 178/178 tests and 4/4 gates.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794672351.3628557,
+      "timestamp_str": "2026-11-14 19:05:51",
+      "agent": "vibe:catalogue-finish",
+      "checklists": "passed: tests (python -m unittest discover -s tests, 178/178 OK); passed: gates (python aikit.py check AegeanWorks, 4/4)",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "archive-chatduck-1114",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'archive-chatduck-1114' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794672380.8559873,
+      "timestamp_str": "2026-11-14 19:06:20",
+      "agent": "vibe:catalogue-finish",
       "delivery": {
         "roots": [
           "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
