@@ -2,60 +2,16 @@
   "version": 1,
   "active_task": {
     "task_id": "aegean-shots-coherence",
-    "last_phase": "planning",
-    "active_phase": 2,
-    "status": "in_progress",
-    "updated_at": 1794671402.12346,
+    "last_phase": "verification",
+    "active_phase": 5,
+    "status": "completed",
+    "updated_at": 1794671420.9298828,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "impact_assessment": {
-      "why": "all seven non-orrery live apps recorded shots from commits predating their served builds; six frozen apps are pixel-identical (zero source diffs between shot and build commits) and palette's editor had changed under its workspace shot",
-      "benefits": "the screenshot catalog is honest: every shot pointer names the build the pixels depict, and palette's workspace shot shows the served editor",
-      "risks": "contract: shots.json commit semantics = depicted build, not capture commit; dependency: none; concurrency: single active task; state: only docs/live/shots.json and one PNG change",
-      "mitigation": "git source-diff proof for the six bumps, headless capture + brightness check for palette, 178-test suite, sync --check"
-    }
+    "completed_at": 1794671421.2719443
   },
   "checkpoints": [
-    {
-      "task_id": "aegean-orrery-studio",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'aegean-orrery-studio' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794655810.2983816,
-      "timestamp_str": "2026-11-14 14:30:10",
-      "agent": "claude:compaction",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "app-ui-rebind-1115b",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "Rebind the app surface UI evidence and the ledger anchor to the final published orrery-studio tip.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794656908.970855,
-      "timestamp_str": "2026-11-14 14:48:28",
-      "agent": "vibe:catalogue-finish",
-      "impact_assessment": {
-        "why": "The pushed ledger-close commit postdated the finished UI task, so check --strict fails for the next publisher: stale digest and stale ledger anchor.",
-        "benefits": "Delivery gate green on the published state; next publish unblocked.",
-        "risks": "contract: ui history gains one rebind record; dependency: none; concurrency: other session idle ~1h; state: no surface files change.",
-        "mitigation": "Begin/verify/finish from the clean synced tip; agent review only (G-001); proofs recorded in the reviewer note."
-      },
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "app-ui-rebind-1115b",
       "phase": "phase 4",
@@ -349,6 +305,34 @@
         "mitigation": "git source-diff proof for the six bumps, headless capture + brightness check for palette, 178-test suite, sync --check"
       },
       "plan_digest": "a85d69d6398a54387acb489521964453bd104bd2a2a4b349c0e4c04ec1b36642"
+    },
+    {
+      "task_id": "aegean-shots-coherence",
+      "phase": "verification",
+      "phase_num": 4,
+      "description": "",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794671420.9298828,
+      "timestamp_str": "2026-11-14 18:50:20",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest(178), sync --check, pointer audit ALL FRESH, headless palette capture"
+    },
+    {
+      "task_id": "aegean-shots-coherence",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-shots-coherence' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794671421.2719462,
+      "timestamp_str": "2026-11-14 18:50:21",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
     }
   ]
 }
