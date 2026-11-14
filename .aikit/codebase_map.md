@@ -1,16 +1,22 @@
 # Codebase Map & Symbol Catalog 🗺️
 
 > **AUTO-GENERATED & VERIFIED BY `scripts/update_knowledge_base.py`**
-> This document provides an automated, up-to-date registry of all modules, classes, and exported functions across this repository.
+> This document catalogues Python modules, classes, and exported functions. See Map Coverage for any stack it does not index.
 
 ---
 
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `29`
 - **Total Classes**: `41`
-- **Total Top-Level Functions**: `164`
-- **Total Class Methods**: `220`
-- **Total Source Lines**: `6775`
+- **Total Top-Level Functions**: `166`
+- **Total Class Methods**: `221`
+- **Total Source Lines**: `6988`
+
+## 🧭 Map Coverage
+- **Indexed**: python (`29` module(s))
+- **Not indexed by this map**: javascript (`181` file(s))
+
+> Only Python symbols are catalogued. A language above is reported as not indexed, never as verified by this map.
 
 ---
 
@@ -19,7 +25,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `1949` lines (`90865` bytes)
+**Size**: `2025` lines (`94774` bytes)
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -304,11 +310,12 @@
 ---
 
 ### [`tests/test_sync_live_digest.py`](tests/test_sync_live_digest.py)
-**Size**: `48` lines (`1645` bytes)
+**Size**: `112` lines (`4334` bytes)
 
 **Classes:**
 - `class LiveBuildDigestTests`
   - Method `.test_line_endings_do_not_change_the_digest()`
+  - Method `.test_live_file_override_replaces_a_runtime_file()`
   - Method `.test_binary_files_are_hashed_byte_for_byte()`
 
 **Functions:**
@@ -704,7 +711,7 @@
 ### [`tools/sync_live_apps.py`](tools/sync_live_apps.py)
 > *Sync the live browser apps and their catalog.*
 
-**Size**: `745` lines (`30175` bytes)
+**Size**: `818` lines (`33467` bytes)
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*
@@ -716,6 +723,8 @@
 - `def _digest(files, root)`
 - `def _write_atomic(path, payload)`
 - `def _copy_file(source, target)`
+- `def _safe_build_path(value)`
+- `def _copy_overrides(source, target, overrides)` - *Replace or add named build files from a source-relative path.*
 - `def _copy_runtime(source, target, entries)`
 - `def _runtime_files(target)`
 - `def _source_path(source, relative)` - *Resolve an index reference inside the source, or None when it escapes it.*

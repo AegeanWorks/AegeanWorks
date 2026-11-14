@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tessera — a seamless pattern studio</title>
+<meta name="description" content="Compose seamless geometric patterns in the browser, tune every line and color, and export crisp SVG tiles. No uploads, no tracking, no network.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="./src/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./src/theme.css">
+<link rel="stylesheet" href="./src/styles.css">
+<script type="module" src="./src/ui/app.js"></script>
+</head>
+<body data-screen="studio">
+<a class="skip-link" href="#studio">Skip to the studio</a>
+<div class="page-grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="Tessera home">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <rect class="brand-tile brand-tile-a" x="1.5" y="1.5" width="13" height="13" rx="2"/>
+      <rect class="brand-tile brand-tile-b" x="17.5" y="1.5" width="13" height="13" rx="2"/>
+      <rect class="brand-tile brand-tile-c" x="1.5" y="17.5" width="13" height="13" rx="2"/>
+      <path class="brand-tile brand-tile-d" d="M17.5 17.5h13v13h-13z"/>
+    </svg>
+    <span class="brand-word">Tessera</span>
+  </a>
+  <p class="topbar-tagline">Seamless pattern studio</p>
+  <div class="topbar-actions">
+    <button class="btn btn-ghost" id="randomize" type="button" data-ui="randomize">
+      Randomize <kbd aria-hidden="true">R</kbd>
+    </button>
+    <button class="btn btn-ghost" id="copy" type="button" data-ui="copy">
+      Copy SVG <kbd aria-hidden="true">C</kbd>
+    </button>
+    <button class="btn btn-primary" id="export" type="button" data-ui="export">
+      Export SVG <kbd aria-hidden="true">E</kbd>
+    </button>
+  </div>
+</header>
+
+<main class="studio" id="studio" tabindex="-1">
+  <section class="stage-panel" aria-labelledby="stage-heading">
+    <div class="stage-frame">
+      <div class="stage" id="stage" data-panel="stage" data-cue="pattern-updated"></div>
+      <div class="stage-topline" aria-hidden="true">
+        <span id="stage-motif">Wave</span>
+        <span class="stage-divider">/</span>
+        <span id="stage-palette">Aegean</span>
+      </div>
+      <div class="stage-badge" aria-hidden="true">
+        <span class="stage-badge-metric"><span class="stage-badge-prefix">r</span><span id="stage-repeat">6</span></span>
+        <span class="stage-divider">·</span>
+        <span class="stage-badge-metric"><span class="stage-badge-prefix">s</span><span id="stage-seed">7</span></span>
+        <span id="stage-transform-divider" class="stage-divider" hidden>·</span>
+        <span id="stage-transform" hidden></span>
+      </div>
+      <div class="stage-effects" id="stage-effects" aria-hidden="true" hidden>
+        <span class="stage-effect" data-effect="guides">Guides</span>
+        <span class="stage-effect" data-effect="motion">Glow</span>
+      </div>
+    </div>
+    <div class="stage-caption">
+      <div>
+        <p class="eyebrow">Live pattern</p>
+        <h1 id="stage-heading">A tile that never ends.</h1>
+      </div>
+      <p class="stage-note">Every motif is generated in the browser and repeats without a seam. Tune it, then export a clean, editable SVG.</p>
+    </div>
+  </section>
+
+  <aside class="controls" aria-label="Pattern controls" data-panel="controls">
+    <p class="storage-note" id="storage-note" hidden>Browser storage is unavailable, so pattern changes last for this session only.</p>
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Motif</h2>
+        <span class="control-index">01</span>
+      </div>
+      <div class="motif-grid" id="motif-grid" role="group" aria-label="Motif" data-columns="3"></div>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Palette</h2>
+        <span class="control-index">02</span>
+      </div>
+      <div class="palette-grid" id="palette-grid" role="group" aria-label="Palette" data-columns="2"></div>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Geometry</h2>
+        <span class="control-index">03</span>
+      </div>
+      <div class="range-field">
+        <label class="range-row" for="repeat"><span>Repeat</span><output id="repeat-value" for="repeat">6</output></label>
+        <input id="repeat" type="range" min="3" max="10" step="1" value="6" data-ui="repeat">
+      </div>
+      <div class="range-field">
+        <label class="range-row" for="weight"><span>Line weight</span><output id="weight-value" for="weight">3</output></label>
+        <input id="weight" type="range" min="1" max="6" step="1" value="3" data-ui="weight">
+      </div>
+      <div class="range-field">
+        <label class="range-row" for="warp"><span>Warp</span><output id="warp-value" for="warp">42%</output></label>
+        <input id="warp" type="range" min="0" max="100" step="1" value="42" data-ui="warp">
+      </div>
+      <div class="transform-row">
+        <div class="select-field">
+          <label class="select-label" for="rotate">Rotate</label>
+          <select id="rotate" data-ui="rotate">
+            <option value="0">0°</option>
+            <option value="90">90°</option>
+            <option value="180">180°</option>
+            <option value="270">270°</option>
+          </select>
+        </div>
+        <div class="select-field">
+          <label class="select-label" for="flip">Flip</label>
+          <select id="flip" data-ui="flip">
+            <option value="none">None</option>
+            <option value="x">Horizontal</option>
+            <option value="y">Vertical</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Seed</h2>
+        <span class="control-index">04</span>
+      </div>
+      <div class="seed-row">
+        <output id="seed-value" for="new-seed">7</output>
+        <button id="new-seed" class="btn btn-small" type="button" data-ui="new-seed">New seed</button>
+      </div>
+      <div class="toggle-row">
+        <label class="switch">
+          <input id="motion" type="checkbox" data-ui="motion">
+          <span class="switch-track" aria-hidden="true"></span>
+          <span>Glow drift</span>
+        </label>
+        <label class="switch">
+          <input id="guides" type="checkbox" data-ui="guides">
+          <span class="switch-track" aria-hidden="true"></span>
+          <span>Tile guides</span>
+        </label>
+        <label class="switch" id="sound-switch">
+          <input id="sound" type="checkbox" data-ui="sound">
+          <span class="switch-track" aria-hidden="true"></span>
+          <span>Sound cues</span>
+        </label>
+      </div>
+      <p class="motion-note" id="motion-note" hidden>Glow drift is paused by your system's reduced-motion setting.</p>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Presets</h2>
+        <span class="control-index">05</span>
+      </div>
+      <div class="preset-list" id="preset-list" role="group" aria-label="Presets" data-columns="1"></div>
+      <div class="history-row">
+        <button class="btn btn-small" id="undo" type="button" data-ui="undo" aria-keyshortcuts="Control+Z Meta+Z" disabled>Undo</button>
+        <button class="btn btn-small" id="redo" type="button" data-ui="redo" aria-keyshortcuts="Control+Shift+Z Meta+Shift+Z" disabled>Redo</button>
+      </div>
+      <button class="btn btn-small preset-reset" id="reset" type="button" data-ui="reset">Reset pattern</button>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Export</h2>
+        <span class="control-index">06</span>
+      </div>
+      <div class="select-field">
+        <label class="select-label" for="png-size">PNG size</label>
+        <select id="png-size" data-ui="png-size"></select>
+      </div>
+      <button class="btn btn-small export-png" id="export-png" type="button" data-ui="export-png">
+        Download PNG <kbd aria-hidden="true">P</kbd>
+      </button>
+      <p class="control-note">Renders the current look at the selected pixel size.</p>
+      <p class="control-note export-status" id="export-status" hidden></p>
+    </section>
+
+    <section class="control-block">
+      <div class="control-heading">
+        <h2>Gallery</h2>
+        <span class="control-index">07</span>
+      </div>
+      <div class="gallery-actions">
+        <button class="btn btn-small" id="save-look" type="button" data-ui="save-look">
+          Save look <kbd aria-hidden="true">S</kbd>
+        </button>
+        <button class="btn btn-small" id="copy-link" type="button" data-ui="copy-link">
+          Copy link <kbd aria-hidden="true">L</kbd>
+        </button>
+      </div>
+      <div class="gallery-list" id="gallery-list"></div>
+      <div class="gallery-backup">
+        <button class="btn btn-small" id="backup-gallery" type="button" data-ui="backup-gallery" aria-label="Download saved looks" disabled>Backup</button>
+        <button class="btn btn-small" id="restore-gallery" type="button" data-ui="restore-gallery" aria-label="Restore saved looks">Restore</button>
+        <input id="restore-file" type="file" accept="application/json,.json" aria-label="Restore saved looks file" hidden>
+      </div>
+      <div class="gallery-foot">
+        <p class="control-note">Saved on this device only. Up to 12 looks.</p>
+        <button class="gallery-clear" id="clear-gallery" type="button" data-ui="clear-gallery" disabled>
+          Clear all
+        </button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer class="footer">
+  <p>Runs entirely on this device. No uploads, no tracking, no network.</p>
+  <p class="footer-meta">Tessera <span id="version">0.7.19</span> · AL-1.1</p>
+  <details class="shortcuts" id="shortcuts">
+    <summary id="shortcuts-summary">Keyboard shortcuts</summary>
+    <dl class="shortcut-list">
+      <div class="shortcut-row"><dt><kbd>R</kbd></dt><dd>Randomize</dd></div>
+      <div class="shortcut-row"><dt><kbd>C</kbd></dt><dd>Copy SVG</dd></div>
+      <div class="shortcut-row"><dt><kbd>E</kbd></dt><dd>Export SVG</dd></div>
+      <div class="shortcut-row"><dt><kbd>P</kbd></dt><dd>Download PNG</dd></div>
+      <div class="shortcut-row"><dt><kbd>S</kbd></dt><dd>Save look</dd></div>
+      <div class="shortcut-row"><dt><kbd>L</kbd></dt><dd>Copy link</dd></div>
+      <div class="shortcut-row"><dt><kbd>Ctrl Z</kbd></dt><dd>Undo</dd></div>
+      <div class="shortcut-row"><dt><kbd>Shift Ctrl Z</kbd></dt><dd>Redo</dd></div>
+      <div class="shortcut-row"><dt><kbd>Arrows</kbd></dt><dd>Move within a picker, preset rail or gallery</dd></div>
+      <div class="shortcut-row"><dt><kbd>Home</kbd><kbd>End</kbd></dt><dd>Jump to the first or last choice</dd></div>
+      <div class="shortcut-row"><dt><kbd>Enter</kbd><kbd>Space</kbd></dt><dd>Apply the focused choice</dd></div>
+      <div class="shortcut-row"><dt><kbd>?</kbd></dt><dd>Open or close this reference</dd></div>
+      <div class="shortcut-row"><dt><kbd>Esc</kbd></dt><dd>Close this reference</dd></div>
+    </dl>
+  </details>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" data-cue="status" hidden></div>
+
+<noscript>
+  <p class="noscript">Tessera needs JavaScript to generate its patterns. Enable it and reload this page.</p>
+</noscript>
+</body>
+</html>

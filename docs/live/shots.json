@@ -174,6 +174,32 @@
           "alt": "Afterimage daily challenge menu with the five modes"
         }
       ]
+    },
+    "orrery": {
+      "commit": "7cc98acbe094ff21d30eff7d3e5de3ad6ceb93e6",
+      "taken_at": "2026-11-14",
+      "screenshots": [
+        {
+          "src": "live/shots/orrery/01-solar.png",
+          "alt": "Orrery solar system world with trails and telemetry"
+        },
+        {
+          "src": "live/shots/orrery/02-figure-eight.png",
+          "alt": "Orrery figure-eight choreography world"
+        },
+        {
+          "src": "live/shots/orrery/03-pythagorean.png",
+          "alt": "Orrery pythagorean three-body world"
+        },
+        {
+          "src": "live/shots/orrery/04-black-hole.png",
+          "alt": "Orrery black-hole accretion world"
+        },
+        {
+          "src": "live/shots/orrery/05-binary.png",
+          "alt": "Orrery binary star world"
+        }
+      ]
     }
   }
 }

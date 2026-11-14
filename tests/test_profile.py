@@ -372,7 +372,16 @@ class ProfileIntegrityTests(unittest.TestCase):
         apps = {app["slug"]: app for app in manifest["apps"]}
         self.assertEqual(
             set(apps),
-            {"prism-relay", "weft", "iris", "tessera", "meridian", "palette", "afterimage"},
+            {
+                "prism-relay",
+                "weft",
+                "iris",
+                "tessera",
+                "meridian",
+                "palette",
+                "afterimage",
+                "orrery",
+            },
         )
 
         prism = apps["prism-relay"]
@@ -529,6 +538,36 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertEqual(afterimage["builds"][0], afterimage["path"])
         self.assertLessEqual(len(afterimage["builds"]), 3)
         for build in afterimage["builds"]:
+            with self.subTest(build=build):
+                self.assertTrue((ROOT / "docs" / build).is_file())
+
+        orrery = apps["orrery"]
+        self.assertTrue(orrery["available"])
+        self.assertEqual(orrery["mode"], "browser")
+        self.assertEqual(orrery["license"], "ASL-1.1")
+        self.assertEqual(orrery["dossier"], "project.html?repo=Orrery")
+        self.assertEqual(orrery.get("source_url"), "https://github.com/AegeanWorks/Orrery")
+        self.assertRegex(orrery["path"], r"^live/orrery/[0-9a-f]{7,40}/index\.html$")
+        self.assertTrue((ROOT / "docs" / orrery["path"]).is_file())
+        self.assertTrue((ROOT / "docs" / orrery["license_path"]).is_file())
+        self.assertRegex(orrery["commit"], r"^[0-9a-f]{7,40}$")
+        self.assertRegex(orrery["updated"], r"^\d{4}-\d{2}-\d{2}$")
+        self.assertRegex(orrery["digest"], r"^sha256:[0-9a-f]{64}$")
+        self.assertRegex(orrery["version"], r"^\d+\.\d+\.\d+")
+        self.assertTrue((ROOT / "docs" / orrery["logo"]).is_file())
+        orrery_dir = (ROOT / "docs" / orrery["path"]).parent
+        for asset in ("src/orrery.js", "src/styles.css", "data/scenarios.js", "favicon.svg"):
+            with self.subTest(asset=asset):
+                self.assertTrue((orrery_dir / asset).is_file())
+        orrery_index = (orrery_dir / "index.html").read_text(encoding="utf-8")
+        for source in re.findall(r'(?:src|href)="([^"]+)"', orrery_index):
+            if source.startswith(("http://", "https://", "#", "mailto:")):
+                continue
+            with self.subTest(source=source):
+                self.assertTrue((orrery_dir / source.split("#")[0].split("?")[0]).is_file())
+        self.assertEqual(orrery["builds"][0], orrery["path"])
+        self.assertLessEqual(len(orrery["builds"]), 3)
+        for build in orrery["builds"]:
             with self.subTest(build=build):
                 self.assertTrue((ROOT / "docs" / build).is_file())
 

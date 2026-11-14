@@ -22,7 +22,8 @@
         "live/prism-relay/6d0340722fd3/index.html"
       ],
       "logo": "media/Prism-Relay/logo.webp",
-      "dossier": "project.html?repo=Prism-Relay"
+      "dossier": "project.html?repo=Prism-Relay",
+      "archived": true
     },
     {
       "slug": "weft",
@@ -31,21 +32,22 @@
       "description": "A zero-dependency thread-routing puzzle: connect matching spools, fill every cell of the loom, and restore the tapestry across eighteen chambers.",
       "available": true,
       "mode": "browser",
-      "path": "live/weft/1c129d20c0c1/index.html",
+      "path": "live/weft/70be138d19b6/index.html",
       "source_url": "https://github.com/AegeanWorks/Weft",
       "version": "0.9.0",
-      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "commit": "70be138d19b61ed204324ec27a6c8d82897eb46c",
       "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/weft/LICENSE",
       "digest": "sha256:e1fa47666d51f5538ce5fe73d15832e679cc702b6f57ba6b777ba858d59a71f4",
       "builds": [
+        "live/weft/70be138d19b6/index.html",
         "live/weft/1c129d20c0c1/index.html",
-        "live/weft/ab7d87790a81/index.html",
-        "live/weft/c0b4c53aed76/index.html"
+        "live/weft/ab7d87790a81/index.html"
       ],
       "logo": "live/weft/logo.webp",
-      "dossier": ""
+      "dossier": "",
+      "archived": true
     },
     {
       "slug": "iris",
@@ -54,21 +56,22 @@
       "description": "A neon color-mixing puzzle: route red, green and blue beams through rotating mirrors and dye cells, blend exact hues, and light every receiver across three episodes.",
       "available": true,
       "mode": "browser",
-      "path": "live/iris/21bf21ecd578/index.html",
+      "path": "live/iris/ec935a25916c/index.html",
       "source_url": "https://github.com/AegeanWorks/Iris",
       "version": "0.2.0",
-      "commit": "21bf21ecd5781f5d771b433a8fced8038e1a8e29",
+      "commit": "ec935a25916c72b0beed921d1e6654f72053b127",
       "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/iris/LICENSE",
       "digest": "sha256:459806df4571f807803b8b43d87d64f301f509cf42a0cd4137a05554ba6fe405",
       "builds": [
+        "live/iris/ec935a25916c/index.html",
         "live/iris/21bf21ecd578/index.html",
-        "live/iris/e3249c68b6ba/index.html",
-        "live/iris/5e1a5face6b1/index.html"
+        "live/iris/e3249c68b6ba/index.html"
       ],
       "logo": "live/iris/logo.svg",
-      "dossier": ""
+      "dossier": "",
+      "archived": true
     },
     {
       "slug": "tessera",
@@ -77,21 +80,22 @@
       "description": "A seamless pattern studio: compose geometric tiles in the browser, tune every line, and export crisp editable SVG.",
       "available": true,
       "mode": "browser",
-      "path": "live/tessera/a6300798ddbc/index.html",
+      "path": "live/tessera/f42ff86ef03e/index.html",
       "source_url": "https://github.com/AegeanWorks/Tessera",
       "version": "0.7.19",
-      "commit": "a6300798ddbc6b1f63bce7a0ed0bc98fea026286",
+      "commit": "f42ff86ef03e3591b7b0d0a1c3e2907c4ab7f49f",
       "updated": "2026-11-08",
       "license": "AL-1.1",
       "license_path": "live/tessera/LICENSE",
       "digest": "sha256:789fa77b35d0f06cb6844602a79765fa70c0577382ffb6222662056d86252c7c",
       "builds": [
+        "live/tessera/f42ff86ef03e/index.html",
         "live/tessera/a6300798ddbc/index.html",
-        "live/tessera/7703f3add7fd/index.html",
-        "live/tessera/a5f2807f84d4/index.html"
+        "live/tessera/7703f3add7fd/index.html"
       ],
       "logo": "live/tessera/logo.svg",
-      "dossier": ""
+      "dossier": "",
+      "archived": true
     },
     {
       "slug": "meridian",
@@ -100,21 +104,22 @@
       "description": "A zero-dependency time zone meeting planner that runs entirely in the browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share it as a link or a calendar file.",
       "available": true,
       "mode": "browser",
-      "path": "live/meridian/52832939c7ab/index.html",
+      "path": "live/meridian/c30b93f7c6e0/index.html",
       "source_url": "https://github.com/AegeanWorks/Meridian",
       "version": "0.1.1",
-      "commit": "52832939c7abc2944ffffdb11452343b8bee7e4e",
+      "commit": "c30b93f7c6e0e6055d5beca9ecd3169b209ee8ce",
       "updated": "2026-11-08",
       "license": "AL-1.1",
       "license_path": "live/meridian/LICENSE",
       "digest": "sha256:7b31cc4f04aa780ae8fdd914f1c4da924e4a91456586c2d113a163f693a55648",
       "builds": [
+        "live/meridian/c30b93f7c6e0/index.html",
         "live/meridian/52832939c7ab/index.html",
-        "live/meridian/06d9da7f1dd3/index.html",
-        "live/meridian/9ccb6bd6a3ce/index.html"
+        "live/meridian/06d9da7f1dd3/index.html"
       ],
       "logo": "media/Meridian/logo.webp",
-      "dossier": "project.html?repo=Meridian"
+      "dossier": "project.html?repo=Meridian",
+      "archived": true
     },
     {
       "slug": "palette",
@@ -125,9 +130,9 @@
       "mode": "browser",
       "path": "editor/index.html",
       "source_url": "https://github.com/AegeanWorks/Palette",
-      "version": "0.14.0",
-      "commit": "8fc8fda1867e5c83cd47285b49a1554b85853ca6",
-      "updated": "2026-11-03",
+      "version": "0.23.1",
+      "commit": "29fecf81069221c43d626f8d7f0be2ae04b290b8",
+      "updated": "2026-11-14",
       "license": "AL-1.1",
       "license_path": "editor/LICENSE",
       "digest": "sha256:d256248f5b04979a90f7ed094e276d0bf310018b91ec7678356b67cb3d26d0fd",
@@ -157,7 +162,29 @@
         "live/afterimage/f54037486845/index.html"
       ],
       "logo": "live/afterimage/logo.svg",
-      "dossier": "project.html?repo=Afterimage"
+      "dossier": "project.html?repo=Afterimage",
+      "archived": true
+    },
+    {
+      "slug": "orrery",
+      "repo": "Orrery",
+      "title": "Orrery",
+      "description": "A precision n-body gravity studio in the browser: nine ready-made scenarios, symplectic integration with optional 1PN relativistic corrections, collisions, orbital elements and conserved-quantity telemetry. Bit-exact port of the Python engine.",
+      "available": true,
+      "mode": "browser",
+      "path": "live/orrery/7cc98acbe094/index.html",
+      "source_url": "https://github.com/AegeanWorks/Orrery",
+      "version": "1.0.0",
+      "commit": "7cc98acbe094ff21d30eff7d3e5de3ad6ceb93e6",
+      "updated": "2026-11-14",
+      "license": "ASL-1.1",
+      "license_path": "live/orrery/LICENSE",
+      "digest": "sha256:95c5ec206012d2cc32a3c8684b1c32e74d9489d8ba0a48fcac5ee60649db3e11",
+      "builds": [
+        "live/orrery/7cc98acbe094/index.html"
+      ],
+      "logo": "media/Orrery/logo.webp",
+      "dossier": "project.html?repo=Orrery"
     }
   ]
 }

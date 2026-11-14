@@ -1,0 +1,46 @@
+/*
+ * Iris theme tokens: the only file with raw colour and font values.
+ * Every other stylesheet reads these custom properties.
+ */
+:root {
+  color-scheme: dark;
+  --font-display: "Optima", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-ui: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "Consolas", "SFMono-Regular", Menlo, monospace;
+
+  --ink: #070510;
+  --ink-2: #0b0818;
+  --ink-3: #110c23;
+  --panel: #171033;
+  --panel-2: #1f1740;
+  --line: #2f2554;
+  --line-strong: #4a3b7d;
+  --text: #f1edff;
+  --muted: #b3a9d6;
+  --muted-2: #857aa8;
+
+  --iris: #7fdcff;
+  --violet: #b48cff;
+  --focus: #7fdcff;
+
+  --beam-r: #ff536b;
+  --beam-g: #45e58a;
+  --beam-b: #4f8dff;
+  --beam-y: #ffe066;
+  --beam-c: #4dffd2;
+  --beam-m: #e05cff;
+  --beam-w: #fff8f2;
+
+  --receiver: #3a2f63;
+  --receiver-charged: #fff8f2;
+
+  --shadow: 0 24px 60px rgba(2, 2, 10, 0.6);
+  --shadow-soft: 0 10px 30px rgba(2, 2, 10, 0.4);
+  --glow: 0 0 20px rgba(127, 220, 255, 0.22);
+  --tile-line: rgba(180, 166, 255, 0.14);
+  --tile-hover: rgba(255, 255, 255, 0.05);
+  --win-glow: 0 0 42px rgba(255, 248, 242, 0.18);
+  --grain-line: rgba(180, 140, 255, 0.035);
+  --backdrop: rgba(3, 2, 10, 0.78);
+  --scrim: rgba(7, 5, 16, 0.62);
+}

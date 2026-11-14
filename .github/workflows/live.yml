@@ -58,6 +58,12 @@ jobs:
           repository: AegeanWorks/Afterimage
           path: .app-src/afterimage
           fetch-depth: 1
+      - name: Check out Orrery
+        uses: actions/checkout@v7
+        with:
+          repository: AegeanWorks/Orrery
+          path: .app-src/orrery
+          fetch-depth: 1
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
@@ -70,10 +76,10 @@ jobs:
         run: python tools/sync_live_apps.py --check
       - name: Commit when an app changed
         run: |
-          if [ -n "$(git status --porcelain docs/live docs/live.json LICENSES/LicenseRef-AGL-1.1.txt)" ]; then
+          if [ -n "$(git status --porcelain docs/live docs/live.json LICENSES/LicenseRef-AGL-1.1.txt LICENSES/LicenseRef-ASL-1.1.txt)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add docs/live docs/live.json LICENSES/LicenseRef-AGL-1.1.txt
+            git add docs/live docs/live.json LICENSES/LicenseRef-AGL-1.1.txt LICENSES/LicenseRef-ASL-1.1.txt
             git commit -m "chore(live): refresh browser app builds"
             git push
           else

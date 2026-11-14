@@ -128,6 +128,19 @@ APPS = (
         "logo": "live/afterimage/logo.svg",
         "dossier": "project.html?repo=Afterimage",
     },
+    {
+        "slug": "orrery",
+        "repo": "Orrery",
+        "source": "orrery",
+        "title": "Orrery",
+        "description": "A precision n-body gravity studio in the browser: nine ready-made scenarios, symplectic integration with optional 1PN relativistic corrections, collisions, orbital elements and conserved-quantity telemetry. Bit-exact port of the Python engine.",
+        "license": "ASL-1.1",
+        "mode": "browser",
+        "runtime": ("index.html", "src", "data", "favicon.svg"),
+        "version_file": "package.json",
+        "logo": "media/Orrery/logo.webp",
+        "dossier": "project.html?repo=Orrery",
+    },
 )
 
 MANIFEST_REL = "docs/live.json"
@@ -137,6 +150,7 @@ KEEP_BUILDS = 3
 LICENSE_HEADERS = {
     "AGL-1.1": "# Aegean Game License 1.1",
     "AL-1.1": "# Aegean License 1.1",
+    "ASL-1.1": "# Aegean Science License 1.1",
 }
 
 
