@@ -1,63 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-deep-link-forward",
-    "last_phase": "verify",
+    "task_id": "aegean-frame-mirror",
+    "last_phase": "implementation",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794678878.6276639,
+    "updated_at": 1794682597.5288525,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794678878.937202
+    "completed_at": 1794682847.0908623
   },
   "checkpoints": [
-    {
-      "task_id": "aegean-orrery-handshake",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'aegean-orrery-handshake' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794669131.411269,
-      "timestamp_str": "2026-11-14 18:12:11",
-      "agent": "claude:compaction",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "aegean-shots-coherence",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Reconcile every shots.json commit pointer with the served builds",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794671402.12346,
-      "timestamp_str": "2026-11-14 18:50:02",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "all seven non-orrery live apps recorded shots from commits predating their served builds; six frozen apps are pixel-identical (zero source diffs between shot and build commits) and palette's editor had changed under its workspace shot",
-        "benefits": "the screenshot catalog is honest: every shot pointer names the build the pixels depict, and palette's workspace shot shows the served editor",
-        "risks": "contract: shots.json commit semantics = depicted build, not capture commit; dependency: none; concurrency: single active task; state: only docs/live/shots.json and one PNG change",
-        "mitigation": "git source-diff proof for the six bumps, headless capture + brightness check for palette, 178-test suite, sync --check"
-      },
-      "plan_digest": "a85d69d6398a54387acb489521964453bd104bd2a2a4b349c0e4c04ec1b36642"
-    },
-    {
-      "task_id": "aegean-shots-coherence",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794671420.9298828,
-      "timestamp_str": "2026-11-14 18:50:20",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(178), sync --check, pointer audit ALL FRESH, headless palette capture"
-    },
     {
       "task_id": "aegean-shots-coherence",
       "phase": "completed",
@@ -325,6 +279,52 @@
       "status": "completed",
       "timestamp": 1794678878.9372053,
       "timestamp_str": "2026-11-14 20:54:38",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-frame-mirror",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/4] Mirror app frame state into the play-page address bar: accept same-origin liveState postMessages from the frame, merge allowlisted deep-link keys through mirroredPlaySearch, replaceState on the wrapper URL; shell bump v44->v45",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794680662.8795702,
+      "timestamp_str": "2026-11-14 21:24:22",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "Verified live: after in-frame state changes the wrapper URL still shows a bare play.html?app=... so users copying the address bar lose the configuration",
+        "benefits": "Site-shared links carry the exact live state; forwarding and write-back compose end to end",
+        "risks": "contract: live.js gains a message listener gated on event.origin and event.source identity; dependency: mirrors reuse the site's closed DEEP_LINK_KEYS allowlist; concurrency: foreign catalog churn stashes around commits; state: sw cache version bump",
+        "mitigation": "Pure mirroredPlaySearch with failing-first mjs assertions; origin+source checks block foreign or spoofed messages; deployed playwright verification of the mirrored address bar"
+      },
+      "plan_digest": "e6be9408c580e67a6f493a802b2a5012ed210a324d742275630354f585031898"
+    },
+    {
+      "task_id": "aegean-frame-mirror",
+      "phase": "implementation",
+      "phase_num": 4,
+      "description": "[4/4] mirroredPlaySearch in live-core.js + same-origin liveState listener in live.js + shell v45 bump; 38 mjs assertions, 178 unittests, sync --check, kb --check all green",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794682597.5288525,
+      "timestamp_str": "2026-11-14 21:56:37",
+      "agent": "claude:compaction",
+      "checklists": "passed: tests\u5148\u884c failing-first mjs bump 34->38; notebook none; typecheck n/a; lint unittest+ruff suite green; metadata kb --check green"
+    },
+    {
+      "task_id": "aegean-frame-mirror",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-frame-mirror' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794682847.0908642,
+      "timestamp_str": "2026-11-14 22:00:47",
       "agent": "claude:compaction",
       "delivery": {
         "roots": [
