@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "repo": "Brain",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Brain/logo.svg",
+    "alt": "Brain logo"
+  }
+}

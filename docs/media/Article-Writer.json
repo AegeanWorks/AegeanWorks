@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "repo": "Article-Writer",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Article-Writer/logo.svg",
+    "alt": "Article-Writer logo"
+  }
+}

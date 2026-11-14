@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-07",
+  "generated_at": "2026-11-14",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -212,7 +212,7 @@
     {
       "id": 1432398612,
       "name": "Crypt-Crawler",
-      "description": "A tactical turn-based dungeon crawler for the browser: procedural levels, inventory, combat and headless browser inspection. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "Tactical turn-based web dungeon crawler with procedural levels, Normal/Hard difficulty, class passives, status combos, per-floor omens, a turn-cost trap search and disarm, mimic chests, a two-way merchant, seed replay, five-slot equipment, side-by-side loot comparison, filterable inventory, a persistent lore codex, branching soul encounters...",
       "topics": [
         "aegean-game-license",
         "aegeanworks",
@@ -237,7 +237,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T16:50:02Z",
+      "pushed_at": "2026-11-08T13:42:52Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -443,7 +443,7 @@
     {
       "id": 1427158446,
       "name": "MemoryReconstruction",
-      "description": "A top-down action roguelike about rebuilding a shattered world from lost memories: expeditions from the Sanctuary through sixteen procedurally generated sections, built with TypeScript and PixiJS. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "A top-down action roguelike about rebuilding a shattered world from lost memories.",
       "topics": [
         "action-game",
         "action-roguelike",
@@ -468,7 +468,7 @@
       ],
       "language": "TypeScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-01T22:14:08Z",
+      "pushed_at": "2026-11-08T19:39:38Z",
       "homepage": "",
       "archived": false,
       "default_branch": "main"
@@ -476,7 +476,7 @@
     {
       "id": 1440109479,
       "name": "Meridian",
-      "description": "A zero-dependency time zone meeting planner that runs entirely in the browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share it as a link or a calendar file.",
+      "description": "[ARCHIVED] A zero-dependency time zone meeting planner that runs entirely in the browser: add people and cities, compare every local hour side by side, find the overlap that works for everyone, then share it as a link or a calendar file.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -497,9 +497,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:35Z",
+      "pushed_at": "2026-11-08T20:33:25Z",
       "homepage": "https://aegeanworks.github.io/Meridian/",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -901,7 +901,7 @@
     {
       "id": 1432482472,
       "name": "Photo-Harbor",
-      "description": "A self-hosted photo server for Windows: an iPhone sends new photos over home Wi-Fi through Apple Shortcuts, with no app to install, verified-hash cleanup and a gallery. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "Self-hosted photo server for Windows: an iPhone sends new photos over home Wi-Fi through Apple Shortcuts, no app needed, and an optional native Android app does the same, with a verified-hash cleanup and a gallery.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -926,7 +926,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-10-30T17:25:50Z",
+      "pushed_at": "2026-11-08T15:36:35Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -967,7 +967,7 @@
     {
       "id": 1424769731,
       "name": "Primordia",
-      "description": "A zero-dependency evolution sandbox: seed a biosphere, run its clock, and watch genomes vary, compete and speciate. Every run replays exactly from its seed, and a fossil record keeps its history. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Primordia is a zero-dependency evolution sandbox: seed a biosphere, run its clock, and watch genomes vary, compete and speciate. A run replays exactly from its seed, and a fossil record keeps the story of what happened.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -992,9 +992,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:14:53Z",
+      "pushed_at": "2026-11-08T15:45:23Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1239,7 +1239,7 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:32:17Z",
+      "pushed_at": "2026-11-08T19:38:53Z",
       "homepage": "",
       "archived": true,
       "default_branch": "master"
@@ -1369,7 +1369,7 @@
     {
       "id": 1440764591,
       "name": "ModelDuck",
-      "description": "A local GGUF chat studio: load a model, talk to it, and serve an OpenAI-compatible API. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry. Chats, prompts and settings stay on your computer; the only network requests are model downloads you start (the inference runtime is never downloaded or built on demand).",
+      "description": "A local GGUF model server and coding-model tuner: load a model, serve an OpenAI-compatible API, tune it for code. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry.",
       "topics": [
         "aegean-license",
         "ai",
@@ -1387,8 +1387,8 @@
         "source-available"
       ],
       "language": "JavaScript",
-      "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T18:06:46Z",
+      "license": "MIT",
+      "pushed_at": "2026-11-13T04:26:43Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1437,7 +1437,7 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T18:01:09Z",
+      "pushed_at": "2026-11-08T15:58:46Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=tessera",
       "archived": false,
       "default_branch": "master"
@@ -1477,19 +1477,24 @@
         "aikit-integrated",
         "chat",
         "chat-ui",
+        "chatgpt-ui",
         "commercial-license",
         "javascript",
         "llm",
         "local-first",
         "local-llm",
+        "modelduck",
+        "offline-first",
         "openai-compatible",
+        "privacy-preserving",
         "source-available",
+        "vanilla-javascript",
         "web-app",
         "zero-dependency"
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-02T15:08:52Z",
+      "pushed_at": "2026-11-14T09:35:28Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1518,7 +1523,7 @@
     {
       "id": 1441617835,
       "name": "Keystone",
-      "description": "A small, game-agnostic 3D engine core in Python: OpenGL 3.3 rendering, textured materials, scene graph, meshes and OBJ loading, fixed-step loop, action input, collision primitives, deterministic replay, atomic serialization, and a human HUD/help overlay rendered with an embedded bitmap font.",
+      "description": "A small, game-agnostic 3D engine core in Python: OpenGL 3.3 PBR rendering, scene graph, meshes/OBJ, fixed-step loop, rebindable input, animation, particles, audio, collision, replay, atomic saves, batch planning/merging, and a HUD/profiler overlay with an embedded bitmap font.",
       "topics": [
         "3d-engine",
         "aegean-license",
@@ -1532,7 +1537,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T13:03:34Z",
+      "pushed_at": "2026-11-08T11:38:37Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1545,12 +1550,20 @@
         "aegean-license",
         "aikit",
         "aikit-integrated",
+        "avx2",
         "commercial-license",
-        "source-available"
+        "cpp",
+        "gguf",
+        "inference-engine",
+        "llm",
+        "machine-learning",
+        "source-available",
+        "systems-programming",
+        "token-generation"
       ],
       "language": "C++",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T17:44:40Z",
+      "pushed_at": "2026-11-08T19:35:17Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

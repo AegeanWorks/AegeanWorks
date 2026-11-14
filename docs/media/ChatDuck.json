@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:495a7b7d7a75be91dbcde18d624410de8e7032d066acdf96d7808deb57834b12",
-    "commit": "3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a/assets/logo.svg"
+    "commit": "d91dfd527336be96234ffb6b6f569d7358dad0e0",
+    "taken_at": "2026-11-14",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/d91dfd527336be96234ffb6b6f569d7358dad0e0/assets/logo.svg"
   },
   "preview": {
     "src": "media/ChatDuck/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:27d0ab843334b2bee7dfa15328a0efb7d29c1f50aae2d3f6756e42354810730f",
-    "commit": "3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a/assets/social-preview.svg"
+    "commit": "d91dfd527336be96234ffb6b6f569d7358dad0e0",
+    "taken_at": "2026-11-14",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/d91dfd527336be96234ffb6b6f569d7358dad0e0/assets/social-preview.svg"
   },
   "screenshots": [
     {
@@ -45,11 +45,11 @@
       "digest": "sha256:8ccacf3fc9093328daf1604b47159931d6e8c58426e8b0a14b465066bb30178c"
     },
     {
-      "src": "media/ChatDuck/2026-11-08-chat.webp",
+      "src": "media/ChatDuck/2026-11-14-chat.webp",
       "alt": "ChatDuck screenshot",
       "caption": "ChatDuck — 2026 11 03 Chat",
-      "commit": "3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a",
-      "taken_at": "2026-11-08",
+      "commit": "7ff543c927611c5dcc8a8a5a61a208d9b6ba2cfd",
+      "taken_at": "2026-11-14",
       "viewport": "",
       "width": 1440,
       "height": 900,
@@ -57,11 +57,11 @@
       "source": "ChatDuck:assets/screenshots/2026-11-03-chat.png"
     },
     {
-      "src": "media/ChatDuck/2026-11-08-settings.webp",
+      "src": "media/ChatDuck/2026-11-14-settings.webp",
       "alt": "ChatDuck screenshot",
       "caption": "ChatDuck — 2026 11 03 Settings",
-      "commit": "3e2a2d615b5c5739ffd36aa9a8b5ab0a3d41380a",
-      "taken_at": "2026-11-08",
+      "commit": "7ff543c927611c5dcc8a8a5a61a208d9b6ba2cfd",
+      "taken_at": "2026-11-14",
       "viewport": "",
       "width": 1440,
       "height": 900,
