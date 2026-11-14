@@ -940,10 +940,63 @@ function bootStudio(document_) {
     const cLabel = scenario.c !== null ? String(scenario.c) : el["slider-c"].value;
     el["label-c"].textContent = "c=" + cLabel;
 
+    // The sealed build has no /api/config, so ?key=value query overrides
+    // (rate, reverse, c, ke, dt, collision) re-apply on every load, matching
+    // web.py's applyWebOptions before the world is rebuilt from the controls.
+    applyUrlOptions();
+
     rebuildWorld(scenario, false);
     updateTrackingSelect();
     el["select-tracking"].value = "-1";
     el["select-collision"].value = state.collisionMode;
+  }
+
+  function applyUrlOptions() {
+    if (typeof URLSearchParams !== "function" || !globalThis.location
+        || typeof globalThis.location.search !== "string") {
+      return;
+    }
+    const op = new URLSearchParams(globalThis.location.search);
+    const optionNumber = (key) => {
+      const raw = op.get(key);
+      return raw === null ? null : Number(raw);
+    };
+    const dt = optionNumber("dt");
+    if (dt !== null && Number.isFinite(dt) && dt > 0.0) {
+      state.dt = dt;
+      setSliderValue(el["slider-dt"], dt);
+      el["label-dt"].textContent = String(dt);
+    }
+    const rate = optionNumber("rate");
+    if (rate !== null && Number.isFinite(rate) && rate > 0.0) {
+      state.timeWarp = Math.min(50.0, rate);
+      el["warp-label"].textContent = state.timeWarp + "x";
+    }
+    if (op.get("reverse")) {
+      state.timeDirection = -1.0;
+      el["btn-reverse"].textContent = "REVERSE";
+      el["btn-reverse"].className = "badge badge-reverse";
+    }
+    if (op.get("relativity") === "0") {
+      el["check-relativity"].checked = false;
+      el["label-c"].textContent = "c=" + el["slider-c"].value;
+    }
+    const cLight = optionNumber("c");
+    if (cLight !== null && Number.isFinite(cLight) && cLight > 0.0) {
+      setSliderValue(el["slider-c"], cLight);
+      el["check-relativity"].checked = true;
+      el["label-c"].textContent = "c=" + cLight;
+    }
+    const kCoulomb = optionNumber("ke");
+    if (kCoulomb !== null && Number.isFinite(kCoulomb) && kCoulomb >= 0.0) {
+      setSliderValue(el["slider-ke"], kCoulomb);
+      el["check-coulomb"].checked = true;
+      el["label-ke"].textContent = "ke=" + kCoulomb;
+    }
+    const collision = op.get("collision");
+    if (collision === "off" || collision === "bounce" || collision === "merge") {
+      state.collisionMode = collision;
+    }
   }
 
   function updateTrackingSelect() {
@@ -1084,6 +1137,20 @@ function bootStudio(document_) {
   });
   if (typeof globalThis.addEventListener === "function") {
     globalThis.addEventListener("resize", resizeCanvases);
+    // Keyboard: Space toggles play/pause, R resets the world. Ignored while a
+    // form control holds focus so sliders and selectors keep their keys.
+    globalThis.addEventListener("keydown", (event_) => {
+      const name = (event_.target && event_.target.tagName || "").toLowerCase();
+      if (event_.repeat || name === "input" || name === "select" || name === "textarea") {
+        return;
+      }
+      if (event_.code === "Space") {
+        event_.preventDefault();
+        el["btn-play"].click();
+      } else if (event_.code === "KeyR") {
+        el["btn-reset"].click();
+      }
+    });
   }
 
   function resizeCanvases() {
@@ -1093,6 +1160,19 @@ function bootStudio(document_) {
     energyCanvas.height = energyCanvas.clientHeight * (globalThis.devicePixelRatio || 1);
   }
   resizeCanvases();
+
+  // Collapsing the HUD panel changes the canvas layout box without a window
+  // resize, so the backings must re-fit from a layout observer. Without one,
+  // the HUD toggle click re-fits on the next frame instead.
+  if (typeof globalThis.ResizeObserver === "function") {
+    const layoutObserver = new globalThis.ResizeObserver(resizeCanvases);
+    layoutObserver.observe(canvas);
+    layoutObserver.observe(energyCanvas);
+  } else {
+    el["btn-toggle-hud"].addEventListener("click", () => {
+      globalThis.setTimeout(resizeCanvases, 0);
+    });
+  }
 
   // Custom scenario upload: validated in-process by the same rules the server
   // loader applies (mirrors orrery/custom.py), so the sealed build needs no
@@ -1280,6 +1360,12 @@ function bootStudio(document_) {
 
     // Update HUD metrics every 4 frames
     frameCount++;
+    if (frameCount === 1) {
+      // Live-page boot handshake: the first painted animation frame proves
+      // the studio actually started (the AegeanWorks watchdog reads
+      // body[data-screen] instead of guessing from the title).
+      document_.body.dataset.screen = "studio";
+    }
     if (frameCount % 4 === 0) {
       const world = state.world;
       el["time-readout"].textContent =

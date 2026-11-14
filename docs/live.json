@@ -166,18 +166,18 @@
       "description": "A precision n-body gravity studio in the browser: nine ready-made scenarios, symplectic integration with optional 1PN relativistic corrections, collisions, orbital elements and conserved-quantity telemetry. Bit-exact port of the Python engine.",
       "available": true,
       "mode": "browser",
-      "path": "live/orrery/0c2134473c57/index.html",
+      "path": "live/orrery/75bcc0fbab57/index.html",
       "source_url": "https://github.com/AegeanWorks/Orrery",
       "version": "1.0.0",
-      "commit": "0c2134473c57c4a852aef7bf935e9117fe133fbd",
+      "commit": "75bcc0fbab5724e5adb43c87bc50212fcaa47fb2",
       "updated": "2026-11-14",
       "license": "ASL-1.1",
       "license_path": "live/orrery/LICENSE",
-      "digest": "sha256:c707577842a6b2e31a10f8a89275eb9fe3ee97f5eba0571d71b3f257e07dcf3c",
+      "digest": "sha256:7c15cc75658c129615805740e77c8cc51872ba40294e561190213f09ce81f24a",
       "builds": [
+        "live/orrery/75bcc0fbab57/index.html",
         "live/orrery/0c2134473c57/index.html",
-        "live/orrery/e7b270156b00/index.html",
-        "live/orrery/81c1d41e418e/index.html"
+        "live/orrery/e7b270156b00/index.html"
       ],
       "logo": "media/Orrery/logo.webp",
       "dossier": "project.html?repo=Orrery",
