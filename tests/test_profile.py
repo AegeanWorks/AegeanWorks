@@ -557,7 +557,7 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertRegex(orrery["version"], r"^\d+\.\d+\.\d+")
         self.assertTrue((ROOT / "docs" / orrery["logo"]).is_file())
         orrery_dir = (ROOT / "docs" / orrery["path"]).parent
-        for asset in ("src/orrery.js", "src/styles.css", "data/scenarios.js", "favicon.svg"):
+        for asset in ("src/orrery.js", "data/scenarios.js", "favicon.svg"):
             with self.subTest(asset=asset):
                 self.assertTrue((orrery_dir / asset).is_file())
         orrery_index = (orrery_dir / "index.html").read_text(encoding="utf-8")

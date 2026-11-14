@@ -79,9 +79,9 @@
     "alt": "NeuroCore logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:e1983441b8f4ce83743c8052536764aa2451fa41038507e45222238412ad5c4c",
+    "digest": "sha256:59f3e67be10bf2e2d6f4ca45555d1f57a226faf9ee2b0615a45228bbd9b48315",
     "commit": "65ef1b10320a175a4de98cb7f2c718d6b4d0719e",
-    "taken_at": "2026-11-08",
+    "taken_at": "2026-11-14",
     "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroCore/65ef1b10320a175a4de98cb7f2c718d6b4d0719e/assets/logo.jpg"
   },
   "preview": {

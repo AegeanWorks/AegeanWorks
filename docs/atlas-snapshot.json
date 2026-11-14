@@ -344,7 +344,7 @@
     {
       "id": 1431982682,
       "name": "Gauge",
-      "description": "A zero-dependency terminal ruler for numeric series: read numbers from arguments, a file or a pipe and draw a sparkline, signed bars, a histogram, a box plot or a statistics block. stats --json feeds other tools. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A zero-dependency terminal ruler for numeric series. gauge reads numbers from arguments, a file or a pipe and draws a sparkline, signed bars, a histogram, a box plot or a compact statistics block. stats --json is the machine surface for another tool.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -369,9 +369,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:13:50Z",
+      "pushed_at": "2026-11-14T11:08:15Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -670,7 +670,7 @@
     {
       "id": 1161451399,
       "name": "NeuroCore",
-      "description": "A self-hosted, modular AI agent framework for persistent, tool-using autonomous systems: workflows, long-term memory, RAG and a plugin architecture in one platform. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "A complete, self-hosted AI agent framework. Visual flow editor · Persistent memory · RAG · Tools · Multi-platform messaging · Community marketplace.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -695,7 +695,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T18:00:37Z",
+      "pushed_at": "2026-11-14T11:20:39Z",
       "homepage": "",
       "archived": false,
       "default_branch": "main"
@@ -860,7 +860,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T10:25:19Z",
+      "pushed_at": "2026-11-14T11:25:13Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

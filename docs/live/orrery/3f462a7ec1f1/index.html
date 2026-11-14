@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Orrery live — an N-body gravitational sandbox in your browser: nine curated worlds, a symplectic integrator, optional 1PN relativity, Coulomb forces, collisions, trails and live energy diagnostics. Bit-exact port of the Python engine.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>ORRERY - Celestial N-Body Laboratory</title>
+<style>
+
+:root {
+  --bg-dark: #0a0c16;
+  --bg-card: #131728;
+  --bg-panel: rgba(19, 23, 40, 0.88);
+  --border: #232942;
+  --accent-cyan: #00e5ff;
+  --accent-gold: #ffd700;
+  --accent-magenta: #e040fb;
+  --accent-red: #ff3366;
+  --accent-green: #00e676;
+  --text-main: #f0f4fc;
+  --text-muted: #8b9bb4;
+  --font-mono: 'SF Mono', Consolas, 'Courier New', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+}
+.brand span { font-size: 1.3rem; }
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+select, button, input {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+select:hover, button:hover, input:hover {
+  border-color: var(--accent-cyan);
+}
+button.active, button.primary {
+  background: var(--accent-cyan);
+  color: #000;
+  font-weight: 600;
+  border-color: var(--accent-cyan);
+}
+button.danger {
+  background: var(--accent-red);
+  color: #fff;
+  border-color: var(--accent-red);
+}
+main {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+#canvas-container {
+  flex: 1;
+  position: relative;
+  background: radial-gradient(circle at center, #11152a 0%, #060810 100%);
+  cursor: grab;
+}
+#canvas-container:active { cursor: grabbing; }
+canvas { width: 100%; height: 100%; display: block; }
+
+/* Side Drawer HUD */
+#hud-panel {
+  width: 380px;
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 5;
+}
+#hud-panel.collapsed {
+  transform: translateX(100%);
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+.panel-section {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.metric-box {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+}
+.metric-label { font-size: 0.7rem; color: var(--text-muted); }
+.metric-val { font-size: 0.95rem; font-weight: 600; margin-top: 2px; }
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+.control-row input[type="range"] {
+  flex: 1;
+  margin: 0 10px;
+  accent-color: var(--accent-cyan);
+}
+.sparkline-canvas {
+  width: 100%;
+  height: 50px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+/* Floating Bottom Time Controls */
+#time-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-panel);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  z-index: 8;
+}
+.btn-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 1rem;
+}
+.time-display {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0 8px;
+  min-width: 120px;
+  text-align: center;
+}
+.badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+.badge-reverse { background: var(--accent-magenta); color: #fff; }
+.badge-forward { background: var(--accent-cyan); color: #000; }
+table.bodies-table {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+table.bodies-table th, table.bodies-table td {
+  padding: 4px 6px;
+  text-align: right;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+table.bodies-table th:first-child, table.bodies-table td:first-child { text-align: left; }
+</style>
+</head>
+<body>
+
+
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span>🪐</span> ORRERY
+  </div>
+  <div class="header-controls">
+    <label for="scenario-select" style="font-size:0.8rem; color:var(--text-muted)">WORLD:</label>
+    <select id="scenario-select"></select>
+    <button id="btn-toggle-hud" title="Toggle Telemetry Sidebar">📊 HUD</button>
+    <button id="btn-upload" title="Load custom scenario JSON">📂 Upload</button>
+    <input type="file" id="file-input" accept=".json" style="display:none">
+  </div>
+</header>
+
+<main>
+  <div id="canvas-container">
+    <canvas id="orrery-canvas"></canvas>
+
+    <div id="time-bar">
+      <button class="btn-circle primary" id="btn-play" title="Play / Pause (Space)">⏸</button>
+      <button class="btn-circle" id="btn-step-back" title="Step Back (-dt)">⮌</button>
+      <button class="btn-circle" id="btn-step-fwd" title="Step Forward (+dt)">⮎</button>
+      <button id="btn-reverse" class="badge badge-forward" title="Toggle Time Direction">FORWARD</button>
+      <div class="time-display" id="time-readout">t = 0.00</div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="font-size:0.75rem; color:var(--text-muted)">WARP:</span>
+        <button id="btn-warp-down" style="padding:2px 6px;">0.5x</button>
+        <span id="warp-label" style="font-family:var(--font-mono); font-size:0.8rem; min-width:40px; text-align:center;">1.0x</span>
+        <button id="btn-warp-up" style="padding:2px 6px;">2.0x</button>
+      </div>
+      <button class="btn-circle" id="btn-reset" title="Reset World (R)">↺</button>
+    </div>
+  </div>
+
+  <div id="hud-panel">
+    <div class="panel-section">
+      <div class="panel-title">
+        <span>WORLD DESCRIPTION</span>
+        <span id="units-badge" class="badge" style="background:#222; color:#aaa"></span>
+      </div>
+      <div id="scenario-desc" style="font-size:0.82rem; line-height:1.4; color:var(--text-muted)"></div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">LIVE ENERGY & CONSERVATION</div>
+      <div class="grid-2">
+        <div class="metric-box">
+          <div class="metric-label">ENERGY DRIFT (ΔE/E)</div>
+          <div class="metric-val" id="val-drift">+0.00e+00</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">VIRIAL (2K + U)</div>
+          <div class="metric-val" id="val-virial">+0.00e+00</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">KINETIC (K)</div>
+          <div class="metric-val" id="val-ke">0.00</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">POTENTIAL (U)</div>
+          <div class="metric-val" id="val-pe">0.00</div>
+        </div>
+      </div>
+      <canvas id="energy-chart" class="sparkline-canvas"></canvas>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">TIME & PHYSICS SETTINGS</div>
+      <div class="control-row">
+        <span>Time Step (dt):</span>
+        <input type="range" id="slider-dt" min="0.0001" max="1.0" step="0.0005" value="0.01">
+        <span id="label-dt" style="font-family:var(--font-mono); width:50px; text-align:right">0.01</span>
+      </div>
+      <div class="control-row">
+        <span>1PN Relativity:</span>
+        <input type="checkbox" id="check-relativity">
+        <input type="range" id="slider-c" min="5" max="100" step="1" value="30">
+        <span id="label-c" style="font-family:var(--font-mono); width:40px; text-align:right">c=30</span>
+      </div>
+      <div class="control-row">
+        <span>Coulomb Force:</span>
+        <input type="checkbox" id="check-coulomb">
+        <input type="range" id="slider-ke" min="0" max="5" step="0.01" value="0.1">
+        <span id="label-ke" style="font-family:var(--font-mono); width:40px; text-align:right">ke=0.1</span>
+      </div>
+      <div class="control-row">
+        <span>Collision Mode:</span>
+        <select id="select-collision" style="padding:3px 6px;">
+          <option value="off">Off (Ghost)</option>
+          <option value="bounce" selected>Elastic Bounce</option>
+          <option value="merge">Inelastic Merge</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-title">VISUAL TUNING</div>
+      <div class="control-row">
+        <span>Trail Length:</span>
+        <input type="range" id="slider-trail" min="50" max="4000" step="50" value="800">
+        <span id="label-trail" style="font-family:var(--font-mono)">800</span>
+      </div>
+      <div class="control-row">
+        <span>Dot Style:</span>
+        <select id="select-dot-style" style="padding:3px 6px;">
+          <option value="circle">Circle (○)</option>
+          <option value="bullet">Bullet (•)</option>
+          <option value="ring">Ring (◦)</option>
+          <option value="disc">Disc (●)</option>
+          <option value="line" selected>Glowing Path</option>
+        </select>
+      </div>
+      <div class="control-row">
+        <span>Camera Lock:</span>
+        <select id="select-tracking" style="padding:3px 6px; max-width:180px;">
+          <option value="-1">Barycentre (Free)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel-section" style="flex:1;">
+      <div class="panel-title">CELESTIAL BODIES</div>
+      <table class="bodies-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mass</th>
+            <th>Speed</th>
+            <th>Dist</th>
+          </tr>
+        </thead>
+        <tbody id="bodies-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<script src="data/scenarios.js"></script>
+<script src="src/orrery.js"></script>
+</body>
+</html>

@@ -642,3 +642,11 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: The sync resolves a live source from `projects/<name>` first and `projects/archive/<name>` second, marks such an entry `archived: true`, and keeps the last published manifest entry when an archived source is gone. A missing source that is not archived still fails exactly as ADR-057 requires. `appStatus` renders an archived app as `Archived · runs in browser`, and the homepage meta adds `· archived`, so the card stays openable without pretending the project is active. The shell moves to v43 so cached clients receive the new status and meta code.
 - **Consequences**: Archiving a live project no longer breaks the local refresh or removes its card; the last commit-verified build remains playable until an owner explicitly removes the entry. The optional-source mechanism from ADR-056 stays for unpublished apps, and the loud failure for an unexpected missing checkout is preserved.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (the manifest keeps its recorded build), PRINCIPLE-006 (the catalog survives the archive move), PRINCIPLE-011 (the card still opens) and PRINCIPLE-014 (retention and refusal are pinned by tests).
+
+### ADR-084: The sealed Orrery build inlines its stylesheet
+- **Date**: 2026-11-14
+- **Status**: Accepted
+- **Context**: The full local studio was ported into the sealed static build; `index.html` now embeds the stylesheets verbatim from the python studio, so `src/styles.css` was deleted from the app. The live-wiring test still asserted the old build layout's asset list.
+- **Decision**: drop `src/styles.css` from the asserted asset tuple in `test_live_apps_are_wired_and_current`; the remaining assets (`src/orrery.js`, `data/scenarios.js`, `favicon.svg`) and every `src=`/`href=` reference in `index.html` are still resolved and required, so nothing is covered less.
+- **Consequences**: the asset list tracks the actual sealed layout; a future build that reverts to an external stylesheet should re-add the path.
+- Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (the test must match reality) and PRINCIPLE-014 (the reference-resolution loop still guards a self-contained build).
