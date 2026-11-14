@@ -54,10 +54,10 @@
     "alt": "Orrery logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:58c7d892f6ba7055d5ad3fc87be6bb2ac23a73e7b922828ab2692765d1a7c316",
-    "commit": "6298276e9f2a9dd9f1f91314549176c52e6676ce",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/6298276e9f2a9dd9f1f91314549176c52e6676ce/assets/logo.jpg"
+    "digest": "sha256:010c14c5522ebdd9c76ff9f4a560bbb0dd9d79b487e64e1b2661b79f97709d9f",
+    "commit": "f13a7188e5ebe1ee9bd19f3282ca259303480803",
+    "taken_at": "2026-11-14",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/f13a7188e5ebe1ee9bd19f3282ca259303480803/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Orrery/social-preview.webp",
@@ -65,8 +65,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:e91b352e65a880d8eeda0acf463ccb4010d6f101b118150b7ef93e524a04c9f0",
-    "commit": "6298276e9f2a9dd9f1f91314549176c52e6676ce",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/6298276e9f2a9dd9f1f91314549176c52e6676ce/assets/social-preview.png"
+    "commit": "f13a7188e5ebe1ee9bd19f3282ca259303480803",
+    "taken_at": "2026-11-14",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Orrery/f13a7188e5ebe1ee9bd19f3282ca259303480803/assets/social-preview.png"
   }
 }
