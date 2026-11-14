@@ -5,6 +5,7 @@ import {
   appStatus,
   appsFromManifest,
   findApp,
+  frameLooksStarted,
   versionLabel,
 } from "../../docs/live-core.js";
 
@@ -78,3 +79,45 @@ equal(
 equal(appFrameUrl({}), "", "missing frame path is empty");
 
 console.log(`ok ${assertions} live-page assertions`);
+
+function fakeDoc(overrides) {
+  return Object.assign(
+    {
+      title: "",
+      body: { dataset: {} },
+      querySelector: function () {
+        return null;
+      },
+    },
+    overrides,
+  );
+}
+
+equal(
+  frameLooksStarted(
+    fakeDoc({ title: "ORRERY - Celestial N-Body Laboratory" }),
+    { title: "Orrery" },
+  ),
+  true,
+  "stylized uppercase page title matches the catalog title",
+);
+equal(
+  frameLooksStarted(fakeDoc({ body: { dataset: { screen: "menu" } } }), { title: "Orrery" }),
+  true,
+  "data-screen body attribute marks the app as started",
+);
+equal(
+  frameLooksStarted(
+    fakeDoc({ querySelector: function () { return {}; } }),
+    { title: "Orrery" },
+  )
+  , true
+  , "known structural selectors mark the app as started");
+equal(frameLooksStarted(fakeDoc(), { title: "Orrery" }), false, "blank shell is not started");
+equal(frameLooksStarted(null, { title: "Orrery" }), false, "unreadable document is not started");
+equal(
+  frameLooksStarted(fakeDoc({ title: "Error" }), { title: "Orrery" }),
+  false,
+  "unrelated page title is not started",
+);
+equal(frameLooksStarted(fakeDoc({ title: "anything" }), { title: "" }), false, "no catalog title means no title heuristic");

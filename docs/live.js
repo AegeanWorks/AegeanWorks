@@ -3,6 +3,7 @@ import {
   appFrameUrl,
   appStatus,
   appsFromManifest,
+  frameLooksStarted,
   versionLabel,
 } from "./live-core.js";
 
@@ -162,15 +163,7 @@ function showFrameError(app, message, url) {
 
 function frameLooksLoaded(app) {
   try {
-    const doc = frame.contentDocument;
-    if (!doc || !doc.body) return false;
-    if (
-      doc.body.dataset.screen ||
-      doc.querySelector("#board, .loom, .wordmark, .board, .game-shell, #app, .app-shell")
-    ) {
-      return true;
-    }
-    return String(doc.title || "").includes(app.title);
+    return frameLooksStarted(frame.contentDocument, app);
   } catch (error) {
     return false;
   }

@@ -47,6 +47,25 @@ export function appStatus(app) {
 }
 
 /**
+ * Heuristic check that an embedded app's document actually rendered.
+ * Case-insensitive on the title so stylized wordmarks (ORRERY) match the
+ * catalog title (Orrery); structural markers stay as fallbacks.
+ */
+export function frameLooksStarted(doc, app) {
+  if (!doc || !doc.body) return false;
+  if (doc.body.dataset && doc.body.dataset.screen) return true;
+  if (
+    typeof doc.querySelector === "function" &&
+    doc.querySelector("#board, .loom, .wordmark, .board, .game-shell, #app, .app-shell")
+  ) {
+    return true;
+  }
+  const wanted = String((app && app.title) || "").trim().toLowerCase();
+  if (!wanted) return false;
+  return String(doc.title || "").toLowerCase().includes(wanted);
+}
+
+/**
  * Build a cache-busted iframe URL. The commit keeps normal loads versioned;
  * an optional nonce forces a retry past a cached 404.
  */
