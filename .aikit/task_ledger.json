@@ -1,69 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "archive-chatduck-1114",
-    "last_phase": "phase 4",
+    "task_id": "aegean-orrery-archive",
+    "last_phase": "verify",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794672351.3628557,
-    "owner": "vibe:catalogue-finish",
-    "started_by": "vibe:catalogue-finish",
+    "updated_at": 1794672946.8101752,
+    "owner": "claude:compaction",
+    "started_by": "claude:compaction",
     "continuations": [],
-    "workspaces": [
-      {
-        "name": "AegeanWorks",
-        "path": "projects/AegeanWorks"
-      }
-    ],
-    "completed_at": 1794672380.8559859
+    "completed_at": 1794672982.657364
   },
   "checkpoints": [
-    {
-      "task_id": "csp-hash-integrity-1115",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'csp-hash-integrity-1115' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794657770.8264077,
-      "timestamp_str": "2026-11-14 15:02:50",
-      "agent": "vibe:catalogue-finish",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "aegean-orrery-links",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Serve the deep-link build and retake the homepage shots",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794658619.9999995,
-      "timestamp_str": "2026-11-14 15:16:59",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "the orrery studio gained URL deep links and keyboard keys, so the live catalog must serve that build; 178 tests now include the keyboard web gate",
-        "benefits": "site visitors can deep-link any configuration and use Space/R keys in the live studio",
-        "risks": "contract: digest via the sync tool method; dependency: build byte-identical to e7b270156b00; concurrency: catalog churn from archived apps rejected; state: shots commit pointer",
-        "mitigation": "sync_live_apps --check, 178-test suite, kb refresh"
-      },
-      "plan_digest": "c959ea07297d88c3b087829b9eab6e5464c842b2e924af1be78a4322350b76d8"
-    },
-    {
-      "task_id": "aegean-orrery-links",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794658826.6456335,
-      "timestamp_str": "2026-11-14 15:20:26",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(178), sync check, kb, secret scan"
-    },
     {
       "task_id": "aegean-orrery-links",
       "phase": "completed",
@@ -332,6 +280,52 @@
       "timestamp": 1794672380.8559873,
       "timestamp_str": "2026-11-14 19:06:20",
       "agent": "vibe:catalogue-finish",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-orrery-archive",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/2] Flag orrery archived:true in live catalog after aikit archive moved source to projects/archive/orrery",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794672723.6620693,
+      "timestamp_str": "2026-11-14 19:12:03",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "Orrery retired at owner request; ADR-083 requires the live card to survive the archive move, marked archived",
+        "benefits": "Catalog stays truthful; card stays playable with Archived status; sync freshness check stays green",
+        "risks": "contract: live.json gains a new archived key, only for orrery; dependency: assessments/test fixtures may assert absence of unknown keys; concurrency: kit root shared, other agents may touch catalogs; state: deployed build pointer deliberately unchanged at 75bcc0fbab57",
+        "mitigation": "Flag spliced minimally in manifest format; full test battery plus sync --check before commit"
+      },
+      "plan_digest": "5dde486375a351480e0283faaf8fd31e3fd9e085c3107760e8109c3900fc5e24"
+    },
+    {
+      "task_id": "aegean-orrery-archive",
+      "phase": "verify",
+      "phase_num": 4,
+      "description": "[2/2] Archived flag spliced; 178 tests + 31 live assertions + sync --check + kb green",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794672946.8101752,
+      "timestamp_str": "2026-11-14 19:15:46",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest 178, live tests 31, sync_live_apps --check, kb update --check"
+    },
+    {
+      "task_id": "aegean-orrery-archive",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-orrery-archive' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794672982.657366,
+      "timestamp_str": "2026-11-14 19:16:22",
+      "agent": "claude:compaction",
       "delivery": {
         "roots": [
           "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
