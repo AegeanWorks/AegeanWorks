@@ -7,9 +7,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:99a01d804f9bc42be175e770d81d4c9cb7c88eda168f0298ca3dcc1b541e061e",
-    "commit": "d1ef0fc0748f297f0eedb05cbcfede7911ecae67",
+    "commit": "2486a58e8127e6e040857f79ece38ee0663c09d5",
     "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/AegeanWorks/d1ef0fc0748f297f0eedb05cbcfede7911ecae67/assets/logo.jpg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/AegeanWorks/2486a58e8127e6e040857f79ece38ee0663c09d5/assets/logo.jpg"
   },
   "preview": {
     "src": "media/AegeanWorks/social-preview.webp",
@@ -17,9 +17,9 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:e4d72662d7288a1c980facba7891865f35b07dd13c6da29d2b2f8a858c961746",
-    "commit": "d1ef0fc0748f297f0eedb05cbcfede7911ecae67",
+    "commit": "2486a58e8127e6e040857f79ece38ee0663c09d5",
     "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/AegeanWorks/d1ef0fc0748f297f0eedb05cbcfede7911ecae67/assets/social-preview.png"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/AegeanWorks/2486a58e8127e6e040857f79ece38ee0663c09d5/assets/social-preview.png"
   },
   "screenshots": [
     {
