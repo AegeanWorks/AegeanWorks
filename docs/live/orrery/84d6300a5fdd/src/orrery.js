@@ -949,6 +949,7 @@ function bootStudio(document_) {
     updateTrackingSelect();
     el["select-tracking"].value = "-1";
     el["select-collision"].value = state.collisionMode;
+    syncUrlFromState();
   }
 
   function applyUrlOptions() {
@@ -997,6 +998,40 @@ function bootStudio(document_) {
     if (collision === "off" || collision === "bounce" || collision === "merge") {
       state.collisionMode = collision;
     }
+  }
+
+  function syncUrlFromState() {
+    const history_ = globalThis.history;
+    if (!history_ || typeof history_.replaceState !== "function"
+        || typeof URLSearchParams !== "function" || !globalThis.location
+        || typeof globalThis.location.search !== "string") {
+      return;
+    }
+    // Mirror the studio state into the query string so a refresh or a copied
+    // link restores the same world and physics that the user negotiated.
+    const op = new URLSearchParams(globalThis.location.search);
+    op.set("world", state.scenario.key);
+    op.set("dt", String(state.dt));
+    op.set("rate", String(state.timeWarp));
+    if (state.timeDirection < 0) {
+      op.set("reverse", "1");
+    } else {
+      op.delete("reverse");
+    }
+    if (el["check-relativity"].checked) {
+      op.set("relativity", "1");
+      op.set("c", el["slider-c"].value);
+    } else {
+      op.set("relativity", "0");
+      op.delete("c");
+    }
+    if (el["check-coulomb"].checked) {
+      op.set("ke", el["slider-ke"].value);
+    } else {
+      op.delete("ke");
+    }
+    op.set("collision", state.collisionMode);
+    history_.replaceState(null, "", "?" + op.toString());
   }
 
   function updateTrackingSelect() {
@@ -1083,16 +1118,19 @@ function bootStudio(document_) {
     el["btn-reverse"].className = state.timeDirection > 0
       ? "badge badge-forward"
       : "badge badge-reverse";
+    syncUrlFromState();
   });
   el["btn-step-fwd"].addEventListener("click", () => stepWorld(state.dt));
   el["btn-step-back"].addEventListener("click", () => stepWorld(-state.dt));
   el["btn-warp-up"].addEventListener("click", () => {
     state.timeWarp = Math.min(50.0, +(state.timeWarp * 1.5).toFixed(2));
     el["warp-label"].textContent = state.timeWarp + "x";
+    syncUrlFromState();
   });
   el["btn-warp-down"].addEventListener("click", () => {
     state.timeWarp = Math.max(0.05, +(state.timeWarp / 1.5).toFixed(2));
     el["warp-label"].textContent = state.timeWarp + "x";
+    syncUrlFromState();
   });
   el["btn-reset"].addEventListener("click", () => {
     loadScenario(state.scenario);
@@ -1104,11 +1142,17 @@ function bootStudio(document_) {
     state.dt = parseFloat(event.target.value);
     el["label-dt"].textContent = String(state.dt);
   });
+  el["slider-dt"].addEventListener("change", () => {
+    syncUrlFromState();
+  });
   el["slider-c"].addEventListener("input", (event) => {
     el["label-c"].textContent = "c=" + event.target.value;
     if (el["check-relativity"].checked) {
       rebuildWorld(state.scenario, true);
     }
+  });
+  el["slider-c"].addEventListener("change", () => {
+    syncUrlFromState();
   });
   el["slider-ke"].addEventListener("input", (event) => {
     el["label-ke"].textContent = "ke=" + event.target.value;
@@ -1116,11 +1160,16 @@ function bootStudio(document_) {
       rebuildWorld(state.scenario, true);
     }
   });
+  el["slider-ke"].addEventListener("change", () => {
+    syncUrlFromState();
+  });
   el["check-relativity"].addEventListener("change", () => {
     rebuildWorld(state.scenario, true);
+    syncUrlFromState();
   });
   el["check-coulomb"].addEventListener("change", () => {
     rebuildWorld(state.scenario, true);
+    syncUrlFromState();
   });
   el["slider-trail"].addEventListener("input", (event) => {
     state.maxTrails = parseInt(event.target.value, 10);
@@ -1128,6 +1177,7 @@ function bootStudio(document_) {
   });
   el["select-collision"].addEventListener("change", (event) => {
     state.collisionMode = event.target.value;
+    syncUrlFromState();
   });
   el["select-dot-style"].addEventListener("change", (event) => {
     state.dotStyle = event.target.value;
@@ -1160,6 +1210,24 @@ function bootStudio(document_) {
     energyCanvas.height = energyCanvas.clientHeight * (globalThis.devicePixelRatio || 1);
   }
   resizeCanvases();
+
+  // Collapsing the HUD panel changes the canvas layout box without a window
+  // resize, so the backings must re-fit from a layout observer. Without one,
+  // the HUD toggle click re-fits on the next frame instead.
+  if (typeof globalThis.ResizeObserver === "function") {
+    const layoutObserver = new globalThis.ResizeObserver(resizeCanvases);
+    layoutObserver.observe(canvas);
+    layoutObserver.observe(energyCanvas);
+  } else {
+    el["btn-toggle-hud"].addEventListener("click", () => {
+      globalThis.setTimeout(resizeCanvases, 0);
+    });
+    // The HUD collapse animates over 0.2s, so the one-shot timeout refits
+    // only the start of the transition; transitionend covers the finish.
+    if (el["hud-panel"] && typeof el["hud-panel"].addEventListener === "function") {
+      el["hud-panel"].addEventListener("transitionend", () => resizeCanvases());
+    }
+  }
 
   // Custom scenario upload: validated in-process by the same rules the server
   // loader applies (mirrors orrery/custom.py), so the sealed build needs no
@@ -1347,6 +1415,12 @@ function bootStudio(document_) {
 
     // Update HUD metrics every 4 frames
     frameCount++;
+    if (frameCount === 1) {
+      // Live-page boot handshake: the first painted animation frame proves
+      // the studio actually started (the AegeanWorks watchdog reads
+      // body[data-screen] instead of guessing from the title).
+      document_.body.dataset.screen = "studio";
+    }
     if (frameCount % 4 === 0) {
       const world = state.world;
       el["time-readout"].textContent =
