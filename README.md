@@ -63,7 +63,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Lattice](https://github.com/AegeanWorks/Lattice) | A provenance-first research knowledge graph for humans and AI agents. Local-first, SQLite-backed and standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Assay](https://github.com/AegeanWorks/Assay) | Tamper-evident audit evidence for AI agents: a local-first hash-chained ledger, policy review, and offline-verifiable evidence packs. Free personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Aegean-Licensing](https://github.com/AegeanWorks/Aegean-Licensing) | The Aegean License family (AL, AGL and ASL 1.1) and the Aegean Commercial License: canonical texts, policies, commercial templates and certificate verification tooling for AegeanWorks projects. |
-| [ChatDuck](https://github.com/AegeanWorks/ChatDuck) | A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
+| [ChatDuck](https://github.com/AegeanWorks/ChatDuck) | [ARCHIVED] A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
 | [AegeanWorks](https://github.com/AegeanWorks/AegeanWorks) | AegeanWorks is an independent studio building local-first AI systems, cognitive tooling, and computational research. The work favors small composable parts, inspectable state, and software that still works when the network does not. |
 
 </details>

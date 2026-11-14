@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:495a7b7d7a75be91dbcde18d624410de8e7032d066acdf96d7808deb57834b12",
-    "commit": "d91dfd527336be96234ffb6b6f569d7358dad0e0",
+    "commit": "1e639b6171469559c197c34b7a1ca3e077f47f99",
     "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/d91dfd527336be96234ffb6b6f569d7358dad0e0/assets/logo.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/1e639b6171469559c197c34b7a1ca3e077f47f99/assets/logo.svg"
   },
   "preview": {
     "src": "media/ChatDuck/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:27d0ab843334b2bee7dfa15328a0efb7d29c1f50aae2d3f6756e42354810730f",
-    "commit": "d91dfd527336be96234ffb6b6f569d7358dad0e0",
+    "commit": "1e639b6171469559c197c34b7a1ca3e077f47f99",
     "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/d91dfd527336be96234ffb6b6f569d7358dad0e0/assets/social-preview.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/ChatDuck/1e639b6171469559c197c34b7a1ca3e077f47f99/assets/social-preview.svg"
   },
   "screenshots": [
     {

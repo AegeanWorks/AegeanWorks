@@ -1470,7 +1470,7 @@
     {
       "id": 1441333204,
       "name": "ChatDuck",
-      "description": "A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry.",
+      "description": "[ARCHIVED] A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1494,9 +1494,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T09:35:28Z",
+      "pushed_at": "2026-11-14T16:04:03Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
