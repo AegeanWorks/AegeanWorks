@@ -6,6 +6,7 @@ import {
   appsFromManifest,
   findApp,
   frameLooksStarted,
+  mirroredPlaySearch,
   versionLabel,
 } from "../../docs/live-core.js";
 
@@ -96,6 +97,22 @@ equal(
   "live/weft/abc/index.html?v=abcdef123456",
   "frame URL without a page search is unchanged",
 );
+equal(
+  mirroredPlaySearch("?app=orrery", "?world=figure-eight&rate=4"),
+  "?app=orrery&world=figure-eight&rate=4",
+  "mirror merges the frame's deep-link state into the page search",
+);
+equal(
+  mirroredPlaySearch("?app=orrery&rate=4", "?rate=8"),
+  "?app=orrery&rate=8",
+  "mirror replaces stale deep-link keys with fresh frame state",
+);
+equal(
+  mirroredPlaySearch("?app=orrery&theme=dark", "?world=solar"),
+  "?app=orrery&theme=dark&world=solar",
+  "mirror keeps unknown page params while updating known keys",
+);
+equal(mirroredPlaySearch("?app=orrery", ""), "?app=orrery", "empty frame state keeps page params");
 
 
 function fakeDoc(overrides) {

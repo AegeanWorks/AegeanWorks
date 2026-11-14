@@ -116,3 +116,20 @@ export function appFrameUrl(app, nonce, search) {
   if (!query) return path;
   return path + (path.includes("?") ? "&" : "?") + query;
 }
+
+/**
+ * Merge an app frame's live deep-link state back into the play-page search.
+ * Existing allowlisted keys are replaced with the frame's values; unknown
+ * page params (app, theme, ...) are kept.
+ */
+export function mirroredPlaySearch(currentSearch, frameSearch) {
+  const params = new URLSearchParams(currentSearch || "");
+  for (const key of DEEP_LINK_KEYS) {
+    params.delete(key);
+  }
+  for (const [key, value] of forwardableSearchParams(frameSearch)) {
+    params.set(key, value);
+  }
+  const query = params.toString();
+  return query ? "?" + query : "";
+}

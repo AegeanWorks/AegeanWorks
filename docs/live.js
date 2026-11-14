@@ -4,6 +4,7 @@ import {
   appStatus,
   appsFromManifest,
   frameLooksStarted,
+  mirroredPlaySearch,
   versionLabel,
 } from "./live-core.js";
 
@@ -291,6 +292,15 @@ if (frame) frame.addEventListener("load", function () {
     clearTimeout(loadTimer);
     clearFrameError();
   }
+});
+window.addEventListener("message", function (event) {
+  if (event.origin !== window.location.origin) return;
+  if (!frame || event.source !== frame.contentWindow) return;
+  const state = event.data && typeof event.data.liveState === "string"
+    ? event.data.liveState
+    : null;
+  if (!state) return;
+  window.history.replaceState(null, "", mirroredPlaySearch(window.location.search, state));
 });
 if (back) back.addEventListener("click", function () { closeApp(true); });
 if (fullscreen) fullscreen.addEventListener("click", function () {
