@@ -1173,6 +1173,26 @@ class ProfileIntegrityTests(unittest.TestCase):
         for page in ("security.html", "privacy.html", "accessibility.html", "play.html"):
             self.assertIn(f"https://aegeanworks.github.io/AegeanWorks/{page}", sitemap)
 
+    def test_csp_script_hashes_match_the_inline_scripts(self):
+        # The script-src hashes are hand-maintained; this keeps the rotation honest:
+        # every allowed hash must match an inline script on that page (else it is a
+        # stale over-permission) and every executable inline script must be allowed
+        # (else the browser silently drops it).
+        for page in sorted((ROOT / "docs").glob("*.html")) + [ROOT / "docs" / "editor" / "index.html"]:
+            html = page.read_text(encoding="utf-8")
+            policy = re.search(r"Content-Security-Policy[^>]*script-src 'self'([^;]+)", html)
+            if not policy or "sha256-" not in policy.group(1):
+                continue
+            with self.subTest(page=page.name):
+                allowed = set(re.findall(r"'sha256-([^']+)'", policy.group(1)))
+                found = {
+                    base64.b64encode(hashlib.sha256(script.encode()).digest()).decode()
+                    for script in re.findall(
+                        r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", html, re.S
+                    )
+                }
+                self.assertEqual(allowed, found)
+
     def test_trust_pages_share_the_full_legal_footer(self):
         docs = ROOT / "docs"
         expected = ("Commercial terms", "License catalog", "AL-1.1", "Source")

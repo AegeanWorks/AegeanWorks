@@ -1,27 +1,28 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-fixes",
-    "last_phase": "verification",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794657451.4137316,
-    "owner": "claude:compaction",
-    "started_by": "claude:compaction",
+    "task_id": "csp-hash-integrity-1115",
+    "last_phase": "phase 2",
+    "active_phase": 2,
+    "status": "in_progress",
+    "updated_at": 1794657616.5322921,
+    "owner": "vibe:catalogue-finish",
+    "started_by": "vibe:catalogue-finish",
     "continuations": [],
-    "completed_at": 1794657451.6853757
+    "workspaces": [
+      {
+        "name": "AegeanWorks",
+        "path": "projects/AegeanWorks"
+      }
+    ],
+    "impact_assessment": {
+      "why": "The CSP hash list is hand-maintained; the since-last-push review found two stale hashes and no test would catch a broken or stale rotation.",
+      "benefits": "CSP rotation becomes verified by the suite; allowlist shrinks by 2 unused entries.",
+      "risks": "contract: index.html CSP attribute changes (UI surface digest rebinds); dependency: none; concurrency: other session idle; state: no visual or behavioural change.",
+      "mitigation": "Failing-first test, prune hashes, full suite + gates, rebind UI evidence, publish, discard post-push regen churn."
+    }
   },
   "checkpoints": [
-    {
-      "task_id": "orrery-live-registration",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'orrery-live-registration' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794650422.3149128,
-      "timestamp_str": "2026-11-14 13:00:22",
-      "agent": "vibe:orrery-live"
-    },
     {
       "task_id": "dossier-refresh-1115",
       "phase": "phase 2",
@@ -348,6 +349,30 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "csp-hash-integrity-1115",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: add a CSP script-src hash integrity test (every allowed hash matches an inline script; every executable inline script is allowed) and prune the two stale hashes from docs/index.html.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794657616.5322921,
+      "timestamp_str": "2026-11-14 15:00:16",
+      "agent": "vibe:catalogue-finish",
+      "impact_assessment": {
+        "why": "The CSP hash list is hand-maintained; the since-last-push review found two stale hashes and no test would catch a broken or stale rotation.",
+        "benefits": "CSP rotation becomes verified by the suite; allowlist shrinks by 2 unused entries.",
+        "risks": "contract: index.html CSP attribute changes (UI surface digest rebinds); dependency: none; concurrency: other session idle; state: no visual or behavioural change.",
+        "mitigation": "Failing-first test, prune hashes, full suite + gates, rebind UI evidence, publish, discard post-push regen churn."
+      },
+      "plan_digest": "c820a1a0574633288fb16b57a3820a50bb30be82146c599f7c4c9707dad8c507",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
