@@ -77,6 +77,25 @@ equal(
   "frame retry adds a nonce",
 );
 equal(appFrameUrl({}), "", "missing frame path is empty");
+equal(
+  appFrameUrl(
+    { path: "live/orrery/abc/index.html", commit: "abcdef1234567890" },
+    0,
+    "?app=orrery&world=figure-eight&rate=4&bogus=1",
+  ),
+  "live/orrery/abc/index.html?v=abcdef123456&world=figure-eight&rate=4",
+  "frame URL forwards allowlisted deep-link params only",
+);
+equal(
+  appFrameUrl({ path: "live/weft/abc/index.html", commit: "abcdef1234567890" }, 0, "?app=weft"),
+  "live/weft/abc/index.html?v=abcdef123456",
+  "frame URL never forwards the play-page's own params",
+);
+equal(
+  appFrameUrl({ path: "live/weft/abc/index.html", commit: "abcdef1234567890" }, 0),
+  "live/weft/abc/index.html?v=abcdef123456",
+  "frame URL without a page search is unchanged",
+);
 
 
 function fakeDoc(overrides) {

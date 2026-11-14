@@ -69,16 +69,49 @@ export function frameLooksStarted(doc, app) {
 }
 
 /**
- * Build a cache-busted iframe URL. The commit keeps normal loads versioned;
- * an optional nonce forces a retry past a cached 404.
+ * App deep-link knobs a play-page URL may carry. Only these are forwarded
+ * into the app frame; play.html's own params (app, game) and anything
+ * unknown stay outside so wrapper options can never leak into an app.
  */
-export function appFrameUrl(app, nonce) {
+export const DEEP_LINK_KEYS = [
+  "world",
+  "dt",
+  "rate",
+  "reverse",
+  "relativity",
+  "c",
+  "ke",
+  "collision",
+];
+
+/**
+ * Pick the allowlisted deep-link params out of a play-page search string.
+ */
+export function forwardableSearchParams(search) {
+  const incoming = new URLSearchParams(search || "");
+  const forwarded = new URLSearchParams();
+  for (const key of DEEP_LINK_KEYS) {
+    const value = incoming.get(key);
+    if (value !== null) forwarded.set(key, value);
+  }
+  return forwarded;
+}
+
+/**
+ * Build a cache-busted iframe URL. The commit keeps normal loads versioned;
+ * an optional nonce forces a retry past a cached 404. An optional page
+ * search string forwards allowlisted app deep-link params (forwardableSearchParams).
+ */
+export function appFrameUrl(app, nonce, search) {
   const path = String((app && app.path) || "").trim();
   if (!path) return "";
   const params = new URLSearchParams();
   const commit = String((app && app.commit) || "").trim().slice(0, 12);
   if (commit) params.set("v", commit);
   if (nonce) params.set("r", String(nonce));
+  for (const [key, value] of forwardableSearchParams(search)) {
+    params.set(key, value);
+  }
   const query = params.toString();
   if (!query) return path;
   return path + (path.includes("?") ? "&" : "?") + query;

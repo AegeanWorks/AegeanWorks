@@ -173,7 +173,7 @@ async function loadApp(app, retry) {
   const serial = ++loadSerial;
   clearTimeout(loadTimer);
   clearFrameError();
-  const url = appFrameUrl(app, retry ? Date.now() : 0);
+  const url = appFrameUrl(app, retry ? Date.now() : 0, window.location.search);
   if (!url) {
     showFrameError(app, "This app has no build path in the catalog.", "");
     return;
