@@ -1,63 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-dormant-patches",
+    "task_id": "aegean-deep-link-forward",
     "last_phase": "verify",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794677671.3860238,
+    "updated_at": 1794678878.6276639,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794677671.6451113
+    "completed_at": 1794678878.937202
   },
   "checkpoints": [
-    {
-      "task_id": "live-watchdog-fix",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'live-watchdog-fix' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794667817.9720528,
-      "timestamp_str": "2026-11-14 17:50:17",
-      "agent": "claude:compaction",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "aegean-orrery-handshake",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Enforce the screen handshake for declared apps and serve the handshake studio build",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794669106.185934,
-      "timestamp_str": "2026-11-14 18:11:46",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "the strict watchdog (handshake:screen in the catalog) can now prove an embedded studio really started; orrery 0c2134473c57 announces its first painted frame",
-        "benefits": "live page distinguishes real starts from dead scripts; catalog carries the handshake contract durably in the sync builder",
-        "risks": "contract: sync --write now emits the handshake field; dependency: build byte-parity with orrery HEAD; concurrency: single active task; state: shots commit pointer, retention drops 3f462a7ec1f1",
-        "mitigation": "failing-first node tests, headless handshake checks, 178-test suite, sync --check, kb refresh"
-      },
-      "plan_digest": "06986766df22357aef79b409adfb0aa65ae97df1a0352ec3f002ecb7368736e4"
-    },
-    {
-      "task_id": "aegean-orrery-handshake",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794669131.1114542,
-      "timestamp_str": "2026-11-14 18:12:11",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(178), node live-suite(31), headless handshake contract, sync --check, kb"
-    },
     {
       "task_id": "aegean-orrery-handshake",
       "phase": "completed",
@@ -325,6 +279,52 @@
       "status": "completed",
       "timestamp": 1794677671.645113,
       "timestamp_str": "2026-11-14 20:34:31",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-deep-link-forward",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/4] Forward allowlisted app deep-link params (world dt rate reverse relativity c ke collision) from play.html into the app iframe URL; leave play-page params and unknown keys outside; shell bump v43->v44",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794678409.8220415,
+      "timestamp_str": "2026-11-14 20:46:49",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "play.html?app=orrery&world=figure-eight drops everything except the app slug at appFrameUrl, so sitewide deep links cannot reach the sealed URL reader and the new write-back is invisible from the wrapper page",
+        "benefits": "Every live app's query-string knobs work through the site wrapper; archived orrery stays shareable",
+        "risks": "contract: appFrameUrl gains an optional third search param (existing two-arg calls unchanged); dependency: allowlist is closed so future play-page params cannot leak; concurrency: foreign catalog churn stashed until publish; state: sw.js VERSION bump invalidates the shell cache",
+        "mitigation": "Pure helper + failing-first mjs assertions with the allowlist pinned; full live battery and deployed playwright check on ?app=orrery&world=figure-eight"
+      },
+      "plan_digest": "ceaa70d5c102bd980e8089ccfd961bb356a8086e07e9a1925cf57391228cbd09"
+    },
+    {
+      "task_id": "aegean-deep-link-forward",
+      "phase": "verify",
+      "phase_num": 4,
+      "description": "[2/4] Committed; 178 tests + 34 live assertions + sync --check + kb green",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794678878.6276639,
+      "timestamp_str": "2026-11-14 20:54:38",
+      "agent": "claude:compaction",
+      "checklists": "passed: failing-first mjs assertions, unittest 178, live tests 34, sync --check, kb check, cache-coherence v44"
+    },
+    {
+      "task_id": "aegean-deep-link-forward",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-deep-link-forward' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794678878.9372053,
+      "timestamp_str": "2026-11-14 20:54:38",
       "agent": "claude:compaction",
       "delivery": {
         "roots": [
