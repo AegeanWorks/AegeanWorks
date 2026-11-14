@@ -1,11 +1,11 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "dossier-refresh-1115",
+    "task_id": "app-ui-contract-1115",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794651379.2786207,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1794651576.1842444,
     "owner": "vibe:catalogue-finish",
     "started_by": "vibe:catalogue-finish",
     "continuations": [],
@@ -14,31 +14,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1794651462.0368292
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "editor-live-0112",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Completed [1/2]-[2/2]: vendored Palette 0.11.2 (20 files, source hash cdca8546b3f2f6a8) and refreshed the local live entry to version 0.11.2 at commit 90f4465 with its new digest; Meridian's recorded build was left untouched after the sync advanced it. Evidence: 94/94 site tests, 4/4 gates, sync_editor --check, sync_live_apps --check. checklists: passed (test, hygiene, guidelines, secrets); UI warning intentionally ignored under G-001.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1793428345.869417,
-      "timestamp_str": "2026-10-31 09:32:25",
-      "agent": "opencode:editor-live"
-    },
-    {
-      "task_id": "editor-live-0112",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'editor-live-0112' completed successfully.",
-      "status": "completed",
-      "timestamp": 1793428346.2517557,
-      "timestamp_str": "2026-10-31 09:32:26",
-      "agent": "opencode:editor-live"
-    },
     {
       "task_id": "editor-live-0113",
       "phase": "phase 2",
@@ -290,6 +268,47 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "app-ui-contract-1115",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "Track the app UI surface contract, open the bounded UI task over the 12 surface pages, and close it with an AI review after reconciliation.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794651575.8601742,
+      "timestamp_str": "2026-11-14 13:19:35",
+      "agent": "vibe:catalogue-finish",
+      "impact_assessment": {
+        "why": "check --strict requires a finished UI task matching the current surface digest; the dossier reconciliation commits left the surface without a matching UI record.",
+        "benefits": "Strict delivery gate clears with recorded UI evidence.",
+        "risks": "contract: .aikit/ui.json and ui_history.json become tracked kit state; dependency: none; concurrency: none (other session stopped); state: no surface files change.",
+        "mitigation": "No-visual-equivalent closure: tests 177/177, build_dossier_media check 0 problems, 4/4 gates; owner review waived per G-001 with agent review."
+      },
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "app-ui-contract-1115",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Completed: contract tracked, UI task opened from 0385d384a64a, verified, closed reviewed by agent.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794651576.1842444,
+      "timestamp_str": "2026-11-14 13:19:36",
+      "agent": "vibe:catalogue-finish",
+      "checklists": "passed: tests (python -m unittest discover -s tests, 177/177 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify (aikit ui verify AegeanWorks OK)",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
