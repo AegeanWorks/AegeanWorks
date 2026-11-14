@@ -1,63 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-archive",
+    "task_id": "aegean-orrery-dormant-patches",
     "last_phase": "verify",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794672946.8101752,
+    "updated_at": 1794677671.3860238,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794672982.657364
+    "completed_at": 1794677671.6451113
   },
   "checkpoints": [
-    {
-      "task_id": "aegean-orrery-links",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'aegean-orrery-links' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794658910.611624,
-      "timestamp_str": "2026-11-14 15:21:50",
-      "agent": "claude:compaction",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "live-watchdog-fix",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Fix the live-page frame watchdog misfiring on stylized app titles",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794667761.6448374,
-      "timestamp_str": "2026-11-14 17:49:21",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "the live page shows 'The app frame loaded but did not start' for the working orrery studio because the watchdog title check is case-sensitive (ORRERY vs Orrery) and orrery matches none of the hardcoded structural selectors",
-        "benefits": "the live page stops showing a false failure banner for orrery and any future app with stylized titles",
-        "risks": "contract: heuristic shared via live-core export; dependency: none; concurrency: single active task slot; state: no catalog or build changes",
-        "mitigation": "failing-first node tests, headless browser check past the 10s watchdog, 178-test suite"
-      },
-      "plan_digest": "5e639d324373a31a834a5f5522a9f099face55bcac3c8ebbb32437a1da7d07e6"
-    },
-    {
-      "task_id": "live-watchdog-fix",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794667817.6892946,
-      "timestamp_str": "2026-11-14 17:50:17",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(178), node live/atlas/project/verify suites, headless watchdog check, sync check, kb"
-    },
     {
       "task_id": "live-watchdog-fix",
       "phase": "completed",
@@ -325,6 +279,52 @@
       "status": "completed",
       "timestamp": 1794672982.657366,
       "timestamp_str": "2026-11-14 19:16:22",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-orrery-dormant-patches",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/2] Deploy orrery build 84d6300a5fdd (dormant patches): splice entry, retake shots from the served build, bump shots.json",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794677663.5676584,
+      "timestamp_str": "2026-11-14 20:34:23",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "The landed write-back/transitionend features must be visible on the live card per the deploy recipe",
+        "benefits": "Live entry carries the new digest/commit; shots depict the served bytes",
+        "risks": "contract: build pointer changes; dependency: shots must match served bytes; concurrency: foreign catalog churn stashed to avoid mixing; state: shot pin moves past verified 75bcc0f which stays retained",
+        "mitigation": "sync --check green; shots captured from the exact build dir; both prior builds retained"
+      },
+      "plan_digest": "c2c98da3796307b0609c4a2ae08be35de95fb1bf7cb8e5e1a968676bd6cd163f"
+    },
+    {
+      "task_id": "aegean-orrery-dormant-patches",
+      "phase": "verify",
+      "phase_num": 4,
+      "description": "[2/2] Deploy committed; gates green on the spliced entry",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794677671.3860238,
+      "timestamp_str": "2026-11-14 20:34:31",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest 178, live tests 31, sync --check, kb update --check, shots retaken from served build with bright-pixel 13k-17k"
+    },
+    {
+      "task_id": "aegean-orrery-dormant-patches",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-orrery-dormant-patches' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794677671.645113,
+      "timestamp_str": "2026-11-14 20:34:31",
       "agent": "claude:compaction",
       "delivery": {
         "roots": [
