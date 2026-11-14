@@ -16,6 +16,11 @@
       "width": 512,
       "height": 512
     },
+    "AegeanWorks": {
+      "src": "media/AegeanWorks/logo.webp",
+      "width": 256,
+      "height": 256
+    },
     "Afterimage": {
       "src": "media/Afterimage/logo.webp",
       "width": 256,

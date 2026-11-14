@@ -65,6 +65,7 @@ PUBLIC_REPOS = {
     "ChatDuck",
     "Atlas",
     "Keystone",
+    "AegeanWorks",
 }
 
 CATEGORY_LABELS = {
@@ -174,7 +175,7 @@ class ProfileIntegrityTests(unittest.TestCase):
         linked = set(
             re.findall(r"https://github\.com/AegeanWorks/([A-Za-z0-9._-]+)", read_readme())
         )
-        self.assertEqual(linked - {"AegeanWorks"}, PUBLIC_REPOS)
+        self.assertEqual(linked, PUBLIC_REPOS)
 
     def test_license_matches_the_aikit_family(self):
         license_path = ROOT / "LICENSE"

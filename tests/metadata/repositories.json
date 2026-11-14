@@ -1567,6 +1567,39 @@
       "homepage": "",
       "archived": false,
       "default_branch": "master"
+    },
+    {
+      "id": 1164218308,
+      "name": "AegeanWorks",
+      "description": "AegeanWorks is an independent studio building local-first AI systems, cognitive tooling, and computational research. The work favors small composable parts, inspectable state, and software that still works when the network does not.",
+      "topics": [
+        "aegean-license",
+        "aegeanworks",
+        "ai",
+        "ai-agents",
+        "ai-research",
+        "aikit",
+        "aikit-integrated",
+        "cognitive-science",
+        "cognitive-systems",
+        "commercial-license",
+        "computational-science",
+        "developer-tools",
+        "github-pages",
+        "github-profile",
+        "javascript",
+        "local-first",
+        "python",
+        "source-available",
+        "user-interface",
+        "web-app"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-14T10:27:37Z",
+      "homepage": "https://aegeanworks.github.io/AegeanWorks/",
+      "archived": false,
+      "default_branch": "main"
     }
   ]
 }
