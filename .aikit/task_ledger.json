@@ -1,63 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "live-watchdog-fix",
+    "task_id": "aegean-orrery-handshake",
     "last_phase": "verification",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794667817.6892946,
+    "updated_at": 1794669131.1114542,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794667817.9720507
+    "completed_at": 1794669131.4112666
   },
   "checkpoints": [
-    {
-      "task_id": "live-publish-1120",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "Phase 4: tests and delivery gates verified for the final orrery live-publication bookkeeping.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794652635.7390044,
-      "timestamp_str": "2026-11-14 13:37:15",
-      "agent": "unidentified",
-      "checklists": "passed: tests (python -m unittest discover -s tests, OK); passed: ui verify (aikit ui verify AegeanWorks OK)"
-    },
-    {
-      "task_id": "live-publish-1120",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'live-publish-1120' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794652636.0257213,
-      "timestamp_str": "2026-11-14 13:37:16",
-      "agent": "unidentified",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "aegean-orrery-studio",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Ship the full-studio orrery build to the live section and retake the homepage shots",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794655770.1435223,
-      "timestamp_str": "2026-11-14 14:29:30",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "the live orrery embed ran the old thin shell and its homepage screenshots were near-black frames, so the Live section undersold the app",
-        "benefits": "the site serves the full studio build (HUD, telemetry, energy sparkline, cameras, warp, custom uploads) and the homepage cards show real trails",
-        "risks": "contract: live.json digest/build layout must match sync_live_apps; dependency: build copies must stay byte-identical to the orrery commit; concurrency: another agent refreshed app builds before; state: shots.json commit link",
-        "mitigation": "sync_live_apps.py --check validates catalog, builds and digests; only the orrery entry touched; 177-test suite plus check gates"
-      },
-      "plan_digest": "a3560783097a7deb0034cf175acbc738c925b43d7c044860a42c3dab2fe28f2c"
-    },
     {
       "task_id": "aegean-orrery-studio",
       "phase": "verification",
@@ -331,6 +285,52 @@
       "status": "completed",
       "timestamp": 1794667817.9720528,
       "timestamp_str": "2026-11-14 17:50:17",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-orrery-handshake",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/1] Enforce the screen handshake for declared apps and serve the handshake studio build",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794669106.185934,
+      "timestamp_str": "2026-11-14 18:11:46",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "the strict watchdog (handshake:screen in the catalog) can now prove an embedded studio really started; orrery 0c2134473c57 announces its first painted frame",
+        "benefits": "live page distinguishes real starts from dead scripts; catalog carries the handshake contract durably in the sync builder",
+        "risks": "contract: sync --write now emits the handshake field; dependency: build byte-parity with orrery HEAD; concurrency: single active task; state: shots commit pointer, retention drops 3f462a7ec1f1",
+        "mitigation": "failing-first node tests, headless handshake checks, 178-test suite, sync --check, kb refresh"
+      },
+      "plan_digest": "06986766df22357aef79b409adfb0aa65ae97df1a0352ec3f002ecb7368736e4"
+    },
+    {
+      "task_id": "aegean-orrery-handshake",
+      "phase": "verification",
+      "phase_num": 4,
+      "description": "",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794669131.1114542,
+      "timestamp_str": "2026-11-14 18:12:11",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest(178), node live-suite(31), headless handshake contract, sync --check, kb"
+    },
+    {
+      "task_id": "aegean-orrery-handshake",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-orrery-handshake' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794669131.411269,
+      "timestamp_str": "2026-11-14 18:12:11",
       "agent": "claude:compaction",
       "delivery": {
         "roots": [
