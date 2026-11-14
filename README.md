@@ -236,7 +236,8 @@ AegeanWorks/
 ├── COMMERCIAL.md            <- Licensing tiers and ACL-1.0 commercial terms
 ├── LICENSES/                <- Pinned license text for REUSE metadata
 │   ├── LicenseRef-AL-1.1.txt
-│   └── LicenseRef-AGL-1.1.txt <- Live app and game builds
+│   ├── LicenseRef-AGL-1.1.txt <- Live app and game builds
+│   └── LicenseRef-ASL-1.1.txt <- Live research tool builds
 ├── REUSE.toml               <- REUSE aggregate license annotations
 ├── .gitignore               <- Git and AIKit transient-state exclusions
 ├── .gitattributes           <- Byte-stable checkouts for hashed browser builds
@@ -298,6 +299,7 @@ AegeanWorks/
 │   ├── decisions.md         <- ADR register
 │   ├── codebase_map.md      <- Generated AST symbol catalog
 │   ├── task_ledger.json     <- Delivery ledger
+│   ├── task_ledger_archive.jsonl <- Archived delivery checkpoints
 │   └── reforge.json         <- Progressive audit run state and applied findings
 ├── tools/
 │   ├── build_dossier_media.py  <- Fetches, optimizes and verifies dossier media
