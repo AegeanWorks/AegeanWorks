@@ -142,5 +142,23 @@
     "final_snapshot_digest": "",
     "final_snapshot_entries": 0,
     "surface_digest": "7c5737ebeadc7f651316f29d7915de19e60f195b06e85b9f089f08c592771c13"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "baseline_commit": "7517c398f7ac9a8ccc59165f1ad838d5b7448a45",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1794656893.6738532,
+    "finished_at": 1794656901.2445915,
+    "strikes": 0,
+    "reviewer": "Command Code (AI; rebind of the published orrery-studio surface review to the final remote tip; surface files are byte-identical to the reviewed baseline, the metadata-only ld+json reshuffle is validated by tests; proof: tests 177/177 OK, build_dossier_media.py check 0 problems, 4/4 aikit gates)",
+    "allowed_removals": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "52eb3dfbe23103c7c8883c34af8af531df2d1a0656074bb1a53c0de8a26cfcb9"
   }
 ]

@@ -1,39 +1,22 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-studio",
-    "last_phase": "verification",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794655810.0415554,
-    "owner": "claude:compaction",
-    "started_by": "claude:compaction",
+    "task_id": "app-ui-rebind-1115b",
+    "last_phase": "phase 4",
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1794656909.4237723,
+    "owner": "vibe:catalogue-finish",
+    "started_by": "vibe:catalogue-finish",
     "continuations": [],
-    "completed_at": 1794655810.2983794
+    "workspaces": [
+      {
+        "name": "AegeanWorks",
+        "path": "projects/AegeanWorks"
+      }
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "live-archive-retention",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[2/4] Archive-aware Live sync: projects/archive fallback, archived flag, last-build retention, archived status; failing-first Python+Node tests green",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794077717.6425946,
-      "timestamp_str": "2026-11-07 21:55:17",
-      "agent": "opencode:deepseek-v4.1-flash"
-    },
-    {
-      "task_id": "live-archive-retention",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[3/4] ADR-083, README note, shell v43 bump, AST codebase map refreshed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794077719.4100688,
-      "timestamp_str": "2026-11-07 21:55:19",
-      "agent": "opencode:deepseek-v4.1-flash"
-    },
     {
       "task_id": "live-archive-retention",
       "phase": "phase 4",
@@ -318,6 +301,47 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "app-ui-rebind-1115b",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "Rebind the app surface UI evidence and the ledger anchor to the final published orrery-studio tip.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794656908.970855,
+      "timestamp_str": "2026-11-14 14:48:28",
+      "agent": "vibe:catalogue-finish",
+      "impact_assessment": {
+        "why": "The pushed ledger-close commit postdated the finished UI task, so check --strict fails for the next publisher: stale digest and stale ledger anchor.",
+        "benefits": "Delivery gate green on the published state; next publish unblocked.",
+        "risks": "contract: ui history gains one rebind record; dependency: none; concurrency: other session idle ~1h; state: no surface files change.",
+        "mitigation": "Begin/verify/finish from the clean synced tip; agent review only (G-001); proofs recorded in the reviewer note."
+      },
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "app-ui-rebind-1115b",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Completed: UI task reopened on 7517c398f7ac, verified, closed with agent review.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794656909.4237723,
+      "timestamp_str": "2026-11-14 14:48:29",
+      "agent": "vibe:catalogue-finish",
+      "checklists": "passed: tests (python -m unittest discover -s tests, 177/177 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
