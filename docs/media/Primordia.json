@@ -132,6 +132,18 @@
       "height": 359,
       "digest": "sha256:2ee677f3a845dd2bb09651c0fd5508990663a5907c7620b60f3daac88a205a9a",
       "source": "Primordia:assets/screenshots/cycle12-legend-after-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-14-cycle12-legend-before-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle12 Legend Before 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 639,
+      "height": 333,
+      "digest": "sha256:77f4d82440ac8b7ac03770bd4a99cbb655909ccf9003d941506eb3e734e39f1f",
+      "source": "Primordia:assets/screenshots/cycle12-legend-before-2026-11-08.png"
     }
   ],
   "logo": {
