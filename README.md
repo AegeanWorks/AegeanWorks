@@ -301,6 +301,8 @@ AegeanWorks/
 │   ├── codebase_map.md      <- Generated AST symbol catalog
 │   ├── task_ledger.json     <- Delivery ledger
 │   ├── task_ledger_archive.jsonl <- Archived delivery checkpoints
+│   ├── ui.json              <- Bounded UI surfaces and their evidence digests
+│   ├── ui_history.json      <- Reviewed UI task history
 │   └── reforge.json         <- Progressive audit run state and applied findings
 ├── tools/
 │   ├── build_dossier_media.py  <- Fetches, optimizes and verifies dossier media
