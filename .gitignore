@@ -9,3 +9,5 @@ __pycache__/
 node_modules/
 # Social manager runtime state (drafts, approvals, receipts stay local)
 tools/social/state/
+# AIKit transient state
+.aikit/*.log

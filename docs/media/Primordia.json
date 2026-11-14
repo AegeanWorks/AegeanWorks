@@ -103,9 +103,9 @@
     "alt": "Primordia logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:915a67cac9280e14503cca5bffa84222c62ac0fd9605cea91df957c74f1326d3",
+    "digest": "sha256:edbdb244572206fba36be6251d4bf149dff8c41358f83c8c2e65436c8bfbf27f",
     "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
-    "taken_at": "2026-11-08",
+    "taken_at": "2026-11-14",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/269c94f3ad8ba658f5435ad4ea97ff57f89a2c77/assets/logo.jpg"
   },
   "preview": {

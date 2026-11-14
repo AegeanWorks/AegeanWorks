@@ -31,9 +31,9 @@
     "alt": "Photo-Harbor logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:6b6572f8d81472c9a2c3edf782a2016ba478028f555fcd5c1040c0e7d92e0815",
+    "digest": "sha256:ec187c88e9844c751f6dfe2e8294938bf890ac83d5c55f17fe36c4845354d1d8",
     "commit": "a8e385f2131d9f377f08608f11446c9c04278e5c",
-    "taken_at": "2026-11-09",
+    "taken_at": "2026-11-14",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Photo-Harbor/a8e385f2131d9f377f08608f11446c9c04278e5c/assets/logo.jpg"
   },
   "preview": {
