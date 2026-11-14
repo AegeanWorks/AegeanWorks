@@ -2,10 +2,10 @@
   "version": 1,
   "active_task": {
     "task_id": "csp-hash-integrity-1115",
-    "last_phase": "phase 2",
-    "active_phase": 2,
+    "last_phase": "phase 4",
+    "active_phase": 4,
     "status": "in_progress",
-    "updated_at": 1794657616.5322921,
+    "updated_at": 1794657770.304651,
     "owner": "vibe:catalogue-finish",
     "started_by": "vibe:catalogue-finish",
     "continuations": [],
@@ -14,38 +14,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "impact_assessment": {
-      "why": "The CSP hash list is hand-maintained; the since-last-push review found two stale hashes and no test would catch a broken or stale rotation.",
-      "benefits": "CSP rotation becomes verified by the suite; allowlist shrinks by 2 unused entries.",
-      "risks": "contract: index.html CSP attribute changes (UI surface digest rebinds); dependency: none; concurrency: other session idle; state: no visual or behavioural change.",
-      "mitigation": "Failing-first test, prune hashes, full suite + gates, rebind UI evidence, publish, discard post-push regen churn."
-    }
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "dossier-refresh-1115",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "Reconcile the AegeanWorks catalogue dossier with repository metadata: README description rows, logo digests, retired Article-Writer/Brain media, and the docs asset version.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794651365.0973358,
-      "timestamp_str": "2026-11-14 13:16:05",
-      "agent": "vibe:catalogue-finish",
-      "impact_assessment": {
-        "why": "tests/test_profile.py gates require consistency between README rows, repositories.json and dossier media manifests; drift accumulated while a concurrent session mutated the catalogue.",
-        "benefits": "Bundle integrity restored; gates 4/4 with matching manifests and rows.",
-        "risks": "contract: tests in tests/test_profile.py validate rows and digests; dependency: none; concurrency: concurrent session committed 2 further commits to origin/main; state: media digests regressed in 4 manifests.",
-        "mitigation": "Rebuilt rows from tests/metadata/repositories.json, re-fetched 4 logos with tools/build_dossier_media.py fetch --force, removed retired media, reran the full suite and 4/4 gates."
-      },
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "dossier-refresh-1115",
       "phase": "phase 4",
@@ -367,6 +338,24 @@
         "mitigation": "Failing-first test, prune hashes, full suite + gates, rebind UI evidence, publish, discard post-push regen churn."
       },
       "plan_digest": "c820a1a0574633288fb16b57a3820a50bb30be82146c599f7c4c9707dad8c507",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "csp-hash-integrity-1115",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Completed [1/2]: CSP hash integrity test added (failing-first), 2 stale hashes pruned from docs/index.html; suite and gates green.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794657770.304651,
+      "timestamp_str": "2026-11-14 15:02:50",
+      "agent": "vibe:catalogue-finish",
+      "checklists": "passed: tests (python -m unittest discover -s tests, 178/178 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify + finish (agent review recorded)",
       "workspaces": [
         {
           "name": "AegeanWorks",
