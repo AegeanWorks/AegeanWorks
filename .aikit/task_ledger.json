@@ -1,29 +1,22 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-orrery-handshake",
-    "last_phase": "verification",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794669131.1114542,
+    "task_id": "aegean-shots-coherence",
+    "last_phase": "planning",
+    "active_phase": 2,
+    "status": "in_progress",
+    "updated_at": 1794671402.12346,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794669131.4112666
+    "impact_assessment": {
+      "why": "all seven non-orrery live apps recorded shots from commits predating their served builds; six frozen apps are pixel-identical (zero source diffs between shot and build commits) and palette's editor had changed under its workspace shot",
+      "benefits": "the screenshot catalog is honest: every shot pointer names the build the pixels depict, and palette's workspace shot shows the served editor",
+      "risks": "contract: shots.json commit semantics = depicted build, not capture commit; dependency: none; concurrency: single active task; state: only docs/live/shots.json and one PNG change",
+      "mitigation": "git source-diff proof for the six bumps, headless capture + brightness check for palette, 178-test suite, sync --check"
+    }
   },
   "checkpoints": [
-    {
-      "task_id": "aegean-orrery-studio",
-      "phase": "verification",
-      "phase_num": 4,
-      "description": "[1/1] Verification: 177 unittests, sync_live_apps --check, update_knowledge_base",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794655810.0415554,
-      "timestamp_str": "2026-11-14 14:30:10",
-      "agent": "claude:compaction",
-      "checklists": "passed: unittest(177), sync_live_apps check, knowledge base, secret scan"
-    },
     {
       "task_id": "aegean-orrery-studio",
       "phase": "completed",
@@ -338,6 +331,24 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "aegean-shots-coherence",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/1] Reconcile every shots.json commit pointer with the served builds",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794671402.12346,
+      "timestamp_str": "2026-11-14 18:50:02",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "all seven non-orrery live apps recorded shots from commits predating their served builds; six frozen apps are pixel-identical (zero source diffs between shot and build commits) and palette's editor had changed under its workspace shot",
+        "benefits": "the screenshot catalog is honest: every shot pointer names the build the pixels depict, and palette's workspace shot shows the served editor",
+        "risks": "contract: shots.json commit semantics = depicted build, not capture commit; dependency: none; concurrency: single active task; state: only docs/live/shots.json and one PNG change",
+        "mitigation": "git source-diff proof for the six bumps, headless capture + brightness check for palette, 178-test suite, sync --check"
+      },
+      "plan_digest": "a85d69d6398a54387acb489521964453bd104bd2a2a4b349c0e4c04ec1b36642"
     }
   ]
 }

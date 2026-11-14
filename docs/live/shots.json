@@ -2,7 +2,7 @@
   "schema": 1,
   "apps": {
     "prism-relay": {
-      "commit": "5d7fcbe3e7fcb9763aaa753b3759a71981ec2ce6",
+      "commit": "9dee6cbcfb83d6a86a15553d04e9323aa58a4d2f",
       "taken_at": "2026-10-30",
       "screenshots": [
         {
@@ -32,7 +32,7 @@
       ]
     },
     "weft": {
-      "commit": "22beac25d36421cd606215fde6631d6e69169f74",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
       "taken_at": "2026-10-30",
       "screenshots": [
         {
@@ -58,7 +58,7 @@
       ]
     },
     "iris": {
-      "commit": "fa020321803d5cee71b991f4d2e372ecf246448c",
+      "commit": "21bf21ecd5781f5d771b433a8fced8038e1a8e29",
       "taken_at": "2026-10-30",
       "screenshots": [
         {
@@ -88,7 +88,7 @@
       ]
     },
     "tessera": {
-      "commit": "730b80ad10e43610a8a81fe654f569bea177890d",
+      "commit": "a6300798ddbc6b1f63bce7a0ed0bc98fea026286",
       "taken_at": "2026-10-30",
       "screenshots": [
         {
@@ -114,7 +114,7 @@
       ]
     },
     "meridian": {
-      "commit": "615e040fc88127bbbd269baa0ba5342ad3cb4b08",
+      "commit": "52832939c7abc2944ffffdb11452343b8bee7e4e",
       "taken_at": "2026-10-31",
       "screenshots": [
         {
@@ -148,8 +148,8 @@
       ]
     },
     "palette": {
-      "commit": "e0a9275e9ec4089d732f4d5eff603883efb2a8bc",
-      "taken_at": "2026-10-31",
+      "commit": "29fecf81069221c43d626f8d7f0be2ae04b290b8",
+      "taken_at": "2026-11-14",
       "screenshots": [
         {
           "src": "media/Palette/2026-10-31-palette-home.webp",
@@ -162,7 +162,7 @@
       ]
     },
     "afterimage": {
-      "commit": "f54037486845964b403b80775cb950ad7ee063a4",
+      "commit": "0d09efdce02ecaac29e5d78a083a7b0d2b8e55e1",
       "taken_at": "2026-11-08",
       "screenshots": [
         {
