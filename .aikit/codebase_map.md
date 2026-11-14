@@ -10,7 +10,7 @@
 - **Total Classes**: `41`
 - **Total Top-Level Functions**: `166`
 - **Total Class Methods**: `222`
-- **Total Source Lines**: `7009`
+- **Total Source Lines**: `7015`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`29` module(s))
@@ -712,7 +712,7 @@
 ### [`tools/sync_live_apps.py`](tools/sync_live_apps.py)
 > *Sync the live browser apps and their catalog.*
 
-**Size**: `818` lines (`33467` bytes)
+**Size**: `824` lines (`33807` bytes)
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*

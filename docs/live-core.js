@@ -49,11 +49,14 @@ export function appStatus(app) {
 /**
  * Heuristic check that an embedded app's document actually rendered.
  * Case-insensitive on the title so stylized wordmarks (ORRERY) match the
- * catalog title (Orrery); structural markers stay as fallbacks.
+ * catalog title (Orrery); structural markers stay as fallbacks. An app that
+ * declares handshake:"screen" must announce its boot via body[data-screen]:
+ * for those, a matching title alone is never proof the scripts started.
  */
 export function frameLooksStarted(doc, app) {
   if (!doc || !doc.body) return false;
   if (doc.body.dataset && doc.body.dataset.screen) return true;
+  if (app && app.handshake === "screen") return false;
   if (
     typeof doc.querySelector === "function" &&
     doc.querySelector("#board, .loom, .wordmark, .board, .game-shell, #app, .app-shell")

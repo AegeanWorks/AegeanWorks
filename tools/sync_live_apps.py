@@ -138,6 +138,7 @@ APPS = (
         "mode": "browser",
         "runtime": ("index.html", "src", "data", "favicon.svg"),
         "version_file": "package.json",
+        "handshake": "screen",
         "logo": "media/Orrery/logo.webp",
         "dossier": "project.html?repo=Orrery",
     },
@@ -544,6 +545,11 @@ def _browser_entry(game: dict, source_root: Path) -> dict:
         "logo": game["logo"],
         "dossier": game.get("dossier", ""),
     }
+    # A declared boot handshake is part of the app's catalog contract: the
+    # live-page watchdog uses it to verify a real start (ADR seam, PRINCIPLE-014
+    # spirit). Absent means the watchdog falls back to its title heuristic.
+    if game.get("handshake"):
+        entry["handshake"] = game["handshake"]
     if source_is_archived(source):
         entry["archived"] = True
     return entry

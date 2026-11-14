@@ -78,7 +78,6 @@ equal(
 );
 equal(appFrameUrl({}), "", "missing frame path is empty");
 
-console.log(`ok ${assertions} live-page assertions`);
 
 function fakeDoc(overrides) {
   return Object.assign(
@@ -121,3 +120,29 @@ equal(
   "unrelated page title is not started",
 );
 equal(frameLooksStarted(fakeDoc({ title: "anything" }), { title: "" }), false, "no catalog title means no title heuristic");
+
+// Handshake apps must announce their boot: a matching title alone is not
+// proof that the embedded scripts actually started.
+equal(
+  frameLooksStarted(
+    fakeDoc({ title: "ORRERY - Celestial N-Body Laboratory" }),
+    { title: "Orrery", handshake: "screen" },
+  ),
+  false,
+  "a handshake app without its announcement is not started",
+);
+equal(
+  frameLooksStarted(
+    fakeDoc({ title: "ORRERY - Celestial N-Body Laboratory", body: { dataset: { screen: "studio" } } }),
+    { title: "Orrery", handshake: "screen" },
+  ),
+  true,
+  "a handshake app that announced its boot is started",
+);
+equal(
+  frameLooksStarted(fakeDoc(), { title: "Orrery", handshake: "screen" }),
+  false,
+  "a handshake app with a blank shell is not started",
+);
+
+console.log(`ok ${assertions} live-page assertions`);
