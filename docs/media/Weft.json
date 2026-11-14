@@ -139,6 +139,30 @@
       "height": 900,
       "digest": "sha256:8b63806c9d047f393fe3949755902d37d9b0faa6f1bea897b26e00f57c6befbd",
       "source": "Weft:assets/screenshots/2026-11-07-level-previews-before.png"
+    },
+    {
+      "src": "media/Weft/2026-11-14-poisoned-save-after.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Poisoned Save After",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:6ebd3f4c2e3445cee8e75b588d82e6bd29fe2281f729ac5c721ce17d93327db2",
+      "source": "Weft:assets/screenshots/2026-11-07-poisoned-save-after.png"
+    },
+    {
+      "src": "media/Weft/2026-11-14-poisoned-save-before.webp",
+      "alt": "Weft screenshot",
+      "caption": "Weft — 2026 11 07 Poisoned Save Before",
+      "commit": "1c129d20c0c1bf5a905efb6b21c29301fd264306",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:00dd8da04608c722f1d50db180829d9ffcde9bf420c4566055f72ded1c784a39",
+      "source": "Weft:assets/screenshots/2026-11-07-poisoned-save-before.png"
     }
   ]
 }

@@ -96,6 +96,42 @@
       "height": 900,
       "digest": "sha256:3b63370f265dd4a83f3199e116adabfc86d56bd264000f55f4a34f75079ff551",
       "source": "Primordia:assets/screenshots/cycle11-layout-after-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-14-cycle11-layout-before-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle11 Layout Before 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:fc8708843742a54ac2af44b7564483c2f4993febc0856098bb20e340d3198fb9",
+      "source": "Primordia:assets/screenshots/cycle11-layout-before-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-14-cycle11-layout-played-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle11 Layout Played 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:fb4b70a6f2b3f2a09f0c714d2c222a211c4ef2cd6ff73336d21617af929ab63b",
+      "source": "Primordia:assets/screenshots/cycle11-layout-played-2026-11-08.png"
+    },
+    {
+      "src": "media/Primordia/2026-11-14-cycle12-legend-after-2026-11-08.webp",
+      "alt": "Primordia screenshot",
+      "caption": "Primordia — Cycle12 Legend After 2026 11 08",
+      "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
+      "taken_at": "2026-11-14",
+      "viewport": "",
+      "width": 639,
+      "height": 359,
+      "digest": "sha256:2ee677f3a845dd2bb09651c0fd5508990663a5907c7620b60f3daac88a205a9a",
+      "source": "Primordia:assets/screenshots/cycle12-legend-after-2026-11-08.png"
     }
   ],
   "logo": {
@@ -103,7 +139,7 @@
     "alt": "Primordia logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:edbdb244572206fba36be6251d4bf149dff8c41358f83c8c2e65436c8bfbf27f",
+    "digest": "sha256:915a67cac9280e14503cca5bffa84222c62ac0fd9605cea91df957c74f1326d3",
     "commit": "269c94f3ad8ba658f5435ad4ea97ff57f89a2c77",
     "taken_at": "2026-11-14",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Primordia/269c94f3ad8ba658f5435ad4ea97ff57f89a2c77/assets/logo.jpg"
