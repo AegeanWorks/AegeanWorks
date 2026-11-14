@@ -1,69 +1,17 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "aegean-shots-coherence",
+    "task_id": "aegean-orrery-resize",
     "last_phase": "verification",
     "active_phase": 5,
     "status": "completed",
-    "updated_at": 1794671420.9298828,
+    "updated_at": 1794671968.8969223,
     "owner": "claude:compaction",
     "started_by": "claude:compaction",
     "continuations": [],
-    "completed_at": 1794671421.2719443
+    "completed_at": 1794671969.1468217
   },
   "checkpoints": [
-    {
-      "task_id": "app-ui-rebind-1115b",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Completed: UI task reopened on 7517c398f7ac, verified, closed with agent review.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794656909.4237723,
-      "timestamp_str": "2026-11-14 14:48:29",
-      "agent": "vibe:catalogue-finish",
-      "checklists": "passed: tests (python -m unittest discover -s tests, 177/177 OK); passed: gates (python aikit.py check AegeanWorks, 4/4); passed: ui verify",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "app-ui-rebind-1115b",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'app-ui-rebind-1115b' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794656915.4454992,
-      "timestamp_str": "2026-11-14 14:48:35",
-      "agent": "vibe:catalogue-finish",
-      "delivery": {
-        "roots": [
-          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "aegean-orrery-fixes",
-      "phase": "planning",
-      "phase_num": 2,
-      "description": "[1/1] Reploy the fixed studio build and retake the homepage shots",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794657419.5541515,
-      "timestamp_str": "2026-11-14 14:56:59",
-      "agent": "claude:compaction",
-      "impact_assessment": {
-        "why": "the studio-alignment fixes changed the sealed build, so the live catalog must serve a build matching the published orrery commit",
-        "benefits": "the live studio renders body-coloured legend markers and the catalog digest matches the pushed commit",
-        "risks": "contract: digest must be computed with the sync tool method; dependency: build must stay byte-identical to 81c1d41e; concurrency: other apps' archived-flag churn rejected from this commit; state: shots commit link",
-        "mitigation": "sync_live_apps --check reviews catalog+digest; 177 tests; only orrery entries touched"
-      },
-      "plan_digest": "ce91f17a31fc50b7c277b31857621925f38486ed9ae6a335463004fcfd929464"
-    },
     {
       "task_id": "aegean-orrery-fixes",
       "phase": "verification",
@@ -326,6 +274,52 @@
       "status": "completed",
       "timestamp": 1794671421.2719462,
       "timestamp_str": "2026-11-14 18:50:21",
+      "agent": "claude:compaction",
+      "delivery": {
+        "roots": [
+          "C:\\Users\\Yunus-Emre\\Desktop\\portable_agent_kit\\projects\\AegeanWorks"
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "aegean-orrery-resize",
+      "phase": "planning",
+      "phase_num": 2,
+      "description": "[1/1] Serve the HUD-resize orrery build and keep shot pointers fresh",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794671936.3857377,
+      "timestamp_str": "2026-11-14 18:58:56",
+      "agent": "claude:compaction",
+      "impact_assessment": {
+        "why": "orrery 75bcc0fbab57 re-fits its canvases via ResizeObserver on HUD collapse; the live catalog must serve that build with matching shot pointers",
+        "benefits": "live users get the immediate canvas refit; the screenshot catalog stays honest",
+        "risks": "contract: digest via the sync tool functions; dependency: build byte-parity with orrery HEAD; concurrency: single active task; state: retention drops the 0c2134473c57 dir",
+        "mitigation": "sync --check, retaken shots with brightness check, 178-test suite, node live suite"
+      },
+      "plan_digest": "f9d50bb40152bffd23c145e9442d08e01fa53fe2c3949dec48f57661e83fd60e"
+    },
+    {
+      "task_id": "aegean-orrery-resize",
+      "phase": "verification",
+      "phase_num": 4,
+      "description": "",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794671968.8969223,
+      "timestamp_str": "2026-11-14 18:59:28",
+      "agent": "claude:compaction",
+      "checklists": "passed: unittest(178), node live suite, sync --check, shots retaken with brightness check"
+    },
+    {
+      "task_id": "aegean-orrery-resize",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'aegean-orrery-resize' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794671969.1468236,
+      "timestamp_str": "2026-11-14 18:59:29",
       "agent": "claude:compaction",
       "delivery": {
         "roots": [
