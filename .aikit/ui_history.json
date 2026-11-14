@@ -52,5 +52,23 @@
     "final_snapshot_digest": "",
     "final_snapshot_entries": 0,
     "surface_digest": "ab6eb721b1595edc661d35e830b955948e2aa1a5ac63bc0dab99bac392b523b5"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "baseline_commit": "185214d8f7a71936be46b7822069212d696ec225",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1794652241.421629,
+    "finished_at": 1794652290.366624,
+    "strikes": 0,
+    "reviewer": "Mistral Vibe",
+    "allowed_removals": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "8d3325d5d2aab71626b1ef836d36f394f395bd452bfc6ffd71c4924b6d66e00e"
   }
 ]
