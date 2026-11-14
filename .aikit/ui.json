@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "surfaces": {
+    "app": {
+      "paths": [
+        "docs/404.html",
+        "docs/accessibility.html",
+        "docs/editor.html",
+        "docs/editor/index.html",
+        "docs/index.html",
+        "docs/live.html",
+        "docs/live/weft/1c129d20c0c1/index.html",
+        "docs/live/weft/70be138d19b6/index.html",
+        "docs/live/weft/ab7d87790a81/index.html",
+        "docs/offline.html",
+        "docs/play.html",
+        "docs/privacy.html"
+      ]
+    }
+  },
+  "protected": [
+    "tests/**"
+  ],
+  "commands": {
+    "fast": "python -m unittest discover -s tests",
+    "snapshot": ""
+  },
+  "style": {
+    "theme_paths": []
+  },
+  "limits": {
+    "max_files": 12,
+    "max_lines": 300
+  }
+}
