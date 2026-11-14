@@ -835,7 +835,7 @@
     {
       "id": 1430292646,
       "name": "Orrery",
-      "description": "An N-body gravitational sandbox that runs in your terminal or in your browser. Nine carefully chosen worlds, a symplectic integrator, optional relativity and collision physics, live energy diagnostics, orbit trails, CSV and JSON export, and no dependencies outside the Python standard library.",
+      "description": "[ARCHIVED] An N-body gravitational sandbox that runs in your terminal or in your browser. Nine carefully chosen worlds, a symplectic integrator, optional relativity and collision physics, live energy diagnostics, orbit trails, CSV and JSON export, and no dependencies outside the Python standard library.",
       "topics": [
         "aegean-science-license",
         "aegeanworks",
@@ -860,9 +860,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T11:25:13Z",
+      "pushed_at": "2026-11-14T16:09:53Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {

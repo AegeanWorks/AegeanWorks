@@ -181,7 +181,8 @@
       ],
       "logo": "media/Orrery/logo.webp",
       "dossier": "project.html?repo=Orrery",
-      "handshake": "screen"
+      "handshake": "screen",
+      "archived": true
     }
   ]
 }
