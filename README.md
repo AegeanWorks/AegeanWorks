@@ -264,6 +264,7 @@ AegeanWorks/
 │   ├── editor.html          <- Palette image editor workbench
 │   ├── editor/              <- Vendored Palette build and content-hash manifest
 │   ├── media/               <- Dossier logos, social previews and screenshots
+│   ├── assets/              <- Site-only images (private-game teaser screenshots)
 │   ├── atlas-snapshot.json  <- Static fallback for the atlas and dossiers
 │   ├── verify.html          <- Public certificate verifier (certificate stays local)
 │   ├── verify-core.js       <- Shared format-2 canonicalization and checks

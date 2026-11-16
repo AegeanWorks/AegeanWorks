@@ -3,6 +3,7 @@
 import base64
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -1386,6 +1387,27 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertNotIn("github.com/AegeanWorks", section)
         self.assertNotIn('class="project ', section)
         self.assertNotIn('class="project-facts"', section)
+
+    def test_games_teasers_stay_unlinked(self):
+        html = read_site()
+        section = re.search(r'<section[^>]*id="games".*?</section>', html, re.S).group(0)
+        for teaser in re.findall(r'<article class="game-teaser".*?</article>', section, re.S):
+            with self.subTest(teaser=teaser[:80]):
+                self.assertNotIn("<a ", teaser)
+
+    def test_games_teaser_assets_exist(self):
+        html = read_site()
+        section = re.search(r'<section[^>]*id="games".*?</section>', html, re.S).group(0)
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        sources = re.findall(
+            r'<article class="game-teaser".*?<img src="([^"]+)"',
+            section, re.S,
+        )
+        self.assertTrue(sources, "at least one teaser slot expected")
+        for src in sources:
+            with self.subTest(asset=src):
+                self.assertTrue(src.startswith("assets/games/"))
+                self.assertTrue(os.path.isfile(os.path.join(root, "docs", *src.split("/"))))
 
     def test_games_section_sits_between_projects_and_research(self):
         html = read_site()
