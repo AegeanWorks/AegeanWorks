@@ -1045,9 +1045,55 @@ h1 .grad {
   letter-spacing: -0.015em;
 }
 .game-group-lede {
-  margin: 0;
+  margin: 0 0 14px;
   font-size: 0.875rem;
   line-height: 1.6;
+  color: var(--muted);
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.game-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent, #b3a1f7);
+}
+.game-card figure {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg, #10111a);
+}
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.game-card-body {
+  padding: 12px 14px 14px;
+}
+.game-card-body h3 {
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--text);
+}
+.game-card-body p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
