@@ -61,7 +61,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [AIKit](https://github.com/AegeanWorks/AIKit) | Crash-resilient governance and delivery gates for AI coding agents: versioned task ledger, commit-level verification, secret scanning and per-project gates. Free for personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Lacon](https://github.com/AegeanWorks/Lacon) | [ARCHIVED] An AI that thinks in as few letters as possible, recursively over a long context. Everything is in this project: the alphabet, the budget, the thinker and the recursive engine. No network, no API key, no model weights. The core is standard library only; an optional adapter reads Pebble source when the sibling Pebble project is... |
 | [Lattice](https://github.com/AegeanWorks/Lattice) | A provenance-first research knowledge graph for humans and AI agents. Local-first, SQLite-backed and standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0. |
-| [Assay](https://github.com/AegeanWorks/Assay) | Tamper-evident audit evidence for AI agents: a local-first hash-chained ledger, policy review, and offline-verifiable evidence packs. Free personal use under AL-1.1; commercial use under ACL-1.0. |
+| [Assay](https://github.com/AegeanWorks/Assay) | [ARCHIVED] Tamper-evident audit evidence for AI agents. |
 | [Aegean-Licensing](https://github.com/AegeanWorks/Aegean-Licensing) | The Aegean License family (AL, AGL and ASL 1.1) and the Aegean Commercial License: canonical texts, policies, commercial templates and certificate verification tooling for AegeanWorks projects. |
 | [ChatDuck](https://github.com/AegeanWorks/ChatDuck) | [ARCHIVED] A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
 | [AegeanWorks](https://github.com/AegeanWorks/AegeanWorks) | AegeanWorks is an independent studio building local-first AI systems, cognitive tooling, and computational research. The work favors small composable parts, inspectable state, and software that still works when the network does not. |
@@ -308,11 +308,13 @@ AegeanWorks/
 │   └── reforge.json         <- Progressive audit run state and applied findings
 ├── tools/
 │   ├── build_dossier_media.py  <- Fetches, optimizes and verifies dossier media
+│   ├── build_game_teasers.py <- Registers, ingests, verifies and syncs private-game teasers
 │   ├── sync_editor.py     <- Copies and verifies the Palette editor build
 │   ├── sync_live_apps.py  <- Copies and verifies the browser app builds
 │   └── social/            <- Studio X manager: gates, media pipeline, browser publish
 └── tests/
     ├── test_profile.py      <- Content, metadata and link integrity tests
+    ├── test_game_teasers.py <- Teaser pipeline contract: register, ingest, check, sync
     ├── test_social_manager.py <- Social gates: topic, evidence, media, spam, approval
     ├── test_social_browser.py <- Browser publish: package, compose-only, armed click
     ├── test_social_review.py <- Aesthetic review: distortion, size, sharpness blocks

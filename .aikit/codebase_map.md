@@ -6,14 +6,14 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `29`
-- **Total Classes**: `41`
-- **Total Top-Level Functions**: `166`
-- **Total Class Methods**: `226`
-- **Total Source Lines**: `7058`
+- **Total Python Modules**: `31`
+- **Total Classes**: `46`
+- **Total Top-Level Functions**: `179`
+- **Total Class Methods**: `253`
+- **Total Source Lines**: `7594`
 
 ## 🧭 Map Coverage
-- **Indexed**: python (`29` module(s))
+- **Indexed**: python (`31` module(s))
 - **Not indexed by this map**: javascript (`185` file(s))
 
 > Only Python symbols are catalogued. A language above is reported as not indexed, never as verified by this map.
@@ -21,6 +21,50 @@
 ---
 
 ## 📦 Modules & Exported Symbols
+
+### [`tests/test_game_teasers.py`](tests/test_game_teasers.py)
+> *Contract tests for tools/build_game_teasers.py.*
+
+**Size**: `232` lines (`9069` bytes)
+
+**Classes:**
+- `class TempRootTest` - *Each test gets an isolated project root mimicking the repo layout.*
+  - Method `.setUp()`
+  - Method `._cleanup()`
+  - Method `.run_tool(*args)`
+  - Method `.register(**overrides)`
+  - Method `.ingest(payload, **overrides)`
+  - Method `.manifest()`
+  - Method `.synced_block()`
+- `class RegisterContract`
+  - Method `.test_register_creates_a_single_entry()`
+  - Method `.test_register_updates_instead_of_duplicating()`
+  - Method `.test_register_rejects_bad_names()`
+  - Method `.test_register_requires_a_title()`
+- `class IngestContract`
+  - Method `.test_ingest_requires_a_registered_game()`
+  - Method `.test_ingest_optimizes_records_and_writes()`
+  - Method `.test_ingest_appends_in_order()`
+  - Method `.test_ingest_rejects_oversize_files()`
+- `class CheckContract`
+  - Method `.setUp()`
+  - Method `.test_check_passes_on_a_consistent_tree()`
+  - Method `.test_check_catches_digest_tampering()`
+  - Method `.test_check_catches_missing_files()`
+  - Method `.test_check_catches_orphan_images()`
+  - Method `.test_check_catches_src_escaping_the_games_folder()`
+  - Method `.test_check_catches_corrupt_manifests()`
+- `class SyncContract`
+  - Method `.test_sync_renders_placeholder_when_the_manifest_is_empty()`
+  - Method `.test_sync_renders_registered_games_with_their_first_shot()`
+  - Method `.test_sync_is_idempotent()`
+  - Method `.test_sync_requires_markers_in_the_replacement_file()`
+  - Method `.test_sync_replacement_is_atomic_and_ignores_outer_markup()`
+
+**Functions:**
+- `def make_png(width, height)`
+
+---
 
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
@@ -374,6 +418,27 @@
 - `def humanize(value)`
 - `def safe_slug(value)`
 - `def command_ingest(args)`
+- `def main(argv)`
+
+---
+
+### [`tools/build_game_teasers.py`](tools/build_game_teasers.py)
+> *Manage private-game teaser media under docs/assets/games/.*
+
+**Size**: `304` lines (`12104` bytes)
+
+**Functions:**
+- `def manifest_path(root)`
+- `def load_manifest(root)`
+- `def save_manifest(root, manifest)`
+- `def find_game(manifest, name)`
+- `def resolve_root(args)`
+- `def command_register(args)`
+- `def command_ingest(args)`
+- `def command_check(args)`
+- `def render_game_card(game)`
+- `def render_workshop(manifest)`
+- `def command_sync(args)`
 - `def main(argv)`
 
 ---
