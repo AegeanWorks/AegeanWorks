@@ -67,7 +67,7 @@
     "alt": "NeuroOptic logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:f0067899f63696c3a1d3d04cbef7209c87cb2e9abac1aa34d39f0dc82bcbddfc",
+    "digest": "sha256:a10704e987ed16f1c1716dc697b09293670d03e47bf4d2ff1238648d3bedc087",
     "commit": "4d1bd64746db25c5e67ec84118062e1145a0d1c5",
     "taken_at": "2026-11-16",
     "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroOptic/4d1bd64746db25c5e67ec84118062e1145a0d1c5/assets/logo.jpg"
