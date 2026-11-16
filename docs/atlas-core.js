@@ -115,7 +115,7 @@ export const REPO_LICENSES = Object.freeze({
   aikit: "AL",
   aldervale: "AGL",
   afterimage: "AGL",
-  assay: "AL",
+  "assay": "AL",
   atlas: "AL",
   chronos: "AL",
   "crypt-crawler": "AGL",

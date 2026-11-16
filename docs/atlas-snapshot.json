@@ -146,7 +146,7 @@
     {
       "id": 1431459470,
       "name": "Assay",
-      "description": "Tamper-evident audit evidence for AI agents: a local-first hash-chained ledger, policy review, and offline-verifiable evidence packs. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Tamper-evident audit evidence for AI agents.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -171,9 +171,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:32:25Z",
+      "pushed_at": "2026-11-16T20:45:01Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
