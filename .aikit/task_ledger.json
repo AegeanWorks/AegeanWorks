@@ -1,11 +1,11 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "games-gallery",
+    "task_id": "games-teaser-pipeline",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794860372.3424911,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1794863194.2634275,
     "owner": "claude:1",
     "started_by": "claude:1",
     "continuations": [],
@@ -14,50 +14,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1794861213.0922759,
-    "completed_head": "4059a87773cf664723ed5183be435be07444d331",
-    "completed_tree": "1d943df133412b55e0e26fbeae707070d89985e3"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 113",
-      "phase_num": 3,
-      "description": "Reforge stage 113: window 339, 3 commit(s), 14 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, empty \u2014 nothing to commit, 1 binary not analysed",
-      "files_affected": [
-        "docs/og.png"
-      ],
-      "status": "in_progress",
-      "timestamp": 1794855400.5721686,
-      "timestamp_str": "2026-11-16 21:56:40",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 113",
-      "phase_num": 3,
-      "description": "Reforge stage 113: stage 113 host review reviewed; run active; coverage 32/32",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856196.6006567,
-      "timestamp_str": "2026-11-16 22:09:56",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 114",
-      "phase_num": 3,
-      "description": "Reforge stage 114: window 342, 3 commit(s), 8 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, empty \u2014 nothing to commit",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856233.720555,
-      "timestamp_str": "2026-11-16 22:10:33",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
     {
       "task_id": "reforge:run-2",
       "phase": "reforge stage 114",
@@ -298,6 +257,66 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "games-teaser-pipeline",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/3] Plan: M1 failing tests pin ingest/register/check/sync contract; M2 implement tools/build_game_teasers.py; M3 wire markers in index.html, replace hand-written placeholder, README tree, gates, delivery",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794861759.36774,
+      "timestamp_str": "2026-11-16 23:42:39",
+      "agent": "claude:1",
+      "impact_assessment": {
+        "why": "Private-game teasers are managed by hand: files dropped into docs/assets/games and markup edited directly, with no manifest, no optimization and no consistency check.",
+        "benefits": "Teaser publishing becomes one command per screenshot plus sync, with the same optimization, verification and atomicity the dossier media pipeline already has.",
+        "risks": "contract: sync owning markup could clobber hand edits - mitigated by a fully-owned block between explicit markers and a placeholder render when the manifest is empty; dependency: new tool imports build_dossier_media primitives - mitigated by importing stable functions only, no network reuse; concurrency: two syncs could interleave - mitigated by atomic file replaces and manifesto single-writer CLI use; state: teasers.json corruption - mitigated by temp-plus-replace writes with a .bak shadow.",
+        "mitigation": "failing-first tests before implementation; bounded marker-scoped replace in sync, idempotent on re-run; README tree updated in the same commit."
+      },
+      "checklists": "passed",
+      "plan_digest": "c068724ed50b47085aae2b603125354f38bacc9ddd3485fffc4f65091796342c",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "games-teaser-pipeline",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[1/3] Contract tests written first and proven failing (ModuleNotFoundError pins the missing module); 19 tests across register/ingest/check/sync in tests/test_game_teasers.py",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794861997.1438184,
+      "timestamp_str": "2026-11-16 23:46:37",
+      "agent": "claude:1",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "games-teaser-pipeline",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/3] Tool implemented: register/ingest/check/sync green, 19/19 contract tests, 201/201 suite, 6/6 gates, checklists: passed",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1794863194.2634275,
+      "timestamp_str": "2026-11-17 00:06:34",
+      "agent": "claude:1",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
