@@ -436,5 +436,26 @@
     "final_snapshot_entries": 0,
     "surface_digest": "50f05a1df1dcb1e47f5e53da540d77d020db0f27b62a34639fb5c692cb5a089b",
     "baseline_digest": "50f05a1df1dcb1e47f5e53da540d77d020db0f27b62a34639fb5c692cb5a089b"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed games gallery work (M1-M3): section order, dossier-led public cards, private teaser slots; tests 97/97 and 6/6 gates green on HEAD 5d00b4d",
+    "baseline_commit": "5d00b4d4e1013dc333a1ad5f2a4814b172c94ce9",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1794860492.625659,
+    "finished_at": 1794860509.271328,
+    "strikes": 0,
+    "reviewer": "agent",
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "805c8957068e231d2e62a92fedcc53c7ac2b447b40cb9e0c594ef000f5a1ba1d",
+    "baseline_digest": "805c8957068e231d2e62a92fedcc53c7ac2b447b40cb9e0c594ef000f5a1ba1d"
   }
 ]
