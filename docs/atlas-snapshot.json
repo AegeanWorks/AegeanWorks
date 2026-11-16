@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-14",
+  "generated_at": "2026-11-16",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -179,7 +179,7 @@
     {
       "id": 1423597808,
       "name": "Chronos",
-      "description": "A lightweight, local-first focus and session orchestrator for developers: track deep-work sessions, micro-milestones and interruptions, and get productivity insights. Python standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Chronos is a lightweight, local-first developer focus and session orchestrator. It helps developers track deep-work sessions, manage micro-milestones, log interruptions, and generate productivity insights with zero external dependencies.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -204,9 +204,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:47:53Z",
+      "pushed_at": "2026-11-15T09:13:03Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -377,7 +377,7 @@
     {
       "id": 1427452835,
       "name": "Lacon",
-      "description": "An AI that thinks in as few letters as possible, recursively over a long context: its own alphabet, budget, thinker and recursive engine. No network, no API key, no model weights; the core is standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] An AI that thinks in as few letters as possible, recursively over a long context. Everything is in this project: the alphabet, the budget, the thinker and the recursive engine. No network, no API key, no model weights. The core is standard library only; an optional adapter reads Pebble source when the sibling Pebble project is...",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -402,9 +402,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:29Z",
+      "pushed_at": "2026-11-15T13:10:10Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -505,7 +505,7 @@
     {
       "id": 1428990967,
       "name": "Mnemo",
-      "description": "A dependency-free, local-first spaced-repetition flashcard CLI: study each card on the day the SM-2 algorithm says it is due, and keep everything in one readable JSON file on your machine. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A dependency-free, local-first spaced-repetition flashcard CLI. Add what you want to remember, study it on the days the SM-2 algorithm says it is due, and watch the schedule stretch as you recall and compress it when you forget. Everything stays in one readable JSON file on your machine.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -530,15 +530,15 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:37Z",
+      "pushed_at": "2026-11-15T15:57:29Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
       "id": 1433666867,
       "name": "Muse",
-      "description": "Prompt-driven AI music creation with an automated listener that scores how well each track fits its theme, available as a CLI and a Python library. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "Prompt-driven AI music creation with an automated listener that scores how well each track fits the theme and can retry using the judge's own suggestions, exposed as a CLI (single tracks or a JSON batch) and Python library.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -563,7 +563,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-10-29T18:34:45Z",
+      "pushed_at": "2026-11-14T21:34:07Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -604,7 +604,7 @@
     {
       "id": 688693231,
       "name": "NeuralBeat",
-      "description": "A local-first neuro-acoustic desktop app that generates mathematically accurate binaural, monaural and isochronic tones for focus, meditation, relaxation and sleep. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] The Ultimate Neuro-Acoustic Desktop Application",
       "topics": [
         "aegean-license",
         "aikit",
@@ -629,9 +629,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:31:53Z",
+      "pushed_at": "2026-11-16T12:06:07Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "Base"
     },
     {
@@ -695,7 +695,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T11:20:39Z",
+      "pushed_at": "2026-11-14T21:23:39Z",
       "homepage": "",
       "archived": false,
       "default_branch": "main"
@@ -736,7 +736,7 @@
     {
       "id": 1164577390,
       "name": "NeuroOptic",
-      "description": "A research-grade visual oscillator for brainwave entrainment: configurable 1-120 Hz frequencies, hardware-aware safety limits and drift-free phase accumulation. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] NeuroOptic is a research-grade visual oscillator for brainwave entrainment: configurable 1-120 Hz frequencies, hardware-aware safety limits and drift-free phase accumulation.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -761,9 +761,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:14:23Z",
+      "pushed_at": "2026-11-16T19:09:09Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -1066,7 +1066,7 @@
     {
       "id": 1425198123,
       "name": "Tally",
-      "description": "A dependency-free, local-first expense ledger for the terminal: record what you spend, list it and see where the money went, all in one readable JSON file on your machine. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A dependency-free, local-first expense ledger for the terminal. Record what you spend, list it, and see where the money went. Everything stays in one readable JSON file on your machine.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -1091,9 +1091,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:52Z",
+      "pushed_at": "2026-11-14T19:09:45Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1270,7 +1270,7 @@
     {
       "id": 1437561576,
       "name": "Driftwood",
-      "description": "Offline CLI that ranks code hotspots by combining git churn history with file complexity, so maintainers know where refactoring pays off.",
+      "description": "[ARCHIVED] Offline CLI that ranks code hotspots by combining git churn history with file complexity, so maintainers know where refactoring pays off.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1284,15 +1284,15 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:15:27Z",
+      "pushed_at": "2026-11-15T18:15:27Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
       "id": 1438052895,
       "name": "Dupefinder",
-      "description": "Read-only duplicate file finder that groups byte-identical files by size and SHA-256 and reports reclaimable space.",
+      "description": "[ARCHIVED] Read-only duplicate file finder that groups byte-identical files by size and SHA-256 and reports reclaimable space.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1301,16 +1301,21 @@
         "command-line-tool",
         "commercial-license",
         "developer-tools",
+        "disk-cleanup",
+        "duplicate-finder",
         "file-deduplication",
         "local-first",
         "python",
-        "source-available"
+        "sha256",
+        "source-available",
+        "storage-optimization",
+        "zero-dependencies"
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:13:10Z",
+      "pushed_at": "2026-11-15T15:30:37Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1396,7 +1401,7 @@
     {
       "id": 1440842627,
       "name": "Pocket-Planner",
-      "description": "A local-first task manager for capturing, prioritizing, and completing work from a fast terminal workflow.",
+      "description": "[ARCHIVED] A local-first task manager for capturing, prioritizing, and completing work from a fast terminal workflow.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1412,9 +1417,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-01T22:07:10Z",
+      "pushed_at": "2026-11-14T19:13:15Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {

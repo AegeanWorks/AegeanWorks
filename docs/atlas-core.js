@@ -135,7 +135,7 @@ export const REPO_LICENSES = Object.freeze({
   neuraldeck: "AL",
   "neurocore": "AL",
   "neurologyclinictemplates-tr": "AL",
-  neurooptic: "AL",
+  "neurooptic": "AL",
   nobetwizard: "AL",
   nomoreclutter: "AL",
   "orrery": "ASL",

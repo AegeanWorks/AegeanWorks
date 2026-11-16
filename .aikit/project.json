@@ -24,7 +24,10 @@
     "aegeanworks",
     "ai-research"
   ],
-  "gates": {},
+  "gates": {
+    "js-atlas": "node tests/atlas/run-tests.mjs",
+    "js-verify": "node tests/verify/run-tests.mjs"
+  },
   "ui_required": true,
   "created": "2026-10-25",
   "has_ui": true,
@@ -43,7 +46,7 @@
     "docs/play.html",
     "docs/privacy.html"
   ],
-  "ui_checked_at": "2026-11-14",
+  "ui_checked_at": "2026-11-16",
   "ui_source": "detected",
   "topics_source": "ai:kilo:2026-10-27",
   "topics_reviewed_at": "2026-10-28",
