@@ -1378,6 +1378,27 @@ class ProfileIntegrityTests(unittest.TestCase):
             with self.subTest(repo=name):
                 self.assertIn(f'href="project.html?repo={name}"', html)
 
+    def test_games_teasers_mirror_no_repository(self):
+        html = read_site()
+        section = re.search(r'<section[^>]*id="games".*?</section>', html, re.S).group(0)
+        self.assertNotIn("data-repo-url", section)
+        self.assertNotIn("data-repo-id", section)
+        self.assertNotIn("github.com/AegeanWorks", section)
+        self.assertNotIn('class="project ', section)
+        self.assertNotIn('class="project-facts"', section)
+
+    def test_games_section_sits_between_projects_and_research(self):
+        html = read_site()
+        self.assertLess(html.index('id="projects"'), html.index('id="games"'))
+        self.assertLess(html.index('id="games"'), html.index('id="research"'))
+        nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+        self.assertLess(nav.index(">Projects</a>"), nav.index(">Games</a>"))
+        self.assertLess(nav.index(">Games</a>"), nav.index(">Research</a>"))
+        noscript = re.search(r'<nav class="noscript-nav".*?</nav>', html, re.S).group(0)
+        self.assertIn(">Games</a>", noscript)
+        footer = re.search(r'<nav class="footer-col" aria-label="Site">.*?</nav>', html, re.S).group(0)
+        self.assertIn(">Games</a>", footer)
+
     def test_site_filters_are_topics_only(self):
         html = read_site()
         self.assertNotIn('data-filter="', html)

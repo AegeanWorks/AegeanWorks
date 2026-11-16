@@ -1032,6 +1032,25 @@ h1 .grad {
 }
 .project.is-hidden { display: none; }
 
+/* ---------- Games ---------- */
+
+.game-groups {
+  display: grid;
+  gap: 26px;
+}
+.game-group-title {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+.game-group-lede {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 /* ---------- Research ---------- */
 
 .research-grid {
