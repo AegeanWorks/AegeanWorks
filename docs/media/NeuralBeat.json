@@ -36,6 +36,30 @@
       "height": 655,
       "digest": "sha256:5a29fe59583eaf173066a8fd71e49ee3800d3070bea8a0197f846a854f8d2d11",
       "source": "NeuralBeat:assets/screenshots/2026-11-03-main.png"
+    },
+    {
+      "src": "media/NeuralBeat/2026-11-16-after.webp",
+      "alt": "NeuralBeat screenshot",
+      "caption": "NeuralBeat — After",
+      "commit": "ef1c892780693b3fd3f6fa3296342445646b90b1",
+      "taken_at": "2026-11-16",
+      "viewport": "",
+      "width": 1000,
+      "height": 640,
+      "digest": "sha256:ba775e157ca468918013886301591bb63aedc5d220c48d92818d97d1d3303238",
+      "source": "NeuralBeat:screenshots/after.png"
+    },
+    {
+      "src": "media/NeuralBeat/2026-11-16-before.webp",
+      "alt": "NeuralBeat screenshot",
+      "caption": "NeuralBeat — Before",
+      "commit": "ef1c892780693b3fd3f6fa3296342445646b90b1",
+      "taken_at": "2026-11-16",
+      "viewport": "",
+      "width": 1037,
+      "height": 640,
+      "digest": "sha256:78cab8957a6bd446f7b8964e08f2e4151876268f3d663fc41ea05a4faa3f13be",
+      "source": "NeuralBeat:screenshots/before.png"
     }
   ],
   "logo": {
@@ -44,9 +68,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:f763b67dd799e08aaf92fa447b871acf68ee41a3abb5f6c6cb686bf8648323b6",
-    "commit": "510d2da2fb9e932a7a8e15ae121b9d8069c1d663",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralBeat/510d2da2fb9e932a7a8e15ae121b9d8069c1d663/assets/logo.jpg"
+    "commit": "ef1c892780693b3fd3f6fa3296342445646b90b1",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralBeat/ef1c892780693b3fd3f6fa3296342445646b90b1/assets/logo.jpg"
   },
   "preview": {
     "src": "media/NeuralBeat/social-preview.webp",
@@ -54,8 +78,8 @@
     "width": 1024,
     "height": 609,
     "digest": "sha256:e408e52d3beee6522d1d2bfa24bddeaac9bef504ff512ad9dc77ed9c032b583a",
-    "commit": "510d2da2fb9e932a7a8e15ae121b9d8069c1d663",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralBeat/510d2da2fb9e932a7a8e15ae121b9d8069c1d663/assets/social-preview.png"
+    "commit": "ef1c892780693b3fd3f6fa3296342445646b90b1",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralBeat/ef1c892780693b3fd3f6fa3296342445646b90b1/assets/social-preview.png"
   }
 }

@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:08dd9aff277801ffa0cf7f3e8ee851eccd1bf7b6a958e5cc744e9414803a4d67",
-    "commit": "b8ec1f7e242388f8873239fe875ab2934712a38c",
-    "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Pocket-Planner/b8ec1f7e242388f8873239fe875ab2934712a38c/assets/logo.svg"
+    "commit": "926ee131f7e0547cb5aa6f4dd29bd5129d6a50a0",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Pocket-Planner/926ee131f7e0547cb5aa6f4dd29bd5129d6a50a0/assets/logo.svg"
   },
   "preview": {
     "src": "media/Pocket-Planner/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:591b0083f3b898c01a72454f21567fe65fde727077c056aee6e27c26090c8225",
-    "commit": "b8ec1f7e242388f8873239fe875ab2934712a38c",
-    "taken_at": "2026-11-14",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Pocket-Planner/b8ec1f7e242388f8873239fe875ab2934712a38c/assets/social-preview.svg"
+    "commit": "926ee131f7e0547cb5aa6f4dd29bd5129d6a50a0",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Pocket-Planner/926ee131f7e0547cb5aa6f4dd29bd5129d6a50a0/assets/social-preview.svg"
   },
   "screenshots": []
 }
