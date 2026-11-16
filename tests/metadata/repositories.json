@@ -868,7 +868,7 @@
     {
       "id": 1424866484,
       "name": "Pebble",
-      "description": "A tiny, dependency-free scripting language: lexer, parser, tree-walking evaluator and REPL. Built as an AIKit evaluation project, where the process is under test as much as the code. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "A tiny, dependency-free scripting language: lexer, parser, tree-walking evaluator and REPL. Built as an AIKit evaluation project — the process is under test as much as the code.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -893,7 +893,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-10-29T17:29:54Z",
+      "pushed_at": "2026-11-16T19:55:38Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

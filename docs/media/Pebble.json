@@ -7,10 +7,10 @@
     "alt": "Pebble logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:7485517c90593247feb8d77c4ce7029e79b38f8920f08f08c5be93ac16c87df0",
-    "commit": "993f7834687a0ecbac4b7ae6bcc308131fc357d0",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Pebble/993f7834687a0ecbac4b7ae6bcc308131fc357d0/assets/logo.jpg"
+    "digest": "sha256:d356d5bdbfb403c95c63c669de79ba94ddac9a1b3891b2609348049805561027",
+    "commit": "9a00ad9f5031a13e88b03ef0b1c5d907834b9802",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Pebble/9a00ad9f5031a13e88b03ef0b1c5d907834b9802/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Pebble/social-preview.webp",
@@ -18,8 +18,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:bb1f4f88c556899ad3d9b128b2f7287c555123ae870f59479cf18ea2a47daadf",
-    "commit": "993f7834687a0ecbac4b7ae6bcc308131fc357d0",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Pebble/993f7834687a0ecbac4b7ae6bcc308131fc357d0/assets/social-preview.png"
+    "commit": "9a00ad9f5031a13e88b03ef0b1c5d907834b9802",
+    "taken_at": "2026-11-16",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Pebble/9a00ad9f5031a13e88b03ef0b1c5d907834b9802/assets/social-preview.png"
   }
 }
