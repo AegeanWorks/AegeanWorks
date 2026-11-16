@@ -15,35 +15,11 @@
         "path": "projects/AegeanWorks"
       }
     ],
-    "completed_at": 1794863741.6190538,
-    "completed_head": "b9fa4bbff939fe8efc4c6885a05b65127ae6aac5",
-    "completed_tree": "62c1a97fefb89f2bd16010efec498a1838447991"
+    "completed_at": 1794863798.3042233,
+    "completed_head": "fe2c7b9dec1fafae1aac5a886c10204961800e90",
+    "completed_tree": "dae7582c63d306d9dc885e4e985563c294dbab4a"
   },
   "checkpoints": [
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 115",
-      "phase_num": 3,
-      "description": "Reforge stage 115: stage 115 host review reviewed; run active; coverage 4/4",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856335.659946,
-      "timestamp_str": "2026-11-16 22:12:15",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 116",
-      "phase_num": 3,
-      "description": "Reforge stage 116: window 348, 3 commit(s), 2 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, empty \u2014 nothing to commit",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856373.9151056,
-      "timestamp_str": "2026-11-16 22:12:53",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
     {
       "task_id": "reforge:run-2",
       "phase": "reforge stage 116",
@@ -324,6 +300,40 @@
       "timestamp_str": "2026-11-17 00:15:41",
       "agent": "claude:1",
       "head": "b9fa4bbff939fe8efc4c6885a05b65127ae6aac5",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "games-teaser-pipeline",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'games-teaser-pipeline' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794863751.730032,
+      "timestamp_str": "2026-11-17 00:15:51",
+      "agent": "claude:1",
+      "head": "1d64e6eb6040fb401d6dcc816a40c7b02cc5c64b",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
+    },
+    {
+      "task_id": "games-teaser-pipeline",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'games-teaser-pipeline' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794863798.3580368,
+      "timestamp_str": "2026-11-17 00:16:38",
+      "agent": "claude:1",
+      "head": "fe2c7b9dec1fafae1aac5a886c10204961800e90",
       "delivery": {
         "roots": [
           "."
