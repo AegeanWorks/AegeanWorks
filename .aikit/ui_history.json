@@ -479,5 +479,26 @@
     "final_snapshot_entries": 0,
     "surface_digest": "ff5207020d71618589450ac5601955184f221e40577a5cdef01c9ddbecd45e57",
     "baseline_digest": "12c1829f53d2116aafddcca18ee523ec60c99468e5773496cfa9e548fad9ceed"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed aegean-licensing archival presentation (card archived flag, integrated description in card text and JSON-LD, catalogue refresh); tests 202/202 and 6/6 gates green",
+    "baseline_commit": "6c4d9ad8fc610d5791a8523c9cf75d02967af1a3",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1794937560.1054614,
+    "finished_at": 1794937565.324167,
+    "strikes": 0,
+    "reviewer": "agent",
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "f9e05926526e00e66f9e9145c1bb933012e70b5212b4e0036c6464ae5aae8f84",
+    "baseline_digest": "f9e05926526e00e66f9e9145c1bb933012e70b5212b4e0036c6464ae5aae8f84"
   }
 ]
