@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-16",
+  "generated_at": "2026-11-17",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -21,7 +21,7 @@
     {
       "id": 1433083402,
       "name": "Aegean-Licensing",
-      "description": "The Aegean License family (AL, AGL and ASL 1.1) and the Aegean Commercial License: canonical texts, policies, commercial templates and certificate verification tooling for AegeanWorks projects.",
+      "description": "[ARCHIVED] Aegean Licensing is integrated into AegeanWorks/AIKit. The Aegean License family (AL, AGL and ASL 1.1), the commercial program and certificate verification now ship as aegean_licensing/ plus licenses/ and COMMERCIAL.md.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -46,10 +46,10 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-01T01:55:10Z",
+      "pushed_at": "2026-11-17T17:27:01Z",
       "homepage": "",
-      "archived": false,
-      "default_branch": "master"
+      "archived": true,
+      "default_branch": "main"
     },
     {
       "id": 1436254574,

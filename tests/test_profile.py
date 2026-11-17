@@ -1532,6 +1532,22 @@ class ProfileIntegrityTests(unittest.TestCase):
         css = (ROOT / "docs" / "styles.css").read_text(encoding="utf-8")
         self.assertIn(".license-card li a {", css)
 
+    def test_aegean_licensing_is_presented_as_vendored_into_aikit(self):
+        html = read_site()
+        card = re.search(
+            r'<a class="project reveal"[^>]*data-repo-url="https://github\.com/AegeanWorks/Aegean-Licensing".*?</a>',
+            html, re.S,
+        ).group(0)
+        with self.subTest(part="card"):
+            self.assertIn('data-archived="true"', card)
+        with self.subTest(part="card description"):
+            self.assertIn("integrated into AegeanWorks/AIKit", card)
+        with self.subTest(part="metadata"):
+            metadata = {repo["name"]: repo for repo in read_metadata()["repositories"]}
+            self.assertTrue(metadata["Aegean-Licensing"]["archived"])
+        with self.subTest(part="json-ld"):
+            self.assertIn('"[ARCHIVED] Aegean Licensing is integrated into AegeanWorks/AIKit', html)
+
     def test_external_links_are_safe(self):
         html = read_site()
         for match in re.finditer(r"<a\b[^>]*target=\"_blank\"[^>]*>", html):
