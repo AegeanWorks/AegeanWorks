@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "licensing-into-aikit",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1794937488.966242,
     "owner": "claude:1",
     "started_by": "claude:1",
@@ -14,21 +14,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1794937646.2357464,
+    "completed_head": "82a43fb0c5ec213c7c0c5829094ee85c47ba5080",
+    "completed_tree": "6b0af1f4af1d6b310cefd7023b9abae7f6e20262"
   },
   "checkpoints": [
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 118",
-      "phase_num": 3,
-      "description": "Reforge stage 118: stage 118 host review reviewed; run active; coverage 3/3",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856543.188735,
-      "timestamp_str": "2026-11-16 22:15:43",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
     {
       "task_id": "reforge:run-2",
       "phase": "reforge stage 119",
@@ -367,6 +358,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "licensing-into-aikit",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'licensing-into-aikit' completed successfully.",
+      "status": "completed",
+      "timestamp": 1794937646.283658,
+      "timestamp_str": "2026-11-17 20:47:26",
+      "agent": "claude:1",
+      "head": "82a43fb0c5ec213c7c0c5829094ee85c47ba5080",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
