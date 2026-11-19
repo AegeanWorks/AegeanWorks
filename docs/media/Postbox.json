@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Postbox",
+  "logo": {
+    "src": "media/Postbox/logo.svg",
+    "alt": "Postbox logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:faaa77f9a8656c9599b33c8fe4e7c248cbc44ddf1b4c1912f629001e1bc4edb4",
+    "commit": "0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Postbox/0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Postbox/social-preview.svg",
+    "alt": "Postbox social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:4956af61902339ac223ec513c4957b876e0c15fa32220a6d797b314cb789f73d",
+    "commit": "0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Postbox/0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

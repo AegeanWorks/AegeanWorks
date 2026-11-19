@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="grid" data-layout="wave">
+  <title id="title">Coda social preview</title>
+  <desc id="desc">Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#120712"/><stop offset="1" stop-color="#301223"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f566f0" stop-opacity="0.28"/><stop offset="1" stop-color="#f566f0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f566f0"/><stop offset="1" stop-color="#f566f0"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
+  
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
+  </g>
+  <g transform="translate(190 300) scale(2.0)" opacity="1.0"><rect x="-48" y="-48" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="-48" y="-8" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="-48" y="32" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="-8" y="-48" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="-8" y="-8" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="-8" y="32" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="32" y="-48" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="32" y="-8" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/><rect x="32" y="32" width="26" height="26" rx="6" fill="#f566f0" fill-opacity="0.18" stroke="#f566f0" stroke-width="2"/></g>
+  <text x="390" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Coda</text><text x="392" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="21" letter-spacing="5" fill="#f566f0">AEGEANWORKS · LIBRARY</text>
+  <text x="392" y="344" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">Coda is a deterministic, dependency-free Rust</text><text x="392" y="386" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">sound compiler that turns a small textual score</text><text x="392" y="428" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#F8FAFC" fill-opacity="0.74">into reproducible stereo WAV audio, with seeded …</text>
+  <rect x="392" y="500" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="429.5" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="479" y="500" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="566.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="665" y="500" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="752.0" y="525" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Coda</text>
+</svg>

@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Coda",
+  "logo": {
+    "src": "media/Coda/logo.svg",
+    "alt": "Coda logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:5dc83e9752b08fba0306849211b4c9bbfec53c7e86ca315c8b48eef7f243968a",
+    "commit": "e78d91993d56a394713b2258c7aa8e112fb19112",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Coda/e78d91993d56a394713b2258c7aa8e112fb19112/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Coda/social-preview.svg",
+    "alt": "Coda social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:fbeea6ccaa3c8538c8c1f301e6281da54320ee439f97be4cedf474b53fdea4d5",
+    "commit": "e78d91993d56a394713b2258c7aa8e112fb19112",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Coda/e78d91993d56a394713b2258c7aa8e112fb19112/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

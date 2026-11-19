@@ -42,9 +42,9 @@
     "alt": "Cyberpulse logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:2e38ad0a5104934879157c4cfb4cf93828f7d061a9de3360fa815b816b3e1fa6",
+    "digest": "sha256:ef748e8c53c38076203471090a16ea5b5a82664379de62d5fc7c3804bb1bb903",
     "commit": "2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be",
-    "taken_at": "2026-11-17",
+    "taken_at": "2026-11-19",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Cyberpulse/2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be/assets/logo.jpg"
   },
   "preview": {
@@ -54,7 +54,7 @@
     "height": 600,
     "digest": "sha256:5c265bb4fe286ed7d22627cf0d8e07d0b3c6881b18b7142dc0981b6130e6d937",
     "commit": "2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be",
-    "taken_at": "2026-11-17",
+    "taken_at": "2026-11-19",
     "generated": true
   }
 }
