@@ -69,6 +69,8 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Postbox](https://github.com/AegeanWorks/Postbox) | [ARCHIVED] A local webhook inbox with replay. Point a webhook at it, inspect what arrived, then replay it to another target. Zero dependencies, Python 3.10+, localhost only. |
 | [Probe](https://github.com/AegeanWorks/Probe) | [ARCHIVED] Local-first capability probe: a falsifiable CLI that runs an inspectable battery of environment checks - filesystem round-trip, shell execution, git state, imports and timing - and writes a verifiable JSON report of what was actually measured. |
 | [Trireme](https://github.com/AegeanWorks/Trireme) | [ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support. |
+| [Coda](https://github.com/AegeanWorks/Coda) | Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda. |
+| [Sieve](https://github.com/AegeanWorks/Sieve) | Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls. |
 
 </details>
 

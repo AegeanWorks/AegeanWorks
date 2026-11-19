@@ -71,6 +71,8 @@ PUBLIC_REPOS = {
     "Postbox",
     "Probe",
     "Trireme",
+    "Coda",
+    "Sieve",
 }
 
 CATEGORY_LABELS = {

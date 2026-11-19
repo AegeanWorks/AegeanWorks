@@ -1695,6 +1695,52 @@
       "homepage": "",
       "archived": true,
       "default_branch": "master"
+    },
+    {
+      "id": 1464538033,
+      "name": "Coda",
+      "description": "Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "commercial-license",
+        "dsp",
+        "music",
+        "rust",
+        "source-available"
+      ],
+      "language": "Rust",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T19:01:35Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
+    },
+    {
+      "id": 1464539000,
+      "name": "Sieve",
+      "description": "Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "commercial-license",
+        "local-first",
+        "regex",
+        "rust",
+        "source-available",
+        "text-search",
+        "zero-dependency"
+      ],
+      "language": "Rust",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T19:01:15Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
     }
   ]
 }

@@ -156,6 +156,8 @@ export const REPO_LICENSES = Object.freeze({
   "postbox": "AL",
   "probe": "AL",
   "trireme": "AL",
+  "coda": "AL",
+  "sieve": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */
