@@ -10,7 +10,7 @@
 - **Total Classes**: `46`
 - **Total Top-Level Functions**: `179`
 - **Total Class Methods**: `254`
-- **Total Source Lines**: `7610`
+- **Total Source Lines**: `7616`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`31` module(s))
@@ -25,7 +25,7 @@
 ### [`tests/test_game_teasers.py`](tests/test_game_teasers.py)
 > *Contract tests for tools/build_game_teasers.py.*
 
-**Size**: `232` lines (`9069` bytes)
+**Size**: `232` lines
 
 **Classes:**
 - `class TempRootTest` - *Each test gets an isolated project root mimicking the repo layout.*
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2105` lines (`99027` bytes)
+**Size**: `2111` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -187,7 +187,7 @@
 ### [`tests/test_social_browser.py`](tests/test_social_browser.py)
 > *Tests for the browser publishing path (tools/social/browser_post.py).*
 
-**Size**: `364` lines (`16797` bytes)
+**Size**: `364` lines
 
 **Classes:**
 - `class FakePage` - *Minimal page adapter double: records calls, never clicks by itself.*
@@ -232,7 +232,7 @@
 ### [`tests/test_social_manager.py`](tests/test_social_manager.py)
 > *Tests for the AegeanWorks social manager (tools/social/).*
 
-**Size**: `441` lines (`20291` bytes)
+**Size**: `441` lines
 
 **Classes:**
 - `class DisclosureTests`
@@ -302,7 +302,7 @@
 ### [`tests/test_social_review.py`](tests/test_social_review.py)
 > *Tests for the aesthetic review gate (tools/social/media_review.py).*
 
-**Size**: `280` lines (`11506` bytes)
+**Size**: `280` lines
 
 **Classes:**
 - `class FakePage`
@@ -346,7 +346,7 @@
 ---
 
 ### [`tests/test_sync_editor_digest.py`](tests/test_sync_editor_digest.py)
-**Size**: `57` lines (`2114` bytes)
+**Size**: `57` lines
 
 **Classes:**
 - `class EditorBuildDigestTests`
@@ -360,7 +360,7 @@
 ---
 
 ### [`tests/test_sync_live_digest.py`](tests/test_sync_live_digest.py)
-**Size**: `112` lines (`4334` bytes)
+**Size**: `112` lines
 
 **Classes:**
 - `class LiveBuildDigestTests`
@@ -376,7 +376,7 @@
 ### [`tools/build_dossier_media.py`](tools/build_dossier_media.py)
 > *Build and verify the dossier media (logo, social preview, screenshots).*
 
-**Size**: `973` lines (`38216` bytes)
+**Size**: `973` lines
 
 **Classes:**
 - `class MediaError`
@@ -426,7 +426,7 @@
 ### [`tools/build_game_teasers.py`](tools/build_game_teasers.py)
 > *Manage private-game teaser media under docs/assets/games/.*
 
-**Size**: `304` lines (`12104` bytes)
+**Size**: `304` lines
 
 **Functions:**
 - `def manifest_path(root)`
@@ -447,14 +447,14 @@
 ### [`tools/social/__init__.py`](tools/social/__init__.py)
 > *AegeanWorks social manager: posts about the works of AegeanWorks on X.*
 
-**Size**: `10` lines (`319` bytes)
+**Size**: `10` lines
 
 ---
 
 ### [`tools/social/browser_post.py`](tools/social/browser_post.py)
 > *Browser publishing path: no X API, no keys, no per-post cost.*
 
-**Size**: `354` lines (`15679` bytes)
+**Size**: `354` lines
 
 **Classes:**
 - `class BrowserError` - *Raised when the browser path is unsafe or the page misbehaves.*
@@ -483,7 +483,7 @@
 ### [`tools/social/context.py`](tools/social/context.py)
 > *Post context built only from in-repo sources (atlas, dossiers, live builds).*
 
-**Size**: `39` lines (`1548` bytes)
+**Size**: `39` lines
 
 **Functions:**
 - `def _read_json(relative)`
@@ -494,7 +494,7 @@
 ### [`tools/social/disclosure.py`](tools/social/disclosure.py)
 > *Disclosure copy loader + marker application (un-droppable by construction).*
 
-**Size**: `54` lines (`1536` bytes)
+**Size**: `54` lines
 
 **Functions:**
 - `def load_disclosure()` - *Read the reviewed disclosure copy.*
@@ -510,7 +510,7 @@
 ### [`tools/social/draft.py`](tools/social/draft.py)
 > *Draft builder: the single choke point (topic -> evidence -> media -> marker -> spam).*
 
-**Size**: `168` lines (`7196` bytes)
+**Size**: `168` lines
 
 **Classes:**
 - `class DraftError` - *Raised when a draft cannot be built.*
@@ -528,7 +528,7 @@
 ### [`tools/social/evidence.py`](tools/social/evidence.py)
 > *Verified-state gate: every post traces to a verified repo state.*
 
-**Size**: `55` lines (`1905` bytes)
+**Size**: `55` lines
 
 **Classes:**
 - `class UnverifiedError` - *Raised when evidence does not support a post.*
@@ -543,7 +543,7 @@
 ### [`tools/social/media_capture.py`](tools/social/media_capture.py)
 > *Fresh screenshot capture with ingest-equivalent provenance semantics.*
 
-**Size**: `111` lines (`4130` bytes)
+**Size**: `111` lines
 
 **Classes:**
 - `class CaptureError` - *Raised when a capture cannot prove what it shows.*
@@ -559,7 +559,7 @@
 ### [`tools/social/media_chart.py`](tools/social/media_chart.py)
 > *Plotted data from measured numbers (stdlib SVG; Pillow PNG optional).*
 
-**Size**: `116` lines (`4720` bytes)
+**Size**: `116` lines
 
 **Classes:**
 - `class ChartError` - *Raised when a chart would mislead.*
@@ -575,7 +575,7 @@
 ### [`tools/social/media_compose.py`](tools/social/media_compose.py)
 > *Infographic composer: title + numbers, clean pixels.*
 
-**Size**: `54` lines (`1932` bytes)
+**Size**: `54` lines
 
 **Functions:**
 - `def compose_svg(title, lines, run_id, commit, data_file, date, ai_mark)` - *Compose the infographic SVG; raises if any provenance slot is empty.*
@@ -586,7 +586,7 @@
 ### [`tools/social/media_review.py`](tools/social/media_review.py)
 > *Aesthetic review: no ugly visual ships through automation.*
 
-**Size**: `120` lines (`4435` bytes)
+**Size**: `120` lines
 
 **Classes:**
 - `class ReviewError` - *Raised when a visual fails aesthetic review.*
@@ -604,7 +604,7 @@
 ### [`tools/social/meta_image.py`](tools/social/meta_image.py)
 > *Meta Model API wiring: AI image generation + AI aesthetic review.*
 
-**Size**: `127` lines (`5000` bytes)
+**Size**: `127` lines
 
 **Classes:**
 - `class MetaImageError` - *Raised for key, network or API failures (key never included).*
@@ -620,7 +620,7 @@
 ### [`tools/social/profile.py`](tools/social/profile.py)
 > *Profile maintenance: bio + site-notice proposals, approval-gated like posts.*
 
-**Size**: `25` lines (`1013` bytes)
+**Size**: `25` lines
 
 **Functions:**
 - `def propose_bio()` - *Return the reviewed bio proposal (apply on X by hand).*
@@ -632,7 +632,7 @@
 ### [`tools/social/provenance.py`](tools/social/provenance.py)
 > *Provenance stamp + sidecar + verify (re-capture / re-plot audit).*
 
-**Size**: `65` lines (`2303` bytes)
+**Size**: `65` lines
 
 **Classes:**
 - `class ProvenanceError` - *Raised when a visual cannot prove its run.*
@@ -648,7 +648,7 @@
 ### [`tools/social/publish.py`](tools/social/publish.py)
 > *Publishing: approval-gated, marker-asserted, topic re-checked, idempotent.*
 
-**Size**: `41` lines (`1699` bytes)
+**Size**: `41` lines
 
 **Classes:**
 - `class PublishError` - *Raised when publishing is blocked.*
@@ -661,7 +661,7 @@
 ### [`tools/social/published.py`](tools/social/published.py)
 > *Posted-post log: which repos already have a live post.*
 
-**Size**: `67` lines (`2057` bytes)
+**Size**: `67` lines
 
 **Functions:**
 - `def _path(state_dir)`
@@ -675,7 +675,7 @@
 ### [`tools/social/queue.py`](tools/social/queue.py)
 > *File-backed draft queue. Drafts are unapproved by default; approval is explicit.*
 
-**Size**: `99` lines (`3426` bytes)
+**Size**: `99` lines
 
 **Classes:**
 - `class QueueError` - *Raised for unknown drafts or bad approvals.*
@@ -695,7 +695,7 @@
 ### [`tools/social/secrets.py`](tools/social/secrets.py)
 > *Environment-only credential loader. No defaults, no logging, no disk reads.*
 
-**Size**: `29` lines (`924` bytes)
+**Size**: `29` lines
 
 **Classes:**
 - `class MissingCredentialsError` - *Raised when live credentials are absent.*
@@ -709,7 +709,7 @@
 ### [`tools/social/spam_guard.py`](tools/social/spam_guard.py)
 > *Spam guards: cadence caps, exact-hash duplicates, similarity near-dupes.*
 
-**Size**: `85` lines (`3049` bytes)
+**Size**: `85` lines
 
 **Functions:**
 - `def load_cadence()` - *Read the reviewed cadence rules.*
@@ -726,7 +726,7 @@
 ### [`tools/social/topic_gate.py`](tools/social/topic_gate.py)
 > *On-topic gate: a post is publishable only if it is about an AegeanWorks work.*
 
-**Size**: `43` lines (`1535` bytes)
+**Size**: `43` lines
 
 **Classes:**
 - `class OffTopicError` - *Raised when a subject is not an AegeanWorks work.*
@@ -741,7 +741,7 @@
 ### [`tools/social/x_client.py`](tools/social/x_client.py)
 > *Thin X API client: mock transport by default, live only if explicitly enabled.*
 
-**Size**: `41` lines (`1664` bytes)
+**Size**: `41` lines
 
 **Classes:**
 - `class MockTransport` - *Dry-run transport: records posts, publishes nothing.*
@@ -759,7 +759,7 @@
 ### [`tools/sync_editor.py`](tools/sync_editor.py)
 > *Vendor the Palette image editor into the AegeanWorks site.*
 
-**Size**: `215` lines (`8012` bytes)
+**Size**: `215` lines
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*
@@ -782,7 +782,7 @@
 ### [`tools/sync_live_apps.py`](tools/sync_live_apps.py)
 > *Sync the live browser apps and their catalog.*
 
-**Size**: `824` lines (`33807` bytes)
+**Size**: `824` lines
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*
