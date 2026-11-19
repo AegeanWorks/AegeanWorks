@@ -57,7 +57,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Aegean-TGE](https://github.com/AegeanWorks/Aegean-TGE) | Native Windows hybrid CPU and GPU LLM inference engine in C++20 that treats system RAM and GPU VRAM as one coordinated memory tier. |
 | [ModelDuck](https://github.com/AegeanWorks/ModelDuck) | A local GGUF model server and coding-model tuner: load a model, serve an OpenAI-compatible API, tune it for code. Runs on the CPU or a Vulkan GPU; no cloud account, no telemetry. |
 | [Cairn](https://github.com/AegeanWorks/Cairn) | An agent-first systems language with its own x86-64 backend. Cairn compiles straight to a Windows PE executable: no C compiler, no assembler, no linker, no libc, no runtime library. |
-| [NeuroCore](https://github.com/AegeanWorks/NeuroCore) | A complete, self-hosted AI agent framework. Visual flow editor · Persistent memory · RAG · Tools · Multi-platform messaging · Community marketplace. |
+| [NeuroCore](https://github.com/AegeanWorks/NeuroCore) | [ARCHIVED] A complete, self-hosted AI agent framework. Visual flow editor · Persistent memory · RAG · Tools · Multi-platform messaging · Community marketplace. |
 | [AIKit](https://github.com/AegeanWorks/AIKit) | Crash-resilient governance and delivery gates for AI coding agents: versioned task ledger, commit-level verification, secret scanning and per-project gates. Free for personal use under AL-1.1; commercial use under ACL-1.0. |
 | [Lacon](https://github.com/AegeanWorks/Lacon) | [ARCHIVED] An AI that thinks in as few letters as possible, recursively over a long context. Everything is in this project: the alphabet, the budget, the thinker and the recursive engine. No network, no API key, no model weights. The core is standard library only; an optional adapter reads Pebble source when the sibling Pebble project is... |
 | [Lattice](https://github.com/AegeanWorks/Lattice) | A provenance-first research knowledge graph for humans and AI agents. Local-first, SQLite-backed and standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0. |
@@ -65,6 +65,10 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Aegean-Licensing](https://github.com/AegeanWorks/Aegean-Licensing) | [ARCHIVED] Aegean Licensing is integrated into AegeanWorks/AIKit. The Aegean License family (AL, AGL and ASL 1.1), the commercial program and certificate verification now ship as aegean_licensing/ plus licenses/ and COMMERCIAL.md. |
 | [ChatDuck](https://github.com/AegeanWorks/ChatDuck) | [ARCHIVED] A fast, local-first web chat UI for any OpenAI-compatible model server, including ModelDuck. It is one static page and a few modules: no build step, no framework, no backend, and no telemetry. |
 | [AegeanWorks](https://github.com/AegeanWorks/AegeanWorks) | AegeanWorks is an independent studio building local-first AI systems, cognitive tooling, and computational research. The work favors small composable parts, inspectable state, and software that still works when the network does not. |
+| [Brain](https://github.com/AegeanWorks/Brain) | [ARCHIVED] A deterministic agent with memory, a planner and a self-model: talk to it in a terminal, or run the ablation and telemetry batteries. |
+| [Postbox](https://github.com/AegeanWorks/Postbox) | [ARCHIVED] A local webhook inbox with replay. Point a webhook at it, inspect what arrived, then replay it to another target. Zero dependencies, Python 3.10+, localhost only. |
+| [Probe](https://github.com/AegeanWorks/Probe) | [ARCHIVED] Local-first capability probe: a falsifiable CLI that runs an inspectable battery of environment checks - filesystem round-trip, shell execution, git state, imports and timing - and writes a verifiable JSON report of what was actually measured. |
+| [Trireme](https://github.com/AegeanWorks/Trireme) | Trireme is an offline sailing route planner: deterministic shortest-time routing over small sea charts. |
 
 </details>
 
@@ -80,7 +84,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Orrery](https://github.com/AegeanWorks/Orrery) | [ARCHIVED] An N-body gravitational sandbox that runs in your terminal or in your browser. Nine carefully chosen worlds, a symplectic integrator, optional relativity and collision physics, live energy diagnostics, orbit trails, CSV and JSON export, and no dependencies outside the Python standard library. |
 | [Research-Engine](https://github.com/AegeanWorks/Research-Engine) | A falsification-first research engine that turns questions into provenance-backed claims, executable kill tests, and auditable verdicts. |
 | [NeurologyClinicTemplates-TR](https://github.com/AegeanWorks/NeurologyClinicTemplates-TR) | Standardized Turkish anamnesis (patient history) templates for common neurology complaints, helping neurologists, residents and medical students document assessments completely and systematically. Free personal use under AL-1.1; commercial use under ACL-1.0. |
-| [Atlas](https://github.com/AegeanWorks/Atlas) | An interactive visual knowledge platform for scientific figures. |
+| [Atlas](https://github.com/AegeanWorks/Atlas) | [ARCHIVED] An interactive visual knowledge platform for learning material — easy drag-and-drop. |
 
 </details>
 

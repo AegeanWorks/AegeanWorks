@@ -116,7 +116,7 @@ export const REPO_LICENSES = Object.freeze({
   aldervale: "AGL",
   afterimage: "AGL",
   "assay": "AL",
-  atlas: "AL",
+  "atlas": "AL",
   chronos: "AL",
   "crypt-crawler": "AGL",
   cyberpulse: "AGL",
@@ -152,6 +152,10 @@ export const REPO_LICENSES = Object.freeze({
   voidfarer: "AGL",
   "chatduck": "AL",
   "aegeanworks": "AL",
+  "brain": "AL",
+  "postbox": "AL",
+  "probe": "AL",
+  "trireme": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */

@@ -67,6 +67,10 @@ PUBLIC_REPOS = {
     "Atlas",
     "Keystone",
     "AegeanWorks",
+    "Brain",
+    "Postbox",
+    "Probe",
+    "Trireme",
 }
 
 CATEGORY_LABELS = {

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-11-17",
+  "generated_at": "2026-11-19",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -670,7 +670,7 @@
     {
       "id": 1161451399,
       "name": "NeuroCore",
-      "description": "A complete, self-hosted AI agent framework. Visual flow editor · Persistent memory · RAG · Tools · Multi-platform messaging · Community marketplace.",
+      "description": "[ARCHIVED] A complete, self-hosted AI agent framework. Visual flow editor · Persistent memory · RAG · Tools · Multi-platform messaging · Community marketplace.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -695,9 +695,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T21:23:39Z",
+      "pushed_at": "2026-11-19T17:12:50Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -1507,7 +1507,7 @@
     {
       "id": 1442261675,
       "name": "Atlas",
-      "description": "An interactive visual knowledge platform for scientific figures.",
+      "description": "[ARCHIVED] An interactive visual knowledge platform for learning material — easy drag-and-drop.",
       "topics": [
         "aikit",
         "data-visualization",
@@ -1520,9 +1520,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T17:31:15Z",
+      "pushed_at": "2026-11-19T16:59:23Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -1605,6 +1605,96 @@
       "homepage": "https://aegeanworks.github.io/AegeanWorks/",
       "archived": false,
       "default_branch": "main"
+    },
+    {
+      "id": 1450115348,
+      "name": "Brain",
+      "description": "[ARCHIVED] A deterministic agent with memory, a planner and a self-model: talk to it in a terminal, or run the ablation and telemetry batteries.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T18:20:54Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1464478034,
+      "name": "Postbox",
+      "description": "[ARCHIVED] A local webhook inbox with replay. Point a webhook at it, inspect what arrived, then replay it to another target. Zero dependencies, Python 3.10+, localhost only.",
+      "topics": [
+        "aegean-license",
+        "aegeanworks",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "command-line-tool",
+        "commercial-license",
+        "developer-tools",
+        "http",
+        "local-first",
+        "offline-first",
+        "python",
+        "replay",
+        "software",
+        "source-available",
+        "testing",
+        "webhook",
+        "zero-dependency"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T18:22:11Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1464509467,
+      "name": "Probe",
+      "description": "[ARCHIVED] Local-first capability probe: a falsifiable CLI that runs an inspectable battery of environment checks - filesystem round-trip, shell execution, git state, imports and timing - and writes a verifiable JSON report of what was actually measured.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "environment",
+        "probe",
+        "source-available",
+        "testing"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T18:27:34Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1464522359,
+      "name": "Trireme",
+      "description": "Trireme is an offline sailing route planner: deterministic shortest-time routing over small sea charts.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "commercial-license",
+        "rust",
+        "source-available"
+      ],
+      "language": "JavaScript",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-19T18:37:47Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
     }
   ]
 }
