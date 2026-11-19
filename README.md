@@ -68,7 +68,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Brain](https://github.com/AegeanWorks/Brain) | [ARCHIVED] A deterministic agent with memory, a planner and a self-model: talk to it in a terminal, or run the ablation and telemetry batteries. |
 | [Postbox](https://github.com/AegeanWorks/Postbox) | [ARCHIVED] A local webhook inbox with replay. Point a webhook at it, inspect what arrived, then replay it to another target. Zero dependencies, Python 3.10+, localhost only. |
 | [Probe](https://github.com/AegeanWorks/Probe) | [ARCHIVED] Local-first capability probe: a falsifiable CLI that runs an inspectable battery of environment checks - filesystem round-trip, shell execution, git state, imports and timing - and writes a verifiable JSON report of what was actually measured. |
-| [Trireme](https://github.com/AegeanWorks/Trireme) | Trireme is an offline sailing route planner: deterministic shortest-time routing over small sea charts. |
+| [Trireme](https://github.com/AegeanWorks/Trireme) | [ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support. |
 
 </details>
 

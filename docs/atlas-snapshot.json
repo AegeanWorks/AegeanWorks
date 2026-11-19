@@ -1679,7 +1679,7 @@
     {
       "id": 1464522359,
       "name": "Trireme",
-      "description": "Trireme is an offline sailing route planner: deterministic shortest-time routing over small sea charts.",
+      "description": "[ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1691,9 +1691,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-19T18:37:47Z",
+      "pushed_at": "2026-11-19T18:52:57Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     }
   ]

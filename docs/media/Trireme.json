@@ -8,9 +8,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:b1081bcf64491874750f3b494764aa633472585780ba2404f14c8dc0edaa3367",
-    "commit": "2bd8905d50e3bed62148630d77ec7e28937eed09",
+    "commit": "f90eeb9669e29ba2e907560e451296e6d6754919",
     "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Trireme/2bd8905d50e3bed62148630d77ec7e28937eed09/assets/logo.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Trireme/f90eeb9669e29ba2e907560e451296e6d6754919/assets/logo.svg"
   },
   "preview": {
     "src": "media/Trireme/social-preview.svg",
@@ -18,8 +18,8 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:3a9bb0cc02f1ce49baa2cc6fb78517f4b5e60e2828f46352b7337e7136cf1014",
-    "commit": "2bd8905d50e3bed62148630d77ec7e28937eed09",
+    "commit": "f90eeb9669e29ba2e907560e451296e6d6754919",
     "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Trireme/2bd8905d50e3bed62148630d77ec7e28937eed09/assets/social-preview.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Trireme/f90eeb9669e29ba2e907560e451296e6d6754919/assets/social-preview.svg"
   }
 }
