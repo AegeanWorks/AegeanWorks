@@ -246,6 +246,11 @@
       "width": 1024,
       "height": 1024
     },
+    "Trireme": {
+      "src": "media/Trireme/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "UI-Sandbox": {
       "src": "media/UI-Sandbox/logo.webp",
       "width": 256,
