@@ -1,6 +1,6 @@
 {
   "source": "GitHub API /users/AegeanWorks/repos",
-  "captured_at": "2026-11-19",
+  "captured_at": "2026-11-21",
   "profile": {
     "name": "AegeanWorks",
     "description": "AegeanWorks - an independent studio building local-first AI systems, cognitive tooling, and computational research.",
@@ -245,7 +245,7 @@
     {
       "id": 1423620204,
       "name": "Cyberpulse",
-      "description": "A retro-cyberpunk terminal hacking game built on behavioral psychology: procedural puzzle nodes, ICE defenses, push-your-luck extraction, persistent progression and a five-act campaign. Python standard library only. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] CyberPulse is a retro-cyberpunk terminal hacking simulation game designed around empirical behavioral psychology: procedural puzzle nodes, seeded side-subnet hosts, ICE defenses, push-your-luck extraction, persistent career progression and a five-act story campaign, played in the terminal or the Web Cyberdeck.",
       "topics": [
         "aegean-game-license",
         "aegeanworks",
@@ -270,10 +270,10 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T13:03:50Z",
+      "pushed_at": "2026-11-21T20:10:36Z",
       "homepage": "",
-      "archived": false,
-      "default_branch": "master"
+      "archived": true,
+      "default_branch": "main"
     },
     {
       "id": 1433650287,
@@ -637,7 +637,7 @@
     {
       "id": 1152419749,
       "name": "NeuralDeck",
-      "description": "An offline desktop app that turns PDFs, Word files and other documents into high-quality Anki flashcards with a local LLM, with smart deck matching, AI editing and direct Anki sync. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Your personal, privacy-focused AI assistant for creating Anki flashcards from any document.",
       "topics": [
         "aegean-license",
         "ai-study-assistant",
@@ -662,9 +662,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:32:11Z",
+      "pushed_at": "2026-11-20T22:36:13Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -802,7 +802,7 @@
     {
       "id": 1168810433,
       "name": "NoMoreClutter",
-      "description": "An AI desktop app that organizes your files with large language models: it analyzes, categorizes and renames them with descriptive names, and works with local LLMs. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] An intelligent AI-powered desktop application that automatically organizes your files using Large Language Models (LLMs). Say goodbye to cluttered folders and let AI analyze, categorize, and rename your files with smart descriptive names!",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -827,9 +827,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:32:14Z",
+      "pushed_at": "2026-11-21T11:03:07Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -1198,7 +1198,7 @@
     {
       "id": 1440627706,
       "name": "Palette",
-      "description": "A local-first, zero-dependency image editor for the browser: layers, blend modes, selections, gradients, filters, autosave recovery and PNG/JPEG/WebP export.",
+      "description": "[ARCHIVED] A zero-dependency, Photoshop-style image editor for the browser. Layers, filters, undo/redo and local export; images never leave the device.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1213,9 +1213,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:49Z",
+      "pushed_at": "2026-11-21T11:00:46Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=palette",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1699,7 +1699,7 @@
     {
       "id": 1464538033,
       "name": "Coda",
-      "description": "Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda.",
+      "description": "[ARCHIVED] Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1713,15 +1713,15 @@
       ],
       "language": "Rust",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-19T19:01:35Z",
+      "pushed_at": "2026-11-19T19:08:15Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
       "id": 1464539000,
       "name": "Sieve",
-      "description": "Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls.",
+      "description": "[ARCHIVED] Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1737,7 +1737,80 @@
       ],
       "language": "Rust",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-19T19:01:15Z",
+      "pushed_at": "2026-11-19T20:51:29Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1446602045,
+      "name": "Shooter",
+      "description": "[ARCHIVED] Fast arena shooter on the Keystone engine. Engine owns render/loop/input/serialization (projects/keystone); this package owns state/rules/scene and loads via --game shooter.game:ShooterGame.",
+      "topics": [
+        "aegean-game-license",
+        "aikit",
+        "aikit-integrated",
+        "arena-shooter",
+        "commercial-license",
+        "deterministic-sim",
+        "drm-free",
+        "game",
+        "headless-testing",
+        "opengl",
+        "python",
+        "shooter",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-20T16:50:30Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "main"
+    },
+    {
+      "id": 1466875471,
+      "name": "Neon-Dash",
+      "description": "[ARCHIVED] Neon Dash is a deterministic 3D obstacle-dodger on the Keystone engine: start from a title screen with your run records, pick a difficulty, dodge tall walls and lane-tracking hunter drones, jump low barriers, chain orb combos and near misses, grab shield/slow/magnet power-ups, clear three checkpoints, and defeat the Warden boss...",
+      "topics": [
+        "aegean-game-license",
+        "aikit",
+        "aikit-integrated",
+        "arcade",
+        "commercial-license",
+        "deterministic-sim",
+        "drm-free",
+        "endless-runner",
+        "keystone",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-21T19:20:23Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1466934949,
+      "name": "Vaultbreak",
+      "description": "Multi-floor 3D relic heist game and live subsystem testbed for the Keystone Engine (projects/keystone): 5 Vault Floors, directional stealth vision cones and acoustic hearing, sweeping security cameras, hackable Security Terminal + TileMap.with_cell secret breach, bouncing EMP/Smoke orbs (resolve_sphere_aabb + ray_sphere), crouch stealth, moving...",
+      "topics": [
+        "3d-game",
+        "aegean-game-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "deterministic-sim",
+        "drm-free",
+        "keystone",
+        "source-available",
+        "stealth",
+        "testbed"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-21T20:37:14Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

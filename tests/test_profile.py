@@ -73,6 +73,9 @@ PUBLIC_REPOS = {
     "Trireme",
     "Coda",
     "Sieve",
+    "Shooter",
+    "Neon-Dash",
+    "Vaultbreak",
 }
 
 CATEGORY_LABELS = {
