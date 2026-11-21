@@ -1794,7 +1794,7 @@
     {
       "id": 1466934949,
       "name": "Vaultbreak",
-      "description": "Multi-floor 3D relic heist game and live subsystem testbed for the Keystone Engine (projects/keystone): 5 Vault Floors, directional stealth vision cones and acoustic hearing, sweeping security cameras, hackable Security Terminal + TileMap.with_cell secret breach, bouncing EMP/Smoke orbs (resolve_sphere_aabb + ray_sphere), crouch stealth, moving...",
+      "description": "[ARCHIVED] Multi-floor 3D relic heist game and live subsystem testbed for the Keystone Engine (projects/keystone): 5 Vault Floors, directional stealth vision cones and acoustic hearing, sweeping security cameras, hackable Security Terminal + TileMap.with_cell secret breach, bouncing EMP/Smoke orbs (resolve_sphere_aabb + ray_sphere), crouch...",
       "topics": [
         "3d-game",
         "aegean-game-license",
@@ -1810,9 +1810,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-21T20:37:14Z",
+      "pushed_at": "2026-11-21T20:40:25Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     }
   ]
