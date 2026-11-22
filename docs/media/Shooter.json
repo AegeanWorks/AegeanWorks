@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Shooter",
+  "logo": {
+    "src": "media/Shooter/logo.svg",
+    "alt": "Shooter logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:5f92c904e513ffcb8a27e52d05c81e6b396322728906e2d23deb02e7df00f950",
+    "commit": "82dd6930087cd885f7dcffb34eaabedd1351b548",
+    "taken_at": "2026-11-20",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Shooter/82dd6930087cd885f7dcffb34eaabedd1351b548/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Shooter/social-preview.svg",
+    "alt": "Shooter social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:f5780bb56772a426680d47324647a509e75920d87f574fbfa44b5d72bfd7c7d0",
+    "commit": "82dd6930087cd885f7dcffb34eaabedd1351b548",
+    "taken_at": "2026-11-20",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Shooter/82dd6930087cd885f7dcffb34eaabedd1351b548/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

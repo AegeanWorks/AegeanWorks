@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Neon-Dash",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Neon-Dash/logo.svg",
+    "alt": "Neon-Dash logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:f28b4a9c75c139a7357adfa842bd0d187a27e02257f838b8d79e82e64492bd1e",
+    "commit": "874a83628efad49862d2246702112a3eb757c304",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Neon-Dash/874a83628efad49862d2246702112a3eb757c304/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Neon-Dash/social-preview.svg",
+    "alt": "Neon-Dash social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:75d047812a494a3e7666b3fa373621c59591205affb971404298adfad2e5ec2c",
+    "commit": "874a83628efad49862d2246702112a3eb757c304",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Neon-Dash/874a83628efad49862d2246702112a3eb757c304/assets/social-preview.svg"
+  }
+}

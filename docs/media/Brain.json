@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Brain",
+  "logo": {
+    "src": "media/Brain/logo.svg",
+    "alt": "Brain logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:a861a7197a38355ab5968f53cafbcdc896ae782d0ce4a58e47a9665d9de9664d",
+    "commit": "fa4544415a155a2af87a6a8a84b98015bd7cde4f",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Brain/fa4544415a155a2af87a6a8a84b98015bd7cde4f/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Brain/social-preview.svg",
+    "alt": "Brain social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:bf4ad0502c60adf2c8630dd8ff22f3add694755fa9f2674a55f043b99225bd51",
+    "commit": "fa4544415a155a2af87a6a8a84b98015bd7cde4f",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Brain/fa4544415a155a2af87a6a8a84b98015bd7cde4f/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

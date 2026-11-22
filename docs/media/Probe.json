@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Probe",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Probe/logo.svg",
+    "alt": "Probe logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:49625bc2b3e752bbb8b0abb217aa29c29e68677a148df5be0ae5bfe9df91554d",
+    "commit": "c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Probe/c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Probe/social-preview.svg",
+    "alt": "Probe social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:49da2213fdaf151f2da260e44e91b5627c6e777de71daf6d32724a56688c4037",
+    "commit": "c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6",
+    "taken_at": "2026-11-19",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Probe/c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6/assets/social-preview.svg"
+  }
+}

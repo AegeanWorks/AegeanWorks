@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Atelier",
+  "logo": {
+    "src": "media/Atelier/logo.svg",
+    "alt": "Atelier logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:df7a86ce2c220f078da9334473accaa62636d427c27b9a70013954d032434459",
+    "commit": "2bde834ec620936d431d704c7d714066b62b8c4f",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atelier/2bde834ec620936d431d704c7d714066b62b8c4f/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Atelier/social-preview.svg",
+    "alt": "Atelier social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:af40cf83210ff9208bd97674d25acd5df3bf8cc89e56d2516c894237f3f13426",
+    "commit": "2bde834ec620936d431d704c7d714066b62b8c4f",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Atelier/2bde834ec620936d431d704c7d714066b62b8c4f/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

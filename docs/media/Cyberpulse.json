@@ -35,6 +35,114 @@
       "height": 900,
       "digest": "sha256:e2ed6f6ef7462a8149e9642b45d74b1fc459eed38133c23d19ae034c804a590b",
       "source": "Cyberpulse:assets/screenshots/2026-11-03-menu.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-matrix-narrow.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 06 Matrix Narrow",
+      "commit": "49bf8f643120bbfcc66791893f8dad44142ee216",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 390,
+      "height": 1570,
+      "digest": "sha256:e195b1ff819ec7bcf2d1b3c2528741e15defd0bbf9738759a0621a25c29dcf76",
+      "source": "Cyberpulse:assets/screenshots/2026-11-06-matrix-narrow.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-matrix.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 06 Matrix",
+      "commit": "49bf8f643120bbfcc66791893f8dad44142ee216",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1024,
+      "height": 652,
+      "digest": "sha256:46dfb9bde7cb7695f017c66f68b036aa8b7a558605736e9f05ab84025431c7f5",
+      "source": "Cyberpulse:assets/screenshots/2026-11-06-matrix.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-counter-after-spoof.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Counter After Spoof",
+      "commit": "49bf8f643120bbfcc66791893f8dad44142ee216",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:f962564b62bd52a02925a54ac34859ce36ffeac8e5c0c65b7f4d526ff221abda",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-counter-after-spoof.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-counter-banked.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Counter Banked",
+      "commit": "944c784a9a3564a909cba75e6db7e44b97f1cbb9",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:2e525ecf6db6ad575ab9787b45f340c821f62a85cd1d918578eeb4b1897c83ec",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-counter-banked.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-counter-before-spoof.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Counter Before Spoof",
+      "commit": "944c784a9a3564a909cba75e6db7e44b97f1cbb9",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:63f5b739bb5e0d81d0332b1463d46c89268add38be7c17b5e4eca6a8940d5169",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-counter-before-spoof.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-extraction-after.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Extraction After",
+      "commit": "944c784a9a3564a909cba75e6db7e44b97f1cbb9",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:65b00b121209ee50d29459c1db17bcf4ba13afe5a4ac66dfb0e3e2dd5631bea9",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-extraction-after.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-extraction-before.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Extraction Before",
+      "commit": "b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:da3add3d3b0b46757230ef560c96f7811731543b2dea921037b22a5f0819f115",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-extraction-before.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle1-extraction-burn.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle1 Extraction Burn",
+      "commit": "b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:11f92cd47e602a4f42c88a8901140d5e9c1f33cfd178b59e5479000d1447bf9b",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle1-extraction-burn.png"
+    },
+    {
+      "src": "media/Cyberpulse/2026-11-21-cycle2-hunter-after-10.webp",
+      "alt": "Cyberpulse screenshot",
+      "caption": "Cyberpulse — 2026 11 07 Cycle2 Hunter After 10",
+      "commit": "b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45",
+      "taken_at": "2026-11-21",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:baf2ed0961393f27bfacf256cb1cfa5868fc22f18f3d43f866df7e8deca93869",
+      "source": "Cyberpulse:assets/screenshots/2026-11-07-cycle2-hunter-after-10.png"
     }
   ],
   "logo": {
@@ -42,19 +150,19 @@
     "alt": "Cyberpulse logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:2e38ad0a5104934879157c4cfb4cf93828f7d061a9de3360fa815b816b3e1fa6",
-    "commit": "2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be",
-    "taken_at": "2026-11-17",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Cyberpulse/2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be/assets/logo.jpg"
+    "digest": "sha256:019c11ea61c23791da9b752237b8bbf342dc023ec701ba6469b852d5ca46bc05",
+    "commit": "b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Cyberpulse/b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Cyberpulse/social-preview.webp",
     "alt": "Cyberpulse social preview",
     "width": 1200,
     "height": 600,
-    "digest": "sha256:5c265bb4fe286ed7d22627cf0d8e07d0b3c6881b18b7142dc0981b6130e6d937",
-    "commit": "2b88d1eadf44f8b70c3ef7f5e96fad477a80c9be",
-    "taken_at": "2026-11-17",
-    "generated": true
+    "digest": "sha256:df4720a9c80f77cb202355bd8370a9328f2aaf397c8747ac20edebd89fdb6593",
+    "commit": "b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Cyberpulse/b3fb51a3abd4b6ced43dabdfcbbac645ba6f5f45/assets/social-preview.png"
   }
 }

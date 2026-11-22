@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Vaultbreak",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Vaultbreak/logo.svg",
+    "alt": "Vaultbreak logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:0a9a7171fa1efe48c762024c39cc07added31ace3de709406ec35d27bd1f9a16",
+    "commit": "689471c77091f603de9ff0b93c0a246bcb884003",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Vaultbreak/689471c77091f603de9ff0b93c0a246bcb884003/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Vaultbreak/social-preview.svg",
+    "alt": "Vaultbreak social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:e11e0aaaec819b6de1133104aa5229dad57d12cd343d4ef534f48ea18c40b1e3",
+    "commit": "689471c77091f603de9ff0b93c0a246bcb884003",
+    "taken_at": "2026-11-21",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Vaultbreak/689471c77091f603de9ff0b93c0a246bcb884003/assets/social-preview.svg"
+  }
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="network" data-layout="center">
+  <title id="title">Brain social preview</title>
+  <desc id="desc">Deterministic agent substrate with memory planner self-model and integration telemetry plus ablation harness.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#120f07"/><stop offset="1" stop-color="#2b3012"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f5d466" stop-opacity="0.28"/><stop offset="1" stop-color="#f5d466" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5d466"/><stop offset="1" stop-color="#f5d466"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
+  
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
+  </g>
+  <g transform="translate(640 208) scale(1.4)" opacity="1.0"><path d="M-52 24L-18 -42L20 34L54 -14M20 34L48 44M-18 -42L-44 -34" fill="none" stroke="#f5d466" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-52" cy="24" r="8" fill="#f5d466"/><circle cx="-18" cy="-42" r="8" fill="#f5d466"/><circle cx="20" cy="34" r="8" fill="#f5d466"/><circle cx="54" cy="-14" r="8" fill="#f5d466"/><circle cx="48" cy="44" r="8" fill="#f5d466"/><circle cx="-44" cy="-34" r="8" fill="#f5d466"/></g>
+  <text x="640" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700" fill="#F8FAFC">Brain</text><text x="640" y="402" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="5" fill="#f5d466">AEGEANWORKS · CLI TOOL</text>
+  <text x="640" y="442" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">Deterministic agent substrate with memory planner</text><text x="640" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">self-model and integration telemetry plus ablation</text><text x="640" y="518" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="25" fill="#F8FAFC" fill-opacity="0.72">harness.</text>
+  <rect x="416" y="530" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="454" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="504" y="530" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="590" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="690" y="530" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="776" y="555" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Brain</text>
+</svg>

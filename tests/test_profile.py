@@ -76,6 +76,7 @@ PUBLIC_REPOS = {
     "Shooter",
     "Neon-Dash",
     "Vaultbreak",
+    "Atelier",
 }
 
 CATEGORY_LABELS = {

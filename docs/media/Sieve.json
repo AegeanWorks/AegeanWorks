@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:977ca6c44e8d02dfb9c9dc2c6d14248b211e417a463d86cce365b026b70a1c2f",
-    "commit": "d2d23c68c472e88a6998be5b66c2cc7baa3e7925",
+    "commit": "96fb4dc37be5936127f203b5986fa92761098349",
     "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Sieve/d2d23c68c472e88a6998be5b66c2cc7baa3e7925/assets/logo.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Sieve/96fb4dc37be5936127f203b5986fa92761098349/assets/logo.svg"
   },
   "preview": {
     "src": "media/Sieve/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:9db59ed14b6f56bd2d2086ce4f23421dc1f077f2abfe5174019b7bf76a14a48d",
-    "commit": "d2d23c68c472e88a6998be5b66c2cc7baa3e7925",
+    "commit": "96fb4dc37be5936127f203b5986fa92761098349",
     "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Sieve/d2d23c68c472e88a6998be5b66c2cc7baa3e7925/assets/social-preview.svg"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Sieve/96fb4dc37be5936127f203b5986fa92761098349/assets/social-preview.svg"
   },
   "screenshots": []
 }
