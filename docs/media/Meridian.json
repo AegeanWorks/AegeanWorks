@@ -44,6 +44,18 @@
       "height": 844,
       "digest": "sha256:71a9441fee1075909a83e9e2e3c532c6f802a5b81da15fb23521830ff33a6974",
       "source": "Meridian:assets/screenshots/2026-11-03-mobile.png"
+    },
+    {
+      "src": "media/Meridian/2026-11-22-home.webp",
+      "alt": "Meridian screenshot",
+      "caption": "Meridian — 2026 10 30 Home",
+      "commit": "52832939c7abc2944ffffdb11452343b8bee7e4e",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 1440,
+      "height": 900,
+      "digest": "sha256:623addce99005fafea5b8fc99a507259ac2e388fbe393e66fd3683c318195f58",
+      "source": "Meridian:assets/screenshots/2026-10-30-home.png"
     }
   ]
 }
