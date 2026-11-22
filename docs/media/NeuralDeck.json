@@ -55,9 +55,9 @@
     "alt": "NeuralDeck logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:50f3dc7bd6959c117aa8ec151c15521a29ffc0dd08ebfbb94c29f11a7b741f0a",
+    "digest": "sha256:1c7c61b9137c44fe76bf6a35d80300fd7b6bc3a00de718ce2f8e6ea1aa68e64e",
     "commit": "807a0e6a08f3858b105dc085243ad3db957a46f9",
-    "taken_at": "2026-11-20",
+    "taken_at": "2026-11-22",
     "source": "https://raw.githubusercontent.com/AegeanWorks/NeuralDeck/807a0e6a08f3858b105dc085243ad3db957a46f9/assets/logo.jpg"
   },
   "preview": {

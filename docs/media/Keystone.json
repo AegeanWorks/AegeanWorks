@@ -7,9 +7,9 @@
     "width": 512,
     "height": 512,
     "digest": "sha256:76edc78d6173191f2fdb198d84a222e2152fd491e29e73634513739f91a9eddd",
-    "commit": "92c98bf4299436b69ad87152f36c994aabd0fabd",
-    "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/92c98bf4299436b69ad87152f36c994aabd0fabd/assets/logo.svg"
+    "commit": "b2823fcfca55c81cf81dfc4f52ef4e5caff232ef",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/b2823fcfca55c81cf81dfc4f52ef4e5caff232ef/assets/logo.svg"
   },
   "preview": {
     "src": "media/Keystone/social-preview.svg",
@@ -17,9 +17,9 @@
     "width": 1280,
     "height": 640,
     "digest": "sha256:52828b51e2aadbcc7367c93d0e8bdc4d3ee99bbe3aab92f51b06a38c3ff8c779",
-    "commit": "92c98bf4299436b69ad87152f36c994aabd0fabd",
-    "taken_at": "2026-11-19",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/92c98bf4299436b69ad87152f36c994aabd0fabd/assets/social-preview.svg"
+    "commit": "b2823fcfca55c81cf81dfc4f52ef4e5caff232ef",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Keystone/b2823fcfca55c81cf81dfc4f52ef4e5caff232ef/assets/social-preview.svg"
   },
   "screenshots": [
     {
