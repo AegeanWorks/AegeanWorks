@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "a11y-seo-site-fixes",
+    "task_id": "upstream-media-merge",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795354550.7166646,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795355195.1881547,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795361750.7166646,
+    "lease_until": 1795362395.1881547,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795354589.0408964,
-    "completed_head": "812b4d34aed4cc44300dc3829c94380545d4752f",
-    "completed_tree": "8a8cc5305e17854d38307cc808f417680c80a4e5"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "licensing-into-aikit",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/3] GitHub repo archived and described (verified via gh repo view: isArchived=true)",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794935042.0080774,
-      "timestamp_str": "2026-11-17 20:04:02",
-      "agent": "claude:1",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "licensing-into-aikit",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/3] Archive ceremony completed (moved to projects/archive, GitHub archived read-only, description set, catalogue refreshed); test green 4/4 subtests, 202/202 suite, 6/6 gates, checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794937488.966242,
-      "timestamp_str": "2026-11-17 20:44:48",
-      "agent": "claude:1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "licensing-into-aikit",
       "phase": "completed",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "upstream-media-merge",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: integrate upstream commit 7e8fcbb (dossier media refresh) into the local branch, resolving case-only Sextant paths, AIKit preview digest and logos.json union, then push with all gates green.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795355194.3704455,
+      "timestamp_str": "2026-11-22 16:46:34",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The remote advanced with a media refresh while the workspace held 19 local dossier/a11y commits; push was rejected and needed a non-destructive integration.",
+        "benefits": "Local catalogue, media and site fixes sit on top of upstream refresh; 202 tests and 6/6 gates pass; push can proceed.",
+        "risks": "contract: manifest digests and logo index must match the catalogue exactly; dependency: none; concurrency: none; state: upstream used lowercase sextant paths while the catalogue uses Sextant, requiring canonical casing restoration",
+        "mitigation": "Merge rather than rebase to avoid replaying historical case-only commits; keep upstream media bytes, realign AIKit digests to the local preview asset, union new repos into logos.json, then verify tests, media check and check --strict before pushing."
+      },
+      "plan_digest": "0bdf673051eb0030d4acd14de230c1ee1d44ee30a6b8e39a9b31333e229fce2a",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "upstream-media-merge",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: merge 8aa3691 integrates 7e8fcbb; 202 Python tests OK; build_dossier_media.py check 0 problems; 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795355195.1881547,
+      "timestamp_str": "2026-11-22 16:46:35",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
