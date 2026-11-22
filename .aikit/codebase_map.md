@@ -6,14 +6,14 @@
 ---
 
 ## 📊 Codebase Metrics
-- **Total Python Modules**: `31`
+- **Total Python Modules**: `32`
 - **Total Classes**: `46`
-- **Total Top-Level Functions**: `180`
-- **Total Class Methods**: `261`
-- **Total Source Lines**: `7758`
+- **Total Top-Level Functions**: `182`
+- **Total Class Methods**: `263`
+- **Total Source Lines**: `7837`
 
 ## 🧭 Map Coverage
-- **Indexed**: python (`31` module(s))
+- **Indexed**: python (`32` module(s))
 - **Not indexed by this map**: javascript (`185` file(s))
 
 > Only Python symbols are catalogued. A language above is reported as not indexed, never as verified by this map.
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2178` lines
+**Size**: `2199` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -176,6 +176,8 @@
   - Method `.test_verifier_uses_text_nodes_only()`
   - Method `.test_site_ships_no_signing_material()`
   - Method `.test_verification_vector_is_pinned()`
+  - Method `.test_no_js_filter_status_has_no_stale_count()`
+  - Method `.test_sitemap_covers_every_dossier()`
   - Method `.test_sitemap_lists_the_verify_page()`
   - Method `.test_external_links_are_safe_on_every_page()`
   - Method `.test_pages_send_a_content_security_policy()`
@@ -448,6 +450,17 @@
 - `def render_workshop(manifest)`
 - `def command_sync(args)`
 - `def main(argv)`
+
+---
+
+### [`tools/build_sitemap.py`](tools/build_sitemap.py)
+> *Generate docs/sitemap.xml from the static pages and project catalogue.*
+
+**Size**: `58` lines
+
+**Functions:**
+- `def url_entry(loc, lastmod, frequency, priority)`
+- `def main()`
 
 ---
 

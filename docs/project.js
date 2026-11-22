@@ -8,6 +8,7 @@ import {
 } from "./atlas-core.js";
 import {
   findRepo,
+  isPrivateRepo,
   normalizeMedia,
   readmeToBlocks,
   screenshotMeta,
@@ -383,9 +384,12 @@ function appendTopic(repo, topic) {
   container.appendChild(link);
 }
 
+let privateRepo = false;
+
 function render(repo) {
   if (statusEl) statusEl.hidden = true;
   if (detailEl) detailEl.hidden = false;
+  privateRepo = isPrivateRepo(repo);
   document.title = repo.name + " — AegeanWorks";
   const description = displayDescription(repo) || "A public project from the AegeanWorks studio.";
   setText("project-title", repo.name);
@@ -412,7 +416,18 @@ function render(repo) {
   setMeta('meta[name="twitter:title"]', repo.name + " \u2014 AegeanWorks");
   setMeta('meta[name="twitter:description"]', description);
   const repoLink = document.getElementById("project-repo");
-  if (repoLink) repoLink.href = repo.html_url;
+  const readmeLink = document.getElementById("readme-link");
+  if (repoLink) {
+    if (privateRepo) {
+      repoLink.removeAttribute("href");
+      repoLink.removeAttribute("target");
+      repoLink.setAttribute("aria-disabled", "true");
+      repoLink.textContent = "Private repository — source not public";
+    } else {
+      repoLink.href = repo.html_url;
+    }
+  }
+  if (readmeLink && privateRepo) readmeLink.hidden = true;
   const homepage = document.getElementById("project-homepage");
   if (homepage) {
     if (repo.homepage && !isSocialHomepage(repo.homepage)) {
@@ -472,7 +487,7 @@ function appendBlock(block) {
 }
 
 async function loadReadme(repo) {
-  if (readmeLink) readmeLink.href = repo.html_url + "#readme";
+  if (readmeLink && !privateRepo) readmeLink.href = repo.html_url + "#readme";
   try {
     const markdown = await fetchReadme(repo.name);
     const parsed = readmeToBlocks(markdown);

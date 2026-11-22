@@ -353,6 +353,7 @@ AegeanWorks/
 ├── tools/
 │   ├── build_dossier_media.py  <- Fetches, optimizes and verifies dossier media
 │   ├── build_game_teasers.py <- Registers, ingests, verifies and syncs private-game teasers
+│   ├── build_sitemap.py   <- Generates the sitemap from static pages and the project catalogue
 │   ├── sync_editor.py     <- Copies and verifies the Palette editor build
 │   ├── sync_live_apps.py  <- Copies and verifies the browser app builds
 │   └── social/            <- Studio X manager: gates, media pipeline, browser publish

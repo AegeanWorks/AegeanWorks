@@ -256,6 +256,16 @@ export function normalizeMedia(raw, repoName) {
   };
 }
 
+/* Repositories in this list are intentionally not public. The dossier copy is
+   public, so its "View repository" and README links must not lead to a 404. */
+export const PRIVATE_REPOS = new Set(["AIKit"]);
+
+export function isPrivateRepo(repo) {
+  if (!repo || typeof repo !== "object") return false;
+  const name = typeof repo.name === "string" ? repo.name.trim() : "";
+  return PRIVATE_REPOS.has(name) || repo.private === true;
+}
+
 export function screenshotMeta(shot) {
   if (!shot || typeof shot !== "object") return "";
   return [shot.commit ? "commit " + shot.commit : "", shot.taken_at, shot.viewport]

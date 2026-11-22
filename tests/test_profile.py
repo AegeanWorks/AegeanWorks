@@ -2116,6 +2116,27 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertRegex(vector["expected_digest"], r"^[0-9a-f]{64}$")
         self.assertIn("not an issued certificate", vector["note"])
 
+    def test_no_js_filter_status_has_no_stale_count(self):
+        html = read_site()
+        self.assertNotIn("Showing all 48", html)
+        self.assertIn(
+            'class="filter-status" role="status" aria-live="polite">Browse the public project catalogue.</p>',
+            html,
+        )
+
+    def test_sitemap_covers_every_dossier(self):
+        sitemap = (ROOT / "docs/sitemap.xml").read_text(encoding="utf-8")
+        root = ET.fromstring(sitemap)
+        locs = [node.text for node in root.iter() if node.tag.endswith("loc")]
+        repositories = read_metadata()["repositories"]
+        for repo in repositories:
+            with self.subTest(repo=repo["name"]):
+                self.assertIn(
+                    "https://aegeanworks.github.io/AegeanWorks/project.html?repo=" + repo["name"],
+                    locs,
+                )
+        self.assertEqual(len(locs), 7 + len(repositories))
+
     def test_sitemap_lists_the_verify_page(self):
         sitemap = (ROOT / "docs" / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn(

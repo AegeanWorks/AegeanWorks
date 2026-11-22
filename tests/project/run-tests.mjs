@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   commitRef,
   findRepo,
+  isPrivateRepo,
   mediaPath,
   normalizeMedia,
   readmeToBlocks,
@@ -233,6 +234,11 @@ equal(
   "Image 2 of 3: Image.",
   "blank caption falls back to a label"
 );
+
+equal(isPrivateRepo({ name: "AIKit" }), true, "AIKit is private");
+equal(isPrivateRepo({ name: "AIKit", private: false }), true, "explicit public flag cannot override the policy list");
+equal(isPrivateRepo({ name: "Cairn" }), false, "public repos are not private");
+equal(isPrivateRepo({ name: "Other", private: true }), true, "a live private flag is honoured");
 
 console.log(`ok ${assertions} project-page assertions`);
 
