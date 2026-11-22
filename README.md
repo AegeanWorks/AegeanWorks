@@ -2,11 +2,11 @@
 <!-- aegean:media:start -->
 <p align="center"><img src="assets/social-preview.png" alt="AegeanWorks social preview" width="100%"></p>
 <!-- aegean:media:end -->
-<p align="center">
-</p>
+<p align="center"><sub>Independent studio · Türkiye · local-first by default</sub></p>
 
 <p align="center">
   <a href="https://aegeanworks.github.io/AegeanWorks/"><img src="https://img.shields.io/badge/website-live-22D3EE?style=flat-square&labelColor=0B1220" alt="Website"></a>
+  <a href="https://x.com/AegeanWorks"><img src="https://img.shields.io/badge/X-@AegeanWorks-000000?style=flat-square&labelColor=0B1220" alt="X (@AegeanWorks)"></a>
   <a href="https://github.com/AegeanWorks/AIKit"><img src="https://img.shields.io/badge/AIKit-integrated-6F42C1?style=flat-square&labelColor=0B1220" alt="AIKit integrated"></a>
   <a href="COMMERCIAL.md"><img src="https://img.shields.io/badge/licensing-Aegean%201.1%20%2B%20ACL--1.0-22D3EE?style=flat-square&labelColor=0B1220" alt="Licensing"></a>
   <a href="https://github.com/AegeanWorks?tab=repositories"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2FAegeanWorks&query=public_repos&label=public%20repos&color=8B5CF6&style=flat-square&labelColor=0B1220" alt="Public repositories"></a>
@@ -27,21 +27,33 @@ AegeanWorks is an independent studio building **local-first AI systems**, **cogn
 | **Personal science** | N=1 experimentation, neuro-acoustics, and falsification-first research tooling. |
 | **Playable systems** | Simulations, puzzles, and games built to make complex mechanics legible. |
 
+### Where to start
+
+- **Agents and governed autonomy** → [AIKit](https://github.com/AegeanWorks/AIKit), crash-resilient governance for AI coding agents.
+- **Personal science** → [N1-Engine](https://github.com/AegeanWorks/N1-Engine), rigorous N-of-1 experimentation on your own machine.
+- **Play in the browser** → the [Live catalog](https://aegeanworks.github.io/AegeanWorks/play.html): Prism-Relay, Weft, Iris, Tessera, Meridian, Palette and Orrery run in-page.
+- **The whole orbit** → the [public project atlas](#public-project-atlas) below, or [all repositories](https://github.com/AegeanWorks?tab=repositories).
+
+Archived projects stay inspectable: their last verified builds remain in the Live catalog, marked as archived. See [Earlier work](#earlier-work-archived).
+
 ---
 
 ## Featured systems
 
-### [NeuroCore](https://github.com/AegeanWorks/NeuroCore)
-A self-hosted, modular agent framework for persistent, tool-using autonomous systems. Workflows, long-term memory, RAG, and a plugin surface in one extensible runtime.
+Active today:
 
 ### [AIKit](https://github.com/AegeanWorks/AIKit)
-Crash-resilient governance and delivery gates for AI coding agents: versioned task ledger, commit-level verification, secret scanning, and per-project gates.
+Crash-resilient governance and delivery gates for AI coding agents: versioned task ledger, commit-level verification, secret scanning, and per-project gates. Free for personal use under AL-1.1; commercial use under ACL-1.0.
 
 ### [N1-Engine](https://github.com/AegeanWorks/N1-Engine)
-A local-first, privacy-focused platform for rigorous N-of-1 self-experimentation: apply scientific statistics to your own life data, on your own machine.
+A local-first, privacy-focused platform for rigorous N-of-1 self-experimentation: apply scientific statistics to your own life data, on your own machine. Free personal use under AL-1.1; commercial use under ACL-1.0.
 
-### [NeuralBeat](https://github.com/AegeanWorks/NeuralBeat)
-A mathematically precise neuro-acoustic desktop app for binaural, monaural, and isochronic tones, with hardware-aware safety limits.
+### Earlier work (archived)
+
+These projects are archived, not under active development. Their ideas carry on in current systems.
+
+- **[NeuroCore](https://github.com/AegeanWorks/NeuroCore)** — **[ARCHIVED]** A self-hosted, modular agent framework for persistent, tool-using autonomous systems: workflows, long-term memory, RAG, and a plugin surface. Its memory and tool-routing ideas live on in current agent work.
+- **[NeuralBeat](https://github.com/AegeanWorks/NeuralBeat)** — **[ARCHIVED]** A mathematically precise neuro-acoustic desktop app for binaural, monaural, and isochronic tones with hardware-aware safety limits.
 
 ---
 
@@ -71,6 +83,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Trireme](https://github.com/AegeanWorks/Trireme) | [ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support. |
 | [Coda](https://github.com/AegeanWorks/Coda) | [ARCHIVED] Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda. |
 | [Sieve](https://github.com/AegeanWorks/Sieve) | [ARCHIVED] Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls. |
+| [Atelier](https://github.com/AegeanWorks/Atelier) | Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API. |
 
 </details>
 
@@ -192,7 +205,16 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 
 ## License
 
-AegeanWorks publishes source-available and open-source projects. AL-1.1 for software, AGL-1.1 for games, ASL-1.1 for research, and the Aegean Commercial License 1.0 (ACL-1.0) for commercial use; see [COMMERCIAL.md](COMMERCIAL.md). The browser app builds under `docs/live/` keep their own license: AL-1.1 for apps and AGL-1.1 for games. The vendored Palette build under `docs/editor/` is AL-1.1 for personal use and ACL-1.0 for commercial use. Some repositories keep GNU AGPL-3.0, Apache-2.0 or MIT, and each repository's LICENSE governs. Versions published under GNU AGPL-3.0 keep that grant, including its commercial permissions. The canonical texts and tier table live in the [license catalog](https://github.com/AegeanWorks/Aegean-Licensing/blob/master/licenses/CATALOG.md). A commercial certificate can be checked against the public register at [aegeanworks.github.io/AegeanWorks/verify.html](https://aegeanworks.github.io/AegeanWorks/verify.html).
+AegeanWorks publishes source-available and open-source projects. AL-1.1 for software, AGL-1.1 for games, ASL-1.1 for research, and the Aegean Commercial License 1.0 (ACL-1.0) for commercial use; see [COMMERCIAL.md](COMMERCIAL.md). The browser app builds under `docs/live/` keep their own license: AL-1.1 for apps and AGL-1.1 for games. The vendored Palette build under `docs/editor/` is AL-1.1 for personal use and ACL-1.0 for commercial use. Some repositories keep GNU AGPL-3.0, Apache-2.0 or MIT, and each repository's LICENSE governs. Versions published under GNU AGPL-3.0 keep that grant, including its commercial permissions. Licensing now ships inside AIKit; the canonical texts and tier table live in the [AIKit license catalog](https://github.com/AegeanWorks/AIKit/blob/main/licenses/CATALOG.md) (the original Aegean-Licensing repository is archived). A commercial certificate can be checked against the public register at [aegeanworks.github.io/AegeanWorks/verify.html](https://aegeanworks.github.io/AegeanWorks/verify.html).
+
+---
+
+## Social
+
+We publish build-in-public updates about new systems, research notes and releases on X. Posts go through the studio's own X manager in `tools/social/`: topic, evidence, media, spam and approval gates run before anything is published, and compose is reviewed before an armed click.
+
+- **Studio** — [@AegeanWorks](https://x.com/AegeanWorks)
+- **Founder** — [@aegean_E](https://x.com/aegean_E) · [@_aegean_](https://x.com/_aegean_)
 
 ---
 
@@ -204,7 +226,7 @@ AegeanWorks publishes source-available and open-source projects. AL-1.1 for soft
 - **Privacy** — [privacy.html](https://aegeanworks.github.io/AegeanWorks/privacy.html)
 - **Accessibility** — [accessibility.html](https://aegeanworks.github.io/AegeanWorks/accessibility.html)
 - **GitHub** — [@AegeanWorks](https://github.com/AegeanWorks)
-- **X** — [@AegeanWorks](https://x.com/AegeanWorks)
+- **X** — [@AegeanWorks](https://x.com/AegeanWorks), [@aegean_E](https://x.com/aegean_E), [@_aegean_](https://x.com/_aegean_)
 - **Commercial licensing** — [aegean-licensing@proton.me](mailto:aegean-licensing@proton.me)
 
 <p align="center"><sub>Built in public, one inspectable system at a time.</sub></p>
@@ -235,7 +257,7 @@ node tests/atlas/run-tests.mjs
 node tests/project/run-tests.mjs
 ```
 
-All five suites run in GitHub Actions on every push and pull request (`.github/workflows/tests.yml`). The Node suites pin the browser verifier, the live GitHub atlas, the README renderer and the live catalog to the same rules as the Python code. A scheduled `media.yml` run pulls logos, social previews and repository captures, regenerates the manifests and commits them when a repository changed. A scheduled `live.yml` run copies the browser app builds, enforces their static contract, and records their versions and commits.
+The Python suite and the three Node parity suites run in GitHub Actions on every push and pull request (`.github/workflows/tests.yml`). The Node suites pin the browser verifier, the live GitHub atlas, the README renderer and the live catalog to the same rules as the Python code. A scheduled `media.yml` run pulls logos, social previews and repository captures, regenerates the manifests and commits them when a repository changed. A scheduled `live.yml` run copies the browser app builds, enforces their static contract, and records their versions and commits.
 
 ### What's Inside
 
