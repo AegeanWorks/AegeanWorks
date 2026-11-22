@@ -500,5 +500,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "f9e05926526e00e66f9e9145c1bb933012e70b5212b4e0036c6464ae5aae8f84",
     "baseline_digest": "f9e05926526e00e66f9e9145c1bb933012e70b5212b4e0036c6464ae5aae8f84"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Review of committed catalogue/media sync; automated Python and Node UI suites passed. Project guideline G-001 declines human UI review.",
+    "baseline_commit": "5bcb120b0bc0bbe84db1ee731befc06dfc2f109d",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795309756.1539762,
+    "finished_at": 1795309896.2349539,
+    "strikes": 0,
+    "reviewer": "agent",
+    "review": {
+      "reviewer": "agent",
+      "surface": "app",
+      "surface_digest": "87e1992ed96f4aa021dc044b22b6763a183e3b50fffcb5cf60681b1c60f629ba",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795309896.2349596
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "87e1992ed96f4aa021dc044b22b6763a183e3b50fffcb5cf60681b1c60f629ba",
+    "baseline_digest": "87e1992ed96f4aa021dc044b22b6763a183e3b50fffcb5cf60681b1c60f629ba"
   }
 ]
