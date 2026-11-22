@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "dossier-github-reconcile",
+    "task_id": "github-only-dossiers",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795350059.3982697,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795350902.7006755,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795357259.3982697,
+    "lease_until": 1795358102.7006755,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,72 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795350123.93785,
-    "completed_head": "96c80753081f170c75da502cc6bd363629723333",
-    "completed_tree": "b385aeb57544e08fcf2d44592fcb318237d2e3a6"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'games-gallery' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794861213.1418579,
-      "timestamp_str": "2026-11-16 23:33:33",
-      "agent": "claude:1",
-      "head": "4059a87773cf664723ed5183be435be07444d331",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "games-teaser-pipeline",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/3] Plan: M1 failing tests pin ingest/register/check/sync contract; M2 implement tools/build_game_teasers.py; M3 wire markers in index.html, replace hand-written placeholder, README tree, gates, delivery",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794861759.36774,
-      "timestamp_str": "2026-11-16 23:42:39",
-      "agent": "claude:1",
-      "impact_assessment": {
-        "why": "Private-game teasers are managed by hand: files dropped into docs/assets/games and markup edited directly, with no manifest, no optimization and no consistency check.",
-        "benefits": "Teaser publishing becomes one command per screenshot plus sync, with the same optimization, verification and atomicity the dossier media pipeline already has.",
-        "risks": "contract: sync owning markup could clobber hand edits - mitigated by a fully-owned block between explicit markers and a placeholder render when the manifest is empty; dependency: new tool imports build_dossier_media primitives - mitigated by importing stable functions only, no network reuse; concurrency: two syncs could interleave - mitigated by atomic file replaces and manifesto single-writer CLI use; state: teasers.json corruption - mitigated by temp-plus-replace writes with a .bak shadow.",
-        "mitigation": "failing-first tests before implementation; bounded marker-scoped replace in sync, idempotent on re-run; README tree updated in the same commit."
-      },
-      "checklists": "passed",
-      "plan_digest": "c068724ed50b47085aae2b603125354f38bacc9ddd3485fffc4f65091796342c",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "games-teaser-pipeline",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/3] Contract tests written first and proven failing (ModuleNotFoundError pins the missing module); 19 tests across register/ingest/check/sync in tests/test_game_teasers.py",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794861997.1438184,
-      "timestamp_str": "2026-11-16 23:46:37",
-      "agent": "claude:1",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "games-teaser-pipeline",
       "phase": "phase 4",
@@ -395,6 +332,65 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "github-only-dossiers",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/3] Plan: create dossiers for the 7 remaining public GitHub repos (Beaconfall, Foundry, Idea-Catcher, Capability-Showcase, Compat-Sample-Headless, Compat-Sample-UI, Harness) from live GitHub facts, with media fetched from their own assets, so the catalogue matches all 71 public repositories.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795350722.9258695,
+      "timestamp_str": "2026-11-22 15:32:02",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The previous audit left 7 public GitHub repos with no dossier; the user asked to create them from GitHub. All have live descriptions/topics and real brand assets.",
+        "benefits": "Catalogue covers all 71 public repositories; every new card, JSON-LD entry, README row and manifest is derived from GitHub rather than hand-written; all Phase 4 gates remain green.",
+        "risks": "contract: sync_entry rewrites 6 catalogue files per repo; dependency: 7 gh reads plus raw asset fetches; concurrency: no live AegeanWorks process; state: the 66-dossier tree is clean and committed; the known em-dash separator defect in dossier_sync._card will affect only the 7 new cards.",
+        "mitigation": "Use dossier_sync.sync_entry with explicit family/category from each repo's topics, fetch media with build_dossier_media.py, normalize the new facts lines to the site's middle-dot separator, regenerate the map, run the full check --strict, and do not push."
+      },
+      "plan_digest": "27772ee05cc0bcf13bd5857feffb3651b4aa9685e1bf708981ac2ff9bcc89a7b",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "github-only-dossiers",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/3] Added 7 dossiers from live GitHub facts via dossier_sync.sync_entry (Beaconfall, Foundry, Idea-Catcher, Capability-Showcase, Compat-Sample-Headless, Compat-Sample-UI, Harness) with family/category derived from each repo's own topics; fetched their brand media from GitHub (including 2 Compat-Sample-UI screenshots); normalized the 7 new facts lines to the site's middle-dot separator; restored atlas-core.js formatting.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795350901.5980709,
+      "timestamp_str": "2026-11-22 15:35:01",
+      "agent": "opencode:hy4-flash-free",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "github-only-dossiers",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[3/3] Phase 4: build_dossier_media.py check = 0 problems; audit = 73 catalogue entries, 71 GitHub public repos, 0 gaps, 0 repos missing from catalogue; 6/6 gates pass (hygiene, guidelines, secrets, test, js-atlas, js-verify).",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795350902.7006755,
+      "timestamp_str": "2026-11-22 15:35:02",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

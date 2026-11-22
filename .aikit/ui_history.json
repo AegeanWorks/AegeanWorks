@@ -620,5 +620,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "bc0f84619fee40f365d93073b11abf43da2679556f9f43d344aa4f2795e4cc0c",
     "baseline_digest": "bc0f84619fee40f365d93073b11abf43da2679556f9f43d344aa4f2795e4cc0c"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed addition of the 7 GitHub-only dossiers (cards, JSON-LD, README rows, logo index) and their GitHub-fetched media; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "6f03ed1fb8d0b75a8d8cb4781762cbf4c137bb5d",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795350940.1351192,
+    "finished_at": 1795350947.3387208,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "77de116b2f238442215c1c3c3a083f0f7652791eb297011615d46812d019aff0",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795350947.3387227
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "77de116b2f238442215c1c3c3a083f0f7652791eb297011615d46812d019aff0",
+    "baseline_digest": "77de116b2f238442215c1c3c3a083f0f7652791eb297011615d46812d019aff0"
   }
 ]
