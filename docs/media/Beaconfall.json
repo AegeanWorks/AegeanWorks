@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Beaconfall",
+  "logo": {
+    "src": "media/Beaconfall/logo.svg",
+    "alt": "Beaconfall logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:93bc3d824bb2ad0fbaa2810b8474c17f20c6fdad8b262554969e7569cf2b49a9",
+    "commit": "a23269320827aed1d5325ba3743088272cb7cb24",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Beaconfall/a23269320827aed1d5325ba3743088272cb7cb24/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Beaconfall/social-preview.svg",
+    "alt": "Beaconfall social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:8808b9fa111a1d2b7ce8b8f4880e4999f2b16619c3e3f4058d35d30144965bd5",
+    "commit": "a23269320827aed1d5325ba3743088272cb7cb24",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Beaconfall/a23269320827aed1d5325ba3743088272cb7cb24/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

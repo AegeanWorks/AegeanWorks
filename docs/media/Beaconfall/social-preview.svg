@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="notes" data-layout="editorial">
+  <title id="title">Beaconfall social preview</title>
+  <desc id="desc">Beaconfall is a 3D downhill time trial built with Keystone. Drive 400 metres through a pine-lined mountain course, steer around boulders and reach the finish before the clock runs out. No single stationary line avoids every obstacle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#120907"/><stop offset="1" stop-color="#302612"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#f58c66" stop-opacity="0.28"/><stop offset="1" stop-color="#f58c66" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f58c66"/><stop offset="1" stop-color="#f58c66"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
+  
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
+  </g>
+  <g transform="translate(1030 304) scale(2.35)" opacity="0.85"><rect x="-58" y="-34" width="52" height="64" rx="10" fill="none" stroke="#f58c66" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="-4" y="-46" width="52" height="64" rx="10" fill="none" stroke="#f58c66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="-30" y="2" width="52" height="64" rx="10" fill="none" stroke="#ccf58e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/><path d="M-46 -14H-18M-46 0H-18M8 -26H36M8 -12H36M-18 22H10" fill="none" stroke="#f58c66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M-6 -2L-30 -14M20 18L48 2" stroke="#ccf58e" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round" opacity="0.8"/><circle cx="48" cy="-28" r="5" fill="#ccf58e"/><circle cx="-52" cy="42" r="4" fill="#f58c66"/></g>
+  <text x="76" y="238" font-family="Georgia, Times New Roman, serif" font-size="76" font-weight="700" fill="#F8FAFC">Beaconfall</text><path d="M78 270H690" stroke="#f58c66" stroke-width="3"/><text x="78" y="316" font-family="Segoe UI, Arial, sans-serif" font-size="20" letter-spacing="6" fill="#f58c66">AEGEANWORKS · GAME</text>
+  <text x="80" y="378" font-family="Georgia, Times New Roman, serif" font-size="29" fill="#F8FAFC" fill-opacity="0.74">Beaconfall is a 3D downhill time trial built with</text><text x="80" y="420" font-family="Georgia, Times New Roman, serif" font-size="29" fill="#F8FAFC" fill-opacity="0.74">Keystone. Drive 400 metres through a pine-lined</text><text x="80" y="462" font-family="Georgia, Times New Roman, serif" font-size="29" fill="#F8FAFC" fill-opacity="0.74">mountain course, steer around boulders and reach …</text>
+  <rect x="80" y="506" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="117.5" y="531" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="167" y="506" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="254.0" y="531" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="353" y="506" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="440.0" y="531" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Beaconfall</text>
+</svg>

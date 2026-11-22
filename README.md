@@ -88,6 +88,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Kiln](https://github.com/AegeanWorks/Kiln) | [ARCHIVED] Kiln is a zero-dependency, deterministic Rust CLI that forges reproducible JSON and CSV test fixtures from a tiny typed schema and a seed, so programmers get stable, reviewable test data offline. |
 | [Knot](https://github.com/AegeanWorks/Knot) | Knot is a zero-dependency C++17 include-graph analyzer for programmers: it parses include directives with an explicit state machine, detects cycles, quantifies transitive header cost, traces the exact include chain that pulls a header in, reports the reverse blast radius of changing a header, diffs a tree against a recorded baseline to catch... |
 | [Noesis](https://github.com/AegeanWorks/Noesis) | Noesis: evidence-led cognitive training app |
+| [Harness](https://github.com/AegeanWorks/Harness) | [ARCHIVED] A sandboxed agent harness that turns coding tasks into green test suites with full transcripts and budgets. |
 
 </details>
 
@@ -142,6 +143,11 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Muse](https://github.com/AegeanWorks/Muse) | Prompt-driven AI music creation with an automated listener that scores how well each track fits the theme and can retry using the judge's own suggestions, exposed as a CLI (single tracks or a JSON batch) and Python library. |
 | [UI-Sandbox](https://github.com/AegeanWorks/UI-Sandbox) | [ARCHIVED] A small React + Vite surface for exercising AIKit's bounded UI guard. The app is deliberately simple: one screen, token-driven theming, and a labelled control for every interaction. |
 | [Aegean-Reforge](https://github.com/AegeanWorks/Aegean-Reforge) | [ARCHIVED] Aegean Reforge is integrated into AegeanWorks/AIKit. Progressive, evidence-backed Git history auditing and safe repair now ships as reforge/ plus reforge.py. |
+| [Foundry](https://github.com/AegeanWorks/Foundry) | A Keystone extension for faster game creation. It emits canonical target manifests, deterministic Keystone asset packs that Keystone loads through its real registry, and generic asset packs copied from Shooter that a consumer can install as files plus a digest-verified manifest. |
+| [Idea-Catcher](https://github.com/AegeanWorks/Idea-Catcher) | [ARCHIVED] Idea Catcher is integrated into AegeanWorks/AIKit. Repository analysis, idea intake and cross-project integration register now ships as idea_catcher/ plus idea_catcher.py. |
+| [Capability-Showcase](https://github.com/AegeanWorks/Capability-Showcase) | [ARCHIVED] A polished local-first showcase that demonstrates AI-assisted planning, implementation, testing, and resilient CLI design. |
+| [Compat-Sample-Headless](https://github.com/AegeanWorks/Compat-Sample-Headless) | [ARCHIVED] Built for AIKit (ADR-315): headless proof sample for the AI-compat drive contract. |
+| [Compat-Sample-UI](https://github.com/AegeanWorks/Compat-Sample-UI) | [ARCHIVED] Built for AIKit (ADR-315): mock UI sample for the AI-compat drive proof, no runnable interface. |
 
 </details>
 
@@ -164,6 +170,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Shooter](https://github.com/AegeanWorks/Shooter) | [ARCHIVED] Fast arena shooter on the Keystone engine. Engine owns render/loop/input/serialization (projects/keystone); this package owns state/rules/scene and loads via --game shooter.game:ShooterGame. |
 | [Neon-Dash](https://github.com/AegeanWorks/Neon-Dash) | [ARCHIVED] Neon Dash is a deterministic 3D obstacle-dodger on the Keystone engine: start from a title screen with your run records, pick a difficulty, dodge tall walls and lane-tracking hunter drones, jump low barriers, chain orb combos and near misses, grab shield/slow/magnet power-ups, clear three checkpoints, and defeat the Warden boss... |
 | [Vaultbreak](https://github.com/AegeanWorks/Vaultbreak) | [ARCHIVED] Multi-floor 3D relic heist game and live subsystem testbed for the Keystone Engine (projects/keystone): 5 Vault Floors, directional stealth vision cones and acoustic hearing, sweeping security cameras, hackable Security Terminal + TileMap.with_cell secret breach, bouncing EMP/Smoke orbs (resolve_sphere_aabb + ray_sphere), crouch... |
+| [Beaconfall](https://github.com/AegeanWorks/Beaconfall) | [ARCHIVED] Beaconfall is a 3D downhill time trial built with Keystone. Drive 400 metres through a pine-lined mountain course, steer around boulders and reach the finish before the clock runs out. No single stationary line avoids every obstacle. |
 
 </details>
 

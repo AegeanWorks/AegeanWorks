@@ -1,0 +1,50 @@
+{
+  "schema": 2,
+  "repo": "Compat-Sample-UI",
+  "logo": {
+    "src": "media/Compat-Sample-UI/logo.svg",
+    "alt": "Compat-Sample-UI logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:04e9ae921e255b3a26d2a10475e8faed058f16d3787e48057e470fcec8e41e8b",
+    "commit": "04ce487f7eccd373ff72300397c58b07263108c3",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Compat-Sample-UI/04ce487f7eccd373ff72300397c58b07263108c3/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Compat-Sample-UI/social-preview.svg",
+    "alt": "Compat-Sample-UI social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:09d76f1d20dc00b3dff0f8e1adf386879cc2f8d0e6a2f85f01ecaad32bd366b8",
+    "commit": "04ce487f7eccd373ff72300397c58b07263108c3",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Compat-Sample-UI/04ce487f7eccd373ff72300397c58b07263108c3/assets/social-preview.svg"
+  },
+  "screenshots": [
+    {
+      "src": "media/Compat-Sample-UI/2026-11-22-after.webp",
+      "alt": "Compat-Sample-UI screenshot",
+      "caption": "Compat-Sample-UI — After",
+      "commit": "04ce487f7eccd373ff72300397c58b07263108c3",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 1,
+      "height": 1,
+      "digest": "sha256:f3816d5827a8140749cef0eebeea284b2d85acb3afb5bc4ddbedfdadfc2fda19",
+      "source": "Compat-Sample-UI:assets/screenshots/after.png"
+    },
+    {
+      "src": "media/Compat-Sample-UI/2026-11-22-before.webp",
+      "alt": "Compat-Sample-UI screenshot",
+      "caption": "Compat-Sample-UI — Before",
+      "commit": "04ce487f7eccd373ff72300397c58b07263108c3",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 1,
+      "height": 1,
+      "digest": "sha256:83e0c98111545b7c1ab12c028c63b12f2785c917c75e10bf75077e329633cd43",
+      "source": "Compat-Sample-UI:assets/screenshots/before.png"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Harness",
+  "logo": {
+    "src": "media/Harness/logo.svg",
+    "alt": "Harness logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:6248a2df9ab384b197cc6370a1ef63deb83f900421dfcc2582d8f80108749b1a",
+    "commit": "b4ec2f4f9b7d2a9623af7fba395562fef5d0e0c0",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Harness/b4ec2f4f9b7d2a9623af7fba395562fef5d0e0c0/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Harness/social-preview.svg",
+    "alt": "Harness social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:2f99448e3170a97fa2b401a960d14b76ab2cbc375e79466de2277d2e34b3176f",
+    "commit": "b4ec2f4f9b7d2a9623af7fba395562fef5d0e0c0",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Harness/b4ec2f4f9b7d2a9623af7fba395562fef5d0e0c0/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

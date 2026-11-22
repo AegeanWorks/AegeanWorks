@@ -1923,6 +1923,150 @@
       "homepage": "",
       "archived": false,
       "default_branch": "master"
+    },
+    {
+      "id": 1466817339,
+      "name": "Beaconfall",
+      "description": "[ARCHIVED] Beaconfall is a 3D downhill time trial built with Keystone. Drive 400 metres through a pine-lined mountain course, steer around boulders and reach the finish before the clock runs out. No single stationary line avoids every obstacle.",
+      "topics": [
+        "aegean-game-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "drm-free",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-21T18:03:57Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1449784080,
+      "name": "Foundry",
+      "description": "A Keystone extension for faster game creation. It emits canonical target manifests, deterministic Keystone asset packs that Keystone loads through its real registry, and generic asset packs copied from Shooter that a consumer can install as files plus a digest-verified manifest.",
+      "topics": [
+        "aegean-license",
+        "aegeanworks",
+        "aikit",
+        "aikit-integrated",
+        "asset-pipeline",
+        "cli",
+        "commercial-license",
+        "content-pipeline",
+        "deterministic",
+        "game-content",
+        "game-tools",
+        "gamedev",
+        "keystone",
+        "python",
+        "quality-assurance",
+        "source-available",
+        "testing"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-21T19:07:03Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "main"
+    },
+    {
+      "id": 1438378115,
+      "name": "Idea-Catcher",
+      "description": "[ARCHIVED] Idea Catcher is integrated into AegeanWorks/AIKit. Repository analysis, idea intake and cross-project integration register now ships as idea_catcher/ plus idea_catcher.py.",
+      "topics": [
+        "ai-agents",
+        "aikit",
+        "aikit-integrated",
+        "archived",
+        "cli",
+        "cross-project",
+        "developer-tools",
+        "idea-management",
+        "knowledge-management",
+        "planning",
+        "productivity",
+        "python",
+        "repository-analysis",
+        "workflow"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-10-29T12:17:56Z",
+      "homepage": "https://github.com/AegeanWorks/AIKit",
+      "archived": true,
+      "default_branch": "main"
+    },
+    {
+      "id": 1441595253,
+      "name": "Capability-Showcase",
+      "description": "[ARCHIVED] A polished local-first showcase that demonstrates AI-assisted planning, implementation, testing, and resilient CLI design.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "automation",
+        "commercial-license",
+        "developer-tools",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-05T19:49:10Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1447405429,
+      "name": "Compat-Sample-Headless",
+      "description": "[ARCHIVED] Built for AIKit (ADR-315): headless proof sample for the AI-compat drive contract.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-05T19:13:07Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1447407655,
+      "name": "Compat-Sample-UI",
+      "description": "[ARCHIVED] Built for AIKit (ADR-315): mock UI sample for the AI-compat drive proof, no runnable interface.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "source-available"
+      ],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-05T19:13:15Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1461654698,
+      "name": "Harness",
+      "description": "[ARCHIVED] A sandboxed agent harness that turns coding tasks into green test suites with full transcripts and budgets.",
+      "topics": [],
+      "language": "Python",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-18T17:17:21Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "main"
     }
   ]
 }

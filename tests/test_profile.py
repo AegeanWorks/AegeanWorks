@@ -81,6 +81,13 @@ PUBLIC_REPOS = {
     "Kiln",
     "Knot",
     "Noesis",
+    "Beaconfall",
+    "Foundry",
+    "Idea-Catcher",
+    "Capability-Showcase",
+    "Compat-Sample-Headless",
+    "Compat-Sample-UI",
+    "Harness",
 }
 
 CATEGORY_LABELS = {

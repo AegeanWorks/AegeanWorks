@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Capability-Showcase",
+  "logo": {
+    "src": "media/Capability-Showcase/logo.svg",
+    "alt": "Capability-Showcase logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:c3871c1f710c1403ca82314b69daeb6c0d33afcc67e1ae98cb54ab4e554aa0f5",
+    "commit": "72750c613ee09f1d96d690cfdb493c16fd817c04",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Capability-Showcase/72750c613ee09f1d96d690cfdb493c16fd817c04/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Capability-Showcase/social-preview.svg",
+    "alt": "Capability-Showcase social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:b364debb1077b994cb846eb4eb55ae94bda693537ce66f68b64e36ca41924011",
+    "commit": "72750c613ee09f1d96d690cfdb493c16fd817c04",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Capability-Showcase/72750c613ee09f1d96d690cfdb493c16fd817c04/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

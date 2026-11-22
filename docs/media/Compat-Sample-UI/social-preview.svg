@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc" data-motif="network" data-layout="terminal">
+  <title id="title">Compat Sample UI social preview</title>
+  <desc id="desc">UI sample for AI-compat proof</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0712"/><stop offset="1" stop-color="#2b1230"/></linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.12" r="0.95"><stop offset="0" stop-color="#a466f5" stop-opacity="0.28"/><stop offset="1" stop-color="#a466f5" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a466f5"/><stop offset="1" stop-color="#a466f5"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#band)"/>
+  <rect x="10" y="14" width="1260" height="616" rx="18" fill="none" stroke="#F8FAFC" stroke-opacity="0.10" stroke-width="1.5"/>
+  
+  <g opacity="0.09" stroke="#F8FAFC" stroke-width="1">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280M256 0V640M512 0V640M768 0V640M1024 0V640"/>
+  </g>
+  <g transform="translate(1040 320) scale(1.8)" opacity="0.42"><path d="M-52 24L-18 -42L20 34L54 -14M20 34L48 44M-18 -42L-44 -34" fill="none" stroke="#a466f5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-52" cy="24" r="8" fill="#a466f5"/><circle cx="-18" cy="-42" r="8" fill="#a466f5"/><circle cx="20" cy="34" r="8" fill="#a466f5"/><circle cx="54" cy="-14" r="8" fill="#a466f5"/><circle cx="48" cy="44" r="8" fill="#a466f5"/><circle cx="-44" cy="-34" r="8" fill="#a466f5"/></g>
+  <text x="78" y="206" font-family="Consolas, monospace" font-size="20" fill="#a466f5">$ open Compat-Sample-UI</text><text x="78" y="292" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700" fill="#F8FAFC">Compat Sample UI</text>
+  <text x="80" y="348" font-family="Consolas, monospace" font-size="25" fill="#F8FAFC" fill-opacity="0.72">UI sample for AI-compat proof</text>
+  <rect x="80" y="502" width="75" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="117.5" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit</text><rect x="167" y="502" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="254.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">aikit integrated</text><rect x="353" y="502" width="174" height="38" rx="19" fill="#0B1220" fill-opacity="0.55" stroke="#94A3B8" stroke-opacity="0.35"/><text x="440.0" y="527" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#F8FAFC" fill-opacity="0.82">source available</text>
+  <text x="76" y="592" font-family="Segoe UI, Arial, sans-serif" font-size="19" letter-spacing="6" fill="#F8FAFC" fill-opacity="0.50">AEGEANWORKS</text>
+  <text x="1204" y="592" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="1" fill="#F8FAFC" fill-opacity="0.55">github.com/AegeanWorks/Compat-Sample-UI</text>
+</svg>

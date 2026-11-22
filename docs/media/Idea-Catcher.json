@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Idea-Catcher",
+  "logo": {
+    "src": "media/Idea-Catcher/logo.webp",
+    "alt": "Idea-Catcher logo",
+    "width": 256,
+    "height": 256,
+    "digest": "sha256:fe29ec74063a0b4eeb4aa9d9ebadadd3acac3a1ed0f649ebefa3e049a22e3770",
+    "commit": "28c77666faf4d3dec6d07420e1fa0e3cf46ed9f0",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Idea-Catcher/28c77666faf4d3dec6d07420e1fa0e3cf46ed9f0/assets/logo.jpg"
+  },
+  "preview": {
+    "src": "media/Idea-Catcher/social-preview.webp",
+    "alt": "Idea-Catcher social preview",
+    "width": 1200,
+    "height": 600,
+    "digest": "sha256:9a40ed66d8696323a32d5103ec49100073dafec452d39929f6d5bcbea3c4aed9",
+    "commit": "28c77666faf4d3dec6d07420e1fa0e3cf46ed9f0",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Idea-Catcher/28c77666faf4d3dec6d07420e1fa0e3cf46ed9f0/assets/social-preview.png"
+  },
+  "screenshots": []
+}

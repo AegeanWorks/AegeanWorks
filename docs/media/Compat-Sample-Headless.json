@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Compat-Sample-Headless",
+  "logo": {
+    "src": "media/Compat-Sample-Headless/logo.svg",
+    "alt": "Compat-Sample-Headless logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:40f5d274f3a5670043dc49b2c08c90c4d8bd45e0ee491f04ff9aa7be8598ed9b",
+    "commit": "bd3b49bb9ad5b9930fe6e7869cc49dd3a97afe6d",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Compat-Sample-Headless/bd3b49bb9ad5b9930fe6e7869cc49dd3a97afe6d/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Compat-Sample-Headless/social-preview.svg",
+    "alt": "Compat-Sample-Headless social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:ff2765d6923ab0125559aad85910487298d1122ae712b2300fa816811c886589",
+    "commit": "bd3b49bb9ad5b9930fe6e7869cc49dd3a97afe6d",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Compat-Sample-Headless/bd3b49bb9ad5b9930fe6e7869cc49dd3a97afe6d/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Foundry",
+  "logo": {
+    "src": "media/Foundry/logo.svg",
+    "alt": "Foundry logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:83d073a5df85886b1121333d1ced2dc5bdd389eb19093372b4e9ef10abba7bf8",
+    "commit": "fcc086e4e90123146ae2b324a0e15ef74c1376b7",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Foundry/fcc086e4e90123146ae2b324a0e15ef74c1376b7/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Foundry/social-preview.svg",
+    "alt": "Foundry social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:9de01377c17d9e2767491c41f4b909840adbf74a79b4fe982f1c18d33b5efbf6",
+    "commit": "fcc086e4e90123146ae2b324a0e15ef74c1376b7",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Foundry/fcc086e4e90123146ae2b324a0e15ef74c1376b7/assets/social-preview.svg"
+  },
+  "screenshots": []
+}
