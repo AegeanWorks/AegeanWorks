@@ -1955,7 +1955,10 @@ class ProfileIntegrityTests(unittest.TestCase):
         html = read_site()
         blocks = re.findall(r'<a class="project reveal".*?</a>', html, re.S)
         self.assertEqual(len(blocks), len(PUBLIC_REPOS))
-        omitted = {"aikit", "python", "source-available"}
+        omitted = {
+            "aikit", "python", "source-available",
+            "aikit-integrated", "aegeanworks", "aegean-license",
+        }
         for repo in read_metadata()["repositories"]:
             with self.subTest(repo=repo["name"]):
                 marker = f'data-repo-url="https://github.com/AegeanWorks/{repo["name"]}"'

@@ -5,6 +5,7 @@ import {
   CACHE_KEY,
   CATEGORY_ORDER,
   countCards,
+  displayDescription,
   factsText,
   fetchAllRepos,
   inferCategory,
@@ -78,7 +79,7 @@ equal(
 );
 equal(selected.rejected, 1, "one malformed entry is counted");
 
-equal(visibleTopics(normalizeRepo(repo(1, "X", { topics: ["aikit", "python", "ai", "ai", "cli"] }))), ["ai", "cli"], "boilerplate hidden");
+equal(visibleTopics(normalizeRepo(repo(1, "X", { topics: ["aikit", "python", "aikit-integrated", "aegeanworks", "aegean-license", "ai", "cli"] }))), ["ai", "cli"], "boilerplate and housekeeping topics hidden");
 equal(visibleTopics(normalizeRepo(repo(1, "X", { topics: ["a", "b", "c", "d", "e", "f", "g"] }))), ["a", "b", "c", "d", "e", "f"], "six shown");
 
 equal(inferCategory(["game", "ai"]), "play", "games first");
@@ -190,6 +191,10 @@ equal(licenseFamily("nope"), null, "unknown family is null");
 equal(normalizeRepo(repo(7, "Voidfarer", { license: "NOASSERTION" })).license_family, "AGL-1.1", "normalize adds family");
 equal(normalizeRepo(repo(8, "NotMine", { license: "MIT" })).license_family, "", "non-Aegean repo has no family");
 check(factsText(normalizeRepo(repo(9, "Tally")), Date.UTC(2026, 9, 27)).includes("AL-1.1"), "facts name the family");
+
+equal(displayDescription({ archived: true, description: "[ARCHIVED] A tiny CLI." }), "A tiny CLI.", "archived prefix trimmed for display");
+equal(displayDescription({ archived: false, description: "[ARCHIVED] A tiny CLI." }), "[ARCHIVED] A tiny CLI.", "active descriptions keep their text");
+equal(displayDescription({ archived: true, description: "Archived: A tiny CLI." }), "A tiny CLI.", "legacy Archived prefix trimmed too");
 
 console.log(`ok ${assertions} atlas assertions`);
 

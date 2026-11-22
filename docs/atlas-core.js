@@ -16,7 +16,10 @@ export const CATEGORY_LABELS = {
   tools: "Developer Tools",
   play: "Games & Experiments",
 };
-export const BOILERPLATE_TOPICS = new Set(["aikit", "python", "source-available"]);
+export const BOILERPLATE_TOPICS = new Set([
+  "aikit", "python", "source-available",
+  "aikit-integrated", "aegeanworks", "aegean-license",
+]);
 export const IGNORED_REPOS = new Set(["aegeanworks", ".github", "idea-catcher"]);
 
 const NAME = /^[A-Za-z0-9._-]{1,100}$/;
@@ -77,6 +80,18 @@ export function normalizeRepo(raw) {
     html_url: "https://github.com/AegeanWorks/" + encodeURIComponent(name),
     project_url: "project.html?repo=" + encodeURIComponent(name),
   };
+}
+
+/* Presentation only: an archived card already carries an ARCHIVED badge, so
+   the leading status word in the GitHub description is redundant on screen.
+   The catalogue and GitHub descriptions are never changed. */
+export function displayDescription(repo) {
+  const text = String((repo && repo.description) || "").trim();
+  if (!repo || !repo.archived) return text;
+  return text
+    .replace(/^\[ARCHIVED\]\s*/i, "")
+    .replace(/^Archived:\s*/i, "")
+    .trim();
 }
 
 function safeUrl(value) {

@@ -1,4 +1,5 @@
 import {
+  displayDescription,
   licenseFamily,
   licenseLabel,
   normalizeRepo,
@@ -386,7 +387,7 @@ function render(repo) {
   if (statusEl) statusEl.hidden = true;
   if (detailEl) detailEl.hidden = false;
   document.title = repo.name + " — AegeanWorks";
-  const description = repo.description || "A public project from the AegeanWorks studio.";
+  const description = displayDescription(repo) || "A public project from the AegeanWorks studio.";
   setText("project-title", repo.name);
   setText("project-description", description);
   setText("project-language", repo.language || "Unknown");

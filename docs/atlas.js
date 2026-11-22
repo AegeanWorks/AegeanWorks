@@ -3,6 +3,7 @@ import {
   CATEGORY_ORDER,
   AtlasFetchError,
   countCards,
+  displayDescription,
   factsText,
   fetchAllRepos,
   inferCategory,
@@ -67,7 +68,7 @@ function updateCard(element, repo) {
     element.setAttribute("href", repo.project_url);
   }
   setText(element.querySelector("h3"), repo.name);
-  setText(element.querySelector("p"), repo.description || "No description yet.");
+  setText(element.querySelector("p"), displayDescription(repo) || "No description yet.");
   let facts = element.querySelector(".project-facts");
   if (!facts) {
     facts = document.createElement("span");
@@ -120,7 +121,7 @@ function createCard(repo) {
   anchor.appendChild(title);
 
   const description = document.createElement("p");
-  description.textContent = repo.description || "No description yet.";
+  description.textContent = displayDescription(repo) || "No description yet.";
   anchor.appendChild(description);
 
   const facts = document.createElement("span");
