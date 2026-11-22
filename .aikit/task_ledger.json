@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "github-only-dossiers",
-    "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795350902.7006755,
+    "task_id": "knot-card-sync",
+    "last_phase": "phase 2",
+    "active_phase": 2,
+    "status": "in_progress",
+    "updated_at": 1795354136.5964968,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795358102.7006755,
+    "lease_until": 1795361336.5964968,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -16,45 +16,14 @@
         "path": "projects/AegeanWorks"
       }
     ],
-    "completed_at": 1795350962.6309764,
-    "completed_head": "480c296279e626834f3a3a2e77731473cb2cbecf",
-    "completed_tree": "f6070ddb64dfce88f87d1fef8ec7aa788747c6d1"
+    "impact_assessment": {
+      "why": "The concurrent archive of knot left the public card stale (archived=false, 09:21) while repositories.json and atlas-snapshot.json were current, failing 2 site tests.",
+      "benefits": "Card, JSON-LD, catalogue and snapshot agree; 202 tests pass; strict delivery check can pass on a clean tree.",
+      "risks": "contract: sync_entry rewrites the card, inline JSON-LD and its CSP hash; dependency: none; concurrency: a concurrent session had uncommitted dossier files which were preserved and committed unchanged; state: the known _card em-dash defect required separator normalization",
+      "mitigation": "Use dossier_sync.sync_entry with the catalogue entry and existing family/category, normalize the facts separator, commit all pending dossier files explicitly, record UI evidence, then run check --strict."
+    }
   },
   "checkpoints": [
-    {
-      "task_id": "games-teaser-pipeline",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/3] Workshop block synced and ownership moved to teasers.json; markers wired, UI verify+finish recorded; 201/201 suite, 6/6 gates, checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794863688.1972003,
-      "timestamp_str": "2026-11-17 00:14:48",
-      "agent": "claude:1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "games-teaser-pipeline",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'games-teaser-pipeline' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794863741.675009,
-      "timestamp_str": "2026-11-17 00:15:41",
-      "agent": "claude:1",
-      "head": "b9fa4bbff939fe8efc4c6885a05b65127ae6aac5",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "games-teaser-pipeline",
       "phase": "completed",
@@ -394,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "knot-card-sync",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: Knot card now archived=true/12:45:16Z matching catalogue and snapshot; 202 Python tests OK; 6/6 gates pass; media check 0 problems.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795354127.095605,
+      "timestamp_str": "2026-11-22 16:28:47",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "knot-card-sync",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: finish the interrupted Knot dossier sync by updating the stale docs/index.html card to the catalogue's archived=true / pushed 2026-11-22T12:45:16Z values, preserving the site's middle-dot facts separator, then confirm 202 tests and 6/6 gates.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795354136.5964968,
+      "timestamp_str": "2026-11-22 16:28:56",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The concurrent archive of knot left the public card stale (archived=false, 09:21) while repositories.json and atlas-snapshot.json were current, failing 2 site tests.",
+        "benefits": "Card, JSON-LD, catalogue and snapshot agree; 202 tests pass; strict delivery check can pass on a clean tree.",
+        "risks": "contract: sync_entry rewrites the card, inline JSON-LD and its CSP hash; dependency: none; concurrency: a concurrent session had uncommitted dossier files which were preserved and committed unchanged; state: the known _card em-dash defect required separator normalization",
+        "mitigation": "Use dossier_sync.sync_entry with the catalogue entry and existing family/category, normalize the facts separator, commit all pending dossier files explicitly, record UI evidence, then run check --strict."
+      },
+      "plan_digest": "fa57507f37c2752d8b7a29f35743532abcc661edf658414454f6567e3c937e3e",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
