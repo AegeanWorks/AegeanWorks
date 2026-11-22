@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "hygiene-annotation",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795363109.3568454,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795370309.3568454,
@@ -15,33 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795363129.387166,
+    "completed_head": "3a2c87f190f3feeaa6db92a1b2af18250094be31",
+    "completed_tree": "814f3d764068bbbbb828899dab608cf5f0902840"
   },
   "checkpoints": [
-    {
-      "task_id": "upstream-media-merge",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Plan: integrate upstream commit 7e8fcbb (dossier media refresh) into the local branch, resolving case-only Sextant paths, AIKit preview digest and logos.json union, then push with all gates green.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795355194.3704455,
-      "timestamp_str": "2026-11-22 16:46:34",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The remote advanced with a media refresh while the workspace held 19 local dossier/a11y commits; push was rejected and needed a non-destructive integration.",
-        "benefits": "Local catalogue, media and site fixes sit on top of upstream refresh; 202 tests and 6/6 gates pass; push can proceed.",
-        "risks": "contract: manifest digests and logo index must match the catalogue exactly; dependency: none; concurrency: none; state: upstream used lowercase sextant paths while the catalogue uses Sextant, requiring canonical casing restoration",
-        "mitigation": "Merge rather than rebase to avoid replaying historical case-only commits; keep upstream media bytes, realign AIKit digests to the local preview asset, union new repos into logos.json, then verify tests, media check and check --strict before pushing."
-      },
-      "plan_digest": "0bdf673051eb0030d4acd14de230c1ee1d44ee30a6b8e39a9b31333e229fce2a",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "upstream-media-merge",
       "phase": "phase 4",
@@ -405,6 +384,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "hygiene-annotation",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'hygiene-annotation' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795363129.4712098,
+      "timestamp_str": "2026-11-22 18:58:49",
+      "agent": "opencode:hy4-flash-free",
+      "head": "3a2c87f190f3feeaa6db92a1b2af18250094be31",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
