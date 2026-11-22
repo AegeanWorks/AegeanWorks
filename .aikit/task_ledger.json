@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "selected-work-and-back",
+    "task_id": "hygiene-annotation",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795362791.1777892,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795363109.3568454,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795369991.1777892,
+    "lease_until": 1795370309.3568454,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795362960.0634823,
-    "completed_head": "8d972fa6e47516cfaa693804781b6de3b56bf159",
-    "completed_tree": "2e8d4a9f45cd5be8f4ac285dc8f253942f2423c0"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "a11y-seo-site-fixes",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: website_audit.py 32 pages/80 JSON with 0 issues; a11y_seo_audit.py 11/11 site pages clean (12 remaining findings are upstream-generated live snapshots); 202 Python tests OK; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795354550.7166646,
-      "timestamp_str": "2026-11-22 16:35:50",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "a11y-seo-site-fixes",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'a11y-seo-site-fixes' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795354589.1332254,
-      "timestamp_str": "2026-11-22 16:36:29",
-      "agent": "opencode:hy4-flash-free",
-      "head": "812b4d34aed4cc44300dc3829c94380545d4752f",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "upstream-media-merge",
       "phase": "phase 2",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "hygiene-annotation",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Small follow-up: annotate the two new work-card external links with the same hygiene exemption used by every other work card.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795363104.6751242,
+      "timestamp_str": "2026-11-22 18:58:24",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The new ModelDuck and Aegean-TGE cards triggered the external-url hygiene rule; the existing cards document the same outbound-only links.",
+        "benefits": "Hygiene gate green; no behaviour change.",
+        "risks": "contract: none; dependency: none; concurrency: none; state: none",
+        "mitigation": "Add the documented hygiene allow comment and re-record UI evidence; verify strict gates."
+      },
+      "plan_digest": "8b419ab0a90e14f0f3f8defa128f6014ee1bd6a2ed87e9efcfa1982d3217c3ea",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "hygiene-annotation",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: hygiene annotations applied, UI evidence re-recorded, 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795363109.3568454,
+      "timestamp_str": "2026-11-22 18:58:29",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
