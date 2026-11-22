@@ -72,11 +72,11 @@
         <div class="field-row">
           <label class="field">
             <span>Work from</span>
-            <select id="participant-start"></select>
+            <select id="participant-start" aria-label="Participant available-from hour"></select>
           </label>
           <label class="field">
             <span>Work until</span>
-            <select id="participant-end"></select>
+            <select id="participant-end" aria-label="Participant available-to hour"></select>
           </label>
         </div>
         <button id="participant-add" class="btn btn-primary" type="button">Add person</button>
@@ -94,7 +94,7 @@
         <div class="slot-controls">
           <label class="field field-inline">
             <span>Length</span>
-            <select id="duration">
+            <select id="duration" aria-label="Meeting duration">
               <option value="1" selected>1 h</option>
               <option value="2">2 h</option>
               <option value="3">3 h</option>

@@ -233,7 +233,7 @@ table.bodies-table th:first-child, table.bodies-table td:first-child { text-alig
     <select id="scenario-select"></select>
     <button id="btn-toggle-hud" title="Toggle Telemetry Sidebar">📊 HUD</button>
     <button id="btn-upload" title="Load custom scenario JSON">📂 Upload</button>
-    <input type="file" id="file-input" accept=".json" style="display:none">
+    <input type="file" id="file-input" aria-label="Load a custom scenario JSON file" accept=".json" style="display:none">
   </div>
 </header>
 
@@ -293,24 +293,24 @@ table.bodies-table th:first-child, table.bodies-table td:first-child { text-alig
       <div class="panel-title">TIME & PHYSICS SETTINGS</div>
       <div class="control-row">
         <span>Time Step (dt):</span>
-        <input type="range" id="slider-dt" min="0.0001" max="1.0" step="0.0005" value="0.01">
+        <input type="range" id="slider-dt" aria-label="Simulation time step" min="0.0001" max="1.0" step="0.0005" value="0.01">
         <span id="label-dt" style="font-family:var(--font-mono); width:50px; text-align:right">0.01</span>
       </div>
       <div class="control-row">
         <span>1PN Relativity:</span>
-        <input type="checkbox" id="check-relativity">
-        <input type="range" id="slider-c" min="5" max="100" step="1" value="30">
+        <input type="checkbox" id="check-relativity" aria-label="Enable relativistic effects">
+        <input type="range" id="slider-c" aria-label="Speed of light" min="5" max="100" step="1" value="30">
         <span id="label-c" style="font-family:var(--font-mono); width:40px; text-align:right">c=30</span>
       </div>
       <div class="control-row">
         <span>Coulomb Force:</span>
-        <input type="checkbox" id="check-coulomb">
-        <input type="range" id="slider-ke" min="0" max="5" step="0.01" value="0.1">
+        <input type="checkbox" id="check-coulomb" aria-label="Enable Coulomb interactions">
+        <input type="range" id="slider-ke" aria-label="Kinetic energy scale" min="0" max="5" step="0.01" value="0.1">
         <span id="label-ke" style="font-family:var(--font-mono); width:40px; text-align:right">ke=0.1</span>
       </div>
       <div class="control-row">
         <span>Collision Mode:</span>
-        <select id="select-collision" style="padding:3px 6px;">
+        <select id="select-collision" aria-label="Collision mode" style="padding:3px 6px;">
           <option value="off">Off (Ghost)</option>
           <option value="bounce" selected>Elastic Bounce</option>
           <option value="merge">Inelastic Merge</option>
@@ -322,12 +322,12 @@ table.bodies-table th:first-child, table.bodies-table td:first-child { text-alig
       <div class="panel-title">VISUAL TUNING</div>
       <div class="control-row">
         <span>Trail Length:</span>
-        <input type="range" id="slider-trail" min="50" max="4000" step="50" value="800">
+        <input type="range" id="slider-trail" aria-label="Orbit trail length" min="50" max="4000" step="50" value="800">
         <span id="label-trail" style="font-family:var(--font-mono)">800</span>
       </div>
       <div class="control-row">
         <span>Dot Style:</span>
-        <select id="select-dot-style" style="padding:3px 6px;">
+        <select id="select-dot-style" aria-label="Body marker style" style="padding:3px 6px;">
           <option value="circle">Circle (○)</option>
           <option value="bullet">Bullet (•)</option>
           <option value="ring">Ring (◦)</option>
@@ -337,7 +337,7 @@ table.bodies-table th:first-child, table.bodies-table td:first-child { text-alig
       </div>
       <div class="control-row">
         <span>Camera Lock:</span>
-        <select id="select-tracking" style="padding:3px 6px; max-width:180px;">
+        <select id="select-tracking" aria-label="Tracked body" style="padding:3px 6px; max-width:180px;">
           <option value="-1">Barycentre (Free)</option>
         </select>
       </div>

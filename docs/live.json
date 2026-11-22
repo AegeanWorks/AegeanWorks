@@ -15,7 +15,7 @@
       "updated": "2026-11-08",
       "license": "AGL-1.1",
       "license_path": "live/prism-relay/LICENSE",
-      "digest": "sha256:8567a245f390358dd074e55ce8612f7884438d747c2f814dffbd0f1400386d67",
+      "digest": "sha256:8c5bad1b34d2194be6736590a2698fc46d5ee2b1acd587e2e7f6b046c9e03f76",
       "builds": [
         "live/prism-relay/9dee6cbcfb83/index.html",
         "live/prism-relay/e04a546c6adf/index.html",
@@ -84,7 +84,7 @@
       "updated": "2026-11-08",
       "license": "AL-1.1",
       "license_path": "live/tessera/LICENSE",
-      "digest": "sha256:789fa77b35d0f06cb6844602a79765fa70c0577382ffb6222662056d86252c7c",
+      "digest": "sha256:b78be1b70de6dd73a9f18ff5a803985bf1ff029796cd7a051dc74e837a84b0b2",
       "builds": [
         "live/tessera/a6300798ddbc/index.html",
         "live/tessera/f42ff86ef03e/index.html",
@@ -107,7 +107,7 @@
       "updated": "2026-11-08",
       "license": "AL-1.1",
       "license_path": "live/meridian/LICENSE",
-      "digest": "sha256:7b31cc4f04aa780ae8fdd914f1c4da924e4a91456586c2d113a163f693a55648",
+      "digest": "sha256:944ffa5afa8e35432b19cc41e5a364cd91d9c899e788209baf8605e14545a9f8",
       "builds": [
         "live/meridian/52832939c7ab/index.html",
         "live/meridian/c30b93f7c6e0/index.html",
@@ -173,7 +173,7 @@
       "updated": "2026-11-14",
       "license": "ASL-1.1",
       "license_path": "live/orrery/LICENSE",
-      "digest": "sha256:62cbbe48b491bb34f4da5f4193fd4eb0d3cc2691a3dd26f9a8ddfbed10c758be",
+      "digest": "sha256:d4c0e445c2e76bffe1d3dee7d42adf85539ea54884af9c5a0dbbb3a7caff7783",
       "builds": [
         "live/orrery/68fc506919e5/index.html",
         "live/orrery/84d6300a5fdd/index.html",
