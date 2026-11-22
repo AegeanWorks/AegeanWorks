@@ -84,7 +84,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Coda](https://github.com/AegeanWorks/Coda) | [ARCHIVED] Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda. |
 | [Sieve](https://github.com/AegeanWorks/Sieve) | [ARCHIVED] Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls. |
 | [Atelier](https://github.com/AegeanWorks/Atelier) | [ARCHIVED] Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API. |
-| [Sextant](https://github.com/AegeanWorks/Sextant) | Sextant is a deterministic, zero-dependency Rust CLI that verifies finite state machines, replays event scripts into auditable traces, and guards stateful behavior with golden-trace regression. |
+| [Sextant](https://github.com/AegeanWorks/Sextant) | [ARCHIVED] Deterministic finite-state-machine verification, replay and golden-trace regression for event-driven code — with zero dependencies and plain-text traces you can review in a diff. |
 
 </details>
 

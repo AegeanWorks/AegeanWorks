@@ -8,9 +8,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:42ecd1809c75a83317009f6096dee9efba99394c3b25d3ca2a0bbb2002ddb284",
-    "commit": "32b376f95c8bed4d3222f51ec508287558d0b5db",
+    "commit": "92640e34706caeec53f04b71148288708e2a8987",
     "taken_at": "2026-11-22",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Sextant/32b376f95c8bed4d3222f51ec508287558d0b5db/assets/logo.png"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Sextant/92640e34706caeec53f04b71148288708e2a8987/assets/logo.png"
   },
   "preview": {
     "src": "media/Sextant/social-preview.webp",
@@ -18,8 +18,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:4e4e1a9d088953f399d1446d4a043b4791b2f297f63cad6d5306d0d2d912845a",
-    "commit": "32b376f95c8bed4d3222f51ec508287558d0b5db",
+    "commit": "92640e34706caeec53f04b71148288708e2a8987",
     "taken_at": "2026-11-22",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Sextant/32b376f95c8bed4d3222f51ec508287558d0b5db/assets/social-preview.png"
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Sextant/92640e34706caeec53f04b71148288708e2a8987/assets/social-preview.png"
   }
 }

@@ -1836,7 +1836,7 @@
     {
       "id": 1467374423,
       "name": "Sextant",
-      "description": "Sextant is a deterministic, zero-dependency Rust CLI that verifies finite state machines, replays event scripts into auditable traces, and guards stateful behavior with golden-trace regression.",
+      "description": "[ARCHIVED] Deterministic finite-state-machine verification, replay and golden-trace regression for event-driven code — with zero dependencies and plain-text traces you can review in a diff.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1851,9 +1851,9 @@
       ],
       "language": "Rust",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-22T09:26:20Z",
+      "pushed_at": "2026-11-22T11:35:04Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     }
   ]
