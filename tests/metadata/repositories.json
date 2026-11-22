@@ -1835,7 +1835,7 @@
     },
     {
       "id": 1467374423,
-      "name": "sextant",
+      "name": "Sextant",
       "description": "Sextant is a deterministic, zero-dependency Rust CLI that verifies finite state machines, replays event scripts into auditable traces, and guards stateful behavior with golden-trace regression.",
       "topics": [
         "aegean-license",
