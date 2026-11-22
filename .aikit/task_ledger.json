@@ -1,49 +1,23 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "licensing-into-aikit",
+    "task_id": "catalogue-refresh-knot-map",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1794937488.966242,
-    "owner": "claude:1",
-    "started_by": "claude:1",
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795348125.3490307,
+    "owner": "opencode:hy4-flash-free",
+    "lease_until": 1795355325.3490307,
+    "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
       {
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1794937646.2357464,
-    "completed_head": "82a43fb0c5ec213c7c0c5829094ee85c47ba5080",
-    "completed_tree": "6b0af1f4af1d6b310cefd7023b9abae7f6e20262"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 119",
-      "phase_num": 3,
-      "description": "Reforge stage 119: window 357, 3 commit(s), 1 file(s) reviewed (unreviewed), 0 finding(s), 0 repaired, empty \u2014 nothing to commit",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794856618.147998,
-      "timestamp_str": "2026-11-16 22:16:58",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
-    {
-      "task_id": "reforge:run-2",
-      "phase": "reforge stage 119",
-      "phase_num": 3,
-      "description": "Reforge stage 119: stage 119 host review reviewed; run completed; coverage 3/3",
-      "files_affected": [],
-      "status": "completed",
-      "timestamp": 1794856663.4796157,
-      "timestamp_str": "2026-11-16 22:17:43",
-      "agent": "unidentified",
-      "operator_task": "site-gate-coverage"
-    },
     {
       "task_id": "games-gallery",
       "phase": "phase 2",
@@ -375,6 +349,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "catalogue-refresh-knot-map",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/3] Plan: complete the interrupted dossier catalogue sync for the published Knot repository, regenerate the stale codebase map, and land the pending Kiln catalogue refresh so all Phase 4 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795347990.5380025,
+      "timestamp_str": "2026-11-22 14:46:30",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "AegeanWorks Phase 4 is red: the guidelines gate reports .aikit/codebase_map.md stale and the test gate fails because orphaned Knot media (written by knot's brand-and-publish) has no catalogue entry; the published public repo Knot is missing from the catalogue while its media is present.",
+        "benefits": "A green 6/6 gate run; the public catalogue reflects both published repositories (Kiln and Knot); the codebase map matches tracked sources; no other agent's work is overwritten.",
+        "risks": "contract: dossier_sync.sync_published rewrites 7 catalogue files and the media builder regenerates schema-2 manifests; dependency: GitHub facts and raw asset fetch need network; concurrency: another session touched this tree at 12:15 and 14:39 but no live AegeanWorks process remains; state: uncommitted Kiln/Knot files must be preserved and committed together, not discarded.",
+        "mitigation": "Use the supported dossier_sync.sync_published and build_dossier_media builder rather than hand-editing generated files; confirm no live process holds the tree; regenerate the map with update_knowledge_base.py; run the full check --allow-dirty --all-gates and only commit when 6/6 pass; do not push."
+      },
+      "plan_digest": "e2962c743c62d3553303f644539bd1760e679ad42cf31d525282150fde0398bc",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "catalogue-refresh-knot-map",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[3/3] Phase 4: completed the Knot catalogue/media sync via dossier_sync.sync_published + build_dossier_media fetch, regenerated the stale codebase map, preserved the pending Kiln refresh; python tools/build_dossier_media.py check reports 0 media problems and all 6 Phase 4 gates pass (hygiene, guidelines, secrets, test 202 tests, js-atlas, js-verify).",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795348125.3490307,
+      "timestamp_str": "2026-11-22 14:48:45",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

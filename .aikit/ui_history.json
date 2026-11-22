@@ -560,5 +560,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "2d02d240444f5e59f18d63a0bf63884cf989fb0d85b307f8d1874424527ab8aa",
     "baseline_digest": "2d02d240444f5e59f18d63a0bf63884cf989fb0d85b307f8d1874424527ab8aa"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed Kiln/Knot catalogue and media sync (docs/index.html, atlas, logos) plus the regenerated codebase map; automated Python (202 tests) and Node UI suites are the UI proof per project guideline G-001, which declines human UI review.",
+    "baseline_commit": "5cef9bac3ab15353514e86d1827a34f3a47989d1",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795348154.9025533,
+    "finished_at": 1795348176.9154315,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "c7423513a38c988c2d47bba854f472ee66ef64844a7889ad1cce1c8927808838",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795348176.9154346
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "c7423513a38c988c2d47bba854f472ee66ef64844a7889ad1cce1c8927808838",
+    "baseline_digest": "c7423513a38c988c2d47bba854f472ee66ef64844a7889ad1cce1c8927808838"
   }
 ]
