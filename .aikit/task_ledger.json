@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "games-gallery-completion",
+    "task_id": "meridian-shot-trim",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795358710.273002,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795359797.3769379,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795365910.273002,
+    "lease_until": 1795366997.3769379,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795358768.507562,
-    "completed_head": "17298e7be4bea906f2d582156b4ffe96debaf3a7",
-    "completed_tree": "a15a28f6e00a841c35b5b5d4d3b25426cf2997d2"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "dossier-github-reconcile",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[2/4] Refreshed all 65 catalogue entries from live GitHub facts via dossier_sync.sync_entry (20 entries actually drifted: 14 archived flags, 16 descriptions, 19 pushed_at dates, 1 default branch). Added Noesis as a 66th dossier (catalogue, snapshot, card, JSON-LD, README row, PUBLIC_REPOS, license family) and fetched its media including 3 screenshots. Replaced generated preview placeholders for AIKit and Dustline with real GitHub assets. Restored the site's canonical middle-dot separator in 66 facts lines after discovering dossier_sync._card emits an em dash.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795350058.0925968,
-      "timestamp_str": "2026-11-22 15:20:58",
-      "agent": "opencode:hy4-flash-free",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "dossier-github-reconcile",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/4] Phase 4: build_dossier_media.py check = 0 problems; full re-audit = 0 gaps across 66 dossiers (down from 30); 6/6 gates pass (hygiene, guidelines, secrets, test, js-atlas, js-verify).",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795350059.3982697,
-      "timestamp_str": "2026-11-22 15:20:59",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "dossier-github-reconcile",
       "phase": "completed",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "meridian-shot-trim",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: trim Meridian redundant screenshots, live slider 7 to 5 frames and dossier 4 to 2, and document the Afterimage archived tag as accurate GitHub status.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795359252.874583,
+      "timestamp_str": "2026-11-22 17:54:12",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The user flagged Meridian screenshots as excessive; seven live frames exceed the five-frame norm and the dossier holds superseded captures of the same screens.",
+        "benefits": "Shorter live slider, no duplicate dossier captures, less image weight, manifests stay consistent and tests stay green.",
+        "risks": "contract: shots.json and media manifests must not reference deleted files; dependency: none; concurrency: none; state: removed images are unreferenced elsewhere by grep",
+        "mitigation": "Edit both manifests first, delete only unreferenced files, run media check, full suite and strict gates before commit."
+      },
+      "plan_digest": "af2789f5df2687cafacd08f3cc19afbab7bc590d18aafd53bf0b0f093a69d7f9",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "meridian-shot-trim",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Phase 4 complete: Meridian live slider trimmed 7 to 5 frames and dossier 4 to 2; 203 tests OK, media check 0 problems, static audit 0 issues, browser shows 5 dots and no broken images, 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795359797.3769379,
+      "timestamp_str": "2026-11-22 18:03:17",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
