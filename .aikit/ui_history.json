@@ -860,5 +860,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "54ff6e066da10ee6ea2d401631793f6fb5e7d1803276932351024287d21cd60d",
     "baseline_digest": "54ff6e066da10ee6ea2d401631793f6fb5e7d1803276932351024287d21cd60d"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed cache-version bump, live-app labels, card containment and verifier freshness label; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "b3020a266bc79266c255bd5b59a4d5b31668dd22",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795371890.7187061,
+    "finished_at": 1795371905.9623644,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "135e6bad987e941889cba9db80ff8784c4897821389d73b7857d1f7c3556fe4c",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795371905.962366
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "135e6bad987e941889cba9db80ff8784c4897821389d73b7857d1f7c3556fe4c",
+    "baseline_digest": "135e6bad987e941889cba9db80ff8784c4897821389d73b7857d1f7c3556fe4c"
   }
 ]
