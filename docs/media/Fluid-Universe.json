@@ -8,9 +8,9 @@
     "width": 256,
     "height": 256,
     "digest": "sha256:a99377d4a9749c78d0f5a2ce1f69910370ef8f7c02cdd9342603077bf734afab",
-    "commit": "8b78d71a6075801dbbc9ea66ecd2c7407a3a6ac8",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Fluid-Universe/8b78d71a6075801dbbc9ea66ecd2c7407a3a6ac8/assets/logo.jpg"
+    "commit": "7b4efe141dfbcc267b0efceb82247f5004186c06",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Fluid-Universe/7b4efe141dfbcc267b0efceb82247f5004186c06/assets/logo.jpg"
   },
   "preview": {
     "src": "media/Fluid-Universe/social-preview.webp",
@@ -18,8 +18,8 @@
     "width": 1200,
     "height": 600,
     "digest": "sha256:fff576170c562b0b25615e6882f6d4dd15f91b55a206bfd3ffcace70477eb996",
-    "commit": "8b78d71a6075801dbbc9ea66ecd2c7407a3a6ac8",
-    "taken_at": "2026-11-08",
-    "source": "https://raw.githubusercontent.com/AegeanWorks/Fluid-Universe/8b78d71a6075801dbbc9ea66ecd2c7407a3a6ac8/assets/social-preview.png"
+    "commit": "7b4efe141dfbcc267b0efceb82247f5004186c06",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Fluid-Universe/7b4efe141dfbcc267b0efceb82247f5004186c06/assets/social-preview.png"
   }
 }

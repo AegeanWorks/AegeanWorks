@@ -31,9 +31,9 @@
     "alt": "NoMoreClutter logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:97648d75cfe599e93c9537d8d84d1f3fb810318626c61d887968a9a0f7169c0e",
+    "digest": "sha256:1cde725609be06ac2f615722961e22cd6f12dc4511fe69fb949e7b7668ca9171",
     "commit": "ca352c528443612caa0a6ce879207d0f997280c6",
-    "taken_at": "2026-11-21",
+    "taken_at": "2026-11-22",
     "source": "https://raw.githubusercontent.com/AegeanWorks/NoMoreClutter/ca352c528443612caa0a6ce879207d0f997280c6/assets/logo.jpg"
   },
   "preview": {
