@@ -1,7 +1,6 @@
 {
   "schema": 2,
   "repo": "Postbox",
-  "screenshots": [],
   "logo": {
     "src": "media/Postbox/logo.svg",
     "alt": "Postbox logo",
@@ -21,5 +20,6 @@
     "commit": "0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb",
     "taken_at": "2026-11-19",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Postbox/0bd9ecd4971de1ae3f5b1f6271cebf86e3de6fcb/assets/social-preview.svg"
-  }
+  },
+  "screenshots": []
 }

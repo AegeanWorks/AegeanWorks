@@ -1,7 +1,6 @@
 {
   "schema": 2,
   "repo": "Probe",
-  "screenshots": [],
   "logo": {
     "src": "media/Probe/logo.svg",
     "alt": "Probe logo",
@@ -21,5 +20,6 @@
     "commit": "c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6",
     "taken_at": "2026-11-19",
     "source": "https://raw.githubusercontent.com/AegeanWorks/Probe/c43aabbcfd6dd6fffc8b0d2efbcecc88a56522c6/assets/social-preview.svg"
-  }
+  },
+  "screenshots": []
 }
