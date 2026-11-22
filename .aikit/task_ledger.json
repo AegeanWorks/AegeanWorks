@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "dossier-a11y-polish",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795377154.778934,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795384354.778934,
@@ -15,33 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795377235.5150945,
+    "completed_head": "872b28b622c646bfbe0dc9cbb5e33f16c28710e7",
+    "completed_tree": "cc13b43ce1c37ec9a2eb132b4aac307a5b76d791"
   },
   "checkpoints": [
-    {
-      "task_id": "media-refresh-merge-3",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Integrate upstream 3ef2562 media refresh (AIKit logo, Meridian and Traceglass captures) before push.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795366443.9047477,
-      "timestamp_str": "2026-11-22 19:54:03",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "Scheduled media workflow advanced the remote while archive badge work was pending; push requires integration.",
-        "benefits": "Local branch has both the site work and fresh media; gates stay green.",
-        "risks": "contract: manifests must match files; dependency: remote media bytes; concurrency: none active; state: merge was clean",
-        "mitigation": "Merge, verify media check and gates, record ledger, then push without force."
-      },
-      "plan_digest": "13aaac55361315fc36923765ef8973d1eb87de6988a4d0c9650fe27d145a5777",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "media-refresh-merge-3",
       "phase": "phase 4",
@@ -405,6 +384,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "dossier-a11y-polish",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'dossier-a11y-polish' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795377235.631281,
+      "timestamp_str": "2026-11-22 22:53:55",
+      "agent": "opencode:hy4-flash-free",
+      "head": "872b28b622c646bfbe0dc9cbb5e33f16c28710e7",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
