@@ -770,5 +770,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "dd9cfb198c922a2816f3fd32ff09926d4a18a954b99d95e56cfdb088dc4996fb",
     "baseline_digest": "dd9cfb198c922a2816f3fd32ff09926d4a18a954b99d95e56cfdb088dc4996fb"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed Selected work lineup, clean game titles and restored back navigation; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "5dfc1bb75b0e4b493616e2d32038f10f6a446f95",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795362900.6503751,
+    "finished_at": 1795362906.7068706,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "cae474e82974642cefb3ad04986160fafa4e87d82de73dbffdc425861425e7d7",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795362906.7068722
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "cae474e82974642cefb3ad04986160fafa4e87d82de73dbffdc425861425e7d7",
+    "baseline_digest": "cae474e82974642cefb3ad04986160fafa4e87d82de73dbffdc425861425e7d7"
   }
 ]

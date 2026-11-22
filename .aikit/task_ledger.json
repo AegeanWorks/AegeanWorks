@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "site-polish-verifier",
+    "task_id": "selected-work-and-back",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795361941.171968,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795362791.1777892,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795369141.171968,
+    "lease_until": 1795369991.1777892,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,71 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795362022.4381497,
-    "completed_head": "a6730f7bca54d065a11f28d7b0c4a438c7194865",
-    "completed_tree": "6128a577567fce34ac11b576f21c0113a68d2b0f"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "knot-card-sync",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: Knot card now archived=true/12:45:16Z matching catalogue and snapshot; 202 Python tests OK; 6/6 gates pass; media check 0 problems.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795354127.095605,
-      "timestamp_str": "2026-11-22 16:28:47",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "knot-card-sync",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Plan: finish the interrupted Knot dossier sync by updating the stale docs/index.html card to the catalogue's archived=true / pushed 2026-11-22T12:45:16Z values, preserving the site's middle-dot facts separator, then confirm 202 tests and 6/6 gates.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795354136.5964968,
-      "timestamp_str": "2026-11-22 16:28:56",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The concurrent archive of knot left the public card stale (archived=false, 09:21) while repositories.json and atlas-snapshot.json were current, failing 2 site tests.",
-        "benefits": "Card, JSON-LD, catalogue and snapshot agree; 202 tests pass; strict delivery check can pass on a clean tree.",
-        "risks": "contract: sync_entry rewrites the card, inline JSON-LD and its CSP hash; dependency: none; concurrency: a concurrent session had uncommitted dossier files which were preserved and committed unchanged; state: the known _card em-dash defect required separator normalization",
-        "mitigation": "Use dossier_sync.sync_entry with the catalogue entry and existing family/category, normalize the facts separator, commit all pending dossier files explicitly, record UI evidence, then run check --strict."
-      },
-      "plan_digest": "fa57507f37c2752d8b7a29f35743532abcc661edf658414454f6567e3c937e3e",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "knot-card-sync",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'knot-card-sync' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795354208.9755828,
-      "timestamp_str": "2026-11-22 16:30:08",
-      "agent": "opencode:hy4-flash-free",
-      "head": "75880f209f1834c0445b3c37fc91128920edee90",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "a11y-seo-site-fixes",
       "phase": "phase 2",
@@ -408,6 +346,65 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "selected-work-and-back",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/3] Plan: replace Selected work cards with AIKit (private, unlinked, brief explanation), ModelDuck, Aegean-TGE and NeuralBeat; remove inline archived text from game card titles; make the dossier back link return to the exact previous location.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795362366.1254082,
+      "timestamp_str": "2026-11-22 18:46:06",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The user asked for a different Selected work lineup, AIKit shown without a repository link, the archived wording removed from game cards, and back navigation that returns to where they left off.",
+        "benefits": "Selected work reflects current systems; AIKit is honest about its private repo; game titles are clean; back navigation restores the previous scroll position.",
+        "risks": "contract: work cards stay four with immutable ids, one intentionally unlinked; dependency: atlas.js rewrites work-card hrefs; concurrency: none; state: project.js and tests must stay green",
+        "mitigation": "Mark the AIKit card unlinked, skip it in syncSelectedWork, update the card contract test to pin the same four ids with one unlinked, use history.back for same-origin referrers, then run all gates and browser checks."
+      },
+      "plan_digest": "0a64438fb9b74005676892864698218dbde0448ab21c8d45ca5bffe196adc0cd",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "selected-work-and-back",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "Implemented the requested Selected work lineup (AIKit unlinked with a brief private-repo note, ModelDuck, Aegean-TGE, NeuralBeat), removed archived labels from all five game card titles, and made dossier back links use history.back for same-origin visits.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795362790.468088,
+      "timestamp_str": "2026-11-22 18:53:10",
+      "agent": "opencode:hy4-flash-free",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "selected-work-and-back",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Phase 4: 203 tests OK, browser shows 4 correct work cards with AIKit unlinked, zero archived labels in game titles, back link returns to index.html#games at scroll 1057; 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795362791.1777892,
+      "timestamp_str": "2026-11-22 18:53:11",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
