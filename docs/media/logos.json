@@ -211,6 +211,11 @@
       "width": 256,
       "height": 256
     },
+    "Noesis": {
+      "src": "media/Noesis/logo.svg",
+      "width": 512,
+      "height": 512
+    },
     "NoMoreClutter": {
       "src": "media/NoMoreClutter/logo.webp",
       "width": 256,

@@ -46,7 +46,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-17T17:27:01Z",
+      "pushed_at": "2026-11-19T20:10:19Z",
       "homepage": "",
       "archived": true,
       "default_branch": "main"
@@ -54,7 +54,7 @@
     {
       "id": 1436254574,
       "name": "Aegean-Reforge",
-      "description": "Archived: Aegean Reforge is integrated into AegeanWorks/AIKit. Progressive, evidence-backed Git history auditing and safe repair now ships as reforge/ plus reforge.py.",
+      "description": "[ARCHIVED] Aegean Reforge is integrated into AegeanWorks/AIKit. Progressive, evidence-backed Git history auditing and safe repair now ships as reforge/ plus reforge.py.",
       "topics": [
         "aegeanworks",
         "ai-agents",
@@ -105,7 +105,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T18:09:38Z",
+      "pushed_at": "2026-11-22T11:39:46Z",
       "homepage": "",
       "archived": false,
       "default_branch": "main"
@@ -113,7 +113,7 @@
     {
       "id": 1429321239,
       "name": "Aldervale",
-      "description": "A 2.5D medieval RPG drawn in tiny ASCII cells: low-poly 3D models baked into shaded sprites, voxel terrain, fog, day and night, water, quests, combat, loot, shops and saves. Python standard library only: no dependencies, no assets, no build step. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] ALDERVALE - a 2.5D medieval RPG with three renderers over one engine: a GPU WebGL2 build, a software pixel build and a dense ASCII terminal build.",
       "topics": [
         "aegean-game-license",
         "aikit",
@@ -138,9 +138,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T13:03:47Z",
+      "pushed_at": "2026-11-05T19:01:47Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -212,7 +212,7 @@
     {
       "id": 1432398612,
       "name": "Crypt-Crawler",
-      "description": "Tactical turn-based web dungeon crawler with procedural levels, Normal/Hard difficulty, class passives, status combos, per-floor omens, a turn-cost trap search and disarm, mimic chests, a two-way merchant, seed replay, five-slot equipment, side-by-side loot comparison, filterable inventory, a persistent lore codex, branching soul encounters...",
+      "description": "[ARCHIVED] Tactical turn-based web dungeon crawler with procedural levels, Normal/Hard difficulty, class passives, status combos, per-floor omens, a turn-cost trap search and disarm, mimic chests, a two-way merchant, seed replay, five-slot equipment, side-by-side loot comparison, filterable inventory, a persistent lore codex, branching soul...",
       "topics": [
         "aegean-game-license",
         "aegeanworks",
@@ -237,9 +237,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T13:42:52Z",
+      "pushed_at": "2026-11-08T14:33:31Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -303,7 +303,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T16:51:33Z",
+      "pushed_at": "2026-11-17T16:02:36Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -311,7 +311,7 @@
     {
       "id": 1431322124,
       "name": "Fold",
-      "description": "A 4x4 tile-merge puzzle you run on your own machine: one Python process, a browser page, no dependencies, no account and no network calls. Slide, merge and chase 2048; the server owns the rules and the browser only renders. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A small 4x4 tile-merge game you run on your own machine: one Python process, a browser page, no third-party dependencies, no account and no network calls. Slide the grid, join matching tiles, and chase 2048. The server owns the rules; the browser only renders the snapshot it returns.",
       "topics": [
         "2048",
         "aegean-game-license",
@@ -336,9 +336,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:47:58Z",
+      "pushed_at": "2026-11-05T19:46:18Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -410,7 +410,7 @@
     {
       "id": 1428994367,
       "name": "Lattice",
-      "description": "A provenance-first research knowledge graph for humans and AI agents. Local-first, SQLite-backed and standard library only. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A provenance-first research knowledge graph for humans and AI agents. Ingest papers, record claims only with an exact quote and locator, link those claims to research questions, and let agents query a deterministic evidence graph instead of a pile of summaries.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -435,9 +435,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:32Z",
+      "pushed_at": "2026-11-07T21:24:36Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -468,7 +468,7 @@
       ],
       "language": "TypeScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T19:39:38Z",
+      "pushed_at": "2026-11-17T16:01:32Z",
       "homepage": "",
       "archived": false,
       "default_branch": "main"
@@ -571,7 +571,7 @@
     {
       "id": 1159263193,
       "name": "N1-Engine",
-      "description": "A local-first, privacy-focused platform for rigorous N-of-1 self-experimentation: apply scientific statistics to your own life data, on your own machine. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A local-first, privacy-focused, and scientifically rigorous platform for personal N=1 experimentation.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -596,9 +596,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:31:49Z",
+      "pushed_at": "2026-11-07T21:18:45Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -703,7 +703,7 @@
     {
       "id": 1168345495,
       "name": "NeurologyClinicTemplates-TR",
-      "description": "Standardized Turkish anamnesis (patient history) templates for common neurology complaints, helping neurologists, residents and medical students document assessments completely and systematically. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Standardized Turkish anamnesis (patient history) templates for common neurology complaints, helping neurologists, residents and medical students document assessments completely and systematically. Free personal use under AL-1.1; commercial use under ACL-1.0.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -728,9 +728,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:46Z",
+      "pushed_at": "2026-11-07T21:09:14Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -769,7 +769,7 @@
     {
       "id": 1164096075,
       "name": "NobetWizard",
-      "description": "An automated duty roster generator built with Streamlit: fair monthly schedules under constraints such as gender, rest days and availability, with Excel and PDF export, in English and Turkish. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Nöbet Wizard is a powerful, web-based application built with Python and Streamlit designed to automate the creation of monthly duty rosters (nöbet listesi). It handles complex constraints, personnel preferences, and fair distribution rules to generate optimal schedules in seconds.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -794,9 +794,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:13:30Z",
+      "pushed_at": "2026-11-15T10:17:55Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "main"
     },
     {
@@ -860,7 +860,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T16:09:53Z",
+      "pushed_at": "2026-11-14T18:23:02Z",
       "homepage": "",
       "archived": true,
       "default_branch": "master"
@@ -926,7 +926,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T15:36:35Z",
+      "pushed_at": "2026-11-17T16:03:01Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -934,7 +934,7 @@
     {
       "id": 1430143833,
       "name": "PNN",
-      "description": "Oral, blood-brain barrier-penetrant agents that soften hypothalamic perineuronal nets to restore insulin signaling in obesity: research notes, data and computational analyses. Free non-commercial research under ASL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] Oral, blood-brain barrier-penetrant agents that soften hypothalamic perineuronal nets to restore insulin signaling in obesity.",
       "topics": [
         "aegean-science-license",
         "aegeanworks",
@@ -959,9 +959,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:14:34Z",
+      "pushed_at": "2026-11-19T16:51:30Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1000,7 +1000,7 @@
     {
       "id": 1432491414,
       "name": "Prism-Relay",
-      "description": "A neon light-routing puzzle game: rotate mirrors and splitters, fold beams through portals, and charge every receiver across three episodes. Free personal play under AGL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A neon light-routing puzzle game: rotate mirrors and splitters, split beams through prisms, fold space through portals, and charge every receiver across four episodes.",
       "topics": [
         "aegean-game-license",
         "aegeanworks",
@@ -1025,9 +1025,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:32:23Z",
+      "pushed_at": "2026-11-08T10:46:42Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=prism-relay",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1058,7 +1058,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-01T02:10:01Z",
+      "pushed_at": "2026-11-19T20:21:10Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1099,7 +1099,7 @@
     {
       "id": 1430093692,
       "name": "Tempo",
-      "description": "A focus timer you run on your own machine: one Python process, a browser page, no dependencies, no account and no network calls. Focus and break phases alternate, and every fourth break is a long one. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A focus timer you run on your own machine: one Python process, a browser page, no dependencies, no account and no network calls. Phases alternate focus and break, and every fourth break is a long one.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -1124,15 +1124,15 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T12:31:55Z",
+      "pushed_at": "2026-11-05T20:36:28Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
       "id": 1430194509,
       "name": "UI-Sandbox",
-      "description": "A small React + Vite surface for exercising AIKit's bounded UI guard: one screen, token-driven theming, and a labelled control for every interaction. Free personal use under AL-1.1; commercial use under ACL-1.0.",
+      "description": "[ARCHIVED] A small React + Vite surface for exercising AIKit's bounded UI guard. The app is deliberately simple: one screen, token-driven theming, and a labelled control for every interaction.",
       "topics": [
         "accessibility",
         "aegean-license",
@@ -1157,9 +1157,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:48:59Z",
+      "pushed_at": "2026-11-05T21:05:12Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1190,7 +1190,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T17:29:05Z",
+      "pushed_at": "2026-11-17T16:03:17Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1262,10 +1262,10 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-01T22:06:43Z",
+      "pushed_at": "2026-11-21T19:04:57Z",
       "homepage": "",
       "archived": false,
-      "default_branch": "master"
+      "default_branch": "main"
     },
     {
       "id": 1437561576,
@@ -1321,7 +1321,7 @@
     {
       "id": 1437579529,
       "name": "Dustline",
-      "description": "Dustline: Survivors is a top-down horde-survival shooter with endless procedural arenas, auto-firing weapons, 7 maps, 18 mob types, rotating bosses plus megas, Boss Rush mode and extraction banking.",
+      "description": "Dustline: Survivors is a top-down horde-survival shooter in the spirit of Vampire Survivors: an endless procedural world with open combat arenas, auto-firing weapons, seven maps, nineteen mob types plus NetWatch hunters, five rotating bosses with random affixes plus three mega bosses, a dedicated eight-boss Boss Rush mode, a 10-minute OPS...",
       "topics": [
         "aegean-game-license",
         "aikit",
@@ -1342,15 +1342,15 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T18:01:46Z",
+      "pushed_at": "2026-11-19T20:06:54Z",
       "homepage": "",
       "archived": false,
-      "default_branch": "master"
+      "default_branch": "main"
     },
     {
       "id": 1439420371,
       "name": "Iris",
-      "description": "A neon color-mixing puzzle: route red, green and blue beams through rotating mirrors and dye cells, blend exact hues, and light every receiver across three episodes.",
+      "description": "[ARCHIVED] A neon color-mixing puzzle: route red, green and blue beams through rotating mirrors and dye cells, blend exact hues, and light every receiver across three episodes.",
       "topics": [
         "aegean-game-license",
         "aikit",
@@ -1366,9 +1366,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T11:14:08Z",
+      "pushed_at": "2026-11-07T21:31:17Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=iris",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1393,7 +1393,7 @@
       ],
       "language": "JavaScript",
       "license": "MIT",
-      "pushed_at": "2026-11-13T04:26:43Z",
+      "pushed_at": "2026-11-15T09:56:01Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1425,7 +1425,7 @@
     {
       "id": 1439051680,
       "name": "Tessera",
-      "description": "A seamless pattern studio: compose geometric tiles in the browser and export crisp SVG.",
+      "description": "[ARCHIVED] A seamless pattern studio: compose geometric tiles in the browser and export crisp SVG.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1442,15 +1442,15 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T15:58:46Z",
+      "pushed_at": "2026-11-08T16:01:06Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=tessera",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
       "id": 1438804321,
       "name": "Weft",
-      "description": "A zero-dependency thread-routing puzzle: draw glowing threads between matching spools, fill every cell of the loom, and restore the tapestry across twenty-four chambers, with a fresh 7x7 daily weave. Static HTML/CSS/ES modules for any static host.",
+      "description": "[ARCHIVED] A zero-dependency thread-routing puzzle: connect matching spools, cover every cell across 24 chambers and a daily weave. Read-only portfolio reference.",
       "topics": [
         "aegean-game-license",
         "aikit",
@@ -1467,9 +1467,9 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-04T06:49:12Z",
+      "pushed_at": "2026-11-08T03:08:39Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/play.html?app=weft",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1540,9 +1540,9 @@
         "python",
         "source-available"
       ],
-      "language": "Python",
+      "language": "Rust",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T11:38:37Z",
+      "pushed_at": "2026-11-22T08:28:14Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1568,7 +1568,7 @@
       ],
       "language": "C++",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-08T19:35:17Z",
+      "pushed_at": "2026-11-22T11:40:03Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"
@@ -1601,7 +1601,7 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T10:34:08Z",
+      "pushed_at": "2026-11-22T09:49:12Z",
       "homepage": "https://aegeanworks.github.io/AegeanWorks/",
       "archived": false,
       "default_branch": "main"
@@ -1619,10 +1619,10 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-19T18:20:54Z",
+      "pushed_at": "2026-11-19T20:04:04Z",
       "homepage": "",
       "archived": true,
-      "default_branch": "master"
+      "default_branch": "main"
     },
     {
       "id": 1464478034,
@@ -1679,7 +1679,7 @@
     {
       "id": 1464522359,
       "name": "Trireme",
-      "description": "[ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support.",
+      "description": "[ARCHIVED]  AIKit development testbed. Trireme is an offline sailing route planner: deterministic shortest-time routing over small sea charts.",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1691,7 +1691,7 @@
       ],
       "language": "JavaScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-19T18:52:57Z",
+      "pushed_at": "2026-11-19T18:57:03Z",
       "homepage": "",
       "archived": true,
       "default_branch": "master"
@@ -1900,6 +1900,26 @@
       "language": "C++",
       "license": "NOASSERTION",
       "pushed_at": "2026-11-22T09:21:37Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
+    },
+    {
+      "id": 1445939442,
+      "name": "Noesis",
+      "description": "Noesis: evidence-led cognitive training app",
+      "topics": [
+        "aikit",
+        "brain-training",
+        "cognitive-training",
+        "local-first",
+        "source-available",
+        "typescript",
+        "web-app"
+      ],
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-20T16:39:10Z",
       "homepage": "",
       "archived": false,
       "default_branch": "master"

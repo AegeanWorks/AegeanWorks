@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" data-motif="brain" data-layout="editorial">
+  <title id="title">Noesis logo</title>
+  <desc id="desc">Project-specific brain mark for Noesis; AegeanWorks identity.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b0713"/><stop offset="1" stop-color="#2a1230"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g transform="translate(256 210) scale(1.45)" opacity="1.0"><path d="M-54 -18C-54 -50 -22 -62 0 -46C22 -62 54 -50 54 -18C62 6 40 30 18 28C6 46 -6 46 -18 28C-40 30 -62 6 -54 -18Z" fill="none" stroke="#a35ef3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 -46V40M-32 -30C-16 -22 -16 -6 -32 4M30 -30C14 -22 14 -6 30 4" fill="none" stroke="#a35ef3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="256" y="400" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="64" font-weight="700" fill="#F8FAFC" letter-spacing="2">NS</text><text x="256" y="438" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="5" fill="#F8FAFC" fill-opacity="0.62">AEGEANWORKS</text>
+</svg>

@@ -80,6 +80,7 @@ PUBLIC_REPOS = {
     "Sextant",
     "Kiln",
     "Knot",
+    "Noesis",
 }
 
 CATEGORY_LABELS = {

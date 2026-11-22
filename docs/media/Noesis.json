@@ -1,0 +1,62 @@
+{
+  "schema": 2,
+  "repo": "Noesis",
+  "logo": {
+    "src": "media/Noesis/logo.svg",
+    "alt": "Noesis logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:3ebbb3ba5176310bb50b8c961d79df1aba1522dafb46563945dbbec59e2ddc3d",
+    "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Noesis/6ce187388da879161ed9c1db3f34b7c22f17d393/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Noesis/social-preview.svg",
+    "alt": "Noesis social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:f6b26fbaa5c668e779036f77f5fe9540d055ba8ab34b951ebe9c8d610e891836",
+    "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Noesis/6ce187388da879161ed9c1db3f34b7c22f17d393/assets/social-preview.svg"
+  },
+  "screenshots": [
+    {
+      "src": "media/Noesis/2026-11-22-evidence-mobile.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Evidence Mobile",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 780,
+      "height": 6854,
+      "digest": "sha256:a2c1b9a7a0260d8057f5516f1f8dadc4e91bc6db10bda560e316cab333ccd1fa",
+      "source": "Noesis:assets/screenshots/2026-11-03-evidence-mobile.png"
+    },
+    {
+      "src": "media/Noesis/2026-11-22-home-desktop.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Home Desktop",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 1440,
+      "height": 1012,
+      "digest": "sha256:03a5c1effd859066c45d3e3f1a975c159f3ab28a34b1dc95ebff8c786fefb551",
+      "source": "Noesis:assets/screenshots/2026-11-03-home-desktop.png"
+    },
+    {
+      "src": "media/Noesis/2026-11-22-home-mobile.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Home Mobile",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 780,
+      "height": 6300,
+      "digest": "sha256:415c36550bb634f47dc6ad7d0db15ab82195669321c90cd9ed751672b8efdc9d",
+      "source": "Noesis:assets/screenshots/2026-11-03-home-mobile.png"
+    }
+  ]
+}

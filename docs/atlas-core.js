@@ -165,6 +165,7 @@ export const REPO_LICENSES = Object.freeze({
   "sextant": "AL",
   "kiln": "AL",
   "knot": "AL",
+  "noesis": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */
