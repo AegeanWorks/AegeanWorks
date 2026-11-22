@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "catalogue-refresh-knot-map",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795348125.3490307,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795355325.3490307,
@@ -15,33 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795348210.5071425,
+    "completed_head": "f5968554fcf92a7aa3b7d5cbfc6b6aadc2ef295a",
+    "completed_tree": "0a6d1b9122ba79370f8cec7beb19ba1433db8864"
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/4] Plan the screenshot-led games section: public games reuse dossier captures via project.html links; private games render as unlinked teaser articles with local shots",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794858699.517597,
-      "timestamp_str": "2026-11-16 22:51:39",
-      "agent": "claude:1",
-      "impact_assessment": {
-        "why": "The site mirrors only public repos, so private and in-development games are invisible; a games gallery makes the page show every game regardless of repo visibility",
-        "benefits": "Showcase surface for unreleased work; reuses digest-verified dossier captures for public games, so zero new manifests; no change to PUBLIC_REPOS assertions",
-        "risks": "contract: cards regex (class=project reveal + data-repo-url) must not match private entries or test_site_lists_every_public_repository_once breaks; contract: dossier manifests are builder-owned, must not be hand-edited; dependency: screenshot files must exist locally under docs/ (self-containment test); concurrency: none (single-writer session, dossier lock untouched); state: index.html is a tracked UI surface, ui begin/verify/finish required",
-        "mitigation": "Private entries as non-anchor articles with a distinct class outside the regex; reference dossier capture paths read-only; add a failing-first test pinning that private game entries never carry data-repo-url; run ui ceremony and full check --strict before any commit"
-      },
-      "plan_digest": "d215281cfd05a7354404ecd312e6af5a6a24c9afbd7694031114495098bbdedc",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "games-gallery",
       "phase": "phase 4",
@@ -391,6 +370,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "catalogue-refresh-knot-map",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'catalogue-refresh-knot-map' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795348210.7148383,
+      "timestamp_str": "2026-11-22 14:50:10",
+      "agent": "opencode:hy4-flash-free",
+      "head": "f5968554fcf92a7aa3b7d5cbfc6b6aadc2ef295a",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
