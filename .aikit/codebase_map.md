@@ -9,8 +9,8 @@
 - **Total Python Modules**: `32`
 - **Total Classes**: `46`
 - **Total Top-Level Functions**: `182`
-- **Total Class Methods**: `263`
-- **Total Source Lines**: `7837`
+- **Total Class Methods**: `264`
+- **Total Source Lines**: `7847`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`32` module(s))
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2199` lines
+**Size**: `2209` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -107,6 +107,7 @@
   - Method `.test_trust_pages_share_the_full_legal_footer()`
   - Method `.test_privacy_table_labels_its_cells_for_narrow_screens()`
   - Method `.test_security_txt_is_valid()`
+  - Method `.test_home_nav_keeps_the_live_section_on_page()`
   - Method `.test_project_status_defaults_to_active()`
   - Method `.test_atlas_search_topic_sort_and_url_state()`
   - Method `.test_gallery_dots_have_tappable_hit_areas()`
