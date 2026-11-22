@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "archived-card-badges",
+    "task_id": "media-refresh-merge-3",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795364360.3899114,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795366444.9297237,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795371560.3899114,
+    "lease_until": 1795373644.9297237,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,54 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795364428.8474607,
-    "completed_head": "179896513b4a42b59e6367654c5ab3caaaf5f1bd",
-    "completed_tree": "ddf9c951dcec408992f629ef5534424f46e822ac"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "meridian-shot-trim",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Plan: trim Meridian redundant screenshots, live slider 7 to 5 frames and dossier 4 to 2, and document the Afterimage archived tag as accurate GitHub status.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795359252.874583,
-      "timestamp_str": "2026-11-22 17:54:12",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The user flagged Meridian screenshots as excessive; seven live frames exceed the five-frame norm and the dossier holds superseded captures of the same screens.",
-        "benefits": "Shorter live slider, no duplicate dossier captures, less image weight, manifests stay consistent and tests stay green.",
-        "risks": "contract: shots.json and media manifests must not reference deleted files; dependency: none; concurrency: none; state: removed images are unreferenced elsewhere by grep",
-        "mitigation": "Edit both manifests first, delete only unreferenced files, run media check, full suite and strict gates before commit."
-      },
-      "plan_digest": "af2789f5df2687cafacd08f3cc19afbab7bc590d18aafd53bf0b0f093a69d7f9",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "meridian-shot-trim",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Phase 4 complete: Meridian live slider trimmed 7 to 5 frames and dossier 4 to 2; 203 tests OK, media check 0 problems, static audit 0 issues, browser shows 5 dots and no broken images, 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795359797.3769379,
-      "timestamp_str": "2026-11-22 18:03:17",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "meridian-shot-trim",
       "phase": "completed",
@@ -408,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "media-refresh-merge-3",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Integrate upstream 3ef2562 media refresh (AIKit logo, Meridian and Traceglass captures) before push.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795366443.9047477,
+      "timestamp_str": "2026-11-22 19:54:03",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "Scheduled media workflow advanced the remote while archive badge work was pending; push requires integration.",
+        "benefits": "Local branch has both the site work and fresh media; gates stay green.",
+        "risks": "contract: manifests must match files; dependency: remote media bytes; concurrency: none active; state: merge was clean",
+        "mitigation": "Merge, verify media check and gates, record ledger, then push without force."
+      },
+      "plan_digest": "13aaac55361315fc36923765ef8973d1eb87de6988a4d0c9650fe27d145a5777",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "media-refresh-merge-3",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: clean merge, media check 0 problems, 203 tests OK, 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795366444.9297237,
+      "timestamp_str": "2026-11-22 19:54:04",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
