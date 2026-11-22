@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "media-refresh-merge-2",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795363644.9564586,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795370844.9564586,
@@ -15,33 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795363669.1088257,
+    "completed_head": "c4d811bcbdf57d04f997c60fe102a5a78083cf19",
+    "completed_tree": "539bc234da27ee808277d14ab69b757b6ba21d4b"
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery-completion",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/3] Plan: complete the interrupted Traceglass dossier sync (untracked schema-1 media currently fails 1 test and the media check), then add the four published-but-missing playable games (Beaconfall, Neon-Dash, Shooter, Vaultbreak) to the games gallery as a new Keystone action group, with a failing-first test pinning the gallery coverage.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795358176.4797692,
-      "timestamp_str": "2026-11-22 17:36:16",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "Traceglass was published but its dossier sync was left uncommitted, breaking the tree; six catalogued game topics are absent from the games gallery, four of them actual playable games.",
-        "benefits": "All 202 tests and media check green again; gallery shows every published playable game; new test prevents silent gallery drift.",
-        "risks": "contract: game cards must link project.html?repo=<name> and teasers stay unlinked; dependency: live GitHub facts for Traceglass; concurrency: no active AegeanWorks task; state: untracked Traceglass media must be preserved and committed.",
-        "mitigation": "Use dossier_sync.sync_entry and build_dossier_media fetch for Traceglass, normalize the card facts separator, add a focused test before editing index.html, then run full gates and commit."
-      },
-      "plan_digest": "9ebc3bd4b27d619aabbc200898e40397606e2926509cb79cd75f19872aaeceab",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "games-gallery-completion",
       "phase": "phase 3",
@@ -405,6 +384,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "media-refresh-merge-2",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'media-refresh-merge-2' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795363669.1858099,
+      "timestamp_str": "2026-11-22 19:07:49",
+      "agent": "opencode:hy4-flash-free",
+      "head": "c4d811bcbdf57d04f997c60fe102a5a78083cf19",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
