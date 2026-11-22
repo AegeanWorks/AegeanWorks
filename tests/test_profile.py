@@ -1269,6 +1269,14 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertRegex(fields["Expires"], r"^\d{4}-\d{2}-\d{2}T")
         self.assertGreaterEqual(fields["Expires"][:10], "2027-10-27")
 
+    def test_project_status_defaults_to_active(self):
+        html = read_site()
+        self.assertIn('<option value="active" selected>', html)
+        app = (ROOT / "docs" / "app.js").read_text(encoding="utf-8")
+        self.assertIn('archive: "active"', app)
+        self.assertIn('params.get("archive") || "active"', app)
+        self.assertIn("archiveSelect.options", app)
+
     def test_atlas_search_topic_sort_and_url_state(self):
         html = read_site()
         self.assertIn('id="project-search"', html)
@@ -1278,8 +1286,9 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertIn('id="clear-filters"', html)
         self.assertIn('id="topic-filters"', html)
         self.assertIn('id="project-archive"', html)
-        for value in ("all", "active", "archived"):
+        for value in ("all", "archived"):
             self.assertIn(f'<option value="{value}">', html)
+        self.assertIn('<option value="active" selected>', html)
         self.assertIn('aria-label="Filter by topic"', html)
         self.assertIn("Search projects, topics, languages", html)
         app = (ROOT / "docs" / "app.js").read_text(encoding="utf-8")
@@ -1314,6 +1323,20 @@ class ProfileIntegrityTests(unittest.TestCase):
         ):
             with self.subTest(token=token):
                 self.assertIn(token, css)
+
+    def test_print_shows_every_card(self):
+        css = (ROOT / "docs/styles.css").read_text(encoding="utf-8")
+        self.assertIn("content-visibility: auto", css)
+        self.assertIn(".project,\n  .game-group,\n  .work-card { content-visibility: visible; }", css)
+
+    def test_every_page_uses_the_same_shell_version(self):
+        versions = {}
+        for page in sorted((ROOT / "docs").glob("*.html")):
+            for found in re.findall(r"\?v=(\d+)", page.read_text(encoding="utf-8")):
+                versions.setdefault(found, set()).add(page.name)
+        self.assertEqual(len(versions), 1, versions)
+        version = int(next(iter(versions)))
+        self.assertGreaterEqual(version, 46)
 
     def test_portfolio_scripts_are_cache_coherent(self):
         """A new Status control must never run against an older cached app.js."""

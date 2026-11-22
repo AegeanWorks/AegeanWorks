@@ -108,5 +108,20 @@ class LiveBuildDigestTests(unittest.TestCase):
             )
 
 
+    def test_accessibility_labels_are_added_once_to_copied_builds(self):
+        module = load_sync_tool()
+        with tempfile.TemporaryDirectory() as temp:
+            build = Path(temp) / "build"
+            build.mkdir()
+            page = build / "index.html"
+            page.write_text('<select id="participant-start"></select>\n', encoding="utf-8")
+            self.assertEqual(module.patch_accessibility(build), 1)
+            self.assertIn(
+                'aria-label="Participant available-from hour"',
+                page.read_text(encoding="utf-8"),
+            )
+            self.assertEqual(module.patch_accessibility(build), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

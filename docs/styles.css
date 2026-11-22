@@ -2805,6 +2805,10 @@ pre:focus-visible {
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .reveal,
   .js .reveal { opacity: 1; transform: none; transition: none !important; }
+  /* content-visibility skips offscreen cards on screen; print needs them all. */
+  .project,
+  .game-group,
+  .work-card { content-visibility: visible; }
   .site-header,
   .page-grid,
   .hero-aurora,

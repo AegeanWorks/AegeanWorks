@@ -294,6 +294,53 @@ def _runtime_files(target: Path) -> list[Path]:
     return [path for path in target.rglob("*") if path.is_file()]
 
 
+# Upstream browser builds do not name a few of their controls. The site owns
+# the embedded presentation, so name them here on every sync rather than
+# patching generated snapshots by hand (which the next sync would undo).
+A11Y_LABELS = {
+    "check-coulomb": "Enable Coulomb interactions",
+    "check-relativity": "Enable relativistic effects",
+    "duration": "Meeting duration",
+    "file-input": "Load a custom scenario JSON file",
+    "guides": "Show pattern guides",
+    "motion": "Pattern motion",
+    "participant-end": "Participant available-to hour",
+    "participant-start": "Participant available-from hour",
+    "profile-music": "Music volume",
+    "profile-sfx": "Sound effects volume",
+    "select-collision": "Collision mode",
+    "select-dot-style": "Body marker style",
+    "select-tracking": "Tracked body",
+    "slider-c": "Speed of light",
+    "slider-dt": "Simulation time step",
+    "slider-ke": "Kinetic energy scale",
+    "slider-trail": "Orbit trail length",
+    "sound": "Sound",
+}
+
+
+def patch_accessibility(target: Path) -> int:
+    """Add ARIA names to known controls in a copied build; return files changed."""
+    changed = 0
+    for page in sorted(target.rglob("*.html")):
+        text = page.read_text(encoding="utf-8")
+        original = text
+        for ident, label in A11Y_LABELS.items():
+            pattern = re.compile(r'<(?:input|select)\b[^>]*\bid="' + re.escape(ident) + r'"[^>]*>')
+
+            def add(match: re.Match) -> str:
+                tag = match.group(0)
+                if "aria-label=" in tag or "aria-labelledby=" in tag:
+                    return tag
+                return tag.replace(f'id="{ident}"', f'id="{ident}" aria-label="{label}"', 1)
+
+            text = pattern.sub(add, text)
+        if text != original:
+            _write_atomic(page, text.encode("utf-8"))
+            changed += 1
+    return changed
+
+
 def _source_path(source: Path, relative: str) -> Path | None:
     """Resolve an index reference inside the source, or None when it escapes it."""
     clean = relative.split("#", 1)[0].split("?", 1)[0].strip()
@@ -507,6 +554,7 @@ def _browser_entry(game: dict, source_root: Path) -> dict:
         shutil.rmtree(target)
     _copy_runtime(source, target, tuple(game["runtime"]))
     _copy_overrides(source, target, game.get("live_files") or {})
+    patch_accessibility(target)
     current = f"live/{game['slug']}/{short}/index.html"
     builds = _retained_paths(game, base, current)
     keep = {path.split("/")[2] for path in builds}

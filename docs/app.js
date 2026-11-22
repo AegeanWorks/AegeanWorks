@@ -115,7 +115,19 @@
     "drm-free": true,
     "zero-dependencies": true,
   };
-  var state = { q: "", topic: "", archive: "all", sort: "curated" };
+  var state = { q: "", topic: "", archive: "active", sort: "curated" };
+
+  function labelArchiveOptions() {
+    if (!archiveSelect || archiveSelect.options.length < 3) return;
+    var cards = projects();
+    var archived = cards.filter(function (card) {
+      return card.dataset.archived === "true";
+    }).length;
+    archiveSelect.options[0].textContent = "All projects (" + cards.length + ")";
+    archiveSelect.options[1].textContent = "Active only (" + (cards.length - archived) + ")";
+    archiveSelect.options[2].textContent = "Archived only (" + archived + ")";
+  }
+  labelArchiveOptions();
   var curatedOrder = new Map();
   var topicChips = [];
   var showAllTopics = false;
@@ -135,7 +147,7 @@
   }
 
   function hasNarrowing() {
-    return Boolean(state.q || state.topic || state.archive !== "all");
+    return Boolean(state.q || state.topic || state.archive !== "active");
   }
 
   function hasViewChange() {
@@ -351,7 +363,7 @@
       else params.delete("q");
       if (state.topic) params.set("topic", state.topic);
       else params.delete("topic");
-      if (state.archive !== "all") params.set("archive", state.archive);
+      if (state.archive !== "active") params.set("archive", state.archive);
       else params.delete("archive");
       if (state.sort !== "curated") params.set("sort", state.sort);
       else params.delete("sort");
@@ -371,8 +383,8 @@
     var params = new URLSearchParams(window.location.search);
     state.q = (params.get("q") || "").trim().slice(0, 100);
     state.topic = (params.get("topic") || "").trim().toLowerCase().slice(0, 80);
-    var archive = params.get("archive") || "all";
-    state.archive = ARCHIVE_VALUES.indexOf(archive) === -1 ? "all" : archive;
+    var archive = params.get("archive") || "active";
+    state.archive = ARCHIVE_VALUES.indexOf(archive) === -1 ? "active" : archive;
     var sort = params.get("sort") || "curated";
     state.sort = SORT_VALUES.indexOf(sort) === -1 ? "curated" : sort;
     focusSearch = params.get("focus") === "search";
@@ -421,10 +433,10 @@
   function clearFilters() {
     state.q = "";
     state.topic = "";
-    state.archive = "all";
+    state.archive = "active";
     state.sort = "curated";
     if (searchInput) searchInput.value = "";
-    if (archiveSelect) archiveSelect.value = "all";
+    if (archiveSelect) archiveSelect.value = "active";
     if (sortSelect) sortSelect.value = "curated";
     updateTopicChips();
     applyView();
@@ -432,6 +444,7 @@
 
   window.addEventListener("atlas:changed", function (event) {
     updateProjectCounts(event.detail);
+    labelArchiveOptions();
     recordCuratedOrder();
     buildTopicChips();
     applyView();
