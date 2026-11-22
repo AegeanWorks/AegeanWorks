@@ -800,5 +800,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "cae474e82974642cefb3ad04986160fafa4e87d82de73dbffdc425861425e7d7",
     "baseline_digest": "cae474e82974642cefb3ad04986160fafa4e87d82de73dbffdc425861425e7d7"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Re-recorded UI evidence after annotating the new work-card links.",
+    "baseline_commit": "5b4658942c11fd97198463a6fd64ab938dd80586",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795363059.3803182,
+    "finished_at": 1795363064.957572,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "dca2db6fb0c6911183dba5388a7240901d785a4c9ec9ea8e592cd0834dcf4e05",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795363064.957574
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "dca2db6fb0c6911183dba5388a7240901d785a4c9ec9ea8e592cd0834dcf4e05",
+    "baseline_digest": "dca2db6fb0c6911183dba5388a7240901d785a4c9ec9ea8e592cd0834dcf4e05"
   }
 ]
