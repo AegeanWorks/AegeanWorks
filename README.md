@@ -85,6 +85,8 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Sieve](https://github.com/AegeanWorks/Sieve) | [ARCHIVED] Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls. |
 | [Atelier](https://github.com/AegeanWorks/Atelier) | [ARCHIVED] Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API. |
 | [Sextant](https://github.com/AegeanWorks/Sextant) | [ARCHIVED] Deterministic finite-state-machine verification, replay and golden-trace regression for event-driven code — with zero dependencies and plain-text traces you can review in a diff. |
+| [Kiln](https://github.com/AegeanWorks/Kiln) | [ARCHIVED] Kiln is a zero-dependency, deterministic Rust CLI that forges reproducible JSON and CSV test fixtures from a tiny typed schema and a seed, so programmers get stable, reviewable test data offline. |
+| [Knot](https://github.com/AegeanWorks/Knot) | Knot is a zero-dependency C++17 include-graph analyzer for programmers: it parses include directives with an explicit state machine, detects cycles, quantifies transitive header cost, traces the exact include chain that pulls a header in, reports the reverse blast radius of changing a header, diffs a tree against a recorded baseline to catch... |
 
 </details>
 

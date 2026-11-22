@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Knot",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Knot/logo.svg",
+    "alt": "Knot logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:3f7ada28f411ad2f57b738add7381b7ae894385c1704ccba612975c70d7bca14",
+    "commit": "78c28b98c66570b11d2f9a83247b451e8cf5d62e",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Knot/78c28b98c66570b11d2f9a83247b451e8cf5d62e/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Knot/social-preview.svg",
+    "alt": "Knot social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:a98a1e5ca0f2a40b043e52d8f81bf1d59b52a86b05365e46eabdbd5fdbe356cc",
+    "commit": "78c28b98c66570b11d2f9a83247b451e8cf5d62e",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Knot/78c28b98c66570b11d2f9a83247b451e8cf5d62e/assets/social-preview.svg"
+  }
+}

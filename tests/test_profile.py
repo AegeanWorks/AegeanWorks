@@ -78,6 +78,8 @@ PUBLIC_REPOS = {
     "Vaultbreak",
     "Atelier",
     "Sextant",
+    "Kiln",
+    "Knot",
 }
 
 CATEGORY_LABELS = {

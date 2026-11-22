@@ -1855,6 +1855,54 @@
       "homepage": "",
       "archived": true,
       "default_branch": "master"
+    },
+    {
+      "id": 1467382525,
+      "name": "Kiln",
+      "description": "[ARCHIVED] Kiln is a zero-dependency, deterministic Rust CLI that forges reproducible JSON and CSV test fixtures from a tiny typed schema and a seed, so programmers get stable, reviewable test data offline.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "commercial-license",
+        "deterministic",
+        "developer-tools",
+        "fixtures",
+        "local-first",
+        "rust",
+        "source-available",
+        "test-data",
+        "testing",
+        "zero-dependency"
+      ],
+      "language": "Rust",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-22T11:39:11Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "master"
+    },
+    {
+      "id": 1467392146,
+      "name": "Knot",
+      "description": "Knot is a zero-dependency C++17 include-graph analyzer for programmers: it parses include directives with an explicit state machine, detects cycles, quantifies transitive header cost, traces the exact include chain that pulls a header in, reports the reverse blast radius of changing a header, diffs a tree against a recorded baseline to catch...",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "commercial-license",
+        "cpp",
+        "developer-tools",
+        "source-available",
+        "static-analysis"
+      ],
+      "language": "C++",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-22T09:21:37Z",
+      "homepage": "",
+      "archived": false,
+      "default_branch": "master"
     }
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Kiln",
+  "logo": {
+    "src": "media/Kiln/logo.svg",
+    "alt": "Kiln logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:63a4c0139afa007f79dcc7e056c951104277fb26dadd1767c2d89c49ecfd9faf",
+    "commit": "acd86866f678371987179400dbf1bdc16c00ba32",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Kiln/acd86866f678371987179400dbf1bdc16c00ba32/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Kiln/social-preview.svg",
+    "alt": "Kiln social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:dc7abdb0d572a73d217d89c342f6d508589b7c02b5349b86c1079a4fada46053",
+    "commit": "acd86866f678371987179400dbf1bdc16c00ba32",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Kiln/acd86866f678371987179400dbf1bdc16c00ba32/assets/social-preview.svg"
+  },
+  "screenshots": []
+}

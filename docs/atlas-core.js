@@ -163,6 +163,8 @@ export const REPO_LICENSES = Object.freeze({
   "vaultbreak": "AGL",
   "atelier": "AL",
   "sextant": "AL",
+  "kiln": "AL",
+  "knot": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */
