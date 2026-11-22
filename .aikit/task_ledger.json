@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "site-followup-five",
+    "task_id": "dossier-a11y-polish",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795374692.1992683,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795377154.778934,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795381892.1992683,
+    "lease_until": 1795384354.778934,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,71 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795374920.9434774,
-    "completed_head": "82ac677c2d44e69bbe9ffceaf108ccfd3606262d",
-    "completed_tree": "1a16817160d3a63e4bd185a0b579949aa135fbd9"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "archived-card-badges",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Plan: give archived project cards a visible Archived badge and dimmed box styling via CSS keyed on data-archived, and make top-nav anchor jumps reliably reveal the target section.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795364149.9927404,
-      "timestamp_str": "2026-11-22 19:15:49",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "Archived cards currently look identical to active ones apart from description text, and the user reports the games section appearing to vanish after a top-nav click.",
-        "benefits": "Archived status is visible at a glance; anchor navigation always shows the target section.",
-        "risks": "contract: do not change card markup or tests; dependency: none; concurrency: none; state: CSS/JS only",
-        "mitigation": "Use CSS pseudo-badge keyed on data-archived plus a hashchange reveal handler; verify in browser that archived cards are dimmed with a badge and the games anchor shows its groups."
-      },
-      "plan_digest": "f0e004cf39ecdc5f828ffdb557cc104cf7a05341b139ef705eefb31b49408056",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "archived-card-badges",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Phase 4: archived cards show a dimmed dashed box and ARCHIVED badge (opacity 0.74 vs 1 for active); Games anchor jump reveals all 6 groups; 203 tests OK; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795364360.3899114,
-      "timestamp_str": "2026-11-22 19:19:20",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "archived-card-badges",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'archived-card-badges' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795364429.1482086,
-      "timestamp_str": "2026-11-22 19:20:29",
-      "agent": "opencode:hy4-flash-free",
-      "head": "179896513b4a42b59e6367654c5ab3caaaf5f1bd",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "media-refresh-merge-3",
       "phase": "phase 2",
@@ -408,6 +346,65 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "dossier-a11y-polish",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/4] Plan: fix the Lighthouse target-size finding on dossier gallery dots, add a target-size check to the local a11y audit, align upstream live-app sources, verify print output, then re-run Lighthouse and all gates. Evidence: project.html?repo=Noesis scored accessibility 0.96 with 6 target-size failures on .gallery-dot buttons; best-practices and SEO were 1.00.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795376006.9875236,
+      "timestamp_str": "2026-11-22 22:33:26",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The last measured defect left on the site is the dossier gallery's small touch targets; the DOM audit does not check hit-area size, upstream sources still carry unlabeled controls, and the print rule has only been tested statically.",
+        "benefits": "Dossier accessibility reaches 1.00; the audit catches target-size regressions; upstream and site-side labelling converge; print output is verified rather than assumed.",
+        "risks": "contract: gallery dot markup and tests are pinned; dependency: upstream repos are not checked out locally; concurrency: other sessions edit rust/ and reports/; state: Lighthouse needs a focused visible browser tab",
+        "mitigation": "Write a failing-first CSS/audit assertion, keep the sync-tool patch until upstream is fixed, use headless Chromium print-to-PDF if available, and re-run Lighthouse plus 6/6 gates before commit."
+      },
+      "plan_digest": "4ec7b275e5776311de05193a7f95e376b66512cca39d74f9b104763b4c15bdef",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "dossier-a11y-polish",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/4] Verified assumptions: .gallery-dot is 8x8 px (Lighthouse target-size cause); audit lacks target-size checks; upstream checkouts absent so sync patch stays; Edge binary available for print-to-PDF. Implementing gallery dot hit-area fix with failing-first test.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795376212.377072,
+      "timestamp_str": "2026-11-22 22:36:52",
+      "agent": "opencode:hy4-flash-free",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "dossier-a11y-polish",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[4/4] Complete: gallery and live dots enlarged to 26px hit areas; audit now checks target-size with 0 findings; sync tool label coverage test added; print PDF verified archived cards appear (18 to 29 pages); Lighthouse on dossier now 1.00/1.00/1.00 with 0 failures; 209 tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795377154.778934,
+      "timestamp_str": "2026-11-22 22:52:34",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

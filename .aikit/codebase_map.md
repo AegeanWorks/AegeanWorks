@@ -9,8 +9,8 @@
 - **Total Python Modules**: `31`
 - **Total Classes**: `46`
 - **Total Top-Level Functions**: `180`
-- **Total Class Methods**: `259`
-- **Total Source Lines**: `7738`
+- **Total Class Methods**: `261`
+- **Total Source Lines**: `7758`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`31` module(s))
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2170` lines
+**Size**: `2178` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -109,6 +109,7 @@
   - Method `.test_security_txt_is_valid()`
   - Method `.test_project_status_defaults_to_active()`
   - Method `.test_atlas_search_topic_sort_and_url_state()`
+  - Method `.test_gallery_dots_have_tappable_hit_areas()`
   - Method `.test_print_shows_every_card()`
   - Method `.test_every_page_uses_the_same_shell_version()`
   - Method `.test_portfolio_scripts_are_cache_coherent()` - *A new Status control must never run against an older cached app.js.*
@@ -364,13 +365,14 @@
 ---
 
 ### [`tests/test_sync_live_digest.py`](tests/test_sync_live_digest.py)
-**Size**: `127` lines
+**Size**: `139` lines
 
 **Classes:**
 - `class LiveBuildDigestTests`
   - Method `.test_line_endings_do_not_change_the_digest()`
   - Method `.test_live_file_override_replaces_a_runtime_file()`
   - Method `.test_binary_files_are_hashed_byte_for_byte()`
+  - Method `.test_all_known_controls_are_labelled_on_sync()`
   - Method `.test_accessibility_labels_are_added_once_to_copied_builds()`
 
 **Functions:**

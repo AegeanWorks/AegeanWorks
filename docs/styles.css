@@ -1831,16 +1831,25 @@ h1 .grad {
   pointer-events: none;
 }
 .live-home-dot {
-  width: 8px;
-  height: 8px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(233, 238, 251, 0.38);
+  background: transparent;
   cursor: pointer;
   pointer-events: auto;
 }
-.live-home-dot.is-active { background: var(--cyan); }
+.live-home-dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(233, 238, 251, 0.38);
+}
+.live-home-dot.is-active::after { background: var(--cyan); }
 .live-home-dot:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 .live-home-body {
   display: flex;
@@ -2141,15 +2150,24 @@ h1 .grad {
   padding: 10px 0 6px;
 }
 .gallery-dot {
-  width: 8px;
-  height: 8px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(233, 238, 251, 0.35);
+  background: transparent;
   cursor: pointer;
 }
-.gallery-dot.is-active { background: var(--cyan); }
+.gallery-dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(233, 238, 251, 0.35);
+}
+.gallery-dot.is-active::after { background: var(--cyan); }
 .gallery-dot:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 .gallery-caption-row {
   display: flex;
@@ -2809,6 +2827,9 @@ pre:focus-visible {
   .project,
   .game-group,
   .work-card { content-visibility: visible; }
+  /* The default Active filter hides archived cards on screen; print shows all. */
+  .project[hidden],
+  .project.is-hidden { display: flex !important; }
   .site-header,
   .page-grid,
   .hero-aurora,

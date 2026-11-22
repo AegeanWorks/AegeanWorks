@@ -108,6 +108,18 @@ class LiveBuildDigestTests(unittest.TestCase):
             )
 
 
+    def test_all_known_controls_are_labelled_on_sync(self):
+        module = load_sync_tool()
+        expected = {
+            "check-coulomb", "check-relativity", "duration", "file-input",
+            "guides", "motion", "participant-end", "participant-start",
+            "profile-music", "profile-sfx", "select-collision", "select-dot-style",
+            "select-tracking", "slider-c", "slider-dt", "slider-ke",
+            "slider-trail", "sound",
+        }
+        self.assertEqual(set(module.A11Y_LABELS), expected)
+        self.assertIn("patch_accessibility(target)", TOOL.read_text(encoding="utf-8"))
+
     def test_accessibility_labels_are_added_once_to_copied_builds(self):
         module = load_sync_tool()
         with tempfile.TemporaryDirectory() as temp:

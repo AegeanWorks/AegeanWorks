@@ -1324,10 +1324,18 @@ class ProfileIntegrityTests(unittest.TestCase):
             with self.subTest(token=token):
                 self.assertIn(token, css)
 
+    def test_gallery_dots_have_tappable_hit_areas(self):
+        css = (ROOT / "docs/styles.css").read_text(encoding="utf-8")
+        block = css.split(".gallery-dot {", 1)[1].split("}", 1)[0]
+        self.assertRegex(block, r"width:\s*(2[4-9]|[3-9]\d)px")
+        self.assertRegex(block, r"height:\s*(2[4-9]|[3-9]\d)px")
+        self.assertIn(".gallery-dot::after", css)
+
     def test_print_shows_every_card(self):
         css = (ROOT / "docs/styles.css").read_text(encoding="utf-8")
         self.assertIn("content-visibility: auto", css)
         self.assertIn(".project,\n  .game-group,\n  .work-card { content-visibility: visible; }", css)
+        self.assertIn(".project[hidden],\n  .project.is-hidden { display: flex !important; }", css)
 
     def test_every_page_uses_the_same_shell_version(self):
         versions = {}
