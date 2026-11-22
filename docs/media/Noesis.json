@@ -57,6 +57,42 @@
       "height": 6300,
       "digest": "sha256:415c36550bb634f47dc6ad7d0db15ab82195669321c90cd9ed751672b8efdc9d",
       "source": "Noesis:assets/screenshots/2026-11-03-home-mobile.png"
+    },
+    {
+      "src": "media/Noesis/2026-11-22-results-mobile.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Results Mobile",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 780,
+      "height": 7982,
+      "digest": "sha256:bd90504f3efd8f5c901b4f0dc9b6b92abfd7d3f72ce8d6bc2e1c1c13e6caeee2",
+      "source": "Noesis:assets/screenshots/2026-11-03-results-mobile.png"
+    },
+    {
+      "src": "media/Noesis/2026-11-22-session-mobile.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Session Mobile",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 780,
+      "height": 1688,
+      "digest": "sha256:dd32e0c14c22624446af5170757aa35a96917d8805a317a03ade5eb9a91b3bb2",
+      "source": "Noesis:assets/screenshots/2026-11-03-session-mobile.png"
+    },
+    {
+      "src": "media/Noesis/2026-11-22-settings-mobile.webp",
+      "alt": "Noesis screenshot",
+      "caption": "Noesis — 2026 11 03 Settings Mobile",
+      "commit": "6ce187388da879161ed9c1db3f34b7c22f17d393",
+      "taken_at": "2026-11-22",
+      "viewport": "",
+      "width": 780,
+      "height": 7476,
+      "digest": "sha256:ab94bfb3f1720c521854b0919cd44303f3c411b78eeffba547f5006ce3c10b74",
+      "source": "Noesis:assets/screenshots/2026-11-03-settings-mobile.png"
     }
   ]
 }
