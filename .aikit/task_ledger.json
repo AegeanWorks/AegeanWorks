@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "trim-archived-prefix",
+    "task_id": "site-hardening-five",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795368497.3172262,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795371799.3813903,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795375697.3172262,
+    "lease_until": 1795378999.3813903,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,71 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795368565.3092139,
-    "completed_head": "e3996b0485925f32f05bd9c9570c8bd4d24c5f3d",
-    "completed_tree": "4782bd0e862a8ae4c72cb9bda09f59c100aaac1a"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "selected-work-and-back",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'selected-work-and-back' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795362960.180902,
-      "timestamp_str": "2026-11-22 18:56:00",
-      "agent": "opencode:hy4-flash-free",
-      "head": "8d972fa6e47516cfaa693804781b6de3b56bf159",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "hygiene-annotation",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Small follow-up: annotate the two new work-card external links with the same hygiene exemption used by every other work card.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795363104.6751242,
-      "timestamp_str": "2026-11-22 18:58:24",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The new ModelDuck and Aegean-TGE cards triggered the external-url hygiene rule; the existing cards document the same outbound-only links.",
-        "benefits": "Hygiene gate green; no behaviour change.",
-        "risks": "contract: none; dependency: none; concurrency: none; state: none",
-        "mitigation": "Add the documented hygiene allow comment and re-record UI evidence; verify strict gates."
-      },
-      "plan_digest": "8b419ab0a90e14f0f3f8defa128f6014ee1bd6a2ed87e9efcfa1982d3217c3ea",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "hygiene-annotation",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: hygiene annotations applied, UI evidence re-recorded, 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795363109.3568454,
-      "timestamp_str": "2026-11-22 18:58:29",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "hygiene-annotation",
       "phase": "completed",
@@ -408,6 +346,65 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "site-hardening-five",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/5] Plan: (1) bump shell/script cache version to v46; (2) fix unlabeled controls in live app sources and re-sync snapshots; (3) measure performance with browser trace and apply justified optimizations; (4) show verifier snapshot freshness; (5) triage reports inbox to its cap.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795369983.8227403,
+      "timestamp_str": "2026-11-22 20:53:03",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The user approved the five recommended improvements; returning browsers serve stale JS, 12 live snapshots have a11y findings, performance is unmeasured, the verifier fallback has no freshness signal, and the reports inbox is far over cap.",
+        "benefits": "Deploy reaches visitors, live apps are accessible, performance is evidence-based, verifier is honest about snapshot age, workspace debt is reduced.",
+        "risks": "contract: version/version tests and live build digests are pinned; dependency: upstream app sources and sync tool; concurrency: other sessions edit rust/ and reports/; state: many files across three repos",
+        "mitigation": "Work one milestone at a time with failing-first tests where practical, verify with gates and browser after each, never force push, and leave other sessions' files alone."
+      },
+      "plan_digest": "9585dd195c091036a2b8d4b4d52cd1f2a03501b7a6913f6343facb6cb5d25d48",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "site-hardening-five",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/5] Done: bumped shell version 45 to 46 across SW, APP_VERSION and all versioned script URLs; added aria-labels to 18 controls across 12 live snapshots and refreshed the four affected build digests. A11y audit now 0 findings on all 31 pages; 203 tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795371067.5879767,
+      "timestamp_str": "2026-11-22 21:11:07",
+      "agent": "opencode:hy4-flash-free",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "site-hardening-five",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[4/5] Measured with Chromium trace: before 17 long tasks / 8453 ms blocking; after content-visibility on project cards, 1 long task / 46 ms on a fresh origin. Added registerFreshness helper and UI label showing generated/refresh dates. 63 verifier assertions, 203 Python tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795371799.3813903,
+      "timestamp_str": "2026-11-22 21:23:19",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
