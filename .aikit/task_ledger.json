@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "archived-card-badges",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795364360.3899114,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795371560.3899114,
@@ -15,26 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795364428.8474607,
+    "completed_head": "179896513b4a42b59e6367654c5ab3caaaf5f1bd",
+    "completed_tree": "ddf9c951dcec408992f629ef5534424f46e822ac"
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery-completion",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'games-gallery-completion' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795358768.6887565,
-      "timestamp_str": "2026-11-22 17:46:08",
-      "agent": "opencode:hy4-flash-free",
-      "head": "17298e7be4bea906f2d582156b4ffe96debaf3a7",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "meridian-shot-trim",
       "phase": "phase 2",
@@ -405,6 +391,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "archived-card-badges",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'archived-card-badges' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795364429.1482086,
+      "timestamp_str": "2026-11-22 19:20:29",
+      "agent": "opencode:hy4-flash-free",
+      "head": "179896513b4a42b59e6367654c5ab3caaaf5f1bd",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
