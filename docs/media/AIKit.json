@@ -6,7 +6,7 @@
     "alt": "AIKit logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:c81feee844335afb519eaa02eae230bef0959a8296939919218bef8e0b1be52c",
+    "digest": "sha256:4268cb2d858f3c9b964887035e187178d9c59531b283682b3cbef3ebccec12b6",
     "commit": "bb6483b289e80bf13a9acf85d48e8796bb7e18e1",
     "taken_at": "2026-11-22",
     "source": "https://raw.githubusercontent.com/AegeanWorks/AIKit/bb6483b289e80bf13a9acf85d48e8796bb7e18e1/assets/logo.png"
@@ -16,7 +16,7 @@
     "alt": "AIKit social preview",
     "width": 1200,
     "height": 600,
-    "digest": "sha256:0dfc6cfdd9b1f4eef2dee71ecb8a42a3ca35328a7f12ae8a6bab9be27b636694",
+    "digest": "sha256:668309deef34b90eec8748b175612ddf864c25d6b592c60cfd3726f3a56bc6be",
     "commit": "bb6483b289e80bf13a9acf85d48e8796bb7e18e1",
     "taken_at": "2026-11-22",
     "generated": true
