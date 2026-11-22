@@ -16,6 +16,10 @@ export const CATEGORY_LABELS = {
   tools: "Developer Tools",
   play: "Games & Experiments",
 };
+/* Private repositories are absent from an unauthenticated GitHub list, but
+   their dossiers are public. Keep their cards when a live sync omits them. */
+export const PRIVATE_REPOS = new Set(["AIKit"]);
+
 export const BOILERPLATE_TOPICS = new Set([
   "aikit", "python", "source-available",
   "aikit-integrated", "aegeanworks", "aegean-license",
@@ -332,7 +336,7 @@ export function planSync(existingCards, liveRepos, { complete = true } = {}) {
       : byName.get(String(card.name || "").toLowerCase());
     if (repo) {
       updates.push({ cardId: id || String(repo.id), repo, cardRef: card });
-    } else if (complete) {
+    } else if (complete && !PRIVATE_REPOS.has(String(card.name || "").trim())) {
       removals.push({ cardId: id || String(card.name || ""), cardRef: card });
     }
   }

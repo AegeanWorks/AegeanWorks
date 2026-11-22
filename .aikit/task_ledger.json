@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "three-site-fixes",
+    "task_id": "keep-private-dossier",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795378511.011309,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795379355.1874673,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795385711.011309,
+    "lease_until": 1795386555.1874673,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795378735.1031334,
-    "completed_head": "20ee7979ebc700758f3d69015a275d29d3eb7609",
-    "completed_tree": "01cf041dcdc4f347d22178d98b9b96d172e9be9d"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "archived-warm-tint",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: browser confirms amber border/badge and opacity 0.82 for archived vs normal active cards; 203 tests OK; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795366672.315421,
-      "timestamp_str": "2026-11-22 19:57:52",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "archived-warm-tint",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'archived-warm-tint' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795366699.820627,
-      "timestamp_str": "2026-11-22 19:58:19",
-      "agent": "opencode:hy4-flash-free",
-      "head": "a7d261ac36b3cd1b51930e6453c15224f44b5db0",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "trim-archived-prefix",
       "phase": "phase 2",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "keep-private-dossier",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: keep private repos in the Projects grid when the live GitHub list omits them, so their public dossiers remain reachable.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795379354.5482574,
+      "timestamp_str": "2026-11-22 23:29:14",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The live atlas sync removed the AIKit card because a private repo is absent from an unauthenticated GitHub list; the dossier was reachable only by direct URL.",
+        "benefits": "AIKit dossier is linked again; public dossier copy stays accessible without exposing a private source link.",
+        "risks": "contract: planSync removal tests are pinned; dependency: none; concurrency: none; state: private set duplicated in project-core and atlas-core",
+        "mitigation": "Add a failing-first planSync test and a PRIVATE_REPOS guard, verify in a fresh browser, then run gates."
+      },
+      "plan_digest": "c5f0d5f237ba8483f4807cd0cbe60858834da8313e476568f6cb959ee6048441",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "keep-private-dossier",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: browser shows AIKit card with project.html?repo=AIKit link after live sync; 72 atlas assertions, 211 Python tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795379355.1874673,
+      "timestamp_str": "2026-11-22 23:29:15",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

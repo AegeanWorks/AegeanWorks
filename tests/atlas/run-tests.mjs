@@ -196,5 +196,13 @@ equal(displayDescription({ archived: true, description: "[ARCHIVED] A tiny CLI."
 equal(displayDescription({ archived: false, description: "[ARCHIVED] A tiny CLI." }), "[ARCHIVED] A tiny CLI.", "active descriptions keep their text");
 equal(displayDescription({ archived: true, description: "Archived: A tiny CLI." }), "A tiny CLI.", "legacy Archived prefix trimmed too");
 
+const privatePlan = planSync(
+  [{ id: "1", name: "AIKit" }, { id: "2", name: "Cairn" }],
+  [],
+  { complete: true }
+);
+equal(privatePlan.removals.length, 1, "only the public card is removed when the live list omits both");
+equal(privatePlan.removals[0].cardId, "2", "the private repo keeps its card and dossier link");
+
 console.log(`ok ${assertions} atlas assertions`);
 
