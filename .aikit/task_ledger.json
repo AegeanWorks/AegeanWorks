@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "site-polish-verifier",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795361941.171968,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795369141.171968,
@@ -15,26 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795362022.4381497,
+    "completed_head": "a6730f7bca54d065a11f28d7b0c4a438c7194865",
+    "completed_tree": "6128a577567fce34ac11b576f21c0113a68d2b0f"
   },
   "checkpoints": [
-    {
-      "task_id": "github-only-dossiers",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'github-only-dossiers' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795350962.6993778,
-      "timestamp_str": "2026-11-22 15:36:02",
-      "agent": "opencode:hy4-flash-free",
-      "head": "480c296279e626834f3a3a2e77731473cb2cbecf",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "knot-card-sync",
       "phase": "phase 4",
@@ -405,6 +391,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "site-polish-verifier",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'site-polish-verifier' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795362022.5659463,
+      "timestamp_str": "2026-11-22 18:40:22",
+      "agent": "opencode:hy4-flash-free",
+      "head": "a6730f7bca54d065a11f28d7b0c4a438c7194865",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
