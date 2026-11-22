@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "media-refresh-merge-2",
+    "task_id": "archived-card-badges",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795363644.9564586,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795364360.3899114,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795370844.9564586,
+    "lease_until": 1795371560.3899114,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795363669.1088257,
-    "completed_head": "c4d811bcbdf57d04f997c60fe102a5a78083cf19",
-    "completed_tree": "539bc234da27ee808277d14ab69b757b6ba21d4b"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery-completion",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[2/3] Completed the Traceglass dossier sync from GitHub (catalogue 74 entries, schema-2 media, logo and social preview) and added a failing-first test plus four missing playable games to a new Arcade & action gallery group using their dossier cover art.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795358709.4062574,
-      "timestamp_str": "2026-11-22 17:45:09",
-      "agent": "opencode:hy4-flash-free",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "games-gallery-completion",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/3] Phase 4: gallery test green; 203 Python tests OK; media check 0 problems; static audit 0 issues; browser shows 15 game cards in 6 groups with no broken images; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795358710.273002,
-      "timestamp_str": "2026-11-22 17:45:10",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "games-gallery-completion",
       "phase": "completed",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "archived-card-badges",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: give archived project cards a visible Archived badge and dimmed box styling via CSS keyed on data-archived, and make top-nav anchor jumps reliably reveal the target section.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795364149.9927404,
+      "timestamp_str": "2026-11-22 19:15:49",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "Archived cards currently look identical to active ones apart from description text, and the user reports the games section appearing to vanish after a top-nav click.",
+        "benefits": "Archived status is visible at a glance; anchor navigation always shows the target section.",
+        "risks": "contract: do not change card markup or tests; dependency: none; concurrency: none; state: CSS/JS only",
+        "mitigation": "Use CSS pseudo-badge keyed on data-archived plus a hashchange reveal handler; verify in browser that archived cards are dimmed with a badge and the games anchor shows its groups."
+      },
+      "plan_digest": "f0e004cf39ecdc5f828ffdb557cc104cf7a05341b139ef705eefb31b49408056",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "archived-card-badges",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "Phase 4: archived cards show a dimmed dashed box and ARCHIVED badge (opacity 0.74 vs 1 for active); Games anchor jump reveals all 6 groups; 203 tests OK; 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795364360.3899114,
+      "timestamp_str": "2026-11-22 19:19:20",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
