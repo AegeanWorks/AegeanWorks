@@ -129,7 +129,7 @@ export const REPO_LICENSES = Object.freeze({
   memoryreconstruction: "AGL",
   meridian: "AL",
   mnemo: "AL",
-  muse: "AL",
+  "muse": "AL",
   "n1-engine": "AL",
   neuralbeat: "AL",
   "neuraldeck": "AL",

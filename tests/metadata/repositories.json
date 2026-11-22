@@ -538,7 +538,7 @@
     {
       "id": 1433666867,
       "name": "Muse",
-      "description": "Prompt-driven AI music creation with an automated listener that scores how well each track fits the theme and can retry using the judge's own suggestions, exposed as a CLI (single tracks or a JSON batch) and Python library.",
+      "description": "[ARCHIVED] Prompt-driven AI music creation with an automated listener that scores how well each track fits the theme and can retry using the judge's own suggestions, exposed as a CLI (single tracks or a JSON batch) and Python library.",
       "topics": [
         "aegean-license",
         "aegeanworks",
@@ -563,9 +563,9 @@
       ],
       "language": "Python",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-14T21:34:07Z",
+      "pushed_at": "2026-11-22T13:24:18Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
@@ -1886,7 +1886,7 @@
     {
       "id": 1467392146,
       "name": "Knot",
-      "description": "Knot is a zero-dependency C++17 include-graph analyzer for programmers: it parses include directives with an explicit state machine, detects cycles, quantifies transitive header cost, traces the exact include chain that pulls a header in, reports the reverse blast radius of changing a header, diffs a tree against a recorded baseline to catch...",
+      "description": "[ARCHIVED] Knot is a zero-dependency C++17 include-graph analyzer for programmers: it parses include directives with an explicit state machine, detects cycles, quantifies transitive header cost, traces the exact include chain that pulls a header in, reports the reverse blast radius of changing a header, diffs a tree against a recorded baseline...",
       "topics": [
         "aegean-license",
         "aikit",
@@ -1899,9 +1899,9 @@
       ],
       "language": "C++",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-22T09:21:37Z",
+      "pushed_at": "2026-11-22T12:45:16Z",
       "homepage": "",
-      "archived": false,
+      "archived": true,
       "default_branch": "master"
     },
     {
