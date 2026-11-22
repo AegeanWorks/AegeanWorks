@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "a11y-seo-site-fixes",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795354550.7166646,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795361750.7166646,
@@ -15,27 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795354589.0408964,
+    "completed_head": "812b4d34aed4cc44300dc3829c94380545d4752f",
+    "completed_tree": "8a8cc5305e17854d38307cc808f417680c80a4e5"
   },
   "checkpoints": [
-    {
-      "task_id": "licensing-into-aikit",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/3] Failing-first test pinned (4 red subtests: card archived flag, card wording, metadata archived, JSON-LD)",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794935027.0076363,
-      "timestamp_str": "2026-11-17 20:03:47",
-      "agent": "claude:1",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "licensing-into-aikit",
       "phase": "phase 4",
@@ -399,6 +384,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "a11y-seo-site-fixes",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'a11y-seo-site-fixes' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795354589.1332254,
+      "timestamp_str": "2026-11-22 16:36:29",
+      "agent": "opencode:hy4-flash-free",
+      "head": "812b4d34aed4cc44300dc3829c94380545d4752f",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
