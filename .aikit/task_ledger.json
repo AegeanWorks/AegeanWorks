@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "catalogue-refresh-knot-map",
+    "task_id": "dossier-github-reconcile",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795348125.3490307,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795350059.3982697,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795355325.3490307,
+    "lease_until": 1795357259.3982697,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,63 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795348210.5071425,
-    "completed_head": "f5968554fcf92a7aa3b7d5cbfc6b6aadc2ef295a",
-    "completed_tree": "0a6d1b9122ba79370f8cec7beb19ba1433db8864"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "games-gallery",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[1/4] Games section scaffold: tests first (teasers mirror no repo; order pinned), section between projects and research, three navs, eyebrow renumber, ui_task.json ignored as transient. checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794859304.023955,
-      "timestamp_str": "2026-11-16 23:01:44",
-      "agent": "claude:1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "games-gallery",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/4] Dossier screenshots rendered as gallery cards (4 groups, 11 public games); tests 95/95, 6/6 gates, checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794859697.6768775,
-      "timestamp_str": "2026-11-16 23:08:17",
-      "agent": "claude:1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "games-gallery",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[3/4] Private-game teaser slots as unlinked articles with placeholder asset in docs/assets/games; 2 new tests pin unlinked + asset existence; 97/97 tests, 6/6 gates, checklists: passed",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794860372.3424911,
-      "timestamp_str": "2026-11-16 23:19:32",
-      "agent": "claude:1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "games-gallery",
       "phase": "completed",
@@ -387,6 +333,65 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "dossier-github-reconcile",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/4] Audited all 65 dossiers one by one against live GitHub facts (scratch/aegean_dossier_audit.py): 30 entries have drift (14 archived-flag mismatches, 20 description drifts, 20 pushed_at dates, 3 default branches, 1 language, 2 generated preview placeholders); GitHub has 71 public repos, 8 with no dossier, of which Noesis is an active public project with a local checkout and real brand assets.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795349293.796253,
+      "timestamp_str": "2026-11-22 15:08:13",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The dossier is the public portfolio and is meant to mirror GitHub facts captured by publish; 30 entries now disagree with GitHub, including 14 archived repos shown as active, and Noesis is a live public project absent from the catalogue.",
+        "benefits": "Accurate archived status, language, branch and descriptions across the portfolio; Noesis gains a dossier like every other public project; a reusable audit script remains for future drift checks; all 6 Phase 4 gates stay green.",
+        "risks": "contract: dossier_sync.sync_entry rewrites 6 catalogue files per repo and descriptions will be replaced by GitHub's current text; dependency: 65 gh API reads (rate limit 4961 remaining); concurrency: no live AegeanWorks process; state: the previous catalogue-refresh commits are clean and must be preserved; Noesis media fetch needs raw.githubusercontent access.",
+        "mitigation": "Derive family/category from the existing dossier so presentation stays stable; keep a before/after diff in scratch for review; use the supported sync_entry and build_dossier_media builder only; run build_dossier_media.py check and the full check --strict before committing; do not push."
+      },
+      "plan_digest": "25885913d2e67f38dfeda846b7e9471601ac222970c1b5f090dfd6ca7a7dcb01",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "dossier-github-reconcile",
+      "phase": "phase 3",
+      "phase_num": 3,
+      "description": "[2/4] Refreshed all 65 catalogue entries from live GitHub facts via dossier_sync.sync_entry (20 entries actually drifted: 14 archived flags, 16 descriptions, 19 pushed_at dates, 1 default branch). Added Noesis as a 66th dossier (catalogue, snapshot, card, JSON-LD, README row, PUBLIC_REPOS, license family) and fetched its media including 3 screenshots. Replaced generated preview placeholders for AIKit and Dustline with real GitHub assets. Restored the site's canonical middle-dot separator in 66 facts lines after discovering dossier_sync._card emits an em dash.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795350058.0925968,
+      "timestamp_str": "2026-11-22 15:20:58",
+      "agent": "opencode:hy4-flash-free",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "dossier-github-reconcile",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[3/4] Phase 4: build_dossier_media.py check = 0 problems; full re-audit = 0 gaps across 66 dossiers (down from 30); 6/6 gates pass (hygiene, guidelines, secrets, test, js-atlas, js-verify).",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795350059.3982697,
+      "timestamp_str": "2026-11-22 15:20:59",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

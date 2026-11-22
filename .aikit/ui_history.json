@@ -590,5 +590,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "c7423513a38c988c2d47bba854f472ee66ef64844a7889ad1cce1c8927808838",
     "baseline_digest": "c7423513a38c988c2d47bba854f472ee66ef64844a7889ad1cce1c8927808838"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed dossier reconciliation (66 catalogue entries, Noesis addition, real AIKit/Dustline previews, facts separator normalization); automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "8784679686ccb18bc89ed3d112ba882dc7242f7f",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795350100.427449,
+    "finished_at": 1795350107.6308784,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "bc0f84619fee40f365d93073b11abf43da2679556f9f43d344aa4f2795e4cc0c",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795350107.6308813
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "bc0f84619fee40f365d93073b11abf43da2679556f9f43d344aa4f2795e4cc0c",
+    "baseline_digest": "bc0f84619fee40f365d93073b11abf43da2679556f9f43d344aa4f2795e4cc0c"
   }
 ]
