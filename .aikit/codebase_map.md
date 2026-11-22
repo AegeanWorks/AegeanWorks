@@ -8,9 +8,9 @@
 ## 📊 Codebase Metrics
 - **Total Python Modules**: `31`
 - **Total Classes**: `46`
-- **Total Top-Level Functions**: `179`
-- **Total Class Methods**: `255`
-- **Total Source Lines**: `7652`
+- **Total Top-Level Functions**: `180`
+- **Total Class Methods**: `259`
+- **Total Source Lines**: `7738`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`31` module(s))
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2147` lines
+**Size**: `2170` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -107,7 +107,10 @@
   - Method `.test_trust_pages_share_the_full_legal_footer()`
   - Method `.test_privacy_table_labels_its_cells_for_narrow_screens()`
   - Method `.test_security_txt_is_valid()`
+  - Method `.test_project_status_defaults_to_active()`
   - Method `.test_atlas_search_topic_sort_and_url_state()`
+  - Method `.test_print_shows_every_card()`
+  - Method `.test_every_page_uses_the_same_shell_version()`
   - Method `.test_portfolio_scripts_are_cache_coherent()` - *A new Status control must never run against an older cached app.js.*
   - Method `.test_live_atlas_is_wired_to_the_github_api()`
   - Method `.test_site_lists_every_public_repository_once()`
@@ -361,13 +364,14 @@
 ---
 
 ### [`tests/test_sync_live_digest.py`](tests/test_sync_live_digest.py)
-**Size**: `112` lines
+**Size**: `127` lines
 
 **Classes:**
 - `class LiveBuildDigestTests`
   - Method `.test_line_endings_do_not_change_the_digest()`
   - Method `.test_live_file_override_replaces_a_runtime_file()`
   - Method `.test_binary_files_are_hashed_byte_for_byte()`
+  - Method `.test_accessibility_labels_are_added_once_to_copied_builds()`
 
 **Functions:**
 - `def load_sync_tool()`
@@ -783,7 +787,7 @@
 ### [`tools/sync_live_apps.py`](tools/sync_live_apps.py)
 > *Sync the live browser apps and their catalog.*
 
-**Size**: `824` lines
+**Size**: `872` lines
 
 **Classes:**
 - `class SyncError` - *A user-facing sync failure with a Why/Fix pair.*
@@ -799,6 +803,7 @@
 - `def _copy_overrides(source, target, overrides)` - *Replace or add named build files from a source-relative path.*
 - `def _copy_runtime(source, target, entries)`
 - `def _runtime_files(target)`
+- `def patch_accessibility(target)` - *Add ARIA names to known controls in a copied build; return files changed.*
 - `def _source_path(source, relative)` - *Resolve an index reference inside the source, or None when it escapes it.*
 - `def _allowed_url(value)` - *Only the W3C SVG and XLink namespaces may be named as external URLs.*
 - `def source_directory(game, source_root)` - *The live source checkout, or its archived copy after ``aikit archive`` moved it.*

@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "site-hardening-five",
+    "task_id": "site-followup-five",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795371799.3813903,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795374692.1992683,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795378999.3813903,
+    "lease_until": 1795381892.1992683,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,54 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795371823.283735,
-    "completed_head": "a0f798533182f3de93803ed78a995bd0d164de72",
-    "completed_tree": "127c249b680d0f28a73e1507cf942d92719e9f2a"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "media-refresh-merge-2",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Integrate upstream 725393d media refresh (logos, previews, Noesis and Dustline captures) into the local branch before push.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795363644.1378286,
-      "timestamp_str": "2026-11-22 19:07:24",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The scheduled media workflow advanced the remote while local site and verifier work was pending; push requires integration.",
-        "benefits": "Local branch contains both the site work and fresh canonical media; gates stay green.",
-        "risks": "contract: manifests must match files; dependency: remote media bytes; concurrency: none active; state: merge was clean with no conflicts",
-        "mitigation": "Merge rather than rebase, run media check and all gates, record ledger, then push without force."
-      },
-      "plan_digest": "61043d9b078415a54d7484932791ac69f9a08ec7b17190e4d9640e45fa452eb1",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "media-refresh-merge-2",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: clean merge, media check 0 problems, 203 tests OK, 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795363644.9564586,
-      "timestamp_str": "2026-11-22 19:07:24",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "media-refresh-merge-2",
       "phase": "completed",
@@ -408,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "site-followup-five",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/5] Plan: fix verify.html stale v20 key with a version-consistency guard; make live-app a11y labels survive re-sync; add archive filter to Projects; protect cards in print; attempt real Lighthouse audit.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795372240.4337833,
+      "timestamp_str": "2026-11-22 21:30:40",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The previous hardening left verify.html on v20, snapshot labels will be overwritten by live sync, archived cards have no filter, print may hide content, and Lighthouse scores are null.",
+        "benefits": "Cache keys consistent and guarded, durable a11y fixes, filterable portfolio, safe print, real audit scores.",
+        "risks": "contract: version tests, live digests and card counts are pinned; dependency: visible browser window for Lighthouse; concurrency: none active; state: generated files",
+        "mitigation": "Add failing-first tests per contract, verify with gates and browser, and report Lighthouse blocked if the desktop window is unavailable."
+      },
+      "plan_digest": "ea51c13006fcd3118fabaa6181ed2afe8f23d87b596b37f45caa9b3533e57fdd",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "site-followup-five",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[5/5] All items done: verify.html v46 + version guard; durable a11y labels in sync tool; status filter defaults to Active with live counts; print rule restores card visibility; real Lighthouse ran (verify 1/1/1, dossier 0.96/1/1 with a target-size finding). 207 tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795374692.1992683,
+      "timestamp_str": "2026-11-22 22:11:32",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
