@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "nav-stay-on-page",
+    "task_id": "broken-pages-and-workshop",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795380705.540454,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795382878.0160887,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795387905.540454,
+    "lease_until": 1795390078.0160887,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,53 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795380893.6367536,
-    "completed_head": "1ef8f320df2336ecaa606e9e266151dca4c4722c",
-    "completed_tree": "f84c4f04deb52af5ba751664e89902048a850272"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "site-hardening-five",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/5] Plan: (1) bump shell/script cache version to v46; (2) fix unlabeled controls in live app sources and re-sync snapshots; (3) measure performance with browser trace and apply justified optimizations; (4) show verifier snapshot freshness; (5) triage reports inbox to its cap.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795369983.8227403,
-      "timestamp_str": "2026-11-22 20:53:03",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The user approved the five recommended improvements; returning browsers serve stale JS, 12 live snapshots have a11y findings, performance is unmeasured, the verifier fallback has no freshness signal, and the reports inbox is far over cap.",
-        "benefits": "Deploy reaches visitors, live apps are accessible, performance is evidence-based, verifier is honest about snapshot age, workspace debt is reduced.",
-        "risks": "contract: version/version tests and live build digests are pinned; dependency: upstream app sources and sync tool; concurrency: other sessions edit rust/ and reports/; state: many files across three repos",
-        "mitigation": "Work one milestone at a time with failing-first tests where practical, verify with gates and browser after each, never force push, and leave other sessions' files alone."
-      },
-      "plan_digest": "9585dd195c091036a2b8d4b4d52cd1f2a03501b7a6913f6343facb6cb5d25d48",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "site-hardening-five",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "[2/5] Done: bumped shell version 45 to 46 across SW, APP_VERSION and all versioned script URLs; added aria-labels to 18 controls across 12 live snapshots and refreshed the four affected build digests. A11y audit now 0 findings on all 31 pages; 203 tests OK.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795371067.5879767,
-      "timestamp_str": "2026-11-22 21:11:07",
-      "agent": "opencode:hy4-flash-free",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "site-hardening-five",
       "phase": "phase 4",
@@ -408,6 +364,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "broken-pages-and-workshop",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: replace 17 absolute /AegeanWorks/ refs on 404.html and offline.html with relative paths (verified 404s on aegeanworks.studio), and remove the placeholder-only 'In the workshop' Games group with a guard test.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795381555.6130667,
+      "timestamp_str": "2026-11-23 00:05:55",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The custom-domain 404/offline pages are unstyled and their links are dead; the workshop shows a 'Slot 1' placeholder with no real teaser data.",
+        "benefits": "Error/offline pages work on the live domain; the Games section no longer looks unfinished.",
+        "risks": "contract: teaser tests currently require at least one slot; dependency: none; concurrency: none; state: relative paths must work on both custom domain and github.io project path",
+        "mitigation": "Add failing-first tests, record an ADR for the workshop removal, verify with live HTTP requests and the browser, then run all gates."
+      },
+      "plan_digest": "a017eb7be2d0e93ac5e8c3781dffdd639ea987680497442cbe18ca91dd70ac6e",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "broken-pages-and-workshop",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Complete: 0 absolute /AegeanWorks/ refs and 0 missing local refs across 11 pages; webmanifest and robots now use the custom-domain root; workshop placeholder removed with ADR-085; 214 tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795382878.0160887,
+      "timestamp_str": "2026-11-23 00:27:58",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

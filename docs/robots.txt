@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aegeanworks.github.io/AegeanWorks/sitemap.xml
+Sitemap: https://aegeanworks.studio/sitemap.xml

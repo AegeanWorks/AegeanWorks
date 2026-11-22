@@ -650,3 +650,10 @@ contract, a dependency, a data format or the architecture; IDs are consecutive a
 - **Decision**: drop `src/styles.css` from the asserted asset tuple in `test_live_apps_are_wired_and_current`; the remaining assets (`src/orrery.js`, `data/scenarios.js`, `favicon.svg`) and every `src=`/`href=` reference in `index.html` are still resolved and required, so nothing is covered less.
 - **Consequences**: the asset list tracks the actual sealed layout; a future build that reverts to an external stylesheet should re-add the path.
 - Cross-principle check: no principle section changed. Serves PRINCIPLE-003 (the test must match reality) and PRINCIPLE-014 (the reference-resolution loop still guards a self-contained build).
+
+### ADR-085: Remove placeholder-only workshop teasers
+- **Date**: 2026-11-23
+- **Status**: Accepted
+- **Context**: The Games section's 'In the workshop' group held a single Slot 1 card with a placeholder image and no real teaser manifest or captures, which read as unfinished.
+- **Decision**: Remove the workshop group from index.html; keep tools/build_game_teasers.py for future real private-game captures and require actual screenshots before reintroducing teasers.
+- **Consequences**: The Games section ends with real archived and active titles; the teaser tests now assert no placeholder slots until real data exists.

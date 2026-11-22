@@ -769,7 +769,7 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertIn("https://aegeanworks.github.io/AegeanWorks/editor.html", sitemap)
         webmanifest = json.loads((docs / "site.webmanifest").read_text(encoding="utf-8"))
         shortcut_urls = {shortcut["url"] for shortcut in webmanifest["shortcuts"]}
-        self.assertIn("/AegeanWorks/editor.html", shortcut_urls)
+        self.assertIn("/editor.html", shortcut_urls)
 
         sw = (docs / "sw.js").read_text(encoding="utf-8")
         block = sw.split("const PRECACHE = [", 1)[1].split("];", 1)[0]
@@ -1141,11 +1141,11 @@ class ProfileIntegrityTests(unittest.TestCase):
         manifest = json.loads(
             (ROOT / "docs" / "site.webmanifest").read_text(encoding="utf-8")
         )
-        self.assertEqual(manifest["scope"], "/AegeanWorks/")
+        self.assertEqual(manifest["scope"], "/")
         offline = (ROOT / "docs" / "offline.html").read_text(encoding="utf-8")
         self.assertIn("You are offline.", offline)
-        self.assertIn('href="/AegeanWorks/"', offline)
-        self.assertIn("/AegeanWorks/styles.css", offline)
+        self.assertIn('href="index.html"', offline)
+        self.assertIn('href="styles.css"', offline)
         self.assertNotIn("<script", offline)
 
     def test_trust_pages_are_published_and_linked(self):
@@ -1184,11 +1184,11 @@ class ProfileIntegrityTests(unittest.TestCase):
                     self.assertIn(f'href="{link}"', page)
         not_found = (docs / "404.html").read_text(encoding="utf-8")
         for link in (
-            "/AegeanWorks/?focus=search#projects",
-            "/AegeanWorks/verify.html",
-            "/AegeanWorks/security.html",
-            "/AegeanWorks/privacy.html",
-            "/AegeanWorks/accessibility.html",
+            "index.html?focus=search#projects",
+            "verify.html",
+            "security.html",
+            "privacy.html",
+            "accessibility.html",
         ):
             with self.subTest(link=link):
                 self.assertIn(link, not_found)
@@ -1458,7 +1458,7 @@ class ProfileIntegrityTests(unittest.TestCase):
             with self.subTest(teaser=teaser[:80]):
                 self.assertNotIn("<a ", teaser)
 
-    def test_games_teaser_assets_exist(self):
+    def test_any_future_teaser_assets_exist(self):
         html = read_site()
         section = re.search(r'<section[^>]*id="games".*?</section>', html, re.S).group(0)
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -1466,7 +1466,7 @@ class ProfileIntegrityTests(unittest.TestCase):
             r'<article class="game-teaser".*?<img src="([^"]+)"',
             section, re.S,
         )
-        self.assertTrue(sources, "at least one teaser slot expected")
+        self.assertEqual(sources, [], "no placeholder teasers until real captures exist")
         for src in sources:
             with self.subTest(asset=src):
                 self.assertTrue(src.startswith("assets/games/"))
@@ -1729,9 +1729,7 @@ class ProfileIntegrityTests(unittest.TestCase):
         docs = ROOT / "docs"
         robots = (docs / "robots.txt").read_text(encoding="utf-8")
         self.assertIn("User-agent: *", robots)
-        self.assertIn(
-            "Sitemap: https://aegeanworks.github.io/AegeanWorks/sitemap.xml", robots
-        )
+        self.assertIn("Sitemap: https://aegeanworks.studio/sitemap.xml", robots)
         sitemap = (docs / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn("<loc>https://aegeanworks.github.io/AegeanWorks/</loc>", sitemap)
         self.assertIsNotNone(ET.fromstring(sitemap))
@@ -1746,7 +1744,7 @@ class ProfileIntegrityTests(unittest.TestCase):
     def test_not_found_page_is_noindexed(self):
         page = (ROOT / "docs" / "404.html").read_text(encoding="utf-8")
         self.assertIn('name="robots" content="noindex"', page)
-        self.assertIn('href="/AegeanWorks/"', page)
+        self.assertIn('href="index.html"', page)
         self.assertIn('name="description"', page)
 
     def test_web_app_manifest(self):
@@ -1754,15 +1752,15 @@ class ProfileIntegrityTests(unittest.TestCase):
             (ROOT / "docs" / "site.webmanifest").read_text(encoding="utf-8")
         )
         self.assertEqual(manifest["name"], "AegeanWorks")
-        self.assertEqual(manifest["start_url"], "/AegeanWorks/")
-        self.assertEqual(manifest["id"], "/AegeanWorks/")
+        self.assertEqual(manifest["start_url"], "/")
+        self.assertEqual(manifest["id"], "/")
         self.assertEqual(manifest["lang"], "en")
         self.assertEqual(manifest["dir"], "ltr")
         self.assertIn("productivity", manifest["categories"])
         self.assertEqual(manifest["display"], "standalone")
         shortcut_urls = {shortcut["url"] for shortcut in manifest["shortcuts"]}
-        self.assertIn("/AegeanWorks/play.html", shortcut_urls)
-        self.assertIn("/AegeanWorks/verify.html", shortcut_urls)
+        self.assertIn("/play.html", shortcut_urls)
+        self.assertIn("/verify.html", shortcut_urls)
         sources = {icon["src"] for icon in manifest["icons"]}
         for expected in ("favicon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png"):
             with self.subTest(expected=expected):
@@ -2125,6 +2123,19 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertEqual(vector["certificate"]["digest"], vector["expected_digest"])
         self.assertRegex(vector["expected_digest"], r"^[0-9a-f]{64}$")
         self.assertIn("not an issued certificate", vector["note"])
+
+    def test_pages_do_not_use_project_root_absolute_paths(self):
+        for page in sorted((ROOT / "docs").glob("*.html")):
+            with self.subTest(page=page.name):
+                self.assertNotRegex(
+                    page.read_text(encoding="utf-8"),
+                    r'(?:href|src)="/AegeanWorks/',
+                )
+
+    def test_games_section_has_no_placeholder_teaser(self):
+        section = re.search(r'<section[^>]*id="games".*?</section>', read_site(), re.S).group(0)
+        self.assertNotIn("Slot 1", section)
+        self.assertNotIn('class="game-teaser"', section)
 
     def test_no_js_filter_status_has_no_stale_count(self):
         html = read_site()

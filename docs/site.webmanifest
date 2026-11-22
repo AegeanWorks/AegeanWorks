@@ -2,30 +2,34 @@
   "name": "AegeanWorks",
   "short_name": "AegeanWorks",
   "description": "An independent studio building local-first AI systems, cognitive tooling, and computational research.",
-  "id": "/AegeanWorks/",
+  "id": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["productivity", "education", "utilities"],
-  "start_url": "/AegeanWorks/",
-  "scope": "/AegeanWorks/",
+  "categories": [
+    "productivity",
+    "education",
+    "utilities"
+  ],
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "shortcuts": [
     {
       "name": "Live apps",
       "short_name": "Live",
-      "url": "/AegeanWorks/play.html",
+      "url": "/play.html",
       "description": "Open the live browser app catalog."
     },
     {
       "name": "Image editor",
       "short_name": "Editor",
-      "url": "/AegeanWorks/editor.html",
+      "url": "/editor.html",
       "description": "Open Palette, the local-first image editor."
     },
     {
       "name": "Verify a license",
       "short_name": "Verify",
-      "url": "/AegeanWorks/verify.html",
+      "url": "/verify.html",
       "description": "Check a certificate against the public register."
     }
   ],

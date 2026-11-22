@@ -9,8 +9,8 @@
 - **Total Python Modules**: `32`
 - **Total Classes**: `46`
 - **Total Top-Level Functions**: `182`
-- **Total Class Methods**: `264`
-- **Total Source Lines**: `7847`
+- **Total Class Methods**: `266`
+- **Total Source Lines**: `7858`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`32` module(s))
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2209` lines
+**Size**: `2220` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -118,7 +118,7 @@
   - Method `.test_site_lists_every_public_repository_once()`
   - Method `.test_games_teasers_mirror_no_repository()`
   - Method `.test_games_teasers_stay_unlinked()`
-  - Method `.test_games_teaser_assets_exist()`
+  - Method `.test_any_future_teaser_assets_exist()`
   - Method `.test_games_section_sits_between_projects_and_research()`
   - Method `.test_gallery_shows_every_published_playable_game()`
   - Method `.test_site_filters_are_topics_only()`
@@ -177,6 +177,8 @@
   - Method `.test_verifier_uses_text_nodes_only()`
   - Method `.test_site_ships_no_signing_material()`
   - Method `.test_verification_vector_is_pinned()`
+  - Method `.test_pages_do_not_use_project_root_absolute_paths()`
+  - Method `.test_games_section_has_no_placeholder_teaser()`
   - Method `.test_no_js_filter_status_has_no_stale_count()`
   - Method `.test_sitemap_covers_every_dossier()`
   - Method `.test_sitemap_lists_the_verify_page()`
