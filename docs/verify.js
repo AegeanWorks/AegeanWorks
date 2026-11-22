@@ -7,6 +7,7 @@ import {
   parseCertificate,
   parseRegister,
   parseTerms,
+  registerFreshness,
   lookupRegister,
   resolveTerms,
   validCertificateId,
@@ -62,6 +63,7 @@ const state = {
   fetchedAt: null,
   loading: false,
   snapshot: false,
+  registerFreshness: null,
   termTexts: new Map(),
 };
 
@@ -210,12 +212,17 @@ function updateRegisterStatus() {
     }
   }
   if (registerMeta) {
+    const f = state.registerFreshness;
+    let detail = "";
+    if (f && f.generated) detail += " · generated " + f.generated;
+    if (f && f.nextUpdate) detail += " · refresh due " + f.nextUpdate;
+    if (f && f.stale) detail += " · past refresh date";
     registerMeta.textContent = state.register
       ? (state.snapshot
-        ? "Bundled snapshot · canonical host unreachable"
+        ? "Bundled snapshot · canonical host unreachable" + detail
         : (state.fetchedAt
-          ? "Canonical issued.json · fetched " + utcClock(state.fetchedAt)
-          : "Canonical issued.json"))
+          ? "Canonical issued.json · fetched " + utcClock(state.fetchedAt) + detail
+          : "Canonical issued.json" + detail))
       : "No canonical registry loaded.";
   }
 }
@@ -255,6 +262,7 @@ async function loadRegistries() {
     fetchWithFallback(TERMS_URL, LOCAL_TERMS_URL, 262144, "The terms registry"),
   ]);
   const problems = [];
+  state.registerFreshness = outcomes[0].value ? registerFreshness(outcomes[0].value) : null;
   if (outcomes[0].value) {
     try {
       state.register = parseRegister(outcomes[0].value);

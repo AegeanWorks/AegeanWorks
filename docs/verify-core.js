@@ -281,6 +281,24 @@ export function validCertificateId(value) {
   return typeof value === "string" && /^[A-Za-z0-9._:-]{1,128}$/.test(value.trim());
 }
 
+/* Freshness of a version-2 register, for honest labelling of bundled snapshots. */
+export function registerFreshness(rawText, now = new Date()) {
+  let data;
+  try {
+    data = JSON.parse(String(rawText || ""));
+  } catch (error) {
+    return null;
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) return null;
+  const iso = /^\d{4}-\d{2}-\d{2}T/;
+  const generated = iso.test(String(data.generated_at || "")) ? String(data.generated_at).slice(0, 10) : "";
+  const nextUpdate = iso.test(String(data.next_update || "")) ? String(data.next_update).slice(0, 10) : "";
+  if (!generated && !nextUpdate) return null;
+  const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const due = nextUpdate ? Date.parse(nextUpdate + "T00:00:00Z") : NaN;
+  return { generated, nextUpdate, stale: Number.isFinite(due) ? due < today : false };
+}
+
 export function lookupRegister(register, certificateId) {
   if (!(register instanceof Map)) return null;
   const id = String(certificateId || "").trim();

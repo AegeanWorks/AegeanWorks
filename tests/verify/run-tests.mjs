@@ -10,6 +10,7 @@ import {
   parseCertificate,
   parseRegister,
   parseTerms,
+  registerFreshness,
   termsDigest,
   validCertificateId,
   verifyCertificate,
@@ -344,5 +345,13 @@ equal(lookupRegister(lookupMap, "known")?.status, "valid", "register lookup");
 equal(lookupRegister(lookupMap, " missing "), null, "unknown register lookup");
 equal(lookupRegister(null, "known"), null, "missing register map");
 equal(lookupRegister(lookupMap, "bad id"), null, "unsafe lookup id");
+
+const freshnessText = JSON.stringify({ version: 2, generated_at: "2026-10-30T00:00:00Z", next_update: "2026-11-29T00:00:00Z", certificates: {} });
+const fresh = registerFreshness(freshnessText, new Date("2026-11-22T00:00:00Z"));
+equal(fresh.generated, "2026-10-30", "freshness reports the generated date");
+equal(fresh.nextUpdate, "2026-11-29", "freshness reports the refresh date");
+equal(fresh.stale, false, "in-window snapshot is not stale");
+equal(registerFreshness(freshnessText, new Date("2026-12-01T00:00:00Z")).stale, true, "past-window snapshot is stale");
+equal(registerFreshness("not json"), null, "unreadable register has no freshness");
 
 console.log(`ok ${assertions} verifier assertions`);

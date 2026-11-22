@@ -943,6 +943,9 @@ h1 .grad {
   position: relative;
   display: flex;
   flex-direction: column;
+  /* Skip layout and paint for the 70+ cards below the fold. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
   padding: 22px 22px 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
