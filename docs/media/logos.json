@@ -51,11 +51,6 @@
       "width": 512,
       "height": 512
     },
-    "Beaconfall": {
-      "src": "media/Beaconfall/logo.svg",
-      "width": 512,
-      "height": 512
-    },
     "Brain": {
       "src": "media/Brain/logo.svg",
       "width": 512,
@@ -63,11 +58,6 @@
     },
     "Cairn": {
       "src": "media/Cairn/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Capability-Showcase": {
-      "src": "media/Capability-Showcase/logo.svg",
       "width": 512,
       "height": 512
     },
@@ -83,16 +73,6 @@
     },
     "Coda": {
       "src": "media/Coda/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Compat-Sample-Headless": {
-      "src": "media/Compat-Sample-Headless/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Compat-Sample-UI": {
-      "src": "media/Compat-Sample-UI/logo.svg",
       "width": 512,
       "height": 512
     },
@@ -131,23 +111,8 @@
       "width": 256,
       "height": 256
     },
-    "Foundry": {
-      "src": "media/Foundry/logo.svg",
-      "width": 512,
-      "height": 512
-    },
     "Gauge": {
       "src": "media/Gauge/logo.webp",
-      "width": 256,
-      "height": 256
-    },
-    "Harness": {
-      "src": "media/Harness/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Idea-Catcher": {
-      "src": "media/Idea-Catcher/logo.webp",
       "width": 256,
       "height": 256
     },
@@ -158,16 +123,6 @@
     },
     "Keystone": {
       "src": "media/Keystone/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Kiln": {
-      "src": "media/Kiln/logo.svg",
-      "width": 512,
-      "height": 512
-    },
-    "Knot": {
-      "src": "media/Knot/logo.svg",
       "width": 512,
       "height": 512
     },
@@ -246,11 +201,6 @@
       "width": 256,
       "height": 256
     },
-    "Noesis": {
-      "src": "media/Noesis/logo.svg",
-      "width": 512,
-      "height": 512
-    },
     "NoMoreClutter": {
       "src": "media/NoMoreClutter/logo.webp",
       "width": 256,
@@ -311,11 +261,6 @@
       "width": 256,
       "height": 256
     },
-    "Sextant": {
-      "src": "media/Sextant/logo.webp",
-      "width": 256,
-      "height": 256
-    },
     "Shooter": {
       "src": "media/Shooter/logo.svg",
       "width": 512,
@@ -365,6 +310,61 @@
       "src": "media/Weft/logo.svg",
       "width": 512,
       "height": 512
+    },
+    "Beaconfall": {
+      "src": "media/Beaconfall/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Capability-Showcase": {
+      "src": "media/Capability-Showcase/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Compat-Sample-Headless": {
+      "src": "media/Compat-Sample-Headless/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Compat-Sample-UI": {
+      "src": "media/Compat-Sample-UI/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Foundry": {
+      "src": "media/Foundry/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Harness": {
+      "src": "media/Harness/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Idea-Catcher": {
+      "src": "media/Idea-Catcher/logo.webp",
+      "width": 256,
+      "height": 256
+    },
+    "Kiln": {
+      "src": "media/Kiln/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Knot": {
+      "src": "media/Knot/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Noesis": {
+      "src": "media/Noesis/logo.svg",
+      "width": 512,
+      "height": 512
+    },
+    "Sextant": {
+      "src": "media/Sextant/logo.webp",
+      "width": 256,
+      "height": 256
     }
   }
 }
