@@ -509,4 +509,28 @@ async function boot() {
   }
 }
 
+/* Return to the exact page and scroll position the visitor came from. */
+function cameFromSite() {
+  try {
+    const ref = new URL(document.referrer);
+    if (ref.origin !== location.origin) return false;
+    return ref.pathname === "/" || /\/index\.html$|\/play\.html$/.test(ref.pathname);
+  } catch (error) {
+    return false;
+  }
+}
+
+function wireBackLinks() {
+  document.querySelectorAll("a.back-link, a[data-back]").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (history.length > 1 && cameFromSite()) {
+        event.preventDefault();
+        history.back();
+      }
+    });
+  });
+}
+
+wireBackLinks();
 if (detailEl) boot();

@@ -1515,14 +1515,17 @@ class ProfileIntegrityTests(unittest.TestCase):
     def test_featured_work_cards_carry_an_immutable_repository_id(self):
         html = read_site()
         snapshot = {str(repo["id"]): repo for repo in read_metadata()["repositories"]}
-        cards = re.findall(
-            r'<a class="work-card[^"]*" data-repo-id="(\d+)"[^>]*href="https://github\.com/AegeanWorks/([^"]+)"',
-            html,
-        )
+        cards = re.findall(r'<(?:a|article) class="work-card[^"]*" data-repo-id="(\d+)"([^>]*)>', html)
         self.assertEqual(len(cards), 4)
-        for repo_id, name in cards:
-            with self.subTest(repo=name):
-                self.assertEqual(snapshot[repo_id]["name"], name)
+        for repo_id, attributes in cards:
+            with self.subTest(repo_id=repo_id):
+                self.assertIn(repo_id, snapshot)
+                linked = re.search(r'href="https://github\.com/AegeanWorks/([^"]+)"', attributes)
+                if linked:
+                    self.assertEqual(snapshot[repo_id]["name"], linked.group(1))
+                else:
+                    self.assertEqual(snapshot[repo_id]["name"], "AIKit")
+                    self.assertIn('data-unlinked="true"', attributes)
         self.assertIn('data-mode="snapshot"', html)
         self.assertIn("Built-in snapshot", html)
 

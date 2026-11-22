@@ -171,6 +171,10 @@ function syncSelectedWork(repos, complete) {
   const byId = new Map(repos.map((repo) => [String(repo.id), repo]));
   const byName = new Map(repos.map((repo) => [repo.name.toLowerCase(), repo]));
   for (const card of document.querySelectorAll(".work-card")) {
+    if (card.dataset.unlinked === "true") {
+      card.hidden = false;
+      continue;
+    }
     const href = card.getAttribute("href") || "";
     const match = href.match(/^https:\/\/github\.com\/AegeanWorks\/([^/?#]+)\/?$/);
     const id = card.dataset.repoId || "";

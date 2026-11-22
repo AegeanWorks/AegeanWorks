@@ -716,6 +716,14 @@ h1 .grad {
   letter-spacing: 0.04em;
   color: var(--dim);
 }
+.work-note {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+}
 .work-link {
   display: inline-flex;
   align-items: center;
