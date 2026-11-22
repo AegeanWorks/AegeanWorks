@@ -920,5 +920,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "a571076d1561e1deb8978b798993483fd15790ad5456d808a131cebbb46b1c03",
     "baseline_digest": "a571076d1561e1deb8978b798993483fd15790ad5456d808a131cebbb46b1c03"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed private-repo dossier links, expanded sitemap and no-JS status copy; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "22f70612961bfb5077bcbd588eef3dd2114a59d3",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795378700.0511863,
+    "finished_at": 1795378708.3359153,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "cbbc3b47db415767cc92402ffc9168ef9bf87fbb053c60ef0b2ee340831a06af",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795378708.3359172
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "cbbc3b47db415767cc92402ffc9168ef9bf87fbb053c60ef0b2ee340831a06af",
+    "baseline_digest": "cbbc3b47db415767cc92402ffc9168ef9bf87fbb053c60ef0b2ee340831a06af"
   }
 ]
