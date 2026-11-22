@@ -740,5 +740,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "6674979e832769d1ccef62a5815211506e7d3227a7e6d2a502f4d682d61d0803",
     "baseline_digest": "6674979e832769d1ccef62a5815211506e7d3227a7e6d2a502f4d682d61d0803"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed verifier fix, uniform Selected work grid and reduced Meridian slider; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "fcdeb3c79d20f3adc29668ef7d79baf83bfcb76c",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795361997.419216,
+    "finished_at": 1795362005.2354875,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "dd9cfb198c922a2816f3fd32ff09926d4a18a954b99d95e56cfdb088dc4996fb",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795362005.2354896
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "dd9cfb198c922a2816f3fd32ff09926d4a18a954b99d95e56cfdb088dc4996fb",
+    "baseline_digest": "dd9cfb198c922a2816f3fd32ff09926d4a18a954b99d95e56cfdb088dc4996fb"
   }
 ]
