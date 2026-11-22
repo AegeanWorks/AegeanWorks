@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "knot-card-sync",
-    "last_phase": "phase 2",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795354136.5964968,
+    "task_id": "a11y-seo-site-fixes",
+    "last_phase": "phase 4",
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795354550.7166646,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795361336.5964968,
+    "lease_until": 1795361750.7166646,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,60 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "impact_assessment": {
-      "why": "The concurrent archive of knot left the public card stale (archived=false, 09:21) while repositories.json and atlas-snapshot.json were current, failing 2 site tests.",
-      "benefits": "Card, JSON-LD, catalogue and snapshot agree; 202 tests pass; strict delivery check can pass on a clean tree.",
-      "risks": "contract: sync_entry rewrites the card, inline JSON-LD and its CSP hash; dependency: none; concurrency: a concurrent session had uncommitted dossier files which were preserved and committed unchanged; state: the known _card em-dash defect required separator normalization",
-      "mitigation": "Use dossier_sync.sync_entry with the catalogue entry and existing family/category, normalize the facts separator, commit all pending dossier files explicitly, record UI evidence, then run check --strict."
-    },
-    "completed_at": 1795354208.901934,
-    "completed_head": "75880f209f1834c0445b3c37fc91128920edee90",
-    "completed_tree": "575dd677602acb4c42624fd96982bf62f0ef422c"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "games-teaser-pipeline",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'games-teaser-pipeline' completed successfully.",
-      "status": "completed",
-      "timestamp": 1794863798.3580368,
-      "timestamp_str": "2026-11-17 00:16:38",
-      "agent": "claude:1",
-      "head": "fe2c7b9dec1fafae1aac5a886c10204961800e90",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
-    {
-      "task_id": "licensing-into-aikit",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/3] Plan: M1 failing tests pin the archived card and integration description; M2 archive+describe the GitHub repo via gh; M3 dossier_sync refresh, gates, delivery",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1794934890.34571,
-      "timestamp_str": "2026-11-17 20:01:30",
-      "agent": "claude:1",
-      "impact_assessment": {
-        "why": "Aegean-Licensing was vendored into AIKit (d80d2e2) but GitHub and the site still present it as a live standalone project, so publishers and users see two homes for the same license texts.",
-        "benefits": "One canonical home: the GitHub repo is archived with a pointer to AIKit, the dossier card shows archived with the integration description, and the catalogue tests pin it.",
-        "risks": "contract: dossier_sync rewrites several site files from live GitHub facts - mitigated by running its own checks plus the project gates; dependency: gh CLI authenticated as AegeanWorks with repo scope, no code change needed; concurrency: parallel session owns the AIKit license-gate work in the root workspace - mitigated by not touching AIKit root files; state: repositories.json and atlas snapshot rewritten twice (sync run) - mitigated by committing drift separately if it reappears.",
-        "mitigation": "failing-first test before the archive; description mirrors the Aegean-Reforge artifact pattern; archive is reversible via unarchive if the user objects."
-      },
-      "checklists": "passed",
-      "plan_digest": "66d6187ccc65ba4d510a6c71cbc83ec0ed10e90f640b0dd3679403d09de10a6c",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "licensing-into-aikit",
       "phase": "phase 4",
@@ -408,6 +357,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "a11y-seo-site-fixes",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: fix the site-level accessibility/SEO findings from the alternative audit (68-char homepage title, 361-char editor description, unnamed dossier preview link, missing landmarks/og:title on 404/offline/live, editor footer, 404 #main target). Live-app snapshot findings are generated upstream and left unchanged.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795354549.941393,
+      "timestamp_str": "2026-11-22 16:35:49",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The Lighthouse a11y/SEO passes were unscored, and the deterministic DOM audit found 11 site-level problems that are cheap to fix and visible to users and crawlers.",
+        "benefits": "All 11 top-level pages pass the a11y/SEO audit; static audit returns 0 issues; 202 tests and 6/6 gates stay green.",
+        "risks": "contract: meta/title text changes could be pinned by tests; dependency: none; concurrency: none; state: the previously committed catalogue tree must stay clean, so changes are committed explicitly with UI evidence.",
+        "mitigation": "Keep title under 65 chars and descriptions under 180, add aria-label to the preview link, use real landmarks and og:title, add the #main skip target, then run the audits, Python suite and check --strict before reporting."
+      },
+      "plan_digest": "1355cb439d01063f9686964d21848bc5722cbc51663fbabfe94e3222a3f474fb",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "a11y-seo-site-fixes",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: website_audit.py 32 pages/80 JSON with 0 issues; a11y_seo_audit.py 11/11 site pages clean (12 remaining findings are upstream-generated live snapshots); 202 Python tests OK; 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795354550.7166646,
+      "timestamp_str": "2026-11-22 16:35:50",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
