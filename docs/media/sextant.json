@@ -3,7 +3,7 @@
   "repo": "sextant",
   "screenshots": [],
   "logo": {
-    "src": "media/Sextant/logo.webp",
+    "src": "media/sextant/logo.webp",
     "alt": "sextant logo",
     "width": 256,
     "height": 256,
@@ -13,7 +13,7 @@
     "source": "https://raw.githubusercontent.com/AegeanWorks/sextant/32b376f95c8bed4d3222f51ec508287558d0b5db/assets/logo.png"
   },
   "preview": {
-    "src": "media/Sextant/social-preview.webp",
+    "src": "media/sextant/social-preview.webp",
     "alt": "sextant social preview",
     "width": 1200,
     "height": 600,
