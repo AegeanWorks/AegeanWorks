@@ -173,6 +173,7 @@ export const REPO_LICENSES = Object.freeze({
   "compat-sample-headless": "AL",
   "compat-sample-ui": "AL",
   "harness": "AL",
+  "traceglass": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */

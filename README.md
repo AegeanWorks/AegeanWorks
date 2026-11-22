@@ -148,6 +148,7 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Capability-Showcase](https://github.com/AegeanWorks/Capability-Showcase) | [ARCHIVED] A polished local-first showcase that demonstrates AI-assisted planning, implementation, testing, and resilient CLI design. |
 | [Compat-Sample-Headless](https://github.com/AegeanWorks/Compat-Sample-Headless) | [ARCHIVED] Built for AIKit (ADR-315): headless proof sample for the AI-compat drive contract. |
 | [Compat-Sample-UI](https://github.com/AegeanWorks/Compat-Sample-UI) | [ARCHIVED] Built for AIKit (ADR-315): mock UI sample for the AI-compat drive proof, no runnable interface. |
+| [Traceglass](https://github.com/AegeanWorks/Traceglass) | Traceglass is a local Rust terminal workbench for comparing ordered execution traces. |
 
 </details>
 

@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "Traceglass",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Traceglass/logo.svg",
+    "alt": "Traceglass logo",
+    "width": 512,
+    "height": 512,
+    "digest": "sha256:e8ee0537adea48a019f3471591393e37aa52528927cbb7f6994a326b7186b916",
+    "commit": "30e70502bd7250157f85ed1e887982463452348c",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Traceglass/30e70502bd7250157f85ed1e887982463452348c/assets/logo.svg"
+  },
+  "preview": {
+    "src": "media/Traceglass/social-preview.svg",
+    "alt": "Traceglass social preview",
+    "width": 1280,
+    "height": 640,
+    "digest": "sha256:3d7aca773b59cd1e90bb7394891ee48eda7e33c4613b8f10ac0dbe63a873efe3",
+    "commit": "30e70502bd7250157f85ed1e887982463452348c",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/Traceglass/30e70502bd7250157f85ed1e887982463452348c/assets/social-preview.svg"
+  }
+}

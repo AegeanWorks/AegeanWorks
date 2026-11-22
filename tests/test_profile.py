@@ -88,6 +88,7 @@ PUBLIC_REPOS = {
     "Compat-Sample-Headless",
     "Compat-Sample-UI",
     "Harness",
+    "Traceglass",
 }
 
 CATEGORY_LABELS = {
@@ -1441,6 +1442,20 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertIn(">Games</a>", noscript)
         footer = re.search(r'<nav class="footer-col" aria-label="Site">.*?</nav>', html, re.S).group(0)
         self.assertIn(">Games</a>", footer)
+
+    def test_gallery_shows_every_published_playable_game(self):
+        html = read_site()
+        section = re.search(r'<section[^>]*id="games".*?</section>', html, re.S).group(0)
+        linked = set(re.findall(r'game-card" href="project\.html\?repo=([^"]+)"', section))
+        # Games whose repository is public and whose own words describe a playable
+        # title. Engines and content tools (Keystone, Foundry) are not playable.
+        playable = {
+            "Fold", "Prism-Relay", "Iris", "Weft", "Afterimage",
+            "MemoryReconstruction", "Crypt-Crawler", "Dustline", "Aldervale",
+            "Cyberpulse", "Voidfarer", "Beaconfall", "Neon-Dash", "Shooter",
+            "Vaultbreak",
+        }
+        self.assertEqual(linked, playable)
 
     def test_site_filters_are_topics_only(self):
         html = read_site()

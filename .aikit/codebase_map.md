@@ -9,8 +9,8 @@
 - **Total Python Modules**: `31`
 - **Total Classes**: `46`
 - **Total Top-Level Functions**: `179`
-- **Total Class Methods**: `254`
-- **Total Source Lines**: `7631`
+- **Total Class Methods**: `255`
+- **Total Source Lines**: `7646`
 
 ## 🧭 Map Coverage
 - **Indexed**: python (`31` module(s))
@@ -69,7 +69,7 @@
 ### [`tests/test_profile.py`](tests/test_profile.py)
 > *Regression tests for the AegeanWorks profile, site and licensing integrity.*
 
-**Size**: `2126` lines
+**Size**: `2141` lines
 
 **Classes:**
 - `class ProfileIntegrityTests` - *Guard the profile structure, links, voice and configuration.*
@@ -115,6 +115,7 @@
   - Method `.test_games_teasers_stay_unlinked()`
   - Method `.test_games_teaser_assets_exist()`
   - Method `.test_games_section_sits_between_projects_and_research()`
+  - Method `.test_gallery_shows_every_published_playable_game()`
   - Method `.test_site_filters_are_topics_only()`
   - Method `.test_project_cards_carry_an_immutable_repository_id()`
   - Method `.test_project_cards_show_language_license_and_recency()`
