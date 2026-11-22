@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "three-site-fixes",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795378511.011309,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795385711.011309,
@@ -15,33 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795378735.1031334,
+    "completed_head": "20ee7979ebc700758f3d69015a275d29d3eb7609",
+    "completed_tree": "01cf041dcdc4f347d22178d98b9b96d172e9be9d"
   },
   "checkpoints": [
-    {
-      "task_id": "archived-warm-tint",
-      "phase": "phase 2",
-      "phase_num": 2,
-      "description": "[1/2] Add a subtle warm amber tint to archived project cards: border, background, accent line and badge, while easing the dimming from 0.74 to 0.82.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795366671.4626617,
-      "timestamp_str": "2026-11-22 19:57:51",
-      "agent": "opencode:hy4-flash-free",
-      "impact_assessment": {
-        "why": "The user asked for a slight color change on archived cards; the previous treatment only dimmed them in neutral gray.",
-        "benefits": "Archived status is recognizable by color at a glance without looking like an error state.",
-        "risks": "contract: CSS only, no markup changes; dependency: none; concurrency: none; state: none",
-        "mitigation": "Reuse a single --archived token, verify computed colors in browser, run tests and strict gates."
-      },
-      "plan_digest": "a21a842b4d40db5cb53316dc210de9f4261ed09aeb5c0303f086212f6649163b",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "archived-warm-tint",
       "phase": "phase 4",
@@ -405,6 +384,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "three-site-fixes",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'three-site-fixes' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795378735.1764333,
+      "timestamp_str": "2026-11-22 23:18:55",
+      "agent": "opencode:hy4-flash-free",
+      "head": "20ee7979ebc700758f3d69015a275d29d3eb7609",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
