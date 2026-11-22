@@ -5,7 +5,7 @@
     {
       "src": "media/NeuroCore/2026-10-28-chat-ui.webp",
       "alt": "NeuroCore screenshot",
-      "caption": "NeuroCore — Chat UI",
+      "caption": "NeuroCore ÔÇö Chat UI",
       "commit": "a9b0d3364e80ec09b0601da99d305ec2010495a2",
       "taken_at": "2026-10-28",
       "viewport": "",
@@ -17,7 +17,7 @@
     {
       "src": "media/NeuroCore/2026-10-28-flow-editor.webp",
       "alt": "NeuroCore screenshot",
-      "caption": "NeuroCore — Flow Editor",
+      "caption": "NeuroCore ÔÇö Flow Editor",
       "commit": "a9b0d3364e80ec09b0601da99d305ec2010495a2",
       "taken_at": "2026-10-28",
       "viewport": "",
@@ -29,7 +29,7 @@
     {
       "src": "media/NeuroCore/2026-10-28-memory-browser.webp",
       "alt": "NeuroCore screenshot",
-      "caption": "NeuroCore — Memory Browser",
+      "caption": "NeuroCore ÔÇö Memory Browser",
       "commit": "a9b0d3364e80ec09b0601da99d305ec2010495a2",
       "taken_at": "2026-10-28",
       "viewport": "",
@@ -41,7 +41,7 @@
     {
       "src": "media/NeuroCore/2026-10-29-tools-library.webp",
       "alt": "NeuroCore screenshot",
-      "caption": "NeuroCore — Tools Library",
+      "caption": "NeuroCore ÔÇö Tools Library",
       "commit": "e43bd9d56d05d80a1ef714be65d7841c28018fe4",
       "taken_at": "2026-10-29",
       "viewport": "",
@@ -64,7 +64,7 @@
     {
       "src": "media/NeuroCore/2026-11-08-home.webp",
       "alt": "NeuroCore screenshot",
-      "caption": "NeuroCore — 2026 11 03 Home",
+      "caption": "NeuroCore ÔÇö 2026 11 03 Home",
       "commit": "65ef1b10320a175a4de98cb7f2c718d6b4d0719e",
       "taken_at": "2026-11-08",
       "viewport": "",
@@ -79,7 +79,7 @@
     "alt": "NeuroCore logo",
     "width": 256,
     "height": 256,
-    "digest": "sha256:e1983441b8f4ce83743c8052536764aa2451fa41038507e45222238412ad5c4c",
+    "digest": "sha256:59f3e67be10bf2e2d6f4ca45555d1f57a226faf9ee2b0615a45228bbd9b48315",
     "commit": "0610c7a8bde3100e84bf77e9dd69bd698578fc79",
     "taken_at": "2026-11-19",
     "source": "https://raw.githubusercontent.com/AegeanWorks/NeuroCore/0610c7a8bde3100e84bf77e9dd69bd698578fc79/assets/logo.jpg"
