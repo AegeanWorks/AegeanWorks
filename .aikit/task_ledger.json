@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "hygiene-annotation",
+    "task_id": "media-refresh-merge-2",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795363109.3568454,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795363644.9564586,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795370309.3568454,
+    "lease_until": 1795370844.9564586,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795363129.387166,
-    "completed_head": "3a2c87f190f3feeaa6db92a1b2af18250094be31",
-    "completed_tree": "814f3d764068bbbbb828899dab608cf5f0902840"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "upstream-media-merge",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "[2/2] Phase 4: merge 8aa3691 integrates 7e8fcbb; 202 Python tests OK; build_dossier_media.py check 0 problems; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795355195.1881547,
-      "timestamp_str": "2026-11-22 16:46:35",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "upstream-media-merge",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'upstream-media-merge' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795355211.3983512,
-      "timestamp_str": "2026-11-22 16:46:51",
-      "agent": "opencode:hy4-flash-free",
-      "head": "8727d93996db9cdbdd7b5d3bddf0ae7c9ecbc878",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "games-gallery-completion",
       "phase": "phase 2",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "media-refresh-merge-2",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Integrate upstream 725393d media refresh (logos, previews, Noesis and Dustline captures) into the local branch before push.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795363644.1378286,
+      "timestamp_str": "2026-11-22 19:07:24",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "The scheduled media workflow advanced the remote while local site and verifier work was pending; push requires integration.",
+        "benefits": "Local branch contains both the site work and fresh canonical media; gates stay green.",
+        "risks": "contract: manifests must match files; dependency: remote media bytes; concurrency: none active; state: merge was clean with no conflicts",
+        "mitigation": "Merge rather than rebase, run media check and all gates, record ledger, then push without force."
+      },
+      "plan_digest": "61043d9b078415a54d7484932791ac69f9a08ec7b17190e4d9640e45fa452eb1",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "media-refresh-merge-2",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: clean merge, media check 0 problems, 203 tests OK, 6/6 gates pass.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795363644.9564586,
+      "timestamp_str": "2026-11-22 19:07:24",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }
