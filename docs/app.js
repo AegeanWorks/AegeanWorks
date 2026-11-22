@@ -533,6 +533,21 @@
     }
   }
 
+  // A top-nav anchor jump can land on a section whose reveal elements have
+  // not been observed yet; make the whole target section visible immediately.
+  function revealHashSection() {
+    var id = window.location.hash.slice(1);
+    if (!id) return;
+    var section = document.getElementById(id);
+    if (!section) return;
+    if (section.classList.contains("reveal")) section.classList.add("in");
+    Array.prototype.forEach.call(section.querySelectorAll(".reveal"), function (el) {
+      el.classList.add("in");
+    });
+  }
+  window.addEventListener("hashchange", revealHashSection);
+  revealHashSection();
+
   var cards = Array.prototype.slice.call(document.querySelectorAll(".work-card"));
   cards.forEach(function (card) {
     card.addEventListener("pointermove", function (event) {

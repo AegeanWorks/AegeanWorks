@@ -965,6 +965,32 @@ h1 .grad {
 }
 .project:hover::before { opacity: 1; }
 
+/* Archived projects read as a quieter card with an explicit status badge. */
+.project[data-archived="true"] {
+  opacity: 0.74;
+  border-style: dashed;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.035), rgba(255, 255, 255, 0.004));
+}
+.project[data-archived="true"]:hover,
+.project[data-archived="true"]:focus-within { opacity: 1; }
+.project[data-archived="true"] h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project[data-archived="true"] h3::after {
+  content: "ARCHIVED";
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
+
 .project-mark {
   display: inline-grid;
   place-items: center;
