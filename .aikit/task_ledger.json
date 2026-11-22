@@ -1,13 +1,13 @@
 {
   "version": 1,
   "active_task": {
-    "task_id": "keep-private-dossier",
+    "task_id": "nav-stay-on-page",
     "last_phase": "phase 4",
-    "active_phase": 5,
-    "status": "completed",
-    "updated_at": 1795379355.1874673,
+    "active_phase": 4,
+    "status": "in_progress",
+    "updated_at": 1795380705.540454,
     "owner": "opencode:hy4-flash-free",
-    "lease_until": 1795386555.1874673,
+    "lease_until": 1795387905.540454,
     "started_by": "opencode:hy4-flash-free",
     "continuations": [],
     "workspaces": [
@@ -15,47 +15,9 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ],
-    "completed_at": 1795379386.5422866,
-    "completed_head": "fdd08a315b891546141af7f9df1718058145f273",
-    "completed_tree": "242bb70e0e2e2c1aaed817ea0cd06668e8de36bd"
+    ]
   },
   "checkpoints": [
-    {
-      "task_id": "trim-archived-prefix",
-      "phase": "phase 3",
-      "phase_num": 3,
-      "description": "Added displayDescription helper for archived repos (cards and dossier), added failing-first atlas assertion, and hid aikit-integrated, aegeanworks and aegean-license from topic pills in both client rendering and static card markup.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795368496.1363177,
-      "timestamp_str": "2026-11-22 20:28:16",
-      "agent": "opencode:hy4-flash-free",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
-    {
-      "task_id": "trim-archived-prefix",
-      "phase": "phase 4",
-      "phase_num": 4,
-      "description": "Phase 4: 70 atlas assertions, 203 Python tests OK; browser shows 0 housekeeping tags across 400 pills and trimmed archived descriptions; 6/6 gates pass.",
-      "files_affected": [],
-      "status": "in_progress",
-      "timestamp": 1795368497.3172262,
-      "timestamp_str": "2026-11-22 20:28:17",
-      "agent": "opencode:hy4-flash-free",
-      "checklists": "passed",
-      "workspaces": [
-        {
-          "name": "AegeanWorks",
-          "path": "projects/AegeanWorks"
-        }
-      ]
-    },
     {
       "task_id": "trim-archived-prefix",
       "phase": "completed",
@@ -401,6 +363,48 @@
         ],
         "forced": false
       }
+    },
+    {
+      "task_id": "nav-stay-on-page",
+      "phase": "phase 2",
+      "phase_num": 2,
+      "description": "[1/2] Plan: make the top-nav Live link scroll to the homepage's Live section instead of navigating to play.html, and make all in-page nav jumps land reliably at the section below the sticky header.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795380704.6340945,
+      "timestamp_str": "2026-11-22 23:51:44",
+      "agent": "opencode:hy4-flash-free",
+      "impact_assessment": {
+        "why": "Clicking Live left the homepage so the Games/Live sections appeared to vanish; hash jumps were also unreliable with smooth scrolling.",
+        "benefits": "Live and Games stay on the same page and land at the right scroll position; full live catalog remains reachable from the section and footer.",
+        "risks": "contract: nav order and play.html presence are pinned by tests; dependency: none; concurrency: none; state: hash-based URL state must stay consistent",
+        "mitigation": "Add a failing-first test, change nav hrefs, add an instant-scroll handler, verify both clicks in a fresh browser, then run all gates."
+      },
+      "plan_digest": "7fbf0ba96f95c66868312efec5e4e2e20a4e73966a421e0c69fc11e0ead64e48",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
+    },
+    {
+      "task_id": "nav-stay-on-page",
+      "phase": "phase 4",
+      "phase_num": 4,
+      "description": "[2/2] Phase 4: browser shows Live -> index.html#live scroll 2940 and Games -> #games scroll 7500, both with section top at 88px; 212 tests OK.",
+      "files_affected": [],
+      "status": "in_progress",
+      "timestamp": 1795380705.540454,
+      "timestamp_str": "2026-11-22 23:51:45",
+      "agent": "opencode:hy4-flash-free",
+      "checklists": "passed",
+      "workspaces": [
+        {
+          "name": "AegeanWorks",
+          "path": "projects/AegeanWorks"
+        }
+      ]
     }
   ]
 }

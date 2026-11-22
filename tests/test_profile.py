@@ -1269,6 +1269,16 @@ class ProfileIntegrityTests(unittest.TestCase):
         self.assertRegex(fields["Expires"], r"^\d{4}-\d{2}-\d{2}T")
         self.assertGreaterEqual(fields["Expires"][:10], "2027-10-27")
 
+    def test_home_nav_keeps_the_live_section_on_page(self):
+        html = read_site()
+        nav = re.search(r'<nav class="site-nav".*?</nav>', html, re.S).group(0)
+        self.assertIn('<a href="#live">Live</a>', nav)
+        self.assertIn('id="live"', html)
+        self.assertIn('href="play.html"', html)
+        app = (ROOT / "docs/app.js").read_text(encoding="utf-8")
+        self.assertIn('site-nav a[href^="#"]', app)
+        self.assertIn("scrollIntoView", app)
+
     def test_project_status_defaults_to_active(self):
         html = read_site()
         self.assertIn('<option value="active" selected>', html)

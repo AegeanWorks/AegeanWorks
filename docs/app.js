@@ -561,6 +561,29 @@
   window.addEventListener("hashchange", revealHashSection);
   revealHashSection();
 
+  // Anchor navigation must land on the section even when a smooth scroll would
+  // be interrupted by a filter change or a background tab.
+  document.querySelectorAll('.site-nav a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var id = (link.getAttribute("href") || "").slice(1);
+      var target = document.getElementById(id);
+      if (!target) return;
+      event.preventDefault();
+      try {
+        window.history.replaceState(null, "", "#" + id);
+      } catch (error) {
+        window.location.hash = id;
+      }
+      var root = document.documentElement;
+      var previous = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      root.style.scrollBehavior = previous;
+      revealHashSection();
+      setNav(false);
+    });
+  });
+
   var cards = Array.prototype.slice.call(document.querySelectorAll(".work-card"));
   cards.forEach(function (card) {
     card.addEventListener("pointermove", function (event) {
