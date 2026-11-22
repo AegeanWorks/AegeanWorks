@@ -3,8 +3,8 @@
   "active_task": {
     "task_id": "site-followup-five",
     "last_phase": "phase 4",
-    "active_phase": 4,
-    "status": "in_progress",
+    "active_phase": 5,
+    "status": "completed",
     "updated_at": 1795374692.1992683,
     "owner": "opencode:hy4-flash-free",
     "lease_until": 1795381892.1992683,
@@ -15,26 +15,12 @@
         "name": "AegeanWorks",
         "path": "projects/AegeanWorks"
       }
-    ]
+    ],
+    "completed_at": 1795374920.9434774,
+    "completed_head": "82ac677c2d44e69bbe9ffceaf108ccfd3606262d",
+    "completed_tree": "1a16817160d3a63e4bd185a0b579949aa135fbd9"
   },
   "checkpoints": [
-    {
-      "task_id": "media-refresh-merge-2",
-      "phase": "completed",
-      "phase_num": 5,
-      "description": "Task 'media-refresh-merge-2' completed successfully.",
-      "status": "completed",
-      "timestamp": 1795363669.1858099,
-      "timestamp_str": "2026-11-22 19:07:49",
-      "agent": "opencode:hy4-flash-free",
-      "head": "c4d811bcbdf57d04f997c60fe102a5a78083cf19",
-      "delivery": {
-        "roots": [
-          "."
-        ],
-        "forced": false
-      }
-    },
     {
       "task_id": "archived-card-badges",
       "phase": "phase 2",
@@ -405,6 +391,23 @@
           "path": "projects/AegeanWorks"
         }
       ]
+    },
+    {
+      "task_id": "site-followup-five",
+      "phase": "completed",
+      "phase_num": 5,
+      "description": "Task 'site-followup-five' completed successfully.",
+      "status": "completed",
+      "timestamp": 1795374921.802249,
+      "timestamp_str": "2026-11-22 22:15:21",
+      "agent": "opencode:hy4-flash-free",
+      "head": "82ac677c2d44e69bbe9ffceaf108ccfd3606262d",
+      "delivery": {
+        "roots": [
+          "."
+        ],
+        "forced": false
+      }
     }
   ]
 }
