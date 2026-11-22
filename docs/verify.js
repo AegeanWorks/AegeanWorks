@@ -13,6 +13,11 @@ import {
   verifyCertificate,
 } from "./verify-core.js";
 
+/* Bundled snapshot, used only when the canonical host cannot be reached. */
+const LOCAL_REGISTER_URL = "licensing/issued.json";
+const LOCAL_TERMS_URL = "licensing/terms.json";
+const LOCAL_TERMS_BASE_URL = "licensing/";
+
 const STATUS_LABELS = {
   VALID: "Valid",
   REGISTERED: "Registered",
@@ -56,6 +61,7 @@ const state = {
   terms: null,
   fetchedAt: null,
   loading: false,
+  snapshot: false,
   termTexts: new Map(),
 };
 
@@ -205,10 +211,26 @@ function updateRegisterStatus() {
   }
   if (registerMeta) {
     registerMeta.textContent = state.register
-      ? (state.fetchedAt
-        ? "Canonical issued.json · fetched " + utcClock(state.fetchedAt)
-        : "Canonical issued.json")
+      ? (state.snapshot
+        ? "Bundled snapshot · canonical host unreachable"
+        : (state.fetchedAt
+          ? "Canonical issued.json · fetched " + utcClock(state.fetchedAt)
+          : "Canonical issued.json"))
       : "No canonical registry loaded.";
+  }
+}
+
+/* Try the canonical URL first; fall back to the bundled snapshot, clearly
+   labelled in state.snapshot so no result is presented as live canonical data. */
+async function fetchWithFallback(remote, local, limit, label) {
+  try {
+    return { value: await fetchCanonical(remote, limit, label), snapshot: false, problem: "" };
+  } catch (remoteError) {
+    try {
+      return { value: await fetchCanonical(local, limit, label), snapshot: true, problem: remoteError.message };
+    } catch (localError) {
+      return { value: null, snapshot: false, problem: remoteError.message + " " + localError.message };
+    }
   }
 }
 
@@ -228,12 +250,12 @@ async function loadRegistries() {
   if (idButton) idButton.disabled = true;
   clearError();
   setRuntime("Loading the public register…");
-  const outcomes = await Promise.allSettled([
-    fetchCanonical(REGISTER_URL, 1048576, "The public register"),
-    fetchCanonical(TERMS_URL, 262144, "The terms registry"),
+  const outcomes = await Promise.all([
+    fetchWithFallback(REGISTER_URL, LOCAL_REGISTER_URL, 1048576, "The public register"),
+    fetchWithFallback(TERMS_URL, LOCAL_TERMS_URL, 262144, "The terms registry"),
   ]);
   const problems = [];
-  if (outcomes[0].status === "fulfilled") {
+  if (outcomes[0].value) {
     try {
       state.register = parseRegister(outcomes[0].value);
       if (idButton) idButton.disabled = false;
@@ -243,9 +265,9 @@ async function loadRegistries() {
     }
   } else {
     state.register = null;
-    problems.push(outcomes[0].reason.message);
+    problems.push(outcomes[0].problem || "The public register could not be loaded.");
   }
-  if (outcomes[1].status === "fulfilled") {
+  if (outcomes[1].value) {
     try {
       state.terms = parseTerms(outcomes[1].value);
       state.termTexts.clear();
@@ -255,15 +277,19 @@ async function loadRegistries() {
     }
   } else {
     state.terms = null;
-    problems.push(outcomes[1].reason.message);
+    problems.push(outcomes[1].problem || "The terms registry could not be loaded.");
   }
+  state.snapshot = outcomes[0].snapshot || outcomes[1].snapshot;
   state.fetchedAt = new Date();
   updateRegisterStatus();
   state.loading = false;
   if (refreshButton) refreshButton.disabled = false;
   if (state.register && state.terms) {
     if (submitButton) submitButton.disabled = false;
-    setRuntime("Register ready. Paste a certificate or choose a file.");
+    setRuntime(state.snapshot
+      ? "Using the bundled register snapshot. Refresh retries the canonical register."
+      : "Register ready. Paste a certificate or choose a file.");
+    if (state.snapshot) clearError();
   } else {
     setRuntime("Verification is unavailable until the canonical registry loads.");
     showError(Array.from(new Set(problems)).join(" "));
@@ -272,7 +298,12 @@ async function loadRegistries() {
 
 async function fetchTermsDocument(entry) {
   if (state.termTexts.has(entry.document)) return state.termTexts.get(entry.document);
-  const text = await fetchCanonical(TERMS_BASE_URL + entry.document, MAX_TERMS_BYTES, "The agreement text");
+  let text;
+  try {
+    text = await fetchCanonical(TERMS_BASE_URL + entry.document, MAX_TERMS_BYTES, "The agreement text");
+  } catch (remoteError) {
+    text = await fetchCanonical(LOCAL_TERMS_BASE_URL + entry.document, MAX_TERMS_BYTES, "The agreement text");
+  }
   state.termTexts.set(entry.document, text);
   return text;
 }

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "licenses": {
+    "ACL-1.0": {
+      "name": "Aegean Commercial License 1.0",
+      "document": "licenses/ACL-1.0.md",
+      "status": "operative",
+      "sha256": "b71ca9bc69e7c3b27b644739c6bf8b206764c5080b3cba75fd75ee9e9e219d5c",
+      "scopes": [
+        "proprietary-saas-and-redistribution",
+        "internal-use",
+        "client-deliverables",
+        "oem-embedded",
+        "enterprise-unrestricted"
+      ],
+      "tiers": [
+        "Tier1",
+        "Tier2",
+        "Tier3"
+      ],
+      "allowances": [
+        "ai-training",
+        "hosted-service"
+      ]
+    }
+  }
+}

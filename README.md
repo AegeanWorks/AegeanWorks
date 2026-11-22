@@ -304,6 +304,7 @@ AegeanWorks/
 │   ├── live.json            <- Synced app versions, commits and digests
 │   ├── play.html            <- Live app catalog and fullscreen player
 │   ├── live/                <- Versioned builds, screenshots and slider data
+│   ├── licensing/           <- Bundled register, terms and agreement snapshot for the browser verifier
 │   ├── editor.html          <- Palette image editor workbench
 │   ├── editor/              <- Vendored Palette build and content-hash manifest
 │   ├── media/               <- Dossier logos, social previews and screenshots

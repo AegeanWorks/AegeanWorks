@@ -161,8 +161,14 @@ export function parseRegister(rawText) {
   if (!data || typeof data !== "object" || Array.isArray(data)) {
     throw new VerificationInputError("Register must be a JSON object.");
   }
-  if (data.version !== 1) {
+  if (data.version !== 1 && data.version !== 2) {
     throw new VerificationInputError("Unsupported register version.");
+  }
+  if (data.version === 2) {
+    const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+    if (!ISO.test(String(data.generated_at || "")) || !ISO.test(String(data.next_update || ""))) {
+      throw new VerificationInputError("Version-2 register needs generated_at and next_update timestamps.");
+    }
   }
   const certificates = data.certificates;
   if (!certificates || typeof certificates !== "object" || Array.isArray(certificates)) {

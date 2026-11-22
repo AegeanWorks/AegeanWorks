@@ -663,21 +663,18 @@ h1 .grad {
 .work-art {
   position: absolute;
   top: 50%;
-  right: 34px;
-  width: 240px;
+  right: 24px;
+  width: 150px;
+  pointer-events: none;
   transform: translateY(-50%);
-  opacity: 0.85;
+  opacity: 0.5;
   transition: opacity 0.4s var(--ease), transform 0.5s var(--ease);
 }
-.work-card-wide:hover .work-art { opacity: 1; transform: translateY(-50%) scale(1.03); }
+.work-card:hover .work-art { opacity: 0.8; transform: translateY(-50%) scale(1.03); }
+.work-card h3, .work-card p, .work-tag, .work-meta, .work-link { position: relative; z-index: 1; }
 
 @media (max-width: 900px) {
   .work-art { display: none; }
-}
-
-@media (min-width: 901px) {
-  .work-card-wide { padding-right: 300px; }
-  .work-card-wide p { max-width: 40ch; }
 }
 .work-index {
   position: absolute;
