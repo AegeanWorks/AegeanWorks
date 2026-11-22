@@ -1818,7 +1818,7 @@
     {
       "id": 1461647319,
       "name": "Atelier",
-      "description": "Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API.",
+      "description": "[ARCHIVED] Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API.",
       "topics": [
         "agent",
         "ai-coding-agent",
@@ -1828,10 +1828,33 @@
       ],
       "language": "TypeScript",
       "license": "NOASSERTION",
-      "pushed_at": "2026-11-22T00:41:57Z",
+      "pushed_at": "2026-11-22T08:46:48Z",
+      "homepage": "",
+      "archived": true,
+      "default_branch": "main"
+    },
+    {
+      "id": 1467374423,
+      "name": "sextant",
+      "description": "Sextant is a deterministic, zero-dependency Rust CLI that verifies finite state machines, replays event scripts into auditable traces, and guards stateful behavior with golden-trace regression.",
+      "topics": [
+        "aegean-license",
+        "aikit",
+        "aikit-integrated",
+        "cli",
+        "commercial-license",
+        "developer-tools",
+        "model-checking",
+        "rust",
+        "source-available",
+        "state-machine"
+      ],
+      "language": "Rust",
+      "license": "NOASSERTION",
+      "pushed_at": "2026-11-22T09:26:20Z",
       "homepage": "",
       "archived": false,
-      "default_branch": "main"
+      "default_branch": "master"
     }
   ]
 }

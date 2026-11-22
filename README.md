@@ -83,7 +83,8 @@ Every project repository below is public. Browse the full set on [GitHub](https:
 | [Trireme](https://github.com/AegeanWorks/Trireme) | [ARCHIVED] [!WARNING] Archived AIKit development testbed — do not use in production. This project exists only to exercise and validate AIKit's tooling and workflows. It is read-only and unmaintained: there will be no further development, fixes, updates, or support. |
 | [Coda](https://github.com/AegeanWorks/Coda) | [ARCHIVED] Coda is a deterministic, dependency-free Rust sound compiler that turns a small textual score into reproducible stereo WAV audio, with seeded arrangement styles for locally generated music. It is published as a public repository at github.com/AegeanWorks/Coda. |
 | [Sieve](https://github.com/AegeanWorks/Sieve) | [ARCHIVED] Sieve is a zero-dependency, deterministic regular-expression engine and ripgrep-like CLI written in Rust, with inspectable matching, a small pattern language and no network calls. |
-| [Atelier](https://github.com/AegeanWorks/Atelier) | Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API. |
+| [Atelier](https://github.com/AegeanWorks/Atelier) | [ARCHIVED] Local-first agent workspace: multi-conversation chat, file editing, git diffs, terminal, browser preview, and plans in one fast UI for any model API. |
+| [sextant](https://github.com/AegeanWorks/sextant) | Sextant is a deterministic, zero-dependency Rust CLI that verifies finite state machines, replays event scripts into auditable traces, and guards stateful behavior with golden-trace regression. |
 
 </details>
 

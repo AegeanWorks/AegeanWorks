@@ -261,6 +261,11 @@
       "width": 256,
       "height": 256
     },
+    "sextant": {
+      "src": "media/Sextant/logo.webp",
+      "width": 256,
+      "height": 256
+    },
     "Shooter": {
       "src": "media/Shooter/logo.svg",
       "width": 512,

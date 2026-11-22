@@ -1,0 +1,25 @@
+{
+  "schema": 2,
+  "repo": "sextant",
+  "screenshots": [],
+  "logo": {
+    "src": "media/Sextant/logo.webp",
+    "alt": "sextant logo",
+    "width": 256,
+    "height": 256,
+    "digest": "sha256:42ecd1809c75a83317009f6096dee9efba99394c3b25d3ca2a0bbb2002ddb284",
+    "commit": "32b376f95c8bed4d3222f51ec508287558d0b5db",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/sextant/32b376f95c8bed4d3222f51ec508287558d0b5db/assets/logo.png"
+  },
+  "preview": {
+    "src": "media/Sextant/social-preview.webp",
+    "alt": "sextant social preview",
+    "width": 1200,
+    "height": 600,
+    "digest": "sha256:4e4e1a9d088953f399d1446d4a043b4791b2f297f63cad6d5306d0d2d912845a",
+    "commit": "32b376f95c8bed4d3222f51ec508287558d0b5db",
+    "taken_at": "2026-11-22",
+    "source": "https://raw.githubusercontent.com/AegeanWorks/sextant/32b376f95c8bed4d3222f51ec508287558d0b5db/assets/social-preview.png"
+  }
+}

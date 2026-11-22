@@ -162,6 +162,7 @@ export const REPO_LICENSES = Object.freeze({
   "neon-dash": "AGL",
   "vaultbreak": "AGL",
   "atelier": "AL",
+  "sextant": "AL",
 });
 
 /* The family short code for a repository, or "" when it is not an Aegean one. */
