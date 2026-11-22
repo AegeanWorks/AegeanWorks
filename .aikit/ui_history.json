@@ -530,5 +530,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "87e1992ed96f4aa021dc044b22b6763a183e3b50fffcb5cf60681b1c60f629ba",
     "baseline_digest": "87e1992ed96f4aa021dc044b22b6763a183e3b50fffcb5cf60681b1c60f629ba"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed catalogue publish that updated docs/index.html; Python and Node suites are the UI proof per G-001.",
+    "baseline_commit": "cb6b4ec",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795340292.5536494,
+    "finished_at": 1795340321.4829879,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "2d02d240444f5e59f18d63a0bf63884cf989fb0d85b307f8d1874424527ab8aa",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795340321.4829895
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "2d02d240444f5e59f18d63a0bf63884cf989fb0d85b307f8d1874424527ab8aa",
+    "baseline_digest": "2d02d240444f5e59f18d63a0bf63884cf989fb0d85b307f8d1874424527ab8aa"
   }
 ]
