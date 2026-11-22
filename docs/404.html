@@ -8,12 +8,14 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#04060c">
 <meta name="description" content="The requested page was not found on the AegeanWorks site. Return to the studio overview or browse the public repositories.">
+<meta property="og:title" content="Page not found — AegeanWorks">
 <link rel="icon" href="/AegeanWorks/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/AegeanWorks/styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="page-grid" aria-hidden="true"></div>
-<main class="section" tabindex="-1" style="min-height:80vh;display:grid;place-items:center;text-align:center">
+<main id="main" class="section" tabindex="-1" style="min-height:80vh;display:grid;place-items:center;text-align:center">
   <div class="wrap" style="max-width:34rem">
     <p class="eyebrow" style="justify-content:center">Error 404</p>
     <h1 style="font-size:clamp(2.2rem,6vw,3.4rem)">This path leads<br><span class="grad">out to sea.</span></h1>
@@ -22,15 +24,20 @@
       <a class="btn btn-primary" href="/AegeanWorks/">Back to the studio</a>
       <a class="btn btn-ghost" href="https://github.com/AegeanWorks" rel="noopener">GitHub</a> <!-- hygiene: allow outbound link, not a loaded dependency -->
     </div>
-    <p class="error-links" style="margin-top:24px;font-family:var(--mono);font-size:.72rem;color:var(--dim)">
+    <nav class="error-links" aria-label="Site links" style="margin-top:24px;font-family:var(--mono);font-size:.72rem;color:var(--dim)">
       <a href="/AegeanWorks/#projects">Projects</a>
       <a href="/AegeanWorks/?focus=search#projects">Search</a>
       <a href="/AegeanWorks/verify.html">Verify a license</a>
       <a href="/AegeanWorks/security.html">Security</a>
       <a href="/AegeanWorks/privacy.html">Privacy</a>
       <a href="/AegeanWorks/accessibility.html">Accessibility</a>
-    </p>
+    </nav>
   </div>
 </main>
+<footer class="site-footer footer-slim">
+  <div class="wrap footer-bottom">
+    <p>© 2026 AegeanWorks. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>
