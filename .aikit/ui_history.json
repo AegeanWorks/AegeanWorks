@@ -650,5 +650,35 @@
     "final_snapshot_entries": 0,
     "surface_digest": "77de116b2f238442215c1c3c3a083f0f7652791eb297011615d46812d019aff0",
     "baseline_digest": "77de116b2f238442215c1c3c3a083f0f7652791eb297011615d46812d019aff0"
+  },
+  {
+    "schema": 1,
+    "surface": "app",
+    "mode": "visual",
+    "visual_change": true,
+    "changed_paths": [],
+    "no_visual_reason": "",
+    "no_change_reason": "Reviewed the committed Knot card/catalogue reconciliation and Muse media refresh; automated Python and Node UI suites are the UI proof per G-001.",
+    "baseline_commit": "16c0534d9892f5adee0d79e8e53a4177eafb8939",
+    "contract_hash": "81fdfdfb2f26aeee29de885d75386c959577ce346e8cc7619e404c21cf0ad300",
+    "started_at": 1795354086.7328556,
+    "finished_at": 1795354093.9975502,
+    "strikes": 0,
+    "reviewer": "agent:opencode",
+    "review": {
+      "reviewer": "agent:opencode",
+      "surface": "app",
+      "surface_digest": "d00641f2897a2639a54eec62300ccf89a110bc90eaaed8f861dd2afbf010ebfd",
+      "snapshot_digest": "",
+      "snapshot_entries": 0,
+      "visual": true,
+      "reviewed_at": 1795354093.9975529
+    },
+    "allowed_removals": [],
+    "allowed_tests": [],
+    "final_snapshot_digest": "",
+    "final_snapshot_entries": 0,
+    "surface_digest": "d00641f2897a2639a54eec62300ccf89a110bc90eaaed8f861dd2afbf010ebfd",
+    "baseline_digest": "d00641f2897a2639a54eec62300ccf89a110bc90eaaed8f861dd2afbf010ebfd"
   }
 ]
